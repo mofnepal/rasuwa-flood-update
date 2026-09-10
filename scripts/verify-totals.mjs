@@ -277,18 +277,28 @@ for (const r of reports) {
 
 // ── cross-agency ────────────────────────────────────────────────────────────
 console.log('\nCROSS-AGENCY');
+// The two agencies' figures are only comparable for the same day: a later report
+// from one naturally differs from the other's earlier one, and that is not an error.
+const reportDay = (r) =>
+  new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kathmandu' }).format(r.report_at);
 const ndrrma = reports.find((r) => r.agency === 'NDRRMA');
 const police = reports.find((r) => r.agency === 'NEPAL_POLICE');
-if (ndrrma && police) {
+const policeSameDay =
+  ndrrma && reports.find((r) => r.agency === 'NEPAL_POLICE' && reportDay(r) === reportDay(ndrrma));
+if (ndrrma && policeSameDay) {
   check(
-    'NDRRMA casualties vs Nepal Police bodies found',
+    `NDRRMA casualties vs Nepal Police bodies found (${reportDay(ndrrma)})`,
     ndrrma.data.human_casualties,
-    police.data.bodies_found.total,
+    policeSameDay.data.bodies_found.total,
   );
   check(
-    'bodies handed over agree between the two agencies',
+    `bodies handed over agree between the two agencies (${reportDay(ndrrma)})`,
     ndrrma.data.dead_body_handover,
-    police.data.body_handover,
+    policeSameDay.data.body_handover,
+  );
+} else if (ndrrma && police) {
+  note(
+    `the latest NDRRMA report (${reportDay(ndrrma)}) and Nepal Police report (${reportDay(police)}) are from different days, so they were not compared`,
   );
 }
 

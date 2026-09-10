@@ -4,6 +4,40 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data
+
+- **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 10 September 2026,
+  11:00 AM** loaded as a fifth report. Every total reconciles against its own parts:
+  deaths by district to 1,377; security personnel (Nepali Army 8,885, Nepal Police
+  7,975, Armed Police Force 4,203) to 21,063; holding centres (Nuwakot 2,615, Rasuwa
+  775, Dhading 295) to 3,685; missing — Rasuwa 2,860, Nuwakot 1,787 and 587 foreign
+  nationals, less the 104 identified bodies — to 5,130. Rescued 13,656. The report
+  prints no headline total for the injured; the portal shows the sum of what it
+  prints (333 in hospital, 3,559 treated by the Nepali Army, 3,606 by the Armed Police
+  Force = 7,498) and says so. Its original has not yet been supplied as a file.
+- `pnpm verify` compares NDRRMA with Nepal Police only for reports of the same day.
+  The latest Nepal Police update is still 9 September, and a later NDRRMA figure
+  naturally differs from it; that is now stated as a note instead of failing the
+  check, which would have blocked publication.
+
+### Phones
+
+- **Home button** in the top row on a phone, and the emblem and ministry name lead
+  home on every screen.
+- **Charts** size themselves to the screen: the figure inside the donut stays inside
+  the ring, crowded bar labels are slanted and shortened (the tooltip keeps the full
+  name), long category names no longer run into each other, and the top axis value is
+  no longer cut off. A two-line chart legend no longer overlaps the note beneath it.
+- **Layout** on a narrow screen: the header keeps its buttons on one row, the ticker
+  has no stray separator, the "updated" line no longer strands its clock icon, tables
+  scroll sideways instead of crushing their columns, the updates list puts the date
+  above the text, relief measures put the agency under the title, the timeline runs
+  down the page, and the Nepal Police panel stacks. "(1 days ago)" now reads "(1 day ago)".
+- The sector list shows the name on the left and the amount on the right on every
+  screen; the amount had taken the first column.
+- A browser test now fails the build if anything runs off a phone screen or out of its
+  chart at 320, 375 or 414px, in either language.
+
 ### Header
 
 - **Desktop search** has a row of its own under the header, up to 760px wide. Beside the
