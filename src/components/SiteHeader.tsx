@@ -89,14 +89,15 @@ export function SiteHeader() {
 
       <div className="top">
         <div className="wrap">
-          <div className="brand">
+          {/* The emblem and ministry name lead home, as on any government site. */}
+          <Link href="/" className="brand">
             <Image src={EMBLEM} alt={t('emblemAlt')} width={56} height={56} priority />
             <div className="g">
               <small>{t('government')}</small>
               <b>{t('ministry')}</b>
               <span>{t('address')}</span>
             </div>
-          </div>
+          </Link>
 
           <div className="ptitle">
             <b>{t('portal')}</b>
@@ -112,6 +113,15 @@ export function SiteHeader() {
 
           <div className="tools">
             {langButtons(false)}
+            {/* On a phone the section links live in the menu, so home is one tap away here. */}
+            <Link
+              href="/"
+              className="homebtn"
+              aria-label={tn('home')}
+              aria-current={localePath === '/' ? 'page' : undefined}
+            >
+              <Icon name="home" />
+            </Link>
             {donateButton}
             <button
               type="button"

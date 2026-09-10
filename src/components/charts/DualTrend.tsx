@@ -38,7 +38,7 @@ export function DualTrend({
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={data} margin={{ top: 6, right: 4, bottom: 4, left: 4 }}>
+      <LineChart data={data} margin={{ top: 14, right: 4, bottom: 4, left: 4 }}>
         <CartesianGrid stroke={GRID} vertical={false} />
         <XAxis dataKey="name" tick={AXIS_TICK} axisLine={false} tickLine={false} />
         <YAxis
@@ -70,9 +70,8 @@ export function DualTrend({
         />
         <Legend
           verticalAlign="bottom"
-          height={26}
           formatter={(value: string) => (value === 'npr' ? nprLabel : usdLabel)}
-          wrapperStyle={{ fontSize: 12.5 }}
+          wrapperStyle={{ fontSize: 12.5, lineHeight: 1.35, paddingTop: 6 }}
         />
         <Line
           yAxisId="npr"

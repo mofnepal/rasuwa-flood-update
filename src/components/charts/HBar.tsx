@@ -19,6 +19,7 @@ import {
   toNumber,
   TOOLTIP_STYLE,
 } from './chart-theme';
+import { shortenLabel, useChartWidth } from './useChartWidth';
 import { formatNPR, formatNumber, formatShort, type Locale } from '@/lib/format';
 import { PALETTE } from '@/lib/constants';
 
@@ -43,12 +44,15 @@ export function HBar({
   countLabel?: string;
 }) {
   const locale = useLocale() as Locale;
+  const [width, onResize] = useChartWidth();
+  // On a phone the category names take less of the width, leaving room for the bars.
+  const labelWidth = width > 0 && width < 380 ? 112 : 140;
   const format = (value: number) =>
     unit === 'npr' ? formatNPR(value, locale) : formatNumber(value, locale);
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChart data={data} layout="vertical" margin={{ top: 4, right: 12, bottom: 4, left: 4 }}>
+    <ResponsiveContainer width="100%" height="100%" onResize={onResize}>
+      <BarChart data={data} layout="vertical" margin={{ top: 8, right: 16, bottom: 4, left: 4 }}>
         <CartesianGrid stroke={GRID} horizontal={false} />
         <XAxis
           type="number"
@@ -62,8 +66,11 @@ export function HBar({
         <YAxis
           type="category"
           dataKey="name"
-          width={140}
-          tick={AXIS_TICK}
+          width={labelWidth}
+          tick={{ ...AXIS_TICK, fontSize: labelWidth < 140 ? 11 : 12 }}
+          tickFormatter={(name: string) =>
+            labelWidth < 140 ? shortenLabel(name, 18, locale) : name
+          }
           axisLine={false}
           tickLine={false}
         />

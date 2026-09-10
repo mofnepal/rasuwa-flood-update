@@ -3529,3 +3529,225 @@ main {
     display: none !important;
   }
 }
+
+/* ===== the figure inside a donut ===== */
+/* Sized to the ring rather than fixed, so "12.32 billion" stays inside the hole
+   on a phone, where the donut is 180px across and the hole about 120px. */
+.donutbox .cv {
+  container-type: inline-size;
+}
+.donutbox .cv .c b {
+  font-size: clamp(14px, 9.5cqi, 26px);
+  max-width: 62%;
+  line-height: 1.05;
+}
+.donutbox .cv .c span {
+  font-size: clamp(10.5px, 5.2cqi, 13.5px);
+  max-width: 62%;
+}
+
+/* ===== home button on phones ===== */
+.homebtn {
+  display: none;
+}
+@media (max-width: 760px) {
+  .tools {
+    gap: 8px;
+  }
+  .homebtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--bd);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--navy);
+    font-size: 21px;
+  }
+  .homebtn[aria-current='page'] {
+    background: var(--navy-4);
+    border-color: var(--navy-3);
+  }
+  .tools .btn.red {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+}
+/* The narrowest phones: slightly smaller controls so the top row still fits. */
+@media (max-width: 360px) {
+  .top .wrap {
+    column-gap: 8px;
+  }
+  .tools {
+    gap: 6px;
+  }
+  .homebtn,
+  .burger,
+  .tools .btn.red {
+    width: 40px;
+    height: 40px;
+  }
+  .brand {
+    gap: 8px;
+  }
+  .brand img {
+    width: 38px;
+  }
+  .brand .g b {
+    font-size: 15px;
+  }
+  .brand .g small,
+  .brand .g span {
+    font-size: 11px;
+  }
+}
+@media print {
+  .homebtn {
+    display: none !important;
+  }
+}
+
+/* ===== sector list: name on the left, amount on the right ===== */
+/* The amount spans two rows; placed without a column it took the first one and
+   pushed the sector name to the right. */
+.seclist b,
+.seclist span {
+  grid-column: 1;
+}
+.seclist em {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  text-align: right;
+}
+
+/* ===== phones: every section laid out for a narrow screen ===== */
+@media (max-width: 760px) {
+  /* The header keeps home, donate and the menu on the top row: the ministry name
+     may wrap, and the address — also in the footer and on the contact page — is
+     left out. */
+  .brand {
+    flex: 1 1 0;
+    min-width: 0;
+    gap: 10px;
+  }
+  .brand img {
+    width: 42px;
+  }
+  .brand .g small {
+    font-size: 11.5px;
+  }
+  .brand .g b {
+    font-size: 17px;
+    line-height: 1.1;
+    white-space: normal;
+  }
+  .brand .g span {
+    display: none;
+  }
+  .tools {
+    flex: none;
+    margin-left: 0;
+  }
+
+  /* The ticker wraps; its separator would sit alone on a line. */
+  .ticker .sep {
+    display: none;
+  }
+  .ticker .wrap {
+    row-gap: 4px;
+  }
+
+  /* The updated line flows as text, so its clock icon never stands alone. */
+  .hero .asof {
+    display: block;
+  }
+  .hero .asof svg {
+    vertical-align: -2px;
+    margin-right: 2px;
+  }
+
+  /* A long legend name wraps beside its colour; the percentage stays on its row. */
+  .donutbox .legend div {
+    flex-wrap: nowrap;
+  }
+  .legend b {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .legend span {
+    flex: none;
+  }
+
+  /* Latest updates: the date above the update, not a column of single words. */
+  .upd li {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .upd span {
+    align-self: flex-start;
+    white-space: normal;
+  }
+
+  /* Tables scroll sideways inside their card rather than crushing every column
+     to one word a line. */
+  .tscroll .tbl {
+    min-width: 620px;
+  }
+
+  /* Relief measures: the implementing agency goes under the title. */
+  .m {
+    grid-template-columns: 26px 22px minmax(0, 1fr);
+    row-gap: 2px;
+  }
+  .m i {
+    grid-column: 3;
+    max-width: none;
+    white-space: normal;
+  }
+
+  /* The timeline runs down the page, its dots on a line beside the entries. */
+  .tl {
+    grid-template-columns: 1fr;
+    padding-top: 0;
+    padding-left: 24px;
+    gap: 16px;
+  }
+  .tl::before {
+    left: 7px;
+    right: auto;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    height: auto;
+  }
+  .tl > div::before {
+    top: 2px;
+    left: -24px;
+  }
+
+  /* The sector list shows in full rather than scrolling inside the card. */
+  .seclist {
+    max-height: none;
+    overflow: visible;
+  }
+}
+@media (max-width: 480px) {
+  .arch {
+    grid-template-columns: 1fr;
+  }
+  .arch span {
+    min-height: 0;
+  }
+}
+@media (max-width: 360px) {
+  .brand .g small {
+    display: none;
+  }
+  .brand .g b {
+    font-size: 15.5px;
+  }
+}

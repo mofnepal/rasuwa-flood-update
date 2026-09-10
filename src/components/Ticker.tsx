@@ -27,7 +27,9 @@ export async function Ticker({ updatedAt, eventDateAd, eventDateBs }: TickerProp
             <Ago iso={updatedAt} />
           </span>
         )}
-        <span>·</span>
+        <span className="sep" aria-hidden="true">
+          ·
+        </span>
         <span>{t('event', { date: bsDate(eventDateAd, eventDateBs, locale) })}</span>
         <span className="src" style={{ marginLeft: 'auto' }}>
           {t('sources')}

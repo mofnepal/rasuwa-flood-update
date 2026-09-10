@@ -29,6 +29,9 @@ export function Ago({ iso }: { iso: string }) {
       ? t('justNow')
       : hours < 24
         ? t('hoursAgo', { count: formatNumber(hours, locale) })
-        : t('daysAgo', { count: formatNumber(Math.floor(hours / 24), locale) });
+        : t('daysAgo', {
+            count: formatNumber(Math.floor(hours / 24), locale),
+            n: Math.floor(hours / 24),
+          });
   return <em className="ago">{text}</em>;
 }

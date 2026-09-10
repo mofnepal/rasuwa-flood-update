@@ -149,3 +149,70 @@ test('the static edition carries no admin area, and unknown pages say so', async
   expect(response?.status()).toBe(404);
   await expect(page.locator('h1')).toContainText('Page not found');
 });
+
+test('on a phone nothing runs off the screen or out of its chart', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'mobile', 'a phone-width check');
+  for (const width of [320, 375, 414]) {
+    await page.setViewportSize({ width, height: 800 });
+    for (const locale of LOCALES) {
+      for (const target of PAGES) {
+        await open(page, `${locale}/${target.path}?static=1`);
+        // Charts are drawn after the page loads.
+        await page.waitForTimeout(800);
+        const problems = await page.evaluate(() => {
+          const found: string[] = [];
+          const screen = document.documentElement.clientWidth;
+          const name = (el: Element) =>
+            `${el.tagName.toLowerCase()} "${(el.textContent ?? '').trim().slice(0, 40)}"`;
+          const scrolls = (el: Element) => {
+            for (let up = el.parentElement; up; up = up.parentElement) {
+              const overflow = getComputedStyle(up).overflowX;
+              if (overflow === 'auto' || overflow === 'scroll') return true;
+            }
+            return false;
+          };
+          for (const el of document.querySelectorAll('.top *, .ticker *, main *, footer *')) {
+            if (el.closest('iframe, nav.main, .gsr, .drawer')) continue;
+            const style = getComputedStyle(el);
+            if (style.display === 'none' || style.visibility === 'hidden') continue;
+            const box = el.getBoundingClientRect();
+            if (!box.width || !box.height || scrolls(el)) continue;
+            if (box.right > screen + 1 || box.left < -1) found.push(`off the screen: ${name(el)}`);
+          }
+          for (const text of document.querySelectorAll('svg text')) {
+            const svg = text.closest('svg')!.getBoundingClientRect();
+            const box = text.getBoundingClientRect();
+            if (box.width && (box.left < svg.left - 1 || box.right > svg.right + 1)) {
+              found.push(`outside its chart: ${name(text)}`);
+            }
+          }
+          // The figure in a donut stays inside the ring's hole (68% of its width).
+          for (const donut of document.querySelectorAll('.donutbox .cv')) {
+            const hole = donut.getBoundingClientRect().width * 0.68;
+            const figure = donut.querySelector('.c b')?.getBoundingClientRect().width ?? 0;
+            if (figure > hole)
+              found.push(`donut figure ${Math.round(figure)}px in a ${Math.round(hole)}px hole`);
+          }
+          return [...new Set(found)];
+        });
+        expect(problems, `${width}px ${locale}/${target.path}`).toEqual([]);
+      }
+    }
+  }
+});
+
+test('on a phone, home is one tap away and the emblem leads home too', async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== 'mobile', 'a phone-width check');
+  await open(page, 'en/contributions/');
+  const home = page.locator('.tools .homebtn');
+  await expect(home).toBeVisible();
+  await home.click();
+  await expect(page).toHaveURL(/\/en\/$/);
+  await expect(page.locator('.tools .homebtn')).toHaveAttribute('aria-current', 'page');
+
+  await open(page, 'ne/rescue/');
+  await page.locator('.brand').click();
+  await expect(page).toHaveURL(/\/ne\/$/);
+});

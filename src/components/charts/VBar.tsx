@@ -3,6 +3,7 @@
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useLocale } from 'next-intl';
 import { AXIS_TICK, GRID, prefersReducedMotion, toNumber, TOOLTIP_STYLE } from './chart-theme';
+import { shortenLabel, useChartWidth } from './useChartWidth';
 import { formatNPR, formatNumber, formatShort, formatUSD, type Locale } from '@/lib/format';
 import { PALETTE } from '@/lib/constants';
 
@@ -16,6 +17,10 @@ export function VBar({
   unit?: 'npr' | 'usd' | 'count';
 }) {
   const locale = useLocale() as Locale;
+  const [width, onResize] = useChartWidth();
+  // With less than about 60px a bar — nine districts on a phone — labels side by
+  // side collide and the last runs off the screen, so they are slanted and shortened.
+  const crowded = width > 0 && width / Math.max(1, data.length) < 60;
   const format = (value: number) =>
     unit === 'npr'
       ? formatNPR(value, locale)
@@ -24,10 +29,20 @@ export function VBar({
         : formatNumber(value, locale);
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChart data={data} margin={{ top: 6, right: 6, bottom: 4, left: 4 }}>
+    <ResponsiveContainer width="100%" height="100%" onResize={onResize}>
+      <BarChart data={data} margin={{ top: 14, right: 16, bottom: 4, left: 4 }}>
         <CartesianGrid stroke={GRID} vertical={false} />
-        <XAxis dataKey="name" tick={AXIS_TICK} axisLine={false} tickLine={false} interval={0} />
+        <XAxis
+          dataKey="name"
+          tick={{ ...AXIS_TICK, fontSize: crowded ? 11 : 12 }}
+          tickFormatter={(name: string) => (crowded ? shortenLabel(name, 14, locale) : name)}
+          angle={crowded ? -40 : 0}
+          textAnchor={crowded ? 'end' : 'middle'}
+          height={crowded ? 74 : 30}
+          axisLine={false}
+          tickLine={false}
+          interval={0}
+        />
         <YAxis
           tickFormatter={(value: number) =>
             unit === 'count' ? formatNumber(value, locale) : formatShort(value, locale)
