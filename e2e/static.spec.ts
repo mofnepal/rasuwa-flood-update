@@ -65,9 +65,11 @@ test('the site root opens the Nepali edition', async ({ page }) => {
 });
 
 test('the language toggle keeps the reader on the same page', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name === 'mobile', 'the phone layout moves the toggle into the menu');
   await open(page, 'ne/contributions/');
-  await page.locator('.tools .lang').getByRole('button', { name: 'EN' }).click();
+  // On a phone the toggle sits beside the search, without opening the menu.
+  const toggle = page.locator(testInfo.project.name === 'mobile' ? '.srow .lang' : '.tools .lang');
+  await expect(toggle).toBeVisible();
+  await toggle.getByRole('button', { name: 'EN' }).click();
   await expect(page).toHaveURL(/\/en\/contributions\/$/);
   await expect(page.locator('main h1')).toContainText('Contributions Received');
 });
@@ -98,9 +100,13 @@ test('the register opens filtered from a deep link', async ({ page }) => {
 test('header search finds a contributor and opens the register on them', async ({
   page,
 }, testInfo) => {
-  test.skip(testInfo.project.name === 'mobile', 'the phone layout hides the header search');
   await open(page, 'en/');
-  await page.locator('.gsearch input').fill('Kumari');
+  const search = page.locator('.gsearch input');
+  // Wide enough to read what is typed: on a desktop it was once squeezed beside the
+  // title. On a phone it shares its row with the language toggle.
+  const minimum = testInfo.project.name === 'mobile' ? 200 : 600;
+  expect((await search.boundingBox())?.width ?? 0).toBeGreaterThan(minimum);
+  await search.fill('Kumari');
   const hit = page.locator('.gsr a').first();
   await expect(hit).toContainText('Kumari');
   await hit.click();

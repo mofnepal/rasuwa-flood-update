@@ -4,6 +4,13 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Header
+
+- **Desktop search** has a row of its own under the header, up to 760px wide. Beside the
+  portal title and the tools it had been squeezed to 129px, too narrow to read a query.
+- **Language on a phone** — the ने | EN toggle sits beside the search, always visible, so
+  changing language no longer means opening the menu. The menu still offers it too.
+
 ### Live site
 
 - **The public portal is published on GitHub Pages**, at

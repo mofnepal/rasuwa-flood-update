@@ -103,7 +103,12 @@ export function SiteHeader() {
             <span>{t('portalOther')}</span>
           </div>
 
-          <HeaderSearch />
+          {/* Search has a row of its own; on a phone the language toggle sits beside
+              it, so changing language never means opening the menu. */}
+          <div className="srow">
+            <HeaderSearch />
+            {langButtons(false)}
+          </div>
 
           <div className="tools">
             {langButtons(false)}

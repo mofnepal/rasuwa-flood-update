@@ -3479,3 +3479,53 @@ main {
 .cta a:first-child img {
   background: #fff;
 }
+
+/* ===== header search row, and the language toggle on phones ===== */
+/* Beside the portal title and the tools, the search was squeezed to a sliver on a
+   desktop screen, so it has a row of its own. On a phone the compact language
+   toggle sits beside it, so changing language never means opening the menu. */
+.top .wrap {
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+.srow {
+  order: 5;
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.srow .gsearch {
+  flex: 1;
+  order: 2;
+  max-width: none;
+  margin: 0;
+}
+/* On a phone the toggle leads the row, where a thumb finds it first. */
+.srow .lang {
+  display: none;
+  flex: none;
+  order: 1;
+}
+@media (max-width: 1100px) {
+  .srow {
+    max-width: none;
+    margin: 0;
+  }
+}
+@media (max-width: 760px) {
+  .srow .lang {
+    display: inline-flex;
+  }
+  .srow .lang button {
+    padding: 9px 13px;
+    font-size: 14.5px;
+  }
+}
+@media print {
+  .srow {
+    display: none !important;
+  }
+}

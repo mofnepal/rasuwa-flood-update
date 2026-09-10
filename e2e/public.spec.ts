@@ -87,17 +87,14 @@ test('numbers use Devanagari digits in Nepali and Western digits in English', as
 test('the language toggle keeps the reader on the same page', async ({ page }, testInfo) => {
   await page.goto('ne/contributions', { waitUntil: 'domcontentloaded' });
 
-  // On a phone the toggle lives inside the drawer, as the design intends.
+  // On a phone the toggle sits beside the search, without opening the menu.
   const onPhone = (page.viewportSize()?.width ?? 1280) < 761;
-  if (onPhone) {
-    await expect(async () => {
-      await page.locator('.burger').click();
-      await expect(page.locator('nav.main.open > .wrap')).toBeVisible({ timeout: 2000 });
-    }).toPass({ timeout: 20_000 });
-    await page.locator('nav.main .mextra .lang button', { hasText: 'English' }).click();
-  } else {
-    await page.locator('.tools .lang button', { hasText: 'EN' }).click();
-  }
+  const toggle = page.locator(onPhone ? '.srow .lang' : '.tools .lang');
+  await expect(toggle).toBeVisible();
+  await expect(async () => {
+    await toggle.getByRole('button', { name: 'EN' }).click();
+    await page.waitForURL(/\/en\/contributions/, { timeout: 2000 });
+  }).toPass({ timeout: 20_000 });
 
   await page.waitForURL(/\/en\/contributions/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Contributions Received');
