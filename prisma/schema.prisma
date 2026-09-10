@@ -1,0 +1,526 @@
+// रसुवा–भोटेकोशी बाढी अपडेट — MoF Rasuwa–Bhotekoshi Flood Update
+// Every record is scoped by Disaster so the same portal serves the next disaster
+// under a new slug. All money is Decimal(18,2). Nothing reaches a public page
+// unless status = published.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RecordStatus {
+  draft
+  verified
+  published
+  archived
+}
+
+enum Role {
+  entry
+  verifier
+  publisher
+  admin
+}
+
+enum ContributorType {
+  institutional
+  individual
+  government_embassy
+  corporation
+  multilateral
+  ingo_foundation
+  diaspora
+  individual_abroad
+}
+
+enum PaymentMode {
+  cheque
+  bank_transfer
+  cash
+  card
+  qr
+  ips
+  remittance
+  online
+  other
+}
+
+enum AssistanceKind {
+  cash
+  cash_cheque
+  in_kind
+  pledge
+}
+
+enum Network {
+  NCHL
+  FONEPAY
+  CARD
+  OTHER
+}
+
+enum SnapshotPeriod {
+  daily
+  cumulative
+}
+
+enum AttachmentKind {
+  pdf
+  jpg
+  png
+  xlsx
+  csv
+}
+
+enum DecisionKind {
+  cabinet_decision
+  mof_notice
+  mof_decision
+  cash_support
+  other
+}
+
+enum Agency {
+  NDRRMA
+  NEPAL_POLICE
+}
+
+model Disaster {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  name_ne       String
+  name_en       String
+  event_date_ad DateTime
+  event_date_bs String
+  active        Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  contributions       Contribution[]
+  foreignAssistance   ForeignAssistance[]
+  channelSnapshots    ChannelSnapshot[]
+  fundStatusSnapshots FundStatusSnapshot[]
+  rescueReports       RescueReport[]
+  decisions           Decision[]
+  contacts            Contact[]
+
+  @@map("disasters")
+}
+
+/// Category B — cheques / bank transfers handed over to the Hon. Finance Minister.
+/// NPR only in the grand total; a USD cheque is category D and is never added to B.
+model Contribution {
+  id                  String          @id @default(cuid())
+  disasterId          String
+  disaster            Disaster        @relation(fields: [disasterId], references: [id], onDelete: Cascade)
+  sn                  Int?
+  date_ad             DateTime
+  date_bs             String
+  contributor_name    String
+  contributor_name_ne String?
+  contributor_type    ContributorType
+  payment_mode        PaymentMode
+  amount_npr          Decimal?        @db.Decimal(18, 2)
+  amount_usd          Decimal?        @db.Decimal(18, 2)
+  fx_rate             Decimal?        @db.Decimal(18, 4)
+  sector              String          @default("other")
+  sector_auto         String?
+  cheque_or_ref       String?
+  receiving_office    String?
+  notes               String?
+  source              String
+  as_of               DateTime
+  status              RecordStatus    @default(draft)
+  evidence            Attachment[]
+
+  createdById  String?
+  createdBy    User?     @relation("ContributionCreatedBy", fields: [createdById], references: [id])
+  verifiedById String?
+  verifiedBy   User?     @relation("ContributionVerifiedBy", fields: [verifiedById], references: [id])
+  verifiedAt   DateTime?
+  publishedById String?
+  publishedBy  User?     @relation("ContributionPublishedBy", fields: [publishedById], references: [id])
+  publishedAt  DateTime?
+  reviewNote   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([disasterId, status, date_ad])
+  @@index([disasterId, sector])
+  @@map("contributions")
+}
+
+/// Category D — identified foreign contributors. A subset of category C
+/// (total USD deposited in the Fund's USD accounts), never added on top of it.
+model ForeignAssistance {
+  id                    String          @id @default(cuid())
+  disasterId            String
+  disaster              Disaster        @relation(fields: [disasterId], references: [id], onDelete: Cascade)
+  date_ad               DateTime
+  date_bs               String
+  contributor           String
+  contributor_ne        String?
+  country_iso2          String?
+  country_ne            String?
+  country_en            String?
+  contributor_type      ContributorType
+  kind                  AssistanceKind
+  channel               String
+  channel_ne            String?
+  amount_usd            Decimal?        @db.Decimal(18, 2)
+  amount_npr_equiv      Decimal?        @db.Decimal(18, 2)
+  fx_rate               Decimal?        @db.Decimal(18, 4)
+  in_kind_description   String?
+  in_kind_valuation_npr Decimal?        @db.Decimal(18, 2)
+  purpose_ne            String
+  purpose_en            String
+  featured              Boolean         @default(false)
+  photoId               String?
+  photo                 Attachment?     @relation("ForeignPhoto", fields: [photoId], references: [id])
+  pledge_received_at    DateTime?
+  source                String
+  as_of                 DateTime
+  status                RecordStatus    @default(draft)
+
+  createdById   String?
+  createdBy     User?     @relation("ForeignCreatedBy", fields: [createdById], references: [id])
+  verifiedById  String?
+  verifiedBy    User?     @relation("ForeignVerifiedBy", fields: [verifiedById], references: [id])
+  verifiedAt    DateTime?
+  publishedById String?
+  publishedBy   User?     @relation("ForeignPublishedBy", fields: [publishedById], references: [id])
+  publishedAt   DateTime?
+  reviewNote    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([disasterId, status, date_ad])
+  @@map("foreign_assistance")
+}
+
+/// Category A — NCHL / Fonepay / card network figures. Every snapshot is kept;
+/// the trend charts are built from the history.
+model ChannelSnapshot {
+  id               String         @id @default(cuid())
+  disasterId       String
+  disaster         Disaster       @relation(fields: [disasterId], references: [id], onDelete: Cascade)
+  network          Network
+  period           SnapshotPeriod
+  snapshot_at      DateTime
+  period_date      DateTime?
+  channel_code     String
+  channel_label_en String
+  channel_label_ne String
+  txn_count        Int
+  amount_npr       Decimal        @db.Decimal(18, 2)
+  source           String
+  as_of_label_ne   String?
+  as_of_label_en   String?
+  status           RecordStatus   @default(draft)
+
+  createdById   String?
+  createdBy     User?     @relation("ChannelCreatedBy", fields: [createdById], references: [id])
+  verifiedById  String?
+  verifiedBy    User?     @relation("ChannelVerifiedBy", fields: [verifiedById], references: [id])
+  verifiedAt    DateTime?
+  publishedById String?
+  publishedBy   User?     @relation("ChannelPublishedBy", fields: [publishedById], references: [id])
+  publishedAt   DateTime?
+  reviewNote    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([disasterId, network, period, snapshot_at, channel_code])
+  @@index([disasterId, network, period, snapshot_at])
+  @@map("channel_snapshots")
+}
+
+/// Category C — Prime Minister Disaster Relief Fund: Daily Deposit and Fund Status
+/// (Nepal Rastra Bank). The NPR side is account status only and is never added to
+/// the contributions total; the USD gross is category C.
+model FundStatusSnapshot {
+  id         String   @id @default(cuid())
+  disasterId String
+  disaster   Disaster @relation(fields: [disasterId], references: [id], onDelete: Cascade)
+
+  as_of       DateTime
+  as_of_bs    String
+  as_of_en    String
+  source_ne   String
+  source_en   String
+  fx_rate     Decimal  @db.Decimal(18, 4)
+
+  npr_before  Decimal @db.Decimal(18, 2)
+  npr_balance Decimal @db.Decimal(18, 2)
+  npr_gross   Decimal @db.Decimal(18, 2)
+  npr_usage   Decimal @db.Decimal(18, 2)
+  npr_usage_note_ne String?
+  npr_usage_note_en String?
+
+  usd_before    Decimal @db.Decimal(18, 2)
+  usd_balance   Decimal @db.Decimal(18, 2)
+  usd_gross     Decimal @db.Decimal(18, 2)
+  usd_equiv_npr Decimal @db.Decimal(18, 2)
+
+  total_available_npr Decimal @db.Decimal(18, 2)
+
+  /// { dates_bs[], dates_ad[], npr: { balance_series, gross_series, daily_series, banks },
+  ///   usd: { balance_series, gross_series, daily_series, banks } }
+  series Json
+
+  originalId String?
+  original   Attachment?  @relation("FundStatusOriginal", fields: [originalId], references: [id])
+  status     RecordStatus @default(draft)
+
+  createdById   String?
+  createdBy     User?     @relation("FundStatusCreatedBy", fields: [createdById], references: [id])
+  verifiedById  String?
+  verifiedBy    User?     @relation("FundStatusVerifiedBy", fields: [verifiedById], references: [id])
+  verifiedAt    DateTime?
+  publishedById String?
+  publishedBy   User?     @relation("FundStatusPublishedBy", fields: [publishedById], references: [id])
+  publishedAt   DateTime?
+  reviewNote    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([disasterId, as_of])
+  @@map("fund_status_snapshots")
+}
+
+/// One row per NDRRMA or Nepal Police daily report. `data` is validated against a
+/// Zod schema mirroring seed/rescue_snapshot.json. Rescued-persons detail is never
+/// copied here — the portal links to NDRRMA instead.
+model RescueReport {
+  id         String   @id @default(cuid())
+  disasterId String
+  disaster   Disaster @relation(fields: [disasterId], references: [id], onDelete: Cascade)
+
+  agency       Agency
+  report_at    DateTime
+  report_at_bs String
+  source       String
+  data         Json
+
+  originalId String?
+  original   Attachment?  @relation("RescueOriginal", fields: [originalId], references: [id])
+  status     RecordStatus @default(draft)
+
+  createdById   String?
+  createdBy     User?     @relation("RescueCreatedBy", fields: [createdById], references: [id])
+  verifiedById  String?
+  verifiedBy    User?     @relation("RescueVerifiedBy", fields: [verifiedById], references: [id])
+  verifiedAt    DateTime?
+  publishedById String?
+  publishedBy   User?     @relation("RescuePublishedBy", fields: [publishedById], references: [id])
+  publishedAt   DateTime?
+  reviewNote    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([disasterId, agency, report_at])
+  @@index([disasterId, status, report_at])
+  @@map("rescue_reports")
+}
+
+model Decision {
+  id         String   @id @default(cuid())
+  disasterId String
+  disaster   Disaster @relation(fields: [disasterId], references: [id], onDelete: Cascade)
+
+  slug       String
+  kind       DecisionKind
+  date_ad    DateTime?
+  date_bs    String
+  issuer_ne  String
+  issuer_en  String
+  title_ne   String
+  title_en   String
+  summary_ne String
+  summary_en String
+  /// Category cards (क–ङ) for a business-recovery-plan style decision.
+  categories Json?
+
+  originalId  String?
+  original    Attachment? @relation("DecisionOriginal", fields: [originalId], references: [id])
+  explainerId String?
+  explainer   Attachment? @relation("DecisionExplainer", fields: [explainerId], references: [id])
+
+  status   RecordStatus @default(draft)
+  measures Measure[]
+
+  createdById   String?
+  createdBy     User?     @relation("DecisionCreatedBy", fields: [createdById], references: [id])
+  verifiedById  String?
+  verifiedBy    User?     @relation("DecisionVerifiedBy", fields: [verifiedById], references: [id])
+  verifiedAt    DateTime?
+  publishedById String?
+  publishedBy   User?     @relation("DecisionPublishedBy", fields: [publishedById], references: [id])
+  publishedAt   DateTime?
+  reviewNote    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([disasterId, slug])
+  @@index([disasterId, status, date_bs])
+  @@map("decisions")
+}
+
+model Measure {
+  id            String       @id @default(cuid())
+  decisionId    String
+  decision      Decision     @relation(fields: [decisionId], references: [id], onDelete: Cascade)
+  no            Int
+  category_code String
+  category_ne   String
+  category_en   String
+  agency_ne     String
+  agency_en     String
+  title_ne      String
+  title_en      String
+  who_ne        String
+  who_en        String?
+  benefit_ne    String
+  benefit_en    String?
+  deadline_ne   String?
+  deadline_en   String?
+  /// Verbatim annex wording. Seeded from the published benefit text and editable in admin.
+  cabinet_text_ne String?
+  status        RecordStatus @default(draft)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([decisionId, no])
+  @@map("measures")
+}
+
+model Contact {
+  id         String   @id @default(cuid())
+  disasterId String?
+  disaster   Disaster? @relation(fields: [disasterId], references: [id], onDelete: Cascade)
+  group_ne   String
+  group_en   String
+  title_ne   String
+  title_en   String
+  name_ne    String
+  name_en    String
+  phone      String
+  email      String?
+  order      Int      @default(0)
+  visible    Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contacts")
+}
+
+model Attachment {
+  id           String         @id @default(cuid())
+  kind         AttachmentKind
+  filename     String
+  url          String
+  sha256       String
+  size         Int            @default(0)
+  uploadedById String?
+  uploadedBy   User?          @relation(fields: [uploadedById], references: [id])
+  createdAt    DateTime       @default(now())
+
+  contributionId String?
+  contribution   Contribution? @relation(fields: [contributionId], references: [id], onDelete: Cascade)
+
+  foreignPhotoOf     ForeignAssistance[]  @relation("ForeignPhoto")
+  rescueOriginalOf   RescueReport[]       @relation("RescueOriginal")
+  fundStatusOriginalOf FundStatusSnapshot[] @relation("FundStatusOriginal")
+  decisionOriginalOf  Decision[]          @relation("DecisionOriginal")
+  decisionExplainerOf Decision[]          @relation("DecisionExplainer")
+
+  @@index([sha256])
+  @@map("attachments")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String
+  passwordHash String
+  role         Role      @default(entry)
+  active       Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  auditLogs   AuditLog[]
+  attachments Attachment[]
+
+  contributionsCreated   Contribution[] @relation("ContributionCreatedBy")
+  contributionsVerified  Contribution[] @relation("ContributionVerifiedBy")
+  contributionsPublished Contribution[] @relation("ContributionPublishedBy")
+  foreignCreated         ForeignAssistance[] @relation("ForeignCreatedBy")
+  foreignVerified        ForeignAssistance[] @relation("ForeignVerifiedBy")
+  foreignPublished       ForeignAssistance[] @relation("ForeignPublishedBy")
+  channelsCreated        ChannelSnapshot[] @relation("ChannelCreatedBy")
+  channelsVerified       ChannelSnapshot[] @relation("ChannelVerifiedBy")
+  channelsPublished      ChannelSnapshot[] @relation("ChannelPublishedBy")
+  fundStatusCreated      FundStatusSnapshot[] @relation("FundStatusCreatedBy")
+  fundStatusVerified     FundStatusSnapshot[] @relation("FundStatusVerifiedBy")
+  fundStatusPublished    FundStatusSnapshot[] @relation("FundStatusPublishedBy")
+  rescueCreated          RescueReport[] @relation("RescueCreatedBy")
+  rescueVerified         RescueReport[] @relation("RescueVerifiedBy")
+  rescuePublished        RescueReport[] @relation("RescuePublishedBy")
+  decisionsCreated       Decision[] @relation("DecisionCreatedBy")
+  decisionsVerified      Decision[] @relation("DecisionVerifiedBy")
+  decisionsPublished     Decision[] @relation("DecisionPublishedBy")
+
+  @@map("users")
+}
+
+model AuditLog {
+  id       String   @id @default(cuid())
+  userId   String?
+  user     User?    @relation(fields: [userId], references: [id])
+  action   String
+  entity   String
+  entityId String
+  before   Json?
+  after    Json?
+  ip       String?
+  createdAt DateTime @default(now())
+
+  @@index([entity, entityId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  name      String
+  contact   String
+  subject   String
+  body      String
+  ip        String?
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([handled, createdAt])
+  @@map("messages")
+}
+
+model Setting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+
+  @@map("settings")
+}

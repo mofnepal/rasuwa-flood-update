@@ -1,0 +1,98 @@
+name: Live site
+
+# Publishes the static edition of the public portal to GitHub Pages on every
+# push to main, so a data update committed and pushed is live within minutes:
+#
+#   fresh database ← migrations + seed/  →  every figure must tie to its source
+#   →  static build  →  end-to-end checks  →  publish
+#
+# If any step fails nothing is published, and the version already live stays up.
+# One-time setup: Settings → Pages → Source: GitHub Actions.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: seed · verify · build · test
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: rasuwa
+          POSTGRES_PASSWORD: rasuwa
+          POSTGRES_DB: rasuwa_flood
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U rasuwa" --health-interval 10s
+          --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://rasuwa:rasuwa@localhost:5432/rasuwa_flood?schema=public
+      AUTH_SECRET: pages-build-only-never-used-to-sign-anything
+      UPLOAD_DIR: ./public/uploads
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      # The Pages address: /rasuwa-flood-update under github.io, or the root of a
+      # custom domain if one is set in Settings → Pages.
+      - id: pages
+        uses: actions/configure-pages@v5
+      - name: Address, document prefix and a one-off seed password
+        run: |
+          echo "NEXT_PUBLIC_BASE_PATH=${{ steps.pages.outputs.base_path }}" >> "$GITHUB_ENV"
+          echo "NEXT_PUBLIC_SITE_URL=${{ steps.pages.outputs.base_url }}" >> "$GITHUB_ENV"
+          echo "UPLOAD_PUBLIC_PREFIX=${{ steps.pages.outputs.base_path }}/uploads" >> "$GITHUB_ENV"
+          echo "SEED_PASSWORD=$(openssl rand -base64 24)" >> "$GITHUB_ENV"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec prisma migrate deploy
+      - run: pnpm db:seed
+
+      - name: Every figure ties to its source document
+        run: pnpm verify
+
+      - run: pnpm build:static
+
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: End-to-end checks against the built site
+        run: pnpm e2e:static
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report-static
+          path: playwright-report/
+          retention-days: 14
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    name: publish
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

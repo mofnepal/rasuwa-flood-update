@@ -1,0 +1,347 @@
+{
+ "decisions": [
+  {
+   "id": "mof-2083-05-11-single-window",
+   "date_bs": "२०८३ भदौ ११",
+   "date_ad": "2026-08-27",
+   "issuer": "Ministry of Finance",
+   "issuer_ne": "अर्थ मन्त्रालय",
+   "kind": "notice",
+   "title_ne": "रसुवा बाढी राहत संकलन एकद्वार प्रणाली सञ्चालनमा",
+   "title_en": "Single-window system for Rasuwa flood relief collection",
+   "summary_ne": "प्रधानमन्त्री दैवीप्रकोप उद्धार कोषमा नगद राहत तथा जिन्सी सहयोग गर्न चाहने परोपकारी व्यक्ति, निजी क्षेत्र, दातृ निकाय र अन्तर्राष्ट्रिय संघ संस्थालाई राहत संकलनको लागि एकद्वार प्रणाली अर्थ मन्त्रालय मार्फत सञ्चालन।",
+   "summary_en": "Individuals, private sector, donor agencies and international organisations wishing to contribute cash or in-kind relief to the PM Disaster Relief Fund coordinate through a single window at the Ministry of Finance.",
+   "original_file": "reference/mof-single-window-notice.jpeg"
+  },
+  {
+   "id": "cabinet-2083-05-18-business-recovery-plan-phase-1",
+   "date_bs": "२०८३ भदौ १८",
+   "date_ad": "2026-09-03",
+   "issuer": "Cabinet (Council of Ministers)",
+   "issuer_ne": "नेपाल सरकार, मन्त्रिपरिषद्",
+   "kind": "cabinet_decision",
+   "title_ne": "Business Recovery Plan — पहिलो चरण: राहत, कर छुट तथा सहुलियत",
+   "title_en": "Business Recovery Plan — Phase 1: Relief, tax exemptions and concessions",
+   "summary_ne": "नेपाल–चीन सीमाक्षेत्र भोटेकोशी नदीमा आएको विनाशकारी बाढी (२०८३ भदौ १०) बाट प्रभावित उद्योग, व्यापार, व्यावसायिक प्रतिष्ठान तथा आर्थिक गतिविधिलाई राहत, कर छुट, सहुलियत तथा सुविधा प्रदान गर्ने सम्बन्धमा मन्त्रिपरिषद्को निर्णय — कुल १८ राहत व्यवस्था।",
+   "summary_en": "Cabinet decision granting 18 relief measures to industries, trade, businesses and economic activity affected by the Bhotekoshi flood of 26 Aug 2026 (Bhadra 10, 2083).",
+   "original_file": "reference/anusuchi-cabinet-decision.pdf",
+   "explainer_file": "reference/business-recovery-plan-phase-1.pdf",
+   "categories": [
+    {
+     "code": "क",
+     "name_ne": "कर तथा महसुल छुट",
+     "name_en": "Customs duty relief",
+     "agency_ne": "भन्सार विभाग",
+     "agency_en": "Department of Customs",
+     "count": 3
+    },
+    {
+     "code": "ख",
+     "name_ne": "कर छुट तथा सहुलियत",
+     "name_en": "Tax relief & concessions",
+     "agency_ne": "आन्तरिक राजस्व विभाग",
+     "agency_en": "Inland Revenue Department",
+     "count": 6
+    },
+    {
+     "code": "ग",
+     "name_ne": "ऋण तथा ब्याज सहुलियत",
+     "name_en": "Loan & interest relief",
+     "agency_ne": "नेपाल राष्ट्र बैंक",
+     "agency_en": "Nepal Rastra Bank",
+     "count": 5
+    },
+    {
+     "code": "घ",
+     "name_ne": "बीमा दाबी तथा क्षतिपूर्ति",
+     "name_en": "Insurance claims & compensation",
+     "agency_ne": "नेपाल बीमा प्राधिकरण",
+     "agency_en": "Nepal Insurance Authority",
+     "count": 3
+    },
+    {
+     "code": "ङ",
+     "name_ne": "साझा व्यवस्था",
+     "name_en": "Joint provision",
+     "agency_ne": "आन्तरिक राजस्व विभाग • नेपाल राष्ट्र बैंक • नेपाल बीमा प्राधिकरण",
+     "agency_en": "IRD • NRB • NIA",
+     "count": 1
+    }
+   ],
+   "measures": [
+    {
+     "no": 1,
+     "category": "क",
+     "title_ne": "व्यावसायिक सवारी तथा ढुवानी साधन पुनः आयातमा सम्पूर्ण महसुल छुट",
+     "title_en": "Full customs duty exemption on re-import of commercial vehicles and transport equipment",
+     "who_ne": "बाढीका कारण मर्मत–सम्भार हुन नसक्ने गरी क्षतिग्रस्त भएका वा बाढीले बगाई हराएका व्यावसायिक प्रयोजनका सवारी तथा ढुवानी साधनका धनी",
+     "benefit_ne": "पुरानो साधनको दर्ता खारेज गरी त्यस्तै किसिमको साधन पुनः आयात गर्दा भन्सार बिन्दुमा लाग्ने सम्पूर्ण महसुल छुट",
+     "agency_ne": "भन्सार विभाग"
+    },
+    {
+     "no": 2,
+     "category": "क",
+     "title_ne": "प्लाण्ट, मेशिनरी, यन्त्र तथा उपकरणको पैठारीमा सम्पूर्ण महसुल छुट",
+     "title_en": "Full customs duty exemption on import of replacement plant, machinery and equipment",
+     "who_ne": "बाढीका कारण प्लाण्ट, मेशिनरी, यन्त्र तथा उपकरण मर्मत–सुधार हुन नसक्ने गरी नष्ट भएका प्राकृतिक व्यक्ति वा निकाय",
+     "benefit_ne": "नष्ट भएकै प्रकृतिका प्लाण्ट, मेशिनरी, यन्त्र तथा उपकरण – नष्ट भएको परिमाणमा नबढ्ने गरी – पैठारी गर्दा भन्सार बिन्दुमा लाग्ने सम्पूर्ण महसुल छुट",
+     "agency_ne": "भन्सार विभाग"
+    },
+    {
+     "no": 3,
+     "category": "क",
+     "title_ne": "महसुल तिरिसकेर बाटैमा नष्ट भएका वस्तुको महसुल समायोजन",
+     "title_en": "Duty adjustment for goods destroyed in transit after duty was paid",
+     "who_ne": "भन्सार कार्यालयमा महसुल बुझाइसकेको तर भदौ १० गतेको बाढीका कारण गन्तव्यमा नपुग्दै वस्तु नष्ट भएका पैठारीकर्ता",
+     "benefit_ne": "सोही प्रकृतिको वस्तु ६ महिनाभित्र जुनसुकै भन्सार कार्यालयबाट पैठारी गर्दा पहिले तिरेको महसुल बराबरको रकम समायोजन",
+     "deadline_ne": "६ महिनाभित्र",
+     "agency_ne": "भन्सार विभाग"
+    },
+    {
+     "no": 4,
+     "category": "ख",
+     "title_ne": "कर विवरण र कर दाखिलाको म्याद २०८३ कार्तिक २५ गतेसम्म थप",
+     "title_en": "Tax return and payment deadline extended to Kartik 25, 2083",
+     "who_ne": "बाढीका कारण प्रभावित क्षेत्रका करदाता",
+     "benefit_ne": "मू.अ.कर ऐन २०५२, आयकर ऐन २०५८, अन्तःशुल्क ऐन २०५८ र आर्थिक ऐन २०८३ बमोजिम २०८३ भदौ र असोज महिनाभित्र पेश गर्नुपर्ने विवरण तथा सो बमोजिमको कर",
+     "deadline_ne": "२०८३ कार्तिक २५ गते",
+     "agency_ne": "आन्तरिक राजस्व विभाग"
+    },
+    {
+     "no": 5,
+     "category": "ख",
+     "title_ne": "क्षतिग्रस्त व्यावसायिक सम्पत्तिको मू.अ.कर दाबी समायोजन सरलीकरण",
+     "title_en": "Simplified VAT claim adjustment for damaged business property",
+     "who_ne": "बाढीका कारण व्यावसायिक सम्पत्तिमा क्षति व्यहोरेका करदाता",
+     "benefit_ne": "क्षति भएको व्यावसायिक सम्पत्तिमा तिरेको मूल्य अभिवृद्धि करको दाबी समायोजन प्रक्रिया सरल र सहज",
+     "agency_ne": "आन्तरिक राजस्व विभाग"
+    },
+    {
+     "no": 6,
+     "category": "ख",
+     "title_ne": "पूर्ण क्षति भएको व्यावसायिक सम्पत्तिको मूल्य एकमुष्ठ खर्चकट्टी",
+     "title_en": "Lump-sum expense deduction for fully destroyed business assets",
+     "who_ne": "बाढीका कारण व्यावसायिक सम्पत्ति पूर्ण रूपमा क्षति भएका करदाता",
+     "benefit_ne": "पूर्ण क्षति भएको सम्पत्तिको मूल्य कर प्रयोजनका लागि एकैपटक (एकमुष्ठ) खर्चकट्टी गर्न पाइने",
+     "agency_ne": "आन्तरिक राजस्व विभाग"
+    },
+    {
+     "no": 7,
+     "category": "ख",
+     "title_ne": "आंशिक क्षतिग्रस्त सम्पत्तिको मर्मत खर्चमा दफा १६(२) को सीमा नलाग्ने",
+     "title_en": "Section 16(2) cap waived on repair costs of partially damaged depreciable assets",
+     "who_ne": "बाढीका कारण ह्रासयोग्य सम्पत्तिमा आंशिक क्षति भएका करदाता",
+     "benefit_ne": "मर्मत तथा सुधार खर्चमा आयकर ऐन २०५८ को दफा १६ को उपदफा (२) बमोजिमको सीमा लागू नहुने — आय वर्ष २०८३/८४ को करयोग्य आय निर्धारण गर्दा",
+     "agency_ne": "आन्तरिक राजस्व विभाग"
+    },
+    {
+     "no": 8,
+     "category": "ख",
+     "title_ne": "D01 विवरण पेश गर्ने प्रभावित व्यक्तिलाई आय वर्ष २०८२/८३ को आयकर पूर्ण छुट",
+     "title_en": "Full income tax exemption for FY 2082/83 for directly affected D01 (presumptive) filers",
+     "who_ne": "बाढीका कारण प्रत्यक्ष रूपमा प्रभावित, पूर्वानुमानित आय विवरण (D01) पेश गर्ने व्यक्ति",
+     "benefit_ne": "आय वर्ष २०८२/८३ को आयकर पूर्ण रूपमा छुट",
+     "agency_ne": "आन्तरिक राजस्व विभाग"
+    },
+    {
+     "no": 9,
+     "category": "ख",
+     "title_ne": "प्रदेश तथा स्थानीय तहबाट स्थानीय कर र शुल्कमा सहुलियत दिन अनुरोध",
+     "title_en": "Request to provinces and local governments for relief on local taxes and fees",
+     "who_ne": "बाढीका कारण प्रत्यक्ष प्रभावित व्यक्ति",
+     "benefit_ne": "क्षतिग्रस्त व्यवसाय तथा सम्पत्तिमा निश्चित अवधिका लागि सम्पत्ति कर, व्यवसाय कर, नक्सापास दस्तुर र अन्य स्थानीय शुल्कमा सहुलियत",
+     "agency_ne": "सम्बन्धित प्रदेश सरकार तथा स्थानीय तह"
+    },
+    {
+     "no": 10,
+     "category": "ग",
+     "title_ne": "रसुवा भन्सारबाट पैठारी वस्तुको क्षतिसँग सम्बन्धित कर्जा पुनरसंरचना / पुनर्तालिकीकरण",
+     "title_en": "Loan restructuring / rescheduling for damage to goods imported via Rasuwa customs",
+     "who_ne": "रसुवा भन्सारबाट भित्रिने गरी पैठारी गरिएका वस्तुमा क्षति पुगेका ऋणी",
+     "benefit_ne": "ऋणीको अनुरोधमा – व्यवसाय र वस्तुको प्रकृति, क्षति, बीमा दाबी आदिको आधारमा – कर्जा पुनरसंरचना/पुनर्तालिकीकरण र साँवा-ब्याज भुक्तानी म्याद सार्ने सुविधा",
+     "agency_ne": "नेपाल राष्ट्र बैंक"
+    },
+    {
+     "no": 11,
+     "category": "ग",
+     "title_ne": "बाढी प्रभावित ऋणीको बैंक कर्जाको साँवा र ब्याज एकपटक पुनरसंरचना / पुनर्तालिकीकरण",
+     "title_en": "One-time restructuring / rescheduling of principal and interest for flood-affected borrowers",
+     "who_ne": "बाढीका कारण प्रभावित, बैंक तथा वित्तीय संस्थाबाट कर्जा लिएका ऋणी",
+     "benefit_ne": "साँवा र ब्याज भुक्तानीका लागि एकपटकलाई कर्जा पुनरसंरचना/पुनर्तालिकीकरण तथा साँवा-ब्याज भुक्तानीको म्याद सार्ने सुविधा",
+     "agency_ne": "नेपाल राष्ट्र बैंक"
+    },
+    {
+     "no": 12,
+     "category": "ग",
+     "title_ne": "सवारी, ढुवानी साधन तथा यन्त्र-उपकरण पुनः खरिदका लागि सहुलियत कर्जा",
+     "title_en": "Concessional loans to repurchase vehicles, transport equipment and machinery",
+     "who_ne": "बाढीबाट व्यावसायिक सवारी, ढुवानी साधन वा यन्त्र-उपकरणमा क्षति व्यहोरेका व्यवसायी",
+     "benefit_ne": "क्षति र बीमा भुक्तानी मूल्याङ्कन गरी, पुनः खरिद गर्दा बैंकको आधारदरमा तोकिएको न्यूनतम प्रिमियम दर मात्र थप गरी कर्जा; ऋण–मूल्य अनुपात (LTV) पुनरावलोकन",
+     "agency_ne": "नेपाल राष्ट्र बैंक"
+    },
+    {
+     "no": 13,
+     "category": "ग",
+     "title_ne": "१ वर्षसम्म आधारदर + ०.५ प्रतिशत बिन्दुको सहुलियत ब्याजदर",
+     "title_en": "Concessional interest rate of base rate + 0.5 percentage points for one year",
+     "who_ne": "बाढी प्रभावित सबै प्रकारका ऋणी",
+     "benefit_ne": "बैंकको आधारदरमा ०.५ प्रतिशत बिन्दु प्रिमियम थप गर्दा हुने दर वा विद्यमान प्रिमियम थप गर्दा हुने दर – जुन कम हुन्छ सोही ब्याजदर",
+     "deadline_ne": "१ वर्ष",
+     "agency_ne": "नेपाल राष्ट्र बैंक"
+    },
+    {
+     "no": 14,
+     "category": "ग",
+     "title_ne": "उद्योग-व्यापार पुनरुत्थान र रोजगारी सुरक्षाका लागि थप कर्जा",
+     "title_en": "Additional loans for business revival and job protection",
+     "who_ne": "उद्योग वा व्यापार पुनरुत्थान वा रोजगारीको सुरक्षा गर्न चाहने प्रभावित ऋणी",
+     "benefit_ne": "ऋणीको अनुरोधमा बैंकले थप कर्जा प्रदान गर्न सक्ने — भुक्तानी सम्बन्धित तेस्रो पक्षको खातामा सोझै हुने गरी",
+     "agency_ne": "नेपाल राष्ट्र बैंक"
+    },
+    {
+     "no": 15,
+     "category": "घ",
+     "title_ne": "बीमा दाबी मूल्याङ्कनका लागि सरलीकृत ढङ्गले सर्भेयर खटाउने",
+     "title_en": "Simplified deployment of surveyors for insurance claim assessment",
+     "who_ne": "बाढीका कारण भएको क्षतिको बीमा दाबी गर्ने बीमित",
+     "benefit_ne": "क्षतिको मूल्याङ्कन थप प्रभावकारी र छिटो-छरितो बनाउन सरलीकृत ढङ्गले सर्भेयर खटाउने व्यवस्था",
+     "agency_ne": "नेपाल बीमा प्राधिकरण"
+    },
+    {
+     "no": 16,
+     "category": "घ",
+     "title_ne": "प्रारम्भिक मूल्याङ्कनकै आधारमा ५०% सम्म अग्रिम दाबी भुक्तानी",
+     "title_en": "Advance claim payment of up to 50% on preliminary assessment",
+     "who_ne": "बाढीका कारण भएको क्षतिको बीमा दाबी गर्ने बीमित",
+     "benefit_ne": "प्रारम्भिक मूल्याङ्कन प्रतिवेदनको आधारमा बीमकले बढीमा ५० प्रतिशतसम्म अग्रिम दाबी भुक्तानी; पुनर्बीमकले पनि बीमकलाई बढीमा ५० प्रतिशत अग्रिम",
+     "agency_ne": "नेपाल बीमा प्राधिकरण"
+    },
+    {
+     "no": 17,
+     "category": "घ",
+     "title_ne": "संक्षिप्त दाबी भुक्तानी कार्यविधि शीघ्र तर्जुमा र लागू",
+     "title_en": "Rapid formulation and implementation of a simplified claim payment procedure",
+     "who_ne": "बाढीका कारण भएको क्षतिको बीमा दाबी गर्ने बीमित",
+     "benefit_ne": "दाबी भुक्तानी सरल र प्रभावकारी बनाउन बीमकले संक्षिप्त दाबी भुक्तानी कार्यविधि शीघ्र तर्जुमा गरी लागू गर्ने",
+     "agency_ne": "बीमक, नेपाल बीमा प्राधिकरणको निर्देशनमा"
+    },
+    {
+     "no": 18,
+     "category": "ङ",
+     "title_ne": "CSR कोषबाट प्रधानमन्त्री दैवी प्रकोप उद्धार कोषमा गरेको योगदान CSR खर्चको रूपमा मान्यता",
+     "title_en": "Contributions from CSR funds to the PM Disaster Relief Fund recognised as CSR expenditure",
+     "who_ne": "संस्थागत सामाजिक उत्तरदायित्व (CSR) कोष स्थापना गरेका निकाय",
+     "benefit_ne": "आर्थिक वर्ष २०८३/८४ मा CSR कोषबाट प्रधानमन्त्री दैवी प्रकोप उद्धार कोषमा गरेको योगदान रकम समेत CSR वापतको खर्चको रूपमा परिभाषित — सम्बन्धित ऐन/नियम/निर्देशिका परिमार्जन तत् तत् निकायले",
+     "agency_ne": "आन्तरिक राजस्व विभाग • नेपाल राष्ट्र बैंक • नेपाल बीमा प्राधिकरण"
+    }
+   ]
+  },
+  {
+   "id": "gon-cash-support-districts",
+   "date_bs": "निरन्तर",
+   "date_ad": "",
+   "issuer": "Government of Nepal",
+   "issuer_ne": "नेपाल सरकार",
+   "kind": "cash_support",
+   "title_ne": "प्रभावित जिल्ला तथा स्थानीय तहलाई नगद सहयोग",
+   "title_en": "Cash support to affected districts and local governments",
+   "summary_ne": "रसुवा रु. १ करोड · नुवाकोट रु. १ करोड · धादिङ रु. ५० लाख · १५ प्रभावित स्थानीय तह रु. १३ करोड ५० लाख (NDRRMA प्रतिवेदन, २०८३ भदौ २१)",
+   "summary_en": "Rasuwa NPR 10M · Nuwakot NPR 10M · Dhading NPR 5M · 15 affected local governments NPR 135M (NDRRMA update, 6 Sep 2026)",
+   "original_file": "reference/ndrrma-update-2026-09-06.jpeg"
+  }
+ ],
+ "contacts": [
+  {
+   "group_ne": "अन्तर्राष्ट्रिय दातृ निकाय तथा संघ संस्था",
+   "group_en": "International donors & agencies",
+   "title_ne": "सहसचिव",
+   "title_en": "Joint Secretary",
+   "name_ne": "अमृत लम्साल",
+   "name_en": "Amrit Lamsal",
+   "phone": "9851183001"
+  },
+  {
+   "group_ne": "निजी क्षेत्र तथा सहयोगी व्यक्तिहरू (मा. अर्थमन्त्रीज्यूको सचिवालय)",
+   "group_en": "Private sector & individual contributors (Hon. Finance Minister's Secretariat)",
+   "title_ne": "प्रमुख स्वकीय सचिव",
+   "title_en": "Chief Personal Secretary",
+   "name_ne": "नवीन ढुंगाना",
+   "name_en": "Nabin Dhungana",
+   "phone": "9841979075"
+  },
+  {
+   "group_ne": "निजी क्षेत्र तथा सहयोगी व्यक्तिहरू (मा. अर्थमन्त्रीज्यूको सचिवालय)",
+   "group_en": "Private sector & individual contributors (Hon. Finance Minister's Secretariat)",
+   "title_ne": "निजी सचिव",
+   "title_en": "Private Secretary",
+   "name_ne": "कञ्चन बस्नेत",
+   "name_en": "Kanchan Basnet",
+   "phone": "9849197111"
+  },
+  {
+   "group_ne": "निजी क्षेत्र तथा सहयोगी व्यक्तिहरू (मा. अर्थमन्त्रीज्यूको सचिवालय)",
+   "group_en": "Private sector & individual contributors (Hon. Finance Minister's Secretariat)",
+   "title_ne": "स्वकीय सचिव",
+   "title_en": "Personal Secretary",
+   "name_ne": "खोमनाथ अधिकारी",
+   "name_en": "Khomnath Adhikari",
+   "phone": "9851354344"
+  },
+  {
+   "group_ne": "निजी क्षेत्र तथा सहयोगी व्यक्तिहरू (मा. अर्थमन्त्रीज्यूको सचिवालय)",
+   "group_en": "Private sector & individual contributors (Hon. Finance Minister's Secretariat)",
+   "title_ne": "शाखा अधिकृत",
+   "title_en": "Section Officer",
+   "name_ne": "माधव भण्डारी",
+   "name_en": "Madhav Bhandari",
+   "phone": "9851206201"
+  },
+  {
+   "group_ne": "निजी क्षेत्र तथा सहयोगी व्यक्तिहरू (मा. अर्थमन्त्रीज्यूको सचिवालय)",
+   "group_en": "Private sector & individual contributors (Hon. Finance Minister's Secretariat)",
+   "title_ne": "आइटी",
+   "title_en": "IT",
+   "name_ne": "निरज भुसाल",
+   "name_en": "Niraj Bhusal",
+   "phone": "9851175115"
+  }
+ ],
+ "ministry": {
+  "name_ne": "नेपाल सरकार, अर्थ मन्त्रालय",
+  "name_en": "Government of Nepal, Ministry of Finance",
+  "address_ne": "सिंहदरबार, काठमाडौँ",
+  "address_en": "Singha Durbar, Kathmandu",
+  "phones": [
+   "+977-1-4200537",
+   "+977-1-4211720"
+  ],
+  "emails": [
+   "fmo@mof.gov.np",
+   "info@mof.gov.np"
+  ],
+  "website": "https://mof.gov.np",
+  "donate": "https://donate.gov.np"
+ },
+ "external_portals": [
+  {
+   "label_ne": "उद्धार अनुरोध पोर्टल",
+   "label_en": "Rescue request portal",
+   "owner": "OPMCM",
+   "url": "https://rescue.opmcm.gov.np/"
+  },
+  {
+   "label_ne": "रसुवा बाढीबाट उद्धार गरिएका व्यक्तिहरुको विवरण",
+   "label_en": "Rescued persons list",
+   "owner": "NDRRMA",
+   "url": "https://ndrrma.gov.np/np/rasuwa"
+  },
+  {
+   "label_ne": "SETU — DOR duty coordination & NDRRMA command center",
+   "label_en": "SETU command centre",
+   "owner": "NDRRMA",
+   "url": "https://setu.ndrrma.gov.np"
+  }
+ ],
+ "contact_intro_ne": "रसुवा बाढी प्रभावितहरूका लागि प्रधानमन्त्री दैवी प्रकोप उद्धार कोषमा नगद राहत तथा जिन्सी सहयोग गर्न चाहने परोपकारी व्यक्ति, निजी क्षेत्र, दातृ निकाय तथा अन्तर्राष्ट्रिय संघ–संस्थाहरूका लागि राहत संकलनको एकद्वार प्रणाली अर्थ मन्त्रालय मार्फत सञ्चालन गरिएको छ। तसर्थ, सहयोग गर्न चाहने सबै व्यक्ति तथा निकायहरूलाई देहायका सम्पर्क व्यक्तिहरूसँग समन्वय गरी सहयोग उपलब्ध गराउन हार्दिक अनुरोध गरिन्छ।",
+ "contact_intro_en": "The Ministry of Finance operates a single-window system for the collection of relief for those affected by the Rasuwa flood, serving philanthropic individuals, the private sector, donor agencies and international organisations wishing to contribute cash relief or in-kind support to the Prime Minister Disaster Relief Fund. All individuals and organisations wishing to contribute are kindly requested to coordinate with the contact persons listed below."
+}

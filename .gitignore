@@ -1,0 +1,30 @@
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+/data/
+/backups/
+/public/uploads/*
+!/public/uploads/.gitkeep
+/test-results/
+/playwright-report/
+/e2e/.artifacts/
+/.pgdata/
+/MoF-Rasuwa-Bhotekoshi-Flood-Update_claude-code-starter.zip
+/tsconfig.tsbuildinfo
+dist/
+
+# Working files dropped at the repository root. The ones the portal uses live,
+# properly named, in reference/; these originals stay on disk but out of git.
+/HRiXEiYbkAAEQ9e.jpeg
+/SitRep_*.pdf
+/WhatsApp Image *
+/bhadra 19.xlsx
+/new new.pdf
+/अनूसूची.pdf

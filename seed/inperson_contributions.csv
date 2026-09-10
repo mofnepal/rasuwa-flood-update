@@ -1,0 +1,391 @@
+sn,date_bs,date_ad,contributor_name,contributor_type,payment_mode,amount_npr,amount_usd,status,source,category
+1,भदौ ११,2026-08-27,Kumari Bank Limited,institutional,bank_transfer,30000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+2,भदौ ११,2026-08-27,Gorkha Brewery,institutional,bank_transfer,100000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+3,भदौ ११,2026-08-27,Ncell Axiata,institutional,bank_transfer,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+4,भदौ ११,2026-08-27,NIC Asia Bank,institutional,bank_transfer,22100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+5,भदौ ११,2026-08-27,Reliance Sugar and Chemical Industries,institutional,bank_transfer,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+6,भदौ ११,2026-08-27,Shiv Shakti Group,institutional,bank_transfer,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+7,भदौ ११,2026-08-27,NIFRA Bank,institutional,bank_transfer,25000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+8,भदौ ११,2026-08-27,Saras Beverage (Redbull),institutional,bank_transfer,20000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+9,भदौ ११,2026-08-27,Rastriya Banijya Bank,institutional,bank_transfer,30000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+10,भदौ ११,2026-08-27,Nepal Bank Limited,institutional,bank_transfer,30100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+11,भदौ १२,2026-08-28,Narayani Ispat Ltd.,institutional,cheque,2500001,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+12,भदौ १२,2026-08-28,Cement Manufacturers Association of Nepal,institutional,cheque,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+13,भदौ १२,2026-08-28,Agro Thai Foods Private Limited,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+14,भदौ १२,2026-08-28,Asian Life Insurance Co. Ltd.,institutional,cheque,10100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+15,भदौ १२,2026-08-28,Surya Jyoti Life Insurance Co. Ltd.,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+16,भदौ १२,2026-08-28,Muktinath Development Bank Limited,institutional,bank_transfer,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+17,भदौ १२,2026-08-28,Himalayan Bullion Company Limited,institutional,cheque,10100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+18,भदौ १२,2026-08-28,World Wildlife Fund Inc. Nepal,institutional,bank_transfer,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+19,भदौ १२,2026-08-28,M.A.W. Rides Pvt. Ltd.,institutional,cheque,11100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+20,भदौ १२,2026-08-28,Surya Nepal Pvt. Ltd.,institutional,cheque,150000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+21,भदौ १२,2026-08-28,Lumbini Bikas Bank Ltd. (Manager Cheque),institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+22,भदौ १२,2026-08-28,Glocal Pvt. Ltd.,institutional,cheque,50000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+23,भदौ १२,2026-08-28,Jawalakhel Distillery Pvt. Ltd.,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+24,भदौ १२,2026-08-28,CAS Trading House Pvt. Ltd.,institutional,cheque,111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+25,भदौ १२,2026-08-28,Himalayan Distillery Limited,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+26,भदौ १२,2026-08-28,Silver Lining Pvt. Ltd.,institutional,cheque,111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+27,भदौ १२,2026-08-28,Agricultural Development Bank Ltd.,institutional,bank_transfer,30000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+28,भदौ १२,2026-08-28,Alpha Automotive Private Limited,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+29,भदौ १२,2026-08-28,Solu Hydropower Ltd.,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+30,भदौ १२,2026-08-28,Nepal Tea Development Coorperation Limited,institutional,cheque,1100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+31,भदौ १२,2026-08-28,Nepal Life Insurance Co. Ltd.,institutional,cheque,25100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+32,भदौ १२,2026-08-28,Prime Commercial Bank Ltd. (Manager Cheque),institutional,cheque,30100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+33,भदौ १२,2026-08-28,Vijay Kumar Shah,individual,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+34,भदौ १२,2026-08-28,Langtang Ri Trekking and Expedition Pvt. Ltd.,institutional,cheque,112000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+35,भदौ १२,2026-08-28,Raji Rana,individual,cheque,10900000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+36,भदौ १२,2026-08-28,Syakar Trading Company Pvt. Ltd.,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+37,भदौ १२,2026-08-28,Abacus Insights Nepal Pvt. Ltd.,institutional,cheque,1500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+38,भदौ १२,2026-08-28,Krishna Kandel Indreni Foundation,institutional,cheque,500101,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+39,भदौ १४,2026-08-30,Jayshree Foods Pvt. Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+40,भदौ १४,2026-08-30,Lions Club International,institutional,cheque,10111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+41,भदौ १४,2026-08-30,Dhanapati Bhandari,individual,cheque,777777,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+42,भदौ १४,2026-08-30,Softy Hygiene Pvt. Ltd.,institutional,cheque,2111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+43,भदौ १४,2026-08-30,Embassy of the People's Republic of China,institutional,cheque,,200000,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",D (USD cheque – listed under foreign assistance)
+44,भदौ १४,2026-08-30,Arghakhanchi Cement Ltd.,institutional,cheque,11100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+45,भदौ १४,2026-08-30,Poshak Breeder Farm Pvt. Ltd.,institutional,cheque,2600000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+46,भदौ १४,2026-08-30,Om Chaobiro Pellet Feed,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+47,भदौ १४,2026-08-30,Om Chaobiro Feed Industries Pvt. Ltd.,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+48,भदौ १४,2026-08-30,Om Agro Products Pvt. Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+49,भदौ १४,2026-08-30,O.C.B. Foods and Feeds Pvt. Ltd.,institutional,cheque,7500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+50,भदौ १४,2026-08-30,Bizcare Nepal Pvt. Ltd.,institutional,bank_transfer,111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+51,भदौ १४,2026-08-30,Gamnangtar Social Service Okhaldhunga-Kathmandu,institutional,cheque,111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+52,भदौ १४,2026-08-30,Asia Technoplast Industries Pvt. Ltd.,institutional,cheque,501005,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+53,भदौ १४,2026-08-30,Mahalaxmi Paint Udhyog,institutional,cheque,501005,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+54,भदौ १५,2026-08-31,Sipradi Trading Pvt. Ltd.,institutional,cheque,25100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+55,भदौ १५,2026-08-31,Bhote Koshi Power Company Pvt. Ltd.,institutional,cheque,25000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+56,भदौ १५,2026-08-31,Nerude Mirmire Laghubitta Bittiya Sanstha Limited,institutional,bank_transfer,2820249,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+57,भदौ १५,2026-08-31,Varun Beverages (Nepal) Pvt. Ltd.,institutional,cheque,10100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+58,भदौ १५,2026-08-31,Patanjali Ayurved Pvt. Ltd.,institutional,cheque,21100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+59,भदौ १५,2026-08-31,Grace International Group Private Limited,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+60,भदौ १५,2026-08-31,Education Consultancy Association of Nepal ECAN,institutional,cheque,1520555,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+61,भदौ १५,2026-08-31,Nagarik Stock Dealer Company Ltd.,institutional,cheque,25887,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+62,भदौ १५,2026-08-31,Nagarik Stock Dealer Company Ltd.,institutional,cheque,2000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+63,भदौ १५,2026-08-31,Karmachari Sanchaya Kosh H/E Loan,institutional,cheque,25000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+64,भदौ १५,2026-08-31,Jasmine Paints Limited,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+65,भदौ १५,2026-08-31,Asmita Publication Pvt. Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+66,भदौ १५,2026-08-31,Asmita Books Pub. & Di. Pvt. Ltd.,institutional,cheque,7611111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+67,भदौ १५,2026-08-31,Nepse Operating Account,institutional,cheque,11111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+68,भदौ १५,2026-08-31,Neeta Films Production Pvt. Ltd.,institutional,cheque,1103270,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+69,भदौ १५,2026-08-31,Pashupati Khadya Tel Udyog Pvt Ltd,institutional,cheque,6100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+70,भदौ १५,2026-08-31,Pashupati Synpack Inds P (L),institutional,cheque,1500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+71,भदौ १५,2026-08-31,Premier Wires Pvt. Ltd.,institutional,cheque,1500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+72,भदौ १५,2026-08-31,Premier Distillery Limited,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+73,भदौ १५,2026-08-31,Shivam Holdings Ltd.,institutional,cheque,2100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+74,भदौ १५,2026-08-31,Gopi Prasad Pudasaini,individual,cheque,5151111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+75,भदौ १५,2026-08-31,NLG Insurance Company Limited (Claim),institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+76,भदौ १५,2026-08-31,National Life Insurance Co. Ltd.,institutional,cheque,15100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+77,भदौ १५,2026-08-31,Kalinchowk Darshan Limited,institutional,cheque,1111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+78,भदौ १५,2026-08-31,Everest Sugar & Chemical Ind. Ltd.,institutional,bank_transfer,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+79,भदौ १५,2026-08-31,KIEC Private Limited,institutional,cheque,1555555,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+80,भदौ १५,2026-08-31,Himalayan Mottrox Pvt. Ltd.,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+81,भदौ १५,2026-08-31,Reliance Spinning Mills Ltd.,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+82,भदौ १५,2026-08-31,Panchakanya Rotomould P. Ltd.,institutional,cheque,5500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+83,भदौ १५,2026-08-31,Panchakanya Plast Pvt. Ltd.,institutional,cheque,1500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+84,भदौ १५,2026-08-31,Gorkha Lahari Pvt. Ltd.,institutional,cheque,6365000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+85,भदौ १५,2026-08-31,Midas Technologies Pvt. Ltd.,institutional,bank_transfer,301001,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+86,भदौ १५,2026-08-31,Shahid Paribaar Kalyankari Samaj,institutional,bank_transfer,301155,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+87,भदौ १५,2026-08-31,Sari Securities Company,institutional,bank_transfer,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+88,भदौ १५,2026-08-31,Citizen Investment Trust,institutional,cheque,10100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+89,भदौ १५,2026-08-31,Mangala Amatya,individual,cheque,10800000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+90,भदौ १५,2026-08-31,Smart Choice Technologies P. Ltd.,institutional,cheque,300000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+91,भदौ १५,2026-08-31,IME Motors Pvt. Ltd.,institutional,cheque,200000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+92,भदौ १५,2026-08-31,Info Developers Pvt. Ltd.,institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+93,भदौ १५,2026-08-31,Rigo Technologies Pvt. Ltd.,institutional,cheque,150000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+94,भदौ १५,2026-08-31,IME Travels Private Limited,institutional,cheque,111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+95,भदौ १५,2026-08-31,One Point Financial Services Pvt. Ltd.,institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+96,भदौ १५,2026-08-31,My Mart Industries Pvt. Ltd.,institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+97,भदौ १५,2026-08-31,I.M.E. Electric Pvt. Ltd.,institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+98,भदौ १५,2026-08-31,Ashok Lt Engineering Services Pvt. Ltd.,institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+99,भदौ १५,2026-08-31,IME Auto Motives Pvt. Ltd.,institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+100,भदौ १५,2026-08-31,Global Insurance and Reinsurance Broker Pvt. Ltd.,institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+101,भदौ १५,2026-08-31,Global IME Bank Limited (MC A/C),institutional,cheque,50000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+102,भदौ १५,2026-08-31,Global IME Bank Limited (MC A/C),institutional,cheque,7592634,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+103,भदौ १५,2026-08-31,IME Life Insurance Company Limited,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+104,भदौ १५,2026-08-31,IGI Prudential Insurance Ltd.,institutional,cheque,7500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+105,भदौ १५,2026-08-31,IGI Prudential Insurance Ltd.,institutional,cheque,878045,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+106,भदौ १५,2026-08-31,IME Limited,institutional,cheque,7600000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+107,भदौ १५,2026-08-31,IME Limited,institutional,cheque,413895,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+108,भदौ १५,2026-08-31,Chandragiri Hills Limited,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+109,भदौ १५,2026-08-31,Chandragiri Hills Limited,institutional,cheque,251088.62,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+110,भदौ १५,2026-08-31,IME Co-Operative Service Limited,institutional,cheque,1111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+111,भदौ १५,2026-08-31,Swift Technology Pvt. Ltd.,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+112,भदौ १५,2026-08-31,Swift Technology Pvt. Ltd.,institutional,cheque,307711,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+113,भदौ १५,2026-08-31,Hathway Invstment Nepal Ltd.,institutional,cheque,76731,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+114,भदौ १५,2026-08-31,Hathway Stock Dealer Limited,institutional,cheque,24869,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+115,भदौ १५,2026-08-31,Hathway Invstment Nepal Ltd.,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+116,भदौ १५,2026-08-31,Eshare Solutions Pvt. Ltd.,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+117,भदौ १५,2026-08-31,Lumbini Cablecar Limited,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+118,भदौ १५,2026-08-31,Venture Hire Purchase Limited,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+119,भदौ १५,2026-08-31,IME Khalti Limited,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+120,भदौ १५,2026-08-31,IME Khalti Limited,institutional,cheque,503795,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+121,भदौ १५,2026-08-31,Nepal Development Public Limited,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+122,भदौ १५,2026-08-31,Multi Infrastructure Development Company Pvt. Ltd.,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+123,भदौ १५,2026-08-31,NAFEA,institutional,cheque,15000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+124,भदौ १५,2026-08-31,Nepal Plywood Manufacturers' Association,institutional,cheque,2201000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+125,भदौ १५,2026-08-31,Satsang Nepal,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+126,भदौ १५,2026-08-31,Cimex Inc Pvt. Ltd.,institutional,cheque,70000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+127,भदौ १५,2026-08-31,Yeti Distillery Pvt. Ltd.,institutional,cheque,13500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+128,भदौ १५,2026-08-31,Yak Brewing Company Private Limited,institutional,cheque,1500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+129,भदौ १५,2026-08-31,Rastriya Jeewan Beema Company Limited,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+130,भदौ १५,2026-08-31,Nepal Insurance Authority,institutional,cheque,100000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+131,भदौ १५,2026-08-31,Jagdamba Steels Limited,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+132,भदौ १५,2026-08-31,Jagdamba Auto Group Pvt. Ltd.,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+133,भदौ १५,2026-08-31,Jagdamba Motors Pvt. Ltd.,institutional,cheque,20000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+134,भदौ १५,2026-08-31,Highland Distillery Ltd.,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+135,भदौ १५,2026-08-31,Continental Trading Enterprises Pvt. Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+136,भदौ १५,2026-08-31,Reliable Nepal Life Insurance Limited,institutional,bank_transfer,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+137,भदौ १५,2026-08-31,Republica International Education Foundation Pvt. Ltd.,institutional,cheque,621000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+138,भदौ १६,2026-09-01,Kalpana K.C.,individual,cheque,21000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+139,भदौ १६,2026-09-01,Ashtanga Education Pvt. Ltd.,institutional,cheque,9665,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+140,भदौ १६,2026-09-01,Kathmandu World School Pvt. Ltd.,institutional,cheque,254660,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+141,भदौ १६,2026-09-01,Kathmandu World School Bhaktapur Pvt. Ltd.,institutional,cheque,30475,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+142,भदौ १६,2026-09-01,Suzuki Body Works Pvt. Ltd.,institutional,cheque,8962,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+143,भदौ १६,2026-09-01,Suzuki Body Works Pvt. Ltd.,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+144,भदौ १६,2026-09-01,Suzuki Service Center Pvt. Ltd.,institutional,cheque,11737,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+145,भदौ १६,2026-09-01,AIT Pvt. Ltd.,institutional,cheque,1444,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+146,भदौ १६,2026-09-01,AIT Pvt. Ltd.,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+147,भदौ १६,2026-09-01,Shri Himalayan Enterprises P. Ltd.,institutional,cheque,524811,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+148,भदौ १६,2026-09-01,Shri Himalayan Enterprises P. Ltd.,institutional,cheque,59240,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+149,भदौ १६,2026-09-01,Lube Vista Pvt. Ltd.,institutional,cheque,15098,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+150,भदौ १६,2026-09-01,Millennials Media Pvt. Ltd.,institutional,cheque,18336,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+151,भदौ १६,2026-09-01,Reliable Clearing & Forewarding P. Lt.,institutional,cheque,23323,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+152,भदौ १६,2026-09-01,Wheels Auto Pvt. Ltd.,institutional,cheque,40404,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+153,भदौ १६,2026-09-01,Wheels Auto Pvt. Ltd.,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+154,भदौ १६,2026-09-01,Associated Automobiles P. Ltd.,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+155,भदौ १६,2026-09-01,Associated Automobiles P. Ltd.,institutional,cheque,44395,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+156,भदौ १६,2026-09-01,Surya Automobiles Pvt. Ltd.,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+157,भदौ १६,2026-09-01,Surya Automobiles Pvt. Ltd.,institutional,cheque,43168,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+158,भदौ १६,2026-09-01,K.M.C. Automobiles Pvt. Ltd.,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+159,भदौ १६,2026-09-01,K.M.C. Automobiles Pvt. Ltd.,institutional,cheque,39635,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+160,भदौ १६,2026-09-01,Nepal Lube Oil Ltd.,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+161,भदौ १६,2026-09-01,Nepal Lube Oil Ltd.,institutional,cheque,212002,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+162,भदौ १६,2026-09-01,Tiger Land Safari Resort Pvt. Ltd.,institutional,cheque,42497,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+163,भदौ १६,2026-09-01,National Holding Pvt. Ltd.,institutional,cheque,21311,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+164,भदौ १६,2026-09-01,C.G. Processing Private Limited,institutional,cheque,6308,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+165,भदौ १६,2026-09-01,C.G. Square Private Limited,institutional,cheque,4838.72,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+166,भदौ १६,2026-09-01,World Educational Foundation P. Ltd.,institutional,cheque,19996,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+167,भदौ १६,2026-09-01,Premier International College P. L.,institutional,cheque,29600,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+168,भदौ १६,2026-09-01,C G Oil and Derivatives Pvt. Ltd.,institutional,cheque,168000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+169,भदौ १६,2026-09-01,C G Oil and Derivatives Pvt. Ltd.,institutional,cheque,4500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+170,भदौ १६,2026-09-01,C.G. Agro Products (P) Ltd.,institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+171,भदौ १६,2026-09-01,Sushil Vanaspati Pvt. Ltd.,institutional,cheque,4000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+172,भदौ १६,2026-09-01,D.A.V. Sushil Kedia Vishwa Bharati Private Trust,institutional,cheque,2000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+173,भदौ १६,2026-09-01,Krishna Devi Kedia,individual,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+174,भदौ १६,2026-09-01,Indushankar Chini Udyog Ltd,institutional,cheque,3500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+175,भदौ १६,2026-09-01,Himalayan Bank Limited (Manager's Cheque),institutional,cheque,30100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+176,भदौ १६,2026-09-01,Himalayan Brewery Pvt. Ltd.,institutional,cheque,169005,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+177,भदौ १६,2026-09-01,Signature Events Private Limited,institutional,cheque,64764,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+178,भदौ १६,2026-09-01,Meraki Holistic Wellness Retreat PL,institutional,cheque,34384,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+179,भदौ १६,2026-09-01,Narendra Builders & Contractor P. Lt.,institutional,cheque,102000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+180,भदौ १६,2026-09-01,The Art of Living Nepal Disaster Relif Fund,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+181,भदौ १६,2026-09-01,Daya Foundation,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+182,भदौ १६,2026-09-01,Rita Shrestha (Vaidya),individual,cheque,400000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+183,भदौ १६,2026-09-01,Yin Dawei,individual,cheque,2000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+184,भदौ १६,2026-09-01,Janakpur Agro Farm Limited,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+185,भदौ १६,2026-09-01,Universal Institute of Advanced Studies and Research Pvt. Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+186,भदौ १६,2026-09-01,Gandaki Medical C. T. Hos. & Res. Cen,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+187,भदौ १६,2026-09-01,Lord Buddha Educational Academy Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+188,भदौ १६,2026-09-01,Sharma and Company Pvt. Ltd.,institutional,cheque,2600000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+189,भदौ १६,2026-09-01,The Cliff Pvt. Ltd.,institutional,cheque,1100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+190,भदौ १६,2026-09-01,Yeti Pharmachem Dist. P.L.,institutional,cheque,3000005,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+191,भदौ १६,2026-09-01,Yetichem Distributors P.L.,institutional,cheque,2000005,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+192,भदौ १६,2026-09-01,Yeti Healthcare Pvt. Ltd.,institutional,cheque,500005,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+193,भदौ १६,2026-09-01,Nuga International Private Limited,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+194,भदौ १६,2026-09-01,Uddar Shanti Kendra Nepal,institutional,cheque,1201000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+195,भदौ १६,2026-09-01,Nepal Reinsurance Company Limited,institutional,cheque,11111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+196,भदौ १६,2026-09-01,Everest Hospital Pvt. Ltd.,institutional,cheque,634587,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+197,भदौ १६,2026-09-01,Professinal Holdings Ltd.,institutional,cheque,2100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+198,भदौ १६,2026-09-01,"Nepal Eye Program, FHF",institutional,cheque,2181200,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+199,भदौ १६,2026-09-01,"Nepal Eye Program, Surgi Center",institutional,cheque,851351,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+200,भदौ १६,2026-09-01,Nepal Eye Program,institutional,cheque,10100001,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+201,भदौ १६,2026-09-01,Sanjeevani College of Medical Sciences Pvt. Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+202,भदौ १६,2026-09-01,National Fund Management Limited,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+203,भदौ १६,2026-09-01,Education Planet Private Limited,institutional,cheque,1111000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+204,भदौ १६,2026-09-01,Deprosc Laghubitta Bittiya Sanstha Limited,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+205,भदौ १६,2026-09-01,Himalayan Reinsurance Limited,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+206,भदौ १६,2026-09-01,Prabhu Bank (Manager Cheque),institutional,cheque,21111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+207,भदौ १६,2026-09-01,Purba Samsad Manch Nepal,institutional,cheque,151151,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+208,भदौ १६,2026-09-01,St Marys Sec School Expenditure AC,institutional,cheque,1000001,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+209,भदौ १६,2026-09-01,Yeti Brewery Limited,institutional,cheque,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+210,भदौ १६,2026-09-01,Vishal Group Ltd.,institutional,cheque,4900000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+211,भदौ १६,2026-09-01,United Distributors Nepal Pvt. Ltd.,institutional,cheque,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+212,भदौ १६,2026-09-01,Mainawati Steel Industries Limited,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+213,भदौ १६,2026-09-01,Kamala Rolling Mills Pvt. Ltd.,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+214,भदौ १६,2026-09-01,Shaurya Cement Industries Limited,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+215,भदौ १६,2026-09-01,Riddhisiddhi Cement Limited,institutional,cheque,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+216,भदौ १६,2026-09-01,Sun Nepal Life Insurance Co. Ltd.,institutional,cheque,6000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+217,भदौ १६,2026-09-01,NMB Bank Limited (Manager's Cheque),institutional,cheque,35100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+218,भदौ १६,2026-09-01,Isha Nepal,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+219,भदौ १६,2026-09-01,Hotel The Kingsbury Pvt. Ltd.,institutional,cheque,11111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+220,भदौ १६,2026-09-01,Jagdamba Entp. Pvt. Ltd,institutional,cheque,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+221,भदौ १७,2026-09-02,Lok Nath Devkota,individual,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+222,भदौ १७,2026-09-02,Siddhivinayak Oils Pvt. Ltd.,institutional,cheque,1100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+223,भदौ १७,2026-09-02,Nepal Vegetable Ghee Oil Manufacturers Association,institutional,cheque,10100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+224,भदौ १७,2026-09-02,Nepali Jaame Masjid,institutional,cheque,600000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+225,भदौ १७,2026-09-02,Nepal College of Information Techni,institutional,cheque,555555,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+226,भदौ १७,2026-09-02,Trinity International College Pvt Ltd,institutional,cheque,1555555,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+227,भदौ १७,2026-09-02,Nepal Kist College Pvt. Ltd.,institutional,cheque,555555,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+228,भदौ १७,2026-09-02,Triyog Higher Secondary School,institutional,cheque,555555,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+229,भदौ १७,2026-09-02,Nepal Overseas Chinese Association,institutional,bank_transfer,5455339,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+230,भदौ १७,2026-09-02,Benchen Phuntsok Dargyeling Monastry,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+231,भदौ १७,2026-09-02,Manakamana Darshan Pvt. Ltd.,institutional,cheque,12500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+232,भदौ १७,2026-09-02,Hotel Smart Durbar Private Limited,institutional,cheque,555555,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+233,भदौ १७,2026-09-02,Smart Darbar Pvt. Ltd.,institutional,cheque,222222,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+234,भदौ १७,2026-09-02,Century Food Packaging & Processing Ud.,institutional,cheque,1501000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+235,भदौ १७,2026-09-02,Chitawon Milk Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+236,भदौ १७,2026-09-02,Sekuwa By Kilo Pvt Ltd,institutional,cheque,2011111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+237,भदौ १७,2026-09-02,The Nepal Distilleries Pvt. Ltd.,institutional,cheque,170000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+238,भदौ १७,2026-09-02,The Nepal Distilleries Pvt. Ltd.-CSR,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+239,भदौ १७,2026-09-02,BLC Globar Logistics Private Limited,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+240,भदौ १७,2026-09-02,Prince Polymers Pvt. Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+241,भदौ १७,2026-09-02,Norvic International Hospital & Medical College Limited,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+242,भदौ १७,2026-09-02,Center for Democracy & Development,institutional,cheque,1154989,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+243,भदौ १७,2026-09-02,Jeevan Vigyan Foundation,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+244,भदौ १७,2026-09-02,General Insurance Association of Nepal,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+245,भदौ १७,2026-09-02,Siddhartha Premier Insurance Ltd.,institutional,cheque,10100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+246,भदौ १७,2026-09-02,Siddhartha Premier Insurance Ltd.,institutional,cheque,1906335.91,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+247,भदौ १७,2026-09-02,Sagarmatha Lumbini Insurance Company Limited,institutional,cheque,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+248,भदौ १७,2026-09-02,Sagarmatha Lumbini Insurance Company Limited,institutional,cheque,1100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+249,भदौ १७,2026-09-02,Neco Insurance Limited,institutional,cheque,3500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+250,भदौ १७,2026-09-02,Prabhu Insurance Limited,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+251,भदौ १७,2026-09-02,United Ajod Insurance Limited,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+252,भदौ १७,2026-09-02,United Ajod Insurance Limited,institutional,cheque,670000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+253,भदौ १७,2026-09-02,Sanima GIC Insurance Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+254,भदौ १७,2026-09-02,Himalayan Everest Insurance Limited,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+255,भदौ १७,2026-09-02,Himalayan Everest Insurance Limited,institutional,cheque,853018,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+256,भदौ १७,2026-09-02,Rural Health and Education Service Trust,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+257,भदौ १७,2026-09-02,National Path Lab and Research Center Limited,institutional,bank_transfer,1555555,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+258,भदौ १७,2026-09-02,Nepal Feed Industries Association,institutional,bank_transfer,31784701,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+259,भदौ १८,2026-09-03,Vigen Nepal Health Tech Pvt. Ltd.,institutional,cheque,2611111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+260,भदौ १८,2026-09-03,Patan Metal Shop,institutional,cheque,111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+261,भदौ १८,2026-09-03,Nepal Liquors Pvt. Ltd.,institutional,bank_transfer,10100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+262,भदौ १८,2026-09-03,Sankhuwasabha Learning Ground,institutional,cheque,650000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+263,भदौ १८,2026-09-03,J.K.R. Herbs Distill Extract and Rosin Industry Pvt. Ltd.,institutional,cheque,1011111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+264,भदौ १८,2026-09-03,Sagar Man Shrestha,individual,cheque,1111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+265,भदौ १८,2026-09-03,Shubha Charisma Emporium Pvt. Ltd.,institutional,cheque,1500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+266,भदौ १८,2026-09-03,Prakash Chandra Subedi,individual,cheque,400000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+267,भदौ १८,2026-09-03,Binod Kumar Mainali,individual,cheque,101000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+268,भदौ १८,2026-09-03,Joshna Phuyal,individual,cheque,51000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+269,भदौ १८,2026-09-03,Suman Giri,individual,bank_transfer,400000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+270,भदौ १८,2026-09-03,Anil Kumar Pandey,individual,cheque,150000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+271,भदौ १८,2026-09-03,B.R. Production Pvt. Ltd.,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+272,भदौ १८,2026-09-03,NMB Bank Limited (Manager's Cheque),institutional,cheque,1011111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+273,भदौ १८,2026-09-03,Nirdhan Utthan Laghubitta Bittiya Sanstha Limited,institutional,bank_transfer,3432208,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+274,भदौ १८,2026-09-03,National Laghubitta Bittiya Sanstha Limited,institutional,bank_transfer,7000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+275,भदौ १८,2026-09-03,Sah Laliguras Agro Industries Pvt. Ltd.,institutional,cheque,151000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+276,भदौ १८,2026-09-03,Dwarika's Foundation - OPR Rural,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+277,भदौ १८,2026-09-03,Dwarika's Kathmandu Villege Hotel Pvt. Ltd.,institutional,cheque,850000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+278,भदौ १८,2026-09-03,Fed. of Nepal Gold and Silver D.,institutional,cheque,11111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+279,भदौ १८,2026-09-03,Healthy Living Nepal Pvt. Ltd.,institutional,cheque,2000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+280,भदौ १८,2026-09-03,Salt Trading Corporation Limited,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+281,भदौ १८,2026-09-03,Salt Trading Corporation Limited,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+282,भदौ १८,2026-09-03,Maruti Cements Limited,institutional,cheque,11100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+283,भदौ १८,2026-09-03,Himalayan Life Insurance Limited,institutional,cheque,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+284,भदौ १८,2026-09-03,Ahmadiyya Sangh Nepal,institutional,cheque,600000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+285,भदौ १८,2026-09-03,Birgunj Dristhi Eye and E.N.T. Hospital Pvt. Ltd.,institutional,cheque,610000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+286,भदौ १८,2026-09-03,Dristhi Eye Care Center Private Limited,institutional,cheque,390000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+287,भदौ १८,2026-09-03,Mechi Drishti Eye Hospital and Research Center Private Limited,institutional,cheque,601000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+288,भदौ १८,2026-09-03,Pranic Healing Yoga Nepal Trust,institutional,cheque,3100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+289,भदौ १८,2026-09-03,Flextecs Nepal Pvt. Ltd.,institutional,cheque,1500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+290,भदौ १८,2026-09-03,Ishwor and Associates,institutional,cheque,44444,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+291,भदौ १८,2026-09-03,Dugar Spices and Food Products Pvt. Ltd.,institutional,cheque,3100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+292,भदौ १८,2026-09-03,Dugar Spices and Food Products Pvt. Ltd.,institutional,cheque,2000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+293,भदौ १८,2026-09-03,Mahalaxmi Bikas Bank Ltd. (Manager's Cheque),institutional,cheque,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+294,भदौ १८,2026-09-03,Auditors Association of Nepal,institutional,cheque,700000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+295,भदौ १८,2026-09-03,Nepal Surveyors Association,institutional,cheque,111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+296,भदौ १८,2026-09-03,Pancha Kasmir Takiya,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+297,भदौ १८,2026-09-03,Jaya Janata J K P,institutional,cheque,111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+298,भदौ १८,2026-09-03,Yoga Premi Pariwar Nepal,institutional,cheque,600000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+299,भदौ १८,2026-09-03,Hospital for Advanced Medicine and Surgery Ltd.,institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+300,भदौ १८,2026-09-03,Gayatri Distributors Pvt. Ltd.,institutional,cheque,2100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+301,भदौ १८,2026-09-03,Bhaktapur Chamber of Commerce and Industry,institutional,cheque,506392,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+302,भदौ १८,2026-09-03,M.A.W. Rides Pvt. Ltd.,institutional,cheque,1500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+303,भदौ १८,2026-09-03,NADA Automobiles Association of Nepal,institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+304,भदौ १८,2026-09-03,STC Auto Pvt Ltd,institutional,cheque,5001000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+305,भदौ १८,2026-09-03,The Holistic Healing Nepal Pvt. Ltd.,institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+306,भदौ १८,2026-09-03,Om Shree Trikuta Gurudham Nepal,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+307,भदौ १८,2026-09-03,Life Insurance Corporation Nepal Limited,institutional,bank_transfer,12500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+308,भदौ १८,2026-09-03,Laxmi Sunrise bank Limited,institutional,bank_transfer,32400000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+309,भदौ १८,2026-09-03,Mahuli Laghubitta Bittiya Sanstha Limited,institutional,bank_transfer,1300000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+310,भदौ १९,2026-09-04,Asian Paints Nepal Pvt Ltd,institutional,cheque,10000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+311,भदौ १९,2026-09-04,Asian Paints Nepal Pvt Ltd,institutional,cheque,750000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+312,भदौ १९,2026-09-04,Berger Jensen & Nicholson (Nepal) Pvt. Ltd.,institutional,cheque,5000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+313,भदौ १९,2026-09-04,Stream Peak International Pvt. Ltd.,institutional,cheque,3030000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+314,भदौ १९,2026-09-04,Soaltee Hotel Ltd A/C#2,institutional,cheque,7070000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+315,भदौ १९,2026-09-04,Federation of International Nepali Youth Entrepreneurs,institutional,cheque,2000000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+316,भदौ १९,2026-09-04,Bichuten Data Vault Private Limited,institutional,cheque,1111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+317,भदौ १९,2026-09-04,Sonapur Minerals and Oil Ltd.,institutional,cheque,489624,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+318,भदौ १९,2026-09-04,Sonapur Minerals and Oil Ltd.,institutional,cheque,5100000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+319,भदौ १९,2026-09-04,Meromicrofinance Laghubitta Bittiya Sanstha L,institutional,cheque,1455000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+320,भदौ १९,2026-09-04,Ananda Sangh,institutional,cheque,3800000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+321,भदौ १९,2026-09-04,Neoteric Nepal Pvt. Ltd.,institutional,cheque,3600000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+322,भदौ १९,2026-09-04,Lord Buddha Reinsurance Broking Company Private Limited,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+323,भदौ १९,2026-09-04,EON Technology Private Limited,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+324,भदौ १९,2026-09-04,Supply Box Pvt Ltd,institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+325,भदौ १९,2026-09-04,Neoteric Nepal Pvt. Ltd.,institutional,cheque,211544,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+326,भदौ १९,2026-09-04,Kalika Bhagwati Guthi Management Co,institutional,cheque,1111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+327,भदौ १९,2026-09-04,Himal Tea Industries Pvt. Ltd.,institutional,cheque,1111111,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+328,भदौ १९,2026-09-04,Gorkha District Gurung Samaj UK,institutional,bank_transfer,1500000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+329,भदौ १९,2026-09-04,Himalayan Cataract Project,institutional,cheque,750000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+330,भदौ १९,2026-09-04,Himalayan Cataract Project,institutional,cheque,750000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+331,भदौ १९,2026-09-04,Osho Tapoban,institutional,cheque,1551000,,verified,"Finance Minister Secretariat / Fund Section – list as of Bhadra 19, 2083",B
+387,भदौ २४,2026-09-09,"Nar Bahadur Khadka Kamal Bahadur Raut Gajindra Bahadur Malla",individual,cheque,107913,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+388,भदौ २४,2026-09-09,"G 2.2 Biratnagar Met Morang",institutional,cheque,10001000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+389,भदौ २४,2026-09-09,"Bhupendra Kumar Gurung",individual,cheque,110000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+390,भदौ २४,2026-09-09,"Upendra Ale",individual,cheque,1000195,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+391,भदौ २४,2026-09-09,"Mainali Samaj Nepal",institutional,cheque,901111,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+392,भदौ २४,2026-09-09,"Pasang Lhamu Mountaineering Foundation",institutional,cheque,3250000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+393,भदौ २४,2026-09-09,"I.N.D. Mobile Pvt Ltd (inDrive) via Global IME Bank Limited (MC A/C)",institutional,cheque,75000000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+394,भदौ २४,2026-09-09,"Eshoriya Marga Bhajan Mandal Sachai Kendra",institutional,cheque,4100000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+395,भदौ २४,2026-09-09,"Suchila Kattel Gaire and Prakesh Deep Gaire (Eshoriya Marga Bhajan Mandal Sachai Kendra)",institutional,cheque,1001100,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+396,भदौ २४,2026-09-09,"Nepal SBI Bank Ltd. (Banker's Cheque)",institutional,cheque,13100000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+397,भदौ २४,2026-09-09,"Nepal Netra Jyoti Sangh",institutional,cheque,12534621,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+398,भदौ २४,2026-09-09,"R.M. Kedia Eye Hospital",institutional,cheque,194161,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+399,भदौ २४,2026-09-09,"Lumbini Eye Institute",institutional,cheque,1412359,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+400,भदौ २४,2026-09-09,"Golden Voice Premdhoj Pradhan Memorial Foundation",institutional,cheque,202000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+401,भदौ २४,2026-09-09,"Nepal Shipping & Air Logistics Pvt. Ltd.",institutional,cheque,1051000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+402,भदौ २४,2026-09-09,"Hamro Kosheli Bachat Tatha Rin Sahakari Limited",institutional,cheque,422067,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+403,भदौ २४,2026-09-09,"Via Hamro Patro Remit Pvt. Ltd.",institutional,cheque,12500000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+404,भदौ २४,2026-09-09,"Gramin Bikash Laghubitta Bittiya Sanstha Limited",institutional,cheque,5555555,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+405,भदौ २४,2026-09-09,"Air Expers Pvt. Ltd.",institutional,cheque,3100000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+406,भदौ २४,2026-09-09,"Devyani International Nepal Pvt Ltd",institutional,cheque,3100000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+407,भदौ २४,2026-09-09,"Jip Tshering Lama",individual,cheque,1300000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+408,भदौ २४,2026-09-09,"Nepal Sherpa Sangh Aapatkalin Rahat",institutional,cheque,2000000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+409,भदौ २४,2026-09-09,"Elite Solutions (P) Ltd",institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+410,भदौ २४,2026-09-09,"Purushottam Poudyal",individual,cheque,2500101,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+411,भदौ २४,2026-09-09,"Lama Construction Company Pvt Ltd",institutional,cheque,2500000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+412,भदौ २४,2026-09-09,"Ghattekulo Namunanagar Tol Sudhar",individual,cheque,209300,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+413,भदौ २४,2026-09-09,"Discovery Support Company Pvt Ltd",institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+414,भदौ २४,2026-09-09,"Mahalaxmi Mobiles Pvt. Ltd",institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+415,भदौ २४,2026-09-09,"Nepal Valuers Association",institutional,cheque,1000000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+416,भदौ २४,2026-09-09,"Nepal Land and Housing Developers' Federation",institutional,cheque,3100000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+417,भदौ २४,2026-09-09,"Chez Maya Private Limited",institutional,cheque,955000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+418,भदौ २४,2026-09-09,"Shikhar Insurance Company Ltd",institutional,cheque,11111111,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+419,भदौ २४,2026-09-09,"Sara Children Home Nepal",institutional,cheque,501100,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+420,भदौ २४,2026-09-09,"Sara Mission Center Nepal",institutional,cheque,500000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+421,भदौ २४,2026-09-09,"Butwal Hospital Pvt. Ltd Pharmacy Unit",institutional,cheque,777777,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+422,भदौ २४,2026-09-09,"Shree Ram Tobacco Udyog Pvt Ltd.",institutional,cheque,20000000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+423,भदौ २४,2026-09-09,"Yashoda Foods (P.) Ltd.",institutional,cheque,15151000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+424,भदौ २४,2026-09-09,"Varun Beverages Nepal P. Ltd",institutional,cheque,801000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+425,भदौ २४,2026-09-09,"Mobile Phone Importers Association",institutional,cheque,3100000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+426,भदौ २४,2026-09-09,"Ullens Education Foundation",institutional,cheque,2000000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+427,भदौ २४,2026-09-09,"Agrawal Sewa Kendra",institutional,cheque,2815000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+428,भदौ २४,2026-09-09,"Jyoti Shree Nepal Pvt. Ltd.",institutional,cheque,200000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+429,भदौ २४,2026-09-09,"S.K Traders",institutional,cheque,101000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+430,भदौ २४,2026-09-09,"Kavish Enterprises Pvt Ltd",institutional,cheque,101000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+431,भदौ २४,2026-09-09,"Shiv Shakti Agri Pvt Ltd",institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+432,भदौ २४,2026-09-09,"Chemical House Private Limited",institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+433,भदौ २४,2026-09-09,"Shrimaa Distribution Nepal Pvt.Ltd",institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+434,भदौ २४,2026-09-09,"Nuplast Industries Pvt Ltd",institutional,cheque,100000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+435,भदौ २४,2026-09-09,"Durga International",institutional,cheque,51000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+436,भदौ २४,2026-09-09,"Arnica Textile Ind Private Limited",institutional,cheque,51000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+437,भदौ २४,2026-09-09,"S.S. Balaji Metals Pvt. Ltd.",institutional,cheque,51000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+438,भदौ २४,2026-09-09,"Silver Estate Pvt.Ltd.",institutional,cheque,51000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+439,भदौ २४,2026-09-09,"Anand Jewellers",institutional,cheque,51000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+440,भदौ २४,2026-09-09,"Gaurav Trade Link Enterprises",institutional,cheque,51000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+441,भदौ २४,2026-09-09,"The Sagtani Exim Pvt Ltd",institutional,cheque,51000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+442,भदौ २४,2026-09-09,"Tanuj International Pvt.Ltd.",institutional,cheque,51000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+443,भदौ २४,2026-09-09,"L.B.E.F. Vidyapeeth Pvt. Ltd.",institutional,cheque,25000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+444,भदौ २४,2026-09-09,"Shiva Polymers Ind. P.Ltd",institutional,cheque,25000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B
+445,भदौ २४,2026-09-09,"Ruchika Trade Pvt Ltd",institutional,cheque,25000,,verified,"Finance Minister Secretariat / Fund Section – collection sheet of Bhadra 24, 2083",B

@@ -1,0 +1,42 @@
+network,snapshot_at,period,channel_code,channel_label_en,channel_label_ne,txn_count,amount_npr,source
+NCHL,2026-09-05T14:00:00+05:45,cumulative,ips_cheque,IPS/Cheque Transfer,IPS / चेक ट्रान्सफर,1159,1666242728.92,NCHL
+NCHL,2026-09-05T14:00:00+05:45,cumulative,card_intl,Card – International,कार्ड – अन्तर्राष्ट्रिय,93850,1409503106.84,NCHL
+NCHL,2026-09-05T14:00:00+05:45,cumulative,online_transfer,Online Transfer,अनलाइन ट्रान्सफर,11650,514270381.02,NCHL
+NCHL,2026-09-05T14:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,112932,390514243.07,NCHL
+NCHL,2026-09-05T14:00:00+05:45,cumulative,remittance,Remittance,रेमिट्यान्स,25972,275119799.13,NCHL
+NCHL,2026-09-05T14:00:00+05:45,cumulative,intl_qr,Int'l QR,अन्तर्राष्ट्रिय QR,627,4839861.1,NCHL
+NCHL,2026-09-05T14:00:00+05:45,cumulative,card_domestic,Card – Domestic,कार्ड – घरेलु,424,3075054.77,NCHL
+NCHL,2026-09-07T17:00:00+05:45,cumulative,ips_cheque,IPS / Cheque Transfer,IPS / चेक ट्रान्सफर,1225,1698907769.22,NCHL
+NCHL,2026-09-07T17:00:00+05:45,cumulative,card_intl,Card – International,कार्ड – अन्तर्राष्ट्रिय,96899,1490069985.09,NCHL
+NCHL,2026-09-07T17:00:00+05:45,cumulative,online_transfer,Online Transfer,अनलाइन ट्रान्सफर,12350,566745855.89,NCHL
+NCHL,2026-09-07T17:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,114334,401954542.26,NCHL
+NCHL,2026-09-07T17:00:00+05:45,cumulative,remittance,Remittance,रेमिट्यान्स,26417,282370964.54,NCHL
+NCHL,2026-09-07T17:00:00+05:45,cumulative,intl_qr,International QR,अन्तर्राष्ट्रिय QR,666,5388549.57,NCHL
+NCHL,2026-09-07T17:00:00+05:45,cumulative,card_domestic,Card – Domestic,कार्ड – घरेलु,435,3149307.77,NCHL
+Fonepay,2026-09-06T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,819425,2117639003,Fonepay till 2026-09-05
+Fonepay,2026-09-05,daily,domestic_qr,Domestic QR,घरेलु QR,4409,23412390,Fonepay day 2026-09-05
+Fonepay,2026-09-06T00:00:00+05:45,cumulative,fonepay_bills,Fonepay Bills,फोनपे बिल्स,48257,141159588,Fonepay till 2026-09-05
+Fonepay,2026-09-05,daily,fonepay_bills,Fonepay Bills,फोनपे बिल्स,2456,9214190,Fonepay day 2026-09-05
+Fonepay,2026-09-06T00:00:00+05:45,cumulative,npci,NPCI,NPCI (भारत),21943,50095868,Fonepay till 2026-09-05
+Fonepay,2026-09-05,daily,npci,NPCI,NPCI (भारत),486,1727576,Fonepay day 2026-09-05
+Fonepay,2026-09-06T00:00:00+05:45,cumulative,alipay,Alipay,Alipay,3369,18524356,Fonepay till 2026-09-05
+Fonepay,2026-09-05,daily,alipay,Alipay,Alipay,86,550450,Fonepay day 2026-09-05
+Fonepay,2026-09-06T00:00:00+05:45,cumulative,ibft,IBFT,IBFT,3360,18195140,Fonepay till 2026-09-05
+Fonepay,2026-09-05,daily,ibft,IBFT,IBFT,21,261626,Fonepay day 2026-09-05
+Fonepay,2026-09-07T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,822946,2137872218,Fonepay till 2026-09-06
+Fonepay,2026-09-06,daily,domestic_qr,Domestic QR,घरेलु QR,3542,20731595,Fonepay day 2026-09-06
+Fonepay,2026-09-07T00:00:00+05:45,cumulative,fonepay_bills,Fonepay Bills,फोनपे बिल्स,50332,148435944,Fonepay till 2026-09-06
+Fonepay,2026-09-06,daily,fonepay_bills,Fonepay Bills,फोनपे बिल्स,2114,6961311,Fonepay day 2026-09-06
+Fonepay,2026-09-07T00:00:00+05:45,cumulative,npci,NPCI (India),NPCI (भारत),22324,51617127,Fonepay till 2026-09-06
+Fonepay,2026-09-06,daily,npci,NPCI (India),NPCI (भारत),381,1511998,Fonepay day 2026-09-06
+Fonepay,2026-09-07T00:00:00+05:45,cumulative,alipay,Alipay,Alipay,3469,19025058,Fonepay till 2026-09-06
+Fonepay,2026-09-06,daily,alipay,Alipay,Alipay,104,541290,Fonepay day 2026-09-06
+Fonepay,2026-09-07T00:00:00+05:45,cumulative,ibft,IBFT,IBFT,3375,18324851,Fonepay till 2026-09-06
+Fonepay,2026-09-06,daily,ibft,IBFT,IBFT,15,129711,Fonepay day 2026-09-06
+NCHL,2026-09-09T00:00:00+05:45,cumulative,ips_cheque,IPS / Cheque Transfer,IPS / चेक ट्रान्सफर,1420,1857434258.62,NCHL
+NCHL,2026-09-09T00:00:00+05:45,cumulative,card_intl,Card – International,कार्ड – अन्तर्राष्ट्रिय,98259,1537233468.51,NCHL
+NCHL,2026-09-09T00:00:00+05:45,cumulative,online_transfer,Online Transfer,अनलाइन ट्रान्सफर,12648,578452403.60,NCHL
+NCHL,2026-09-09T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,114855,406524565.31,NCHL
+NCHL,2026-09-09T00:00:00+05:45,cumulative,remittance,Remittance,रेमिट्यान्स,26596,286958034.43,NCHL
+NCHL,2026-09-09T00:00:00+05:45,cumulative,intl_qr,Int'l QR,अन्तर्राष्ट्रिय QR,692,5557160.81,NCHL
+NCHL,2026-09-09T00:00:00+05:45,cumulative,card_domestic,Card – Domestic,कार्ड – घरेलु,439,3166308.77,NCHL

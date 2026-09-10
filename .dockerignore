@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+.git
+.pgdata
+test-results
+playwright-report
+e2e/.artifacts
+prototype/downloads
+*.log
+.env
+.env.local
+data
+backups
+MoF-Rasuwa-Bhotekoshi-Flood-Update_claude-code-starter.zip

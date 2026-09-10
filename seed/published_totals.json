@@ -1,0 +1,15 @@
+{
+  "note": "The totals printed on each source document, as supplied. `pnpm verify` checks that the records entered from a document add up to the total that document prints. When a new document is loaded, add its printed total here in the same commit.",
+  "channel_snapshots": {
+    "NCHL|2026-09-05": 4263565174.85,
+    "NCHL|2026-09-07": 4448586974.34,
+    "NCHL|2026-09-08": 4675326200.05,
+    "FONEPAY|2026-09-05": 2345613954,
+    "FONEPAY|2026-09-06": 2375275198
+  },
+  "handover_register": {
+    "total_npr": 2152542309.25,
+    "entries": 389
+  },
+  "foreign_identified_usd": 10200000
+}

@@ -1,0 +1,27 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portal",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/start-standalone.mjs"],
+      "port": 3111,
+      "autoPort": true
+    },
+    {
+      "name": "portal-dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["next", "dev"],
+      "port": 3112,
+      "autoPort": true
+    },
+    {
+      "name": "portal-static",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/serve-static.mjs"],
+      "env": { "NEXT_PUBLIC_BASE_PATH": "/rasuwa-flood-update" },
+      "port": 3200,
+      "autoPort": true
+    }
+  ]
+}

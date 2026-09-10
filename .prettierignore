@@ -1,0 +1,9 @@
+prototype/
+reference/
+seed/
+public/fonts/
+pnpm-lock.yaml
+.next/
+out/
+playwright-report/
+test-results/

@@ -1,0 +1,11 @@
+onlyBuiltDependencies:
+  - '@embedded-postgres/darwin-arm64'
+  - '@embedded-postgres/linux-x64'
+  - '@embedded-postgres/linux-arm64'
+  - '@prisma/client'
+  - '@prisma/engines'
+  - prisma
+  - esbuild
+  - '@swc/core'
+  - unrs-resolver
+  - '@parcel/watcher'

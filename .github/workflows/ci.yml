@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DATABASE_URL: postgresql://rasuwa:rasuwa@localhost:5432/rasuwa_flood?schema=public
+  AUTH_SECRET: ci-only-secret-not-used-in-production-32
+  UPLOAD_DIR: ./public/uploads
+  UPLOAD_PUBLIC_PREFIX: /rasuwa-flood/uploads
+  NEXT_TELEMETRY_DISABLED: '1'
+
+jobs:
+  check:
+    name: lint · typecheck · unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec prisma generate
+      - run: pnpm format:check
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+
+  e2e:
+    name: build · seed · end-to-end
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: rasuwa
+          POSTGRES_PASSWORD: rasuwa
+          POSTGRES_DB: rasuwa_flood
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U rasuwa" --health-interval 10s
+          --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # A fresh password every run, so no usable credential lives in the repo.
+      - run: echo "SEED_PASSWORD=$(openssl rand -base64 24)" >> "$GITHUB_ENV"
+      # The same path DoIT runs: apply migrations, then seed.
+      - run: pnpm exec prisma migrate deploy
+      - run: pnpm db:seed
+      - run: pnpm build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+
+  docker:
+    name: docker image
+    runs-on: ubuntu-latest
+    needs: [check]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          load: true
+          tags: mof-rasuwa-flood:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

@@ -1,0 +1,90 @@
+# रसुवा–भोटेकोशी बाढी अपडेट — full stack.
+#   cp .env.example .env && edit the secrets, then: docker compose up -d
+#   first run:  docker compose exec web pnpm db:deploy && docker compose exec web pnpm db:seed
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-rasuwa}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-rasuwa_flood}
+      # Devanagari is stored throughout; the cluster must be UTF-8.
+      POSTGRES_INITDB_ARGS: '--encoding=UTF8 --locale=C'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./backups:/backups
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-rasuwa} -d ${POSTGRES_DB:-rasuwa_flood}']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks: [rasuwa]
+
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY:-rasuwa}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_KEY:?set S3_SECRET_KEY in .env}
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ['CMD', 'mc', 'ready', 'local']
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    networks: [rasuwa]
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rasuwa_web
+    restart: unless-stopped
+    env_file: [.env]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-rasuwa}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-rasuwa_flood}?schema=public
+      PDF_ORIGIN: http://127.0.0.1:3000
+    depends_on:
+      postgres: { condition: service_healthy }
+      minio: { condition: service_started }
+    volumes:
+      - uploads:/data/uploads
+    networks: [rasuwa]
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports:
+      - '${HTTP_PORT:-8080}:80'
+    volumes:
+      - ./nginx/rasuwa-flood.conf:/etc/nginx/conf.d/default.conf:ro
+      - nginx-cache:/var/cache/nginx/rasuwa
+    depends_on: [web]
+    networks: [rasuwa]
+
+  # Nightly pg_dump into ./backups, thirty days kept.
+  backup:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./backups:/backups
+      - ./docker/backup.sh:/backup.sh:ro
+    entrypoint: ['/bin/sh', '/backup.sh']
+    depends_on:
+      postgres: { condition: service_healthy }
+    networks: [rasuwa]
+
+volumes:
+  postgres-data:
+  minio-data:
+  uploads:
+  nginx-cache:
+
+networks:
+  rasuwa:

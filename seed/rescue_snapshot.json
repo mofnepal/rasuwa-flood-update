@@ -1,0 +1,374 @@
+{
+ "reports": [
+  {
+   "agency": "NDRRMA",
+   "original_file": "reference/ndrrma-update-2026-09-06.jpeg",
+   "data": {
+    "as_of": "2026-09-06T18:00:00+05:45",
+    "as_of_bs": "२०८३ भदौ २१",
+    "source": "NDRRMA – Rasuwa Flood: Search, Rescue and Relief Update",
+    "human_casualties": 1342,
+    "bodies_by_district": {
+     "Rasuwa": 163,
+     "Nuwakot": 195,
+     "Dhading": 68,
+     "Gorkha": 74,
+     "Chitwan": 362,
+     "Tanahun": 38,
+     "Nawalparasi East": 222,
+     "Nawalparasi West": 220
+    },
+    "dead_body_handover": 98,
+    "missing_total_approx": 4996,
+    "missing_breakdown": {
+     "DAO Rasuwa": 1967,
+     "DAO Nuwakot": 2340,
+     "Security personnel & govt officials": 100,
+     "Foreign nationals": 589
+    },
+    "rescued_till_date": 13391,
+    "helicopter_flights": {
+     "nepali_army_total": 1049,
+     "nepali_army_today": 73,
+     "private_from_kathmandu": 129
+    },
+    "injured_receiving_treatment": 6083,
+    "injured_breakdown": {
+     "hospitals": 323,
+     "hospitals_discharged": 228,
+     "nepali_army": 3298,
+     "apf": 2462
+    },
+    "security_personnel_mobilised": 21465,
+    "security_breakdown": {
+     "Nepal Police": 7975,
+     "Nepali Army": 9287,
+     "Armed Police Force": 4203
+    },
+    "cash_support_npr": {
+     "Rasuwa": 10000000,
+     "Nuwakot": 10000000,
+     "Dhading": 5000000,
+     "15 affected local governments": 135000000
+    },
+    "holding_center_people": 3912,
+    "holding_center_breakdown": {
+     "Rasuwa": 960,
+     "Nuwakot": 2714,
+     "Dhading": 238
+    },
+    "electricity_restored_pct": {
+     "Rasuwa": 78,
+     "Nuwakot": 96.7,
+     "Dhading": 99.8
+    },
+    "psychosocial_health_personnel": 150,
+    "fuel_stock": {
+     "diesel_l": 39000,
+     "petrol_l": 15000,
+     "aviation_l": 14000,
+     "lpg_cylinders": 457
+    },
+    "telecom_towers": {
+     "NTC": [
+      117,
+      120
+     ],
+     "Ncell": [
+      76,
+      78
+     ]
+    }
+   }
+  },
+  {
+   "agency": "NEPAL_POLICE",
+   "original_file": "reference/nepal-police-update-2083-05-21.jpeg",
+   "data": {
+    "as_of_bs": "२०८३/०५/२१ २०:०० बजे",
+    "as_of": "2026-09-06T20:00:00+05:45",
+    "source": "Nepal Police – रसुवा भोटेकोशी बाढी सम्बन्धी खोज तथा उद्धार अपडेट",
+    "personnel_mobilised": 7912,
+    "personnel_affected": 65,
+    "personnel_out_of_contact": 25,
+    "awareness_programs": {
+     "participants": 42738,
+     "programs": 132
+    },
+    "bodies_found": {
+     "male": 530,
+     "female": 328,
+     "partial_remains": 495,
+     "total": 1353
+    },
+    "bodies_managed_buried": 1044,
+    "body_handover": 98,
+    "missing": {
+     "domestic": {
+      "male": 2827,
+      "female": 567,
+      "total": 3394
+     },
+     "foreign": {
+      "male": 267,
+      "female": 231,
+      "other": 2,
+      "total": 598
+     },
+     "total": 3992
+    },
+    "injured_rescued": {
+     "male": 6324,
+     "female": 2781,
+     "unknown": 54,
+     "total": 9159
+    },
+    "unidentified_uploaded_to_website": 1290,
+    "in_holding_center": 3190,
+    "dna": {
+     "deceased": 1181,
+     "relatives": 1195,
+     "total": 2376
+    }
+   }
+  },
+  {
+   "agency": "NDRRMA",
+   "original_file": null,
+   "data": {
+    "as_of": "2026-09-08T13:00:00+05:45",
+    "as_of_bs": "२०८३ भदौ २३, दिउँसो १:०० बजे",
+    "source": "NDRRMA – Rasuwa Flood: Search, Rescue and Relief Update",
+    "human_casualties": 1357,
+    "bodies_by_district": {
+     "Rasuwa": 169,
+     "Nuwakot": 197,
+     "Dhading": 70,
+     "Gorkha": 75,
+     "Tanahun": 38,
+     "Chitwan": 363,
+     "Nawalparasi East": 223,
+     "Nawalparasi West": 222
+    },
+    "bodies_note_ne": "विभिन्न अपरिचित मानव अवशेष समेत",
+    "bodies_note_en": "including various unidentified human remains",
+    "dead_body_handover": 102,
+    "dna_note_ne": "डिएनए परीक्षणका लागि सम्बन्धित जिल्ला प्रहरी कार्यालयमा दुई प्रति फोटो र नाता प्रमाणितसहित नमुना बुझाउन सकिन्छ।",
+    "dna_note_en": "For DNA testing, samples can be submitted at the concerned District Police Office with two photographs and proof of kinship.",
+    "missing_total_approx": 5326,
+    "missing_breakdown": {
+     "Rasuwa": 2860,
+     "Nuwakot": 1981,
+     "Foreign tourists": 587
+    },
+    "missing_rasuwa_breakdown": {
+     "Citizens of Rasuwa District": 1393,
+     "Citizens of other districts": 1286,
+     "Nepali Army": 45,
+     "Nepal Police": 25,
+     "Armed Police Force": 12,
+     "Government employees": 73,
+     "Bank and financial institution employees": 26
+    },
+    "missing_note_ne": "हस्तान्तरण गरिएका १०२ शव सम्पर्कविहीनको कुल सङ्ख्याबाट घटाइएको छ। नुवाकोटको विवरण जिल्ला प्रशासन कार्यालय, नुवाकोटबाट प्राप्त।",
+    "missing_note_en": "The 102 bodies handed over have been deducted from the total count of missing persons. The Nuwakot figure is from the District Administration Office, Nuwakot.",
+    "rescued_till_date": 13583,
+    "helicopter_flights": {
+     "nepali_army_total": 1157,
+     "nepali_army_today": 23,
+     "apf": 203,
+     "private_from_kathmandu": 129
+    },
+    "injured_receiving_treatment": 6827,
+    "injured_breakdown": {
+     "hospitals": 327,
+     "hospitals_discharged": 242,
+     "nepali_army": 3404,
+     "apf": 3096
+    },
+    "security_personnel_mobilised": 21402,
+    "security_breakdown": {
+     "Nepal Police": 7912,
+     "Nepali Army": 9287,
+     "Armed Police Force": 4203
+    },
+    "cash_support_npr": {
+     "Rasuwa": 10000000,
+     "Nuwakot": 10000000,
+     "Dhading": 5000000,
+     "15 affected local governments": 135000000
+    },
+    "holding_center_people": 3533,
+    "holding_centers_count": 39,
+    "holding_center_breakdown": {
+     "Rasuwa": 669,
+     "Nuwakot": 2651,
+     "Dhading": 213
+    },
+    "electricity_restored_pct": {
+     "Rasuwa": 78,
+     "Nuwakot": 96.7,
+     "Dhading": 99.8
+    },
+    "psychosocial_health_personnel": 150,
+    "relief_supplies_ne": "भदौ २२ (७ सेप्टेम्बर) मा दुई हेलिकप्टर र ८ मिनी ट्रकबाट प्रभावित जिल्लाहरूमा खाद्य तथा गैरखाद्य राहत सामग्री पुर्‍याइएको।",
+    "relief_supplies_en": "On 7 September, food and relief supplies were transported to the affected districts by two helicopters and eight mini-trucks, including both food and non-food items.",
+    "fuel_stock": {
+     "diesel_l": 50000,
+     "petrol_l": 18000,
+     "aviation_l": 18000,
+     "lpg_cylinders": 457
+    },
+    "footer_note_ne": "सम्पर्कविहीनको सङ्ख्यामा अपरिचित शव तथा उद्धार गरिएका व्यक्ति पनि समावेश हुन सक्ने भई विवरण प्रमाणीकरणको क्रममा छ।",
+    "footer_note_en": "The number of missing persons may also include unidentified bodies and rescued persons. The data is currently being verified.",
+    "missing_excludes_handover": true
+   }
+  },
+  {
+   "agency": "NDRRMA",
+   "original_file": null,
+   "data": {
+    "as_of": "2026-09-09T11:00:00+05:45",
+    "as_of_bs": "२०८३ भदौ २४, बिहान ११:०० बजे",
+    "source": "NDRRMA – Rasuwa Flood: Search, Rescue and Relief Update",
+    "human_casualties": 1367,
+    "bodies_by_district": {
+     "Rasuwa": 174,
+     "Nuwakot": 197,
+     "Dhading": 70,
+     "Gorkha": 75,
+     "Tanahun": 38,
+     "Chitwan": 363,
+     "Nawalparasi East": 226,
+     "Nawalparasi West": 222,
+     "While undergoing treatment at Kathmandu": 2
+    },
+    "bodies_note_ne": "विभिन्न अपरिचित मानव अवशेष समेत",
+    "bodies_note_en": "including various unidentified human remains",
+    "dead_body_handover": 102,
+    "dna_note_ne": "डिएनए परीक्षणका लागि सम्बन्धित जिल्ला प्रहरी कार्यालयमा दुई प्रति फोटो र नाता प्रमाणितसहित नमुना बुझाउन सकिन्छ।",
+    "dna_note_en": "For DNA testing, samples can be submitted at the concerned District Police Office with two photographs and proof of kinship.",
+    "missing_total_approx": 5132,
+    "missing_breakdown": {
+     "Rasuwa": 2860,
+     "Nuwakot": 1787,
+     "Foreign tourists": 587
+    },
+    "missing_rasuwa_breakdown": {
+     "Citizens from Rasuwa": 1393,
+     "Citizens of other districts": 1286,
+     "Nepali Army": 45,
+     "Nepal Police": 25,
+     "Armed Police Force": 12,
+     "Government employees": 73,
+     "Bank and financial institution employees": 26
+    },
+    "missing_nuwakot_breakdown": {
+     "Citizens from Nuwakot": 651,
+     "Citizens of other districts (excluding Rasuwa)": 1136
+    },
+    "missing_note_ne": "हस्तान्तरण गरिएका १०२ शव सम्पर्कविहीनको कुल सङ्ख्याबाट घटाइएको छ।",
+    "missing_note_en": "The 102 bodies handed over have been deducted from the total count of missing persons.",
+    "rescued_till_date": 13646,
+    "helicopter_flights": {
+     "nepali_army_total": 1264,
+     "nepali_army_total_as_of": "2026-09-08",
+     "nepali_army_today": 21,
+     "apf": 258
+    },
+    "injured_receiving_treatment": 7151,
+    "injured_total_derived": true,
+    "injured_breakdown": {
+     "hospitals": 329,
+     "hospitals_discharged": 252,
+     "nepali_army": 3535,
+     "apf": 3287
+    },
+    "injured_note_ne": "यस प्रतिवेदनमा उपचाररत घाइतेको कुल सङ्ख्या उल्लेख नभएकाले माथिको अङ्क प्रतिवेदनमा प्रकाशित उपचारसम्बन्धी विवरणहरूको जोड हो।",
+    "injured_note_en": "This report does not print a headline total for the injured; the figure above is the sum of the treatment figures it publishes.",
+    "security_personnel_mobilised": 21185,
+    "security_breakdown": {
+     "Nepal Police": 7975,
+     "Nepali Army": 9007,
+     "Armed Police Force": 4203
+    },
+    "cash_support_npr": {
+     "Rasuwa": 10000000,
+     "Nuwakot": 10000000,
+     "Dhading": 5000000,
+     "15 affected local governments": 135000000
+    },
+    "holding_center_people": 3628,
+    "holding_centers_count": 37,
+    "holding_center_breakdown": {
+     "Rasuwa": 733,
+     "Nuwakot": 2699,
+     "Dhading": 196
+    },
+    "psychosocial_health_personnel": 150,
+    "relief_supplies_ne": "खाद्य तथा गैरखाद्य राहत सामग्री सडक र हवाई मार्गबाट प्रभावित जिल्लाहरूमा निरन्तर पठाइँदै; विवरण प्राधिकरणको सेतु एपमा अभिलेख गरिएको। सरकारी तथा गैरसरकारी निकाय, निजी क्षेत्र, विकास साझेदार र नागरिक समाजबाट सहयोग निरन्तर।",
+    "relief_supplies_en": "Food and non-food relief materials are being dispatched continuously to the affected districts by road and air, with details recorded in the Authority's Setu app. Support continues from government and non-government agencies, the private sector, development partners and civil society.",
+    "fuel_stock": {
+     "diesel_l": 49000,
+     "petrol_l": 22000,
+     "aviation_l": 15000,
+     "lpg_cylinders": 457
+    },
+    "footer_note_ne": "सम्पर्कविहीनको सङ्ख्यामा अपरिचित शव तथा उद्धार गरिएका व्यक्ति पनि समावेश हुन सक्ने भई विवरण प्रमाणीकरणको क्रममा छ।",
+    "footer_note_en": "The number of missing persons may also include unidentified bodies and rescued persons. The data is currently being verified.",
+    "missing_excludes_handover": true
+   }
+  },
+  {
+   "agency": "NEPAL_POLICE",
+   "original_file": "reference/nepal-police-update-2083-05-24.jpeg",
+   "data": {
+    "as_of": "2026-09-09T11:00:00+05:45",
+    "as_of_bs": "२०८३/०५/२४ ११:०० बजेसम्म",
+    "source": "Nepal Police – रसुवा भोटेकोशी बाढी सम्बन्धी खोज तथा उद्धार अपडेट",
+    "personnel_mobilised": 7975,
+    "personnel_affected": 65,
+    "personnel_out_of_contact": 25,
+    "awareness_programs": {
+     "participants": 43943,
+     "programs": 158
+    },
+    "bodies_found": {
+     "male": 533,
+     "female": 331,
+     "partial_remains": 503,
+     "total": 1367
+    },
+    "bodies_managed_buried": 1147,
+    "body_handover": 102,
+    "missing": {
+     "domestic": {
+      "male": 2907,
+      "female": 572,
+      "total": 3479
+     },
+     "foreign": {
+      "male": 269,
+      "female": 329,
+      "other": 0,
+      "total": 598
+     },
+     "total": 4077
+    },
+    "injured_rescued": {
+     "male": 6380,
+     "female": 2824,
+     "unknown": 50,
+     "total": 9254
+    },
+    "unidentified_uploaded_to_website": 1390,
+    "in_holding_center": 3030,
+    "dna": {
+     "deceased": 1286,
+     "relatives": 1412,
+     "total": 2698
+    }
+   }
+  }
+ ]
+}
