@@ -56,6 +56,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # A cached install can skip Prisma's postinstall, leaving no generated client.
+      - run: pnpm exec prisma generate
       # A fresh password every run, so no usable credential lives in the repo.
       - run: echo "SEED_PASSWORD=$(openssl rand -base64 24)" >> "$GITHUB_ENV"
       # The same path DoIT runs: apply migrations, then seed.

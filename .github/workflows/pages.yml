@@ -61,6 +61,8 @@ jobs:
           echo "SEED_PASSWORD=$(openssl rand -base64 24)" >> "$GITHUB_ENV"
 
       - run: pnpm install --frozen-lockfile
+      # A cached install can skip Prisma's postinstall, leaving no generated client.
+      - run: pnpm exec prisma generate
       - run: pnpm exec prisma migrate deploy
       - run: pnpm db:seed
 
@@ -96,3 +98,6 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # GitHub's own publishing can be slow, above all on a site's first deployment.
+          timeout: 1200000
