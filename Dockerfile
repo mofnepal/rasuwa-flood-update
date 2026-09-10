@@ -6,8 +6,12 @@ WORKDIR /app
 RUN corepack enable
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 COPY prisma ./prisma
+# A flat node_modules inside the image: pnpm's default layout keeps Prisma's
+# generated client and CLI behind symlinks in .pnpm/, which the runtime stage
+# below could not copy. The lockfile is the same either way.
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm config set store-dir /pnpm/store && pnpm install --frozen-lockfile
+    pnpm config set store-dir /pnpm/store \
+ && pnpm install --frozen-lockfile --config.node-linker=hoisted
 
 # ── build ───────────────────────────────────────────────────────────────────
 FROM node:22-bookworm-slim AS builder
