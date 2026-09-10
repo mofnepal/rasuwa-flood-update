@@ -98,6 +98,3 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          # GitHub's own publishing can be slow, above all on a site's first deployment.
-          timeout: 1200000
