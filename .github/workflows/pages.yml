@@ -92,9 +92,25 @@ jobs:
     permissions:
       pages: write
       id-token: write
+      deployments: read
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # GitHub refuses a new publication while an earlier one is still marked in
+      # progress on its side, which happens when a deployment stalls. Cancel any
+      # such deployment first; the one currently live is never touched.
+      - name: Clear a stalled earlier deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for sha in $(gh api "repos/$GITHUB_REPOSITORY/deployments?environment=github-pages&per_page=20" --jq '.[].sha' | sort -u); do
+            [ "$sha" = "$GITHUB_SHA" ] && continue
+            state=$(gh api "repos/$GITHUB_REPOSITORY/deployments?environment=github-pages&sha=$sha&per_page=1" --jq '.[0].statuses_url' | xargs -I{} gh api {} --jq '.[0].state')
+            [ "$state" = "success" ] && continue
+            if gh api -X POST "repos/$GITHUB_REPOSITORY/pages/deployments/$sha/cancel" >/dev/null 2>&1; then
+              echo "cancelled the stalled deployment of $sha"
+            fi
+          done
       - id: deployment
         uses: actions/deploy-pages@v4
