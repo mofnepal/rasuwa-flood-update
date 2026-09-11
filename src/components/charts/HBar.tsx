@@ -71,6 +71,9 @@ export function HBar({
           tickFormatter={(name: string) =>
             labelWidth < 140 ? shortenLabel(name, 18, locale) : name
           }
+          // Every bar keeps its name. Left to itself the chart drops labels that
+          // might overlap, which left the first sector with no name at all.
+          interval={0}
           axisLine={false}
           tickLine={false}
         />

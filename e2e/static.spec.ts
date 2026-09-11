@@ -236,3 +236,37 @@ test('the ticker shows the current date and time in Nepal', async ({ page }) => 
   }).format(new Date());
   await expect(clock).toContainText(year);
 });
+
+test('every bar in every chart carries its label', async ({ page }) => {
+  for (const path of [
+    'en/',
+    'ne/contributions/',
+    'en/contributions/',
+    'en/foreign/',
+    'ne/rescue/',
+    'en/initiatives/',
+  ]) {
+    await open(page, `${path}?static=1`);
+    // Charts are drawn once scrolled into view; bring each one on screen first.
+    for (const chart of await page.locator('.recharts-wrapper').all()) {
+      await chart.scrollIntoViewIfNeeded();
+    }
+    await page.waitForTimeout(800);
+    const missing = await page.evaluate(() =>
+      [...document.querySelectorAll('.recharts-wrapper')].flatMap((chart) => {
+        const bars = [...chart.querySelectorAll('.recharts-bar-rectangle')];
+        if (!bars.length) return [];
+        // Horizontal bars share a left edge, so their names are on the y axis. The
+        // chart library draws axis labels in a layer of their own, beside the axis.
+        const lefts = new Set(bars.map((bar) => Math.round(bar.getBoundingClientRect().left)));
+        const axis = lefts.size === 1 && bars.length > 1 ? 'recharts-yAxis' : 'recharts-xAxis';
+        const labels = chart.querySelectorAll(`.${axis}-tick-labels text`);
+        const title = chart.closest('.card')?.querySelector('h2, h3, .sh b, b')?.textContent ?? '';
+        return labels.length >= bars.length
+          ? []
+          : [`${title.trim()}: ${labels.length} labels for ${bars.length} bars`];
+      }),
+    );
+    expect(missing, path).toEqual([]);
+  }
+});

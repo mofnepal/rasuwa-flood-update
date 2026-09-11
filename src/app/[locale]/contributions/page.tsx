@@ -25,7 +25,7 @@ import {
 } from '@/lib/categories';
 import { KpiTile } from '@/components/KpiTile';
 import { Card, EmptyState, Note, SectionHeader, SourceChip } from '@/components/ui';
-import { ChartFrame } from '@/components/charts/ChartFrame';
+import { ChartFrame, barChartHeight } from '@/components/charts/ChartFrame';
 import { DualTrend, HBar, TrendLine, VBar } from '@/components/charts/lazy';
 import { ContributionRegister, type RegisterRow } from './ContributionRegister';
 import { BankTable, type BankRow } from './BankTable';
@@ -388,7 +388,7 @@ export default async function ContributionsPage({
             title={t('bySector')}
             right={<SourceChip>{totals.handover.source ?? ''}</SourceChip>}
           />
-          <ChartFrame height={320}>
+          <ChartFrame height={barChartHeight(totals.handover.by_sector.length, 320)}>
             <HBar
               data={totals.handover.by_sector.map((row) => ({
                 name: sectorName(row.sector, locale),
@@ -488,7 +488,7 @@ export default async function ContributionsPage({
 
           <div style={{ marginTop: 18 }}>
             <p className="ct">{t('bankChart')}</p>
-            <ChartFrame height={280}>
+            <ChartFrame height={barChartHeight(fund.npr.banks.length, 280)}>
               <HBar
                 data={fund.npr.banks.map(([bank, , balance]) => ({ name: bank, value: balance }))}
               />

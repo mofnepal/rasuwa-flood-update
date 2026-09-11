@@ -4,6 +4,16 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Charts
+
+- **Every bar keeps its name.** On "Handovers by sector" (क्षेत्र अनुसार हस्तान्तरण) the
+  chart had quietly dropped every other label to avoid overlap — 7 names for 14 bars —
+  so the first sector, Industry & manufacturing (उद्योग तथा उत्पादन), and six others
+  showed no name. The "Balance by bank" chart was exposed to the same fault. Every horizontal bar chart now draws a
+  label for every bar, and the two long charts are tall enough for each name to have a
+  row of its own.
+- A browser test now fails if any bar chart shows fewer labels than bars.
+
 ### Data — NCHL and Fonepay, 11 September 2026
 
 - **NCHL collection through its channels, 11 September 2026, 12:00 AM** — seven
