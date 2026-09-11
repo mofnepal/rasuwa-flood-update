@@ -4,6 +4,25 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — NCHL and Fonepay, 11 September 2026
+
+- **NCHL collection through its channels, 11 September 2026, 12:00 AM** — seven
+  channels, NPR 5,100,441,053.72 across 259,459 transactions. The channel lines sum to
+  the printed total to the paisa, and every channel is at or above its 9 September
+  figure: +4,550 transactions, +NPR 425,114,853.67.
+- **Fonepay transaction summary, till 10 September 2026** — five channels,
+  NPR 2,469,450,592 across 919,164 transactions, each summing to the printed total;
+  10 September alone was 3,121 transactions and NPR 18,402,866, which also ties. Since
+  the summary till 6 September: +16,718 transactions, +NPR 94,175,394, every channel
+  higher. Daily figures for 7–9 September were not supplied, so the daily trend shows
+  5, 6 and 10 September.
+- Headline grand total: **NPR 12,835,232,283.15** — online channels
+  NPR 7,569,891,645.72 + handovers NPR 2,152,542,309.25 + USD 20,557,379 × 151.42. The
+  gap between receipts recorded (NPR 9,722,433,954.97) and money already in the fund's
+  NPR accounts widens accordingly and stays disclosed on the contributions page.
+- Both printed totals are recorded in `seed/published_totals.json`, and the grand
+  total expected by `scripts/acceptance.mjs` is updated.
+
 ### Data — NDRRMA, 11 September 2026
 
 - **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 11 September 2026,
