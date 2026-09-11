@@ -1,7 +1,7 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { NAV } from '@/lib/nav';
-import { BASE_PATH, OFFICIAL_LINKS, STATIC_EXPORT } from '@/lib/constants';
+import { BASE_PATH, OFFICIAL_LINKS, SHOW_DOWNLOADS, STATIC_EXPORT } from '@/lib/constants';
 import { formatAsOf, toNepaliDigits, type Locale } from '@/lib/format';
 import { Icon } from './Icon';
 import { PrintButton } from './PrintButton';
@@ -60,40 +60,50 @@ export async function SiteFooter({ updatedAt, ministry }: SiteFooterProps) {
               </li>
             ))}
           </ul>
-          <b style={{ marginTop: 10 }}>{t('downloads')}</b>
-          <ul>
-            {/* Files and endpoints, not pages — plain links are correct. */}
-            <li>
-              <a href={`${BASE_PATH}/${STATIC_EXPORT ? 'open-data/index.json' : 'api/v1'}`}>
-                <Icon name="download" /> {t('openData')} (JSON)
-              </a>
-            </li>
-            <li>
-              <a href={`${BASE_PATH}/open-data/contributions.csv`}>
-                <Icon name="download" /> {t('registerCsv')}
-              </a>
-            </li>
-            {/* PDFs are rendered by the ministry's server; the static edition offers
-                the browser's own print, which uses the same A4 print stylesheet. */}
-            {STATIC_EXPORT ? (
+          <b style={{ marginTop: 10 }}>{SHOW_DOWNLOADS ? t('downloads') : t('print')}</b>
+          {/* While downloads are switched off, the browser's print — which also saves
+              a PDF, through the A4 print stylesheet — is the only option offered. */}
+          {!SHOW_DOWNLOADS ? (
+            <ul>
               <li>
                 <PrintButton label={t('printPdf')} />
               </li>
-            ) : (
-              <>
+            </ul>
+          ) : (
+            <ul>
+              {/* Files and endpoints, not pages — plain links are correct. */}
+              <li>
+                <a href={`${BASE_PATH}/${STATIC_EXPORT ? 'open-data/index.json' : 'api/v1'}`}>
+                  <Icon name="download" /> {t('openData')} (JSON)
+                </a>
+              </li>
+              <li>
+                <a href={`${BASE_PATH}/open-data/contributions.csv`}>
+                  <Icon name="download" /> {t('registerCsv')}
+                </a>
+              </li>
+              {/* PDFs are rendered by the ministry's server; the static edition offers
+                the browser's own print, which uses the same A4 print stylesheet. */}
+              {STATIC_EXPORT ? (
                 <li>
-                  <a href={`${BASE_PATH}/api/pdf/ne`}>
-                    <Icon name="download" /> {t('downloadPdf')} — नेपाली
-                  </a>
+                  <PrintButton label={t('printPdf')} />
                 </li>
-                <li>
-                  <a href={`${BASE_PATH}/api/pdf/en`}>
-                    <Icon name="download" /> {t('downloadPdf')} — English
-                  </a>
-                </li>
-              </>
-            )}
-          </ul>
+              ) : (
+                <>
+                  <li>
+                    <a href={`${BASE_PATH}/api/pdf/ne`}>
+                      <Icon name="download" /> {t('downloadPdf')} — नेपाली
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${BASE_PATH}/api/pdf/en`}>
+                      <Icon name="download" /> {t('downloadPdf')} — English
+                    </a>
+                  </li>
+                </>
+              )}
+            </ul>
+          )}
         </div>
 
         <div className="copy">

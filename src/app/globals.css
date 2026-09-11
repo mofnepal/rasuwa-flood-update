@@ -3751,3 +3751,11 @@ main {
     font-size: 15.5px;
   }
 }
+
+/* ===== the clock in the ticker ===== */
+.ticker .clock {
+  color: var(--ink);
+}
+.ticker .clock b {
+  font-weight: 700;
+}

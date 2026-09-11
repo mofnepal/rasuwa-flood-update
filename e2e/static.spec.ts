@@ -216,3 +216,23 @@ test('on a phone, home is one tap away and the emblem leads home too', async ({
   await page.locator('.brand').click();
   await expect(page).toHaveURL(/\/ne\/$/);
 });
+
+test('downloads are switched off: no CSV or JSON links, only print', async ({ page }) => {
+  await open(page, 'en/contributions/');
+  await expect(page.getByRole('button', { name: /CSV/ })).toHaveCount(0);
+  await expect(page.locator('a[href$=".csv"], a[href$=".json"], a[href*="/api/"]')).toHaveCount(0);
+  await expect(
+    page.locator('footer').getByRole('button', { name: /Print or save as PDF/ }),
+  ).toBeVisible();
+});
+
+test('the ticker shows the current date and time in Nepal', async ({ page }) => {
+  await open(page, 'en/');
+  const clock = page.locator('.ticker .clock');
+  await expect(clock).toContainText('Nepal time');
+  const year = new Intl.DateTimeFormat('en', {
+    timeZone: 'Asia/Kathmandu',
+    year: 'numeric',
+  }).format(new Date());
+  await expect(clock).toContainText(year);
+});

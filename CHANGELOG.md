@@ -4,6 +4,18 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Downloads and the clock
+
+- **Downloads are switched off for now**, at the ministry's request: no CSV button on
+  any table, and no JSON or CSV links in the footer. The footer offers only
+  "Print or save as PDF", which uses the A4 print stylesheet. One switch,
+  `SHOW_DOWNLOADS` in `src/lib/constants.ts`, brings them all back. The files are
+  still published under `/open-data/`, unlinked, because the site search reads its
+  index from there. The "Original document" links to source reports stay.
+- **The current date and time in Nepal** in the ticker under the header — BS first,
+  then AD, with the time — refreshed every 15 seconds in the reader's browser, so a
+  page published earlier still shows the present moment.
+
 ### Data
 
 - **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 10 September 2026,

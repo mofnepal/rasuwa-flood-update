@@ -1,6 +1,7 @@
 import { getTranslations, getLocale } from 'next-intl/server';
 import { Icon } from './Icon';
 import { Ago } from './Ago';
+import { Clock } from './Clock';
 import { formatAsOf, bsDate, type Locale } from '@/lib/format';
 
 interface TickerProps {
@@ -21,6 +22,7 @@ export async function Ticker({ updatedAt, eventDateAd, eventDateBs }: TickerProp
           <i />
           {t('live')}
         </span>
+        <Clock />
         {updatedAt && (
           <span>
             <Icon name="clock" /> {t('updated')}: {formatAsOf(updatedAt, locale)}{' '}

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { Icon } from './Icon';
+import { SHOW_DOWNLOADS } from '@/lib/constants';
 
 export interface Column<T> {
   key: string;
@@ -240,9 +241,11 @@ export function DataTable<T>({
             <Icon name="close" /> {t('clear')}
           </button>
         ) : null}
-        <button type="button" className="btn ghost sm" onClick={exportCsv}>
-          <Icon name="download" /> {t('csv')}
-        </button>
+        {SHOW_DOWNLOADS ? (
+          <button type="button" className="btn ghost sm" onClick={exportCsv}>
+            <Icon name="download" /> {t('csv')}
+          </button>
+        ) : null}
       </div>
 
       <div className="tscroll">

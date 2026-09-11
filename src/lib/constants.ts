@@ -16,6 +16,15 @@ export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '/rasuwa-flood';
  */
 export const STATIC_EXPORT = process.env.NEXT_PUBLIC_STATIC_EXPORT === '1';
 
+/**
+ * Whether the public pages offer downloads: the CSV button on every table and the
+ * JSON and CSV links in the footer. Off for now, at the ministry's request; the
+ * footer then offers only the browser's print, which also saves a PDF. The files
+ * themselves are still published under /open-data/ — the site search reads its
+ * index from there. Set to true to bring the links back.
+ */
+export const SHOW_DOWNLOADS = false;
+
 /** The public address, used for share cards and absolute links. */
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mof.gov.np/rasuwa-flood';
 
