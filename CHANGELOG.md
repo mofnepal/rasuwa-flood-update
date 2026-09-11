@@ -4,6 +4,29 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — fund status, 2083/05/26 9:00 AM
+
+- **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/05/26
+  (11 September 2026), 9:00 AM**, at NPR 152.41 per US dollar. Every figure checked
+  against the statement's own totals:
+  - NPR accounts: the nine bank balances sum to NPR 9,415,287,005; the pre-disaster
+    balance of NPR 2,082,422,405 plus NPR 8,332,864,600 collected since the flood, less
+    the NPR 1 billion already transferred to NDRRMA, gives that balance. The day's
+    collection, NPR 88,504,770, equals both the rise in the balance and the rise in
+    collections. The fund-usage row prints "–"; the figures only reconcile with the
+    earlier NPR 1 billion transfer counted, so it stays recorded.
+  - USD accounts: Himalayan Bank 13,629,507 + Laxmi Sunrise 9,418,404 = USD 23,047,911;
+    less USD 586,048 held before the flood, USD 22,461,863 collected; the day's
+    USD 1,238,467 was all in the Himalayan Bank account.
+  - Total available NPR 12,928,019,102 = NPR balance + the printed USD equivalent.
+- Stated, not corrected: the statement's USD equivalent (NPR 3,512,732,097) is NPR 18.51
+  below USD 23,047,911 × 152.41; its 2083/05/25 column's bank lines sum to NPR 1 less
+  than its printed total; and working back from its 2083/05/25 daily figures gives
+  collections for 2083/05/24 NPR 183,170,523 and USD 220,202 above the 9:00 AM statement
+  of that day loaded earlier — most likely a later statement of 05/24 not supplied.
+- Foreign assistance (category C) is now USD 22,461,863, of which USD 10,200,000 has an
+  identified contributor. The grand total is **NPR 13,145,846,494.80**.
+
 ### Charts
 
 - **Every bar keeps its name.** On "Handovers by sector" (क्षेत्र अनुसार हस्तान्तरण) the
