@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { publicFileUrl } from '@/lib/urls';
+import { pageMetadata } from '@/lib/metadata';
 import { getTotals } from '@/lib/totals';
 import { prisma } from '@/lib/db';
 import { OFFICIAL_LINKS, PALETTE } from '@/lib/constants';
@@ -18,14 +19,18 @@ import { LiveEmbed } from './LiveEmbed';
 import { DistrictTable, type DistrictRow } from './DistrictTable';
 
 /** Shared by /rescue (the latest report) and /rescue/<date> (an earlier one). */
-export async function rescueMetadata(locale: string): Promise<Metadata> {
+export async function rescueMetadata(locale: string, date?: string): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'rescue' });
-  return {
+  const site = await getTranslations({ locale, namespace: 'site' });
+  return pageMetadata({
+    locale,
+    path: date ? `/rescue/${date}` : '/rescue',
+    card: 'rescue',
     title: t('title'),
     description: t('intro'),
-    openGraph: { images: [{ url: `/og/rescue-${locale}.png`, width: 1200, height: 630 }] },
-    twitter: { card: 'summary_large_image', images: [`/og/rescue-${locale}.png`] },
-  };
+    siteName: site('portal'),
+    imageAlt: site('shareImageAlt'),
+  });
 }
 
 /**

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { pageMetadata } from '@/lib/metadata';
 import { prisma } from '@/lib/db';
 import { getMinistryReference } from '@/lib/ministry';
 import { OFFICIAL_LINKS, STATIC_EXPORT } from '@/lib/constants';
@@ -25,11 +26,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'contact' });
-  return {
+  const site = await getTranslations({ locale, namespace: 'site' });
+  return pageMetadata({
+    locale,
+    path: '/contact',
+    card: 'contact',
     title: t('title'),
-    openGraph: { images: [{ url: `/og/contact-${locale}.png`, width: 1200, height: 630 }] },
-    twitter: { card: 'summary_large_image', images: [`/og/contact-${locale}.png`] },
-  };
+    description: t('ministryIntro'),
+    siteName: site('portal'),
+    imageAlt: site('shareImageAlt'),
+  });
 }
 
 /** Singha Durbar, Kathmandu — OpenStreetMap needs no API key. */

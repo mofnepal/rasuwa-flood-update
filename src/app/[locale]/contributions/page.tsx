@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { pageMetadata } from '@/lib/metadata';
 import { getTotals, settlementGap } from '@/lib/totals';
 import { prisma } from '@/lib/db';
 import { PALETTE, FUND_STATUS_SOURCE_NE, FUND_STATUS_SOURCE_EN } from '@/lib/constants';
@@ -47,13 +48,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'contributions' });
-  return {
+  const site = await getTranslations({ locale, namespace: 'site' });
+  return pageMetadata({
+    locale,
+    path: '/contributions',
+    card: 'contributions',
     title: t('title'),
     description: t('intro'),
-
-    openGraph: { images: [{ url: `/og/contributions-${locale}.png`, width: 1200, height: 630 }] },
-    twitter: { card: 'summary_large_image', images: [`/og/contributions-${locale}.png`] },
-  };
+    siteName: site('portal'),
+    imageAlt: site('shareImageAlt'),
+  });
 }
 
 export default async function ContributionsPage({

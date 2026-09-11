@@ -270,3 +270,62 @@ test('every bar in every chart carries its label', async ({ page }) => {
     expect(missing, path).toEqual([]);
   }
 });
+
+test('the emblem favicon, app icons and web manifest are published', async ({ request }) => {
+  for (const [file, type] of [
+    ['favicon.ico', 'image/'],
+    ['img/favicon-16.png', 'image/png'],
+    ['img/favicon-32.png', 'image/png'],
+    ['img/favicon-48.png', 'image/png'],
+    ['img/icon-192.png', 'image/png'],
+    ['img/icon-512.png', 'image/png'],
+    ['img/apple-touch-icon.png', 'image/png'],
+  ] as const) {
+    const response = await request.get(file);
+    expect(response.status(), file).toBe(200);
+    expect(response.headers()['content-type'], file).toContain(type);
+  }
+  const manifest = await request.get('manifest.webmanifest');
+  expect(manifest.status()).toBe(200);
+  const body = JSON.parse(await manifest.text()) as { icons: { sizes: string }[] };
+  expect(body.icons.map((icon) => icon.sizes)).toEqual(['192x192', '512x512']);
+});
+
+test('every page, and the bare site address, carries its favicon and a full link preview', async ({
+  request,
+}) => {
+  const origin = new URL(test.info().project.use.baseURL ?? 'http://localhost').origin;
+  const tag = (html: string, key: string) =>
+    new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`).exec(html)?.[1] ?? '';
+
+  for (const target of [
+    '',
+    'ne/',
+    'en/',
+    'en/contributions/',
+    'ne/foreign/',
+    'en/rescue/',
+    'ne/initiatives/',
+    'en/contact/',
+  ]) {
+    const html = await (await request.get(target)).text();
+    const where = target || '(site root)';
+
+    expect(html, `${where}: favicon`).toMatch(/<link rel="icon" href="[^"]*\/favicon\.ico"/);
+    expect(html, `${where}: manifest`).toMatch(
+      /<link rel="manifest" href="[^"]*\/manifest\.webmanifest"/,
+    );
+    expect(tag(html, 'og:title'), `${where}: og:title`).not.toBe('');
+    expect(tag(html, 'og:description'), `${where}: og:description`).not.toBe('');
+    expect(tag(html, 'og:site_name'), `${where}: og:site_name`).not.toBe('');
+    expect(tag(html, 'og:url'), `${where}: og:url`).toMatch(new RegExp(`/${target}$`));
+    expect(tag(html, 'twitter:card'), `${where}: twitter:card`).toBe('summary_large_image');
+
+    // The preview image is an absolute address; it must exist in this build.
+    const image = tag(html, 'og:image');
+    expect(image, `${where}: og:image`).toMatch(/^https?:\/\/.+\/og\/[a-z]+-(ne|en)\.png$/);
+    const card = await request.get(`${origin}${new URL(image).pathname}`);
+    expect(card.status(), `${where}: ${image}`).toBe(200);
+    expect(card.headers()['content-type']).toContain('image/png');
+  }
+});

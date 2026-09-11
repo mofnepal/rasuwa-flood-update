@@ -1,0 +1,15 @@
+{
+  "name": "रसुवा–भोटेकोशी बाढी अपडेट · MoF Rasuwa–Bhotekoshi Flood Update",
+  "short_name": "Rasuwa Flood Update",
+  "description": "Official update on contributions to the Prime Minister Disaster Relief Fund, foreign assistance, rescue and government initiatives for the Rasuwa–Bhotekoshi flood.",
+  "lang": "ne",
+  "start_url": "./ne/",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#003893",
+  "icons": [
+    { "src": "img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -30,10 +30,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string; date: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
-  return rescueMetadata(locale);
+  const { locale, date } = await params;
+  return rescueMetadata(locale, date);
 }
 
 export default async function RescueReportPage({

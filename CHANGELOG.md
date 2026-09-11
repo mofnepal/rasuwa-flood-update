@@ -4,6 +4,21 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Favicon and link previews
+
+- **The emblem of Nepal as the favicon** — `favicon.ico` (16, 32 and 48px), PNG icons at
+  16, 32, 48, 192 and 512px, and an Apple touch icon on white (iOS draws a transparent
+  icon on black). Generated only by resampling the emblem: `node scripts/make-icons.mjs`.
+- **A web manifest**, so a phone that adds the site to its home screen shows the emblem,
+  the portal's name and the ministry's navy.
+- **Link previews on every page** — canonical address, the other language's address, site
+  name, title, description and the page's own share card with alt text, for search
+  engines, Facebook, WhatsApp, Viber and X alike.
+- **The bare site address** — the one the ministry links to — carries its own favicon and
+  full preview, since link-preview crawlers do not follow its redirect to the Nepali page.
+- Structured data names the Ministry of Finance, Government of Nepal, as the publisher,
+  with the emblem as its logo.
+
 ### Data — fund status, 2083/05/26 9:00 AM
 
 - **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/05/26

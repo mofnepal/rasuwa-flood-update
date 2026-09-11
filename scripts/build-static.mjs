@@ -120,6 +120,27 @@ async function renderAtBuildTime(appDirectory) {
 
 /** The files GitHub Pages needs around the exported pages. */
 async function finish(out) {
+  // The bare site address is what the ministry links to and what people share, and
+  // link-preview crawlers do not follow its redirect — so it carries its own
+  // favicon and preview: the Nepali share card, in both languages' words.
+  const messages = {
+    ne: JSON.parse(await readFile(path.join(root, 'src', 'messages', 'ne.json'), 'utf8')),
+    en: JSON.parse(await readFile(path.join(root, 'src', 'messages', 'en.json'), 'utf8')),
+  };
+  const share = {
+    siteUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? basePath).replace(/\/$/, ''),
+    description: `${messages.ne.site.footerBlurb} · ${messages.en.site.footerBlurb}`,
+    imageAlt: messages.ne.site.shareImageAlt,
+  };
+  const iconTags = [
+    `<link rel="icon" href="${basePath}/favicon.ico" sizes="16x16 32x32 48x48">`,
+    `<link rel="icon" href="${basePath}/img/favicon-32.png" type="image/png" sizes="32x32">`,
+    `<link rel="icon" href="${basePath}/img/favicon-48.png" type="image/png" sizes="48x48">`,
+    `<link rel="apple-touch-icon" href="${basePath}/img/apple-touch-icon.png" sizes="180x180">`,
+    `<link rel="manifest" href="${basePath}/manifest.webmanifest">`,
+    '<meta name="theme-color" content="#003893">',
+  ].join('\n');
+
   // The portal has no page at its root; readers land on the Nepali edition.
   await writeFile(
     path.join(out, 'index.html'),
@@ -129,6 +150,23 @@ async function finish(out) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>रसुवा–भोटेकोशी बाढी अपडेट · MoF Rasuwa–Bhotekoshi Flood Update</title>
+<meta name="description" content="${escapeHtml(share.description)}">
+${iconTags}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="रसुवा–भोटेकोशी बाढी अपडेट">
+<meta property="og:title" content="रसुवा–भोटेकोशी बाढी अपडेट · MoF Rasuwa–Bhotekoshi Flood Update">
+<meta property="og:description" content="${escapeHtml(share.description)}">
+<meta property="og:url" content="${share.siteUrl}/">
+<meta property="og:locale" content="ne_NP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="${share.siteUrl}/og/home-ne.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${escapeHtml(share.imageAlt)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="रसुवा–भोटेकोशी बाढी अपडेट · MoF Rasuwa–Bhotekoshi Flood Update">
+<meta name="twitter:description" content="${escapeHtml(share.description)}">
+<meta name="twitter:image" content="${share.siteUrl}/og/home-ne.png">
 <meta http-equiv="refresh" content="0; url=${basePath}/ne/">
 <link rel="canonical" href="${basePath}/ne/">
 <script>location.replace('${basePath}/ne/' + location.hash)</script>
@@ -148,6 +186,7 @@ async function finish(out) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>पृष्ठ फेला परेन · Page not found</title>
+${iconTags}
 <style>
 body{margin:0;font-family:Mukta,system-ui,sans-serif;color:#14213D;background:#F4F6FA}
 .s{height:6px;background:linear-gradient(90deg,#C8102E 50%,#003893 50%)}
@@ -190,6 +229,10 @@ async function check(out) {
     'open-data/search-ne.json',
     'og/home-ne.png',
     'fonts/Mukta-ExtraBold.woff2',
+    'favicon.ico',
+    'manifest.webmanifest',
+    'img/favicon-48.png',
+    'img/icon-512.png',
   ];
   const absent = required.filter((file) => !existsSync(path.join(out, file)));
   if (absent.length) fail(`the export is missing: ${absent.join(', ')}`);
@@ -216,6 +259,14 @@ async function check(out) {
   console.log(
     `\n✓ ${pages} pages · grand total NPR ${summary.grand_total_npr} · as of ${summary.as_of}`,
   );
+}
+
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 async function* walk(directory) {
