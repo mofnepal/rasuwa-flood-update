@@ -4,6 +4,22 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — NDRRMA, 11 September 2026
+
+- **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 11 September 2026,
+  11:00 AM** loaded as the sixth report. Every total reconciles against its own
+  parts: deaths by district to 1,385; security personnel (Nepali Army 8,844, Nepal
+  Police 7,975, Armed Police Force 4,203) to 21,022; holding centres to 3,685;
+  missing — Rasuwa 2,860, Nuwakot 1,787 and 587 foreign nationals, less the 104
+  identified bodies — to 5,130. Rescued 13,676. Nepali Army helicopter flights 1,407,
+  Armed Police Force 299. The injured total, 7,655, is the sum of the treatment figures
+  the report prints (337 in hospital at 19 hospitals, 3,559 by the Nepali Army, 3,759
+  by the Armed Police Force), and the page says so.
+- The report adds a **bridge connection** — a temporary Acrow bridge in operation at
+  Devighat, Nuwakot — now shown under "More detail" on the rescue page. It no longer
+  carries the psychosocial counselling figure, so the page shows none rather than
+  repeating the previous day's.
+
 ### Downloads and the clock
 
 - **Downloads are switched off for now**, at the ministry's request: no CSV button on

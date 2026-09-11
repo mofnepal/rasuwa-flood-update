@@ -56,6 +56,9 @@ export const ndrrmaSchema = z.object({
   psychosocial_health_personnel: z.number().optional(),
   relief_supplies_ne: z.string().optional(),
   relief_supplies_en: z.string().optional(),
+  /// Road and bridge links restored, where a report mentions them.
+  bridge_note_ne: z.string().optional(),
+  bridge_note_en: z.string().optional(),
   fuel_stock: z.record(z.string(), z.number()).optional(),
   telecom_towers: z.record(z.string(), z.array(z.number())).optional(),
   footer_note_ne: z.string().optional(),

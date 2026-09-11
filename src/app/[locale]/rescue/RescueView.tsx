@@ -399,6 +399,12 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
                   {locale === 'ne' ? ndrrma.relief_supplies_ne : ndrrma.relief_supplies_en}
                 </div>
               ) : null}
+              {ndrrma.bridge_note_ne || ndrrma.bridge_note_en ? (
+                <div>
+                  <b>{t('bridge')}</b>
+                  {locale === 'ne' ? ndrrma.bridge_note_ne : ndrrma.bridge_note_en}
+                </div>
+              ) : null}
             </div>
           </details>
 
