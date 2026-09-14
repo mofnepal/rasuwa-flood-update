@@ -29,6 +29,8 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   `reference/`.
 - The actions can be read as cards (each opening to its full wording) or as a table of
   number, action, responsible body and deadline — the same filters apply to both.
+- The section's introduction names the Ministry of Finance and the Hon. Finance Minister,
+  Dr. Swarnim Wagle, under whom the plans are announced.
 - The section has its own share card, search entry, navigation entry and tests, and
   `pnpm verify` checks each plan's numbering, themes, bodies and deadlines.
 
