@@ -149,7 +149,9 @@ export function PlanDashboard({ plan, issuedAt }: { plan: ActionPlanData; issued
                 >
                   <em>{formatNumber(actions.length, locale)}</em>
                   <b>{deadlineLabel(sample, locale)}</b>
-                  <span>{date ? bsDate(date, null, locale) : t('fromIssue')}</span>
+                  <span>
+                    {date ? bsDate(date, null, locale, { separator: '\n' }) : t('fromIssue')}
+                  </span>
                 </button>
                 <div className="nums">
                   {actions.map((action) => (

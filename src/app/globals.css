@@ -3840,8 +3840,8 @@ main {
 .roadmap .col {
   position: absolute;
   top: 50%;
-  width: 124px;
-  margin-left: -62px;
+  width: 150px;
+  margin-left: -75px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3899,6 +3899,7 @@ main {
   font-size: 13px;
   line-height: 1.2;
   margin-top: 6px;
+  white-space: nowrap;
 }
 .roadmap .col:not(.below) .head b {
   margin-top: 0;
@@ -3908,7 +3909,9 @@ main {
   font-size: 11px;
   color: var(--mute);
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.3;
+  /* The Nepali date on one line, the Gregorian on the next. */
+  white-space: pre-line;
 }
 .roadmap .col:not(.below) .head span {
   order: 3;
@@ -3919,7 +3922,7 @@ main {
   justify-content: center;
   gap: 4px;
   margin-top: 6px;
-  max-width: 124px;
+  max-width: 150px;
 }
 .roadmap .col:not(.below) .nums {
   margin-top: 0;
@@ -4027,8 +4030,8 @@ main {
     flex: 1 1 100%;
     min-width: 0;
   }
-  .roadmap .head b,
-  .roadmap .head span {
+  .roadmap .head b {
+    white-space: normal;
     overflow-wrap: anywhere;
   }
   .roadmap .head em {
