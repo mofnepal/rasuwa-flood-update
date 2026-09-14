@@ -149,25 +149,6 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
         </div>
       </section>
 
-      {/* ── date tabs ────────────────────────────────────────────────────── */}
-      {ndrrmaReports.length > 1 ? (
-        <div className="tabs">
-          {ndrrmaReports.map((report, index) => {
-            const active = report.id === selected?.id;
-            return (
-              <Link
-                key={report.id}
-                className={active ? 'on' : ''}
-                aria-current={active ? 'page' : undefined}
-                href={index === 0 ? '/rescue' : `/rescue/${dateKey(report)}`}
-              >
-                {bsDate(report.report_at, report.report_at_bs, locale)}
-              </Link>
-            );
-          })}
-        </div>
-      ) : null}
-
       {ndrrma && selected ? (
         <>
           <Card>
@@ -557,6 +538,7 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
       </Card>
 
       {/* ── daily report archive ─────────────────────────────────────────── */}
+      {/* The page shows the latest report; earlier NDRRMA reports are reached from here. */}
       <Card>
         <SectionHeader icon="calendar" title={t('archive')} />
         <div className="tscroll">
@@ -572,7 +554,22 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
             <tbody>
               {reports.map((report) => (
                 <tr key={report.id}>
-                  <td className="nm">{bsDate(report.report_at, report.report_at_bs, locale)}</td>
+                  <td className="nm">
+                    {report.agency === 'NDRRMA' ? (
+                      <Link
+                        href={
+                          report.id === ndrrmaReports[0]?.id
+                            ? '/rescue'
+                            : `/rescue/${dateKey(report)}`
+                        }
+                        aria-current={report.id === selected?.id ? 'page' : undefined}
+                      >
+                        {bsDate(report.report_at, report.report_at_bs, locale)}
+                      </Link>
+                    ) : (
+                      bsDate(report.report_at, report.report_at_bs, locale)
+                    )}
+                  </td>
                   <td>{report.agency === 'NDRRMA' ? 'NDRRMA' : t('policePanel')}</td>
                   <td>{report.source}</td>
                   <td>

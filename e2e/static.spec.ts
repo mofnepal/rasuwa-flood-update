@@ -74,14 +74,18 @@ test('the language toggle keeps the reader on the same page', async ({ page }, t
   await expect(page.locator('main h1')).toContainText('Contributions Received');
 });
 
-test('each rescue report date has its own page', async ({ page }) => {
+test('the rescue page shows the latest report; earlier dates open from the archive', async ({
+  page,
+}) => {
   await open(page, 'ne/rescue/');
-  const tabs = page.locator('.tabs a');
-  expect(await tabs.count()).toBeGreaterThan(1);
-  await expect(tabs.first()).toHaveAttribute('aria-current', 'page');
-  await tabs.nth(1).click();
+  // No row of date cards above the figures: the latest report is what the page shows.
+  await expect(page.locator('.tabs')).toHaveCount(0);
+  const dates = page.locator('table.tbl td.nm a');
+  expect(await dates.count()).toBeGreaterThan(1);
+  await expect(dates.first()).toHaveAttribute('aria-current', 'page');
+  await dates.nth(1).click();
   await expect(page).toHaveURL(/\/ne\/rescue\/\d{4}-\d{2}-\d{2}\/$/);
-  await expect(page.locator('.tabs a').nth(1)).toHaveAttribute('aria-current', 'page');
+  await expect(page.locator('table.tbl td.nm a').nth(1)).toHaveAttribute('aria-current', 'page');
 });
 
 test('a relief measure can be deep-linked and opens its drawer', async ({ page }) => {

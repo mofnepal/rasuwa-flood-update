@@ -21,6 +21,9 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ### Fixed
 
+- **Rescue page.** The row of date cards above the figures is gone; the page shows the
+  latest report. Earlier reports are still there — each date in the daily report archive
+  at the foot of the page opens that day's report.
 - **Wording.** "Average online gift" is now "Average online contribution", and the
   charity vocabulary is gone with it: "donors" and "donor agencies" read "contributors"
   and "development partners", the search box asks for a contributor, and the
