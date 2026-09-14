@@ -21,6 +21,10 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ### Fixed
 
+- **Sources line.** "Sources: Ministry of Finance · Nepal Rastra Bank · NCHL · Fonepay ·
+  NDRRMA · Nepal Police" now sits at the foot of every page, in the copyright row, rather
+  than in the LIVE ticker; Nepal Rastra Bank, through which the fund statements arrive,
+  is named for the first time.
 - **Rescue page.** The row of date cards above the figures is gone; the page shows the
   latest report. Earlier reports are still there — each date in the daily report archive
   at the foot of the page opens that day's report.

@@ -31,9 +31,6 @@ export async function Ticker({ updatedAt, eventDateAd, eventDateBs }: TickerProp
           ·
         </span>
         <span>{t('event', { date: bsDate(eventDateAd, eventDateBs, locale) })}</span>
-        <span className="src" style={{ marginLeft: 'auto' }}>
-          {t('sources')}
-        </span>
       </div>
     </div>
   );

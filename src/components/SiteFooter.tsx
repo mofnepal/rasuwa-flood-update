@@ -116,6 +116,8 @@ export async function SiteFooter({ updatedAt, ministry }: SiteFooterProps) {
           <span>
             {t('lastUpdated')} {updatedAt ? formatAsOf(updatedAt, locale) : '—'}
           </span>
+          {/* The source list sits at the foot of every page, under the figures it backs. */}
+          <span className="src">{t('sources')}</span>
         </div>
       </div>
     </footer>
