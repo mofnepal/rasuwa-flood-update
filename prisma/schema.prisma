@@ -105,6 +105,7 @@ model Disaster {
   channelSnapshots    ChannelSnapshot[]
   fundStatusSnapshots FundStatusSnapshot[]
   rescueReports       RescueReport[]
+  actionPlans         ActionPlan[]
   decisions           Decision[]
   contacts            Contact[]
 
@@ -137,15 +138,15 @@ model Contribution {
   status              RecordStatus    @default(draft)
   evidence            Attachment[]
 
-  createdById  String?
-  createdBy    User?     @relation("ContributionCreatedBy", fields: [createdById], references: [id])
-  verifiedById String?
-  verifiedBy   User?     @relation("ContributionVerifiedBy", fields: [verifiedById], references: [id])
-  verifiedAt   DateTime?
+  createdById   String?
+  createdBy     User?     @relation("ContributionCreatedBy", fields: [createdById], references: [id])
+  verifiedById  String?
+  verifiedBy    User?     @relation("ContributionVerifiedBy", fields: [verifiedById], references: [id])
+  verifiedAt    DateTime?
   publishedById String?
-  publishedBy  User?     @relation("ContributionPublishedBy", fields: [publishedById], references: [id])
-  publishedAt  DateTime?
-  reviewNote   String?
+  publishedBy   User?     @relation("ContributionPublishedBy", fields: [publishedById], references: [id])
+  publishedAt   DateTime?
+  reviewNote    String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -250,17 +251,17 @@ model FundStatusSnapshot {
   disasterId String
   disaster   Disaster @relation(fields: [disasterId], references: [id], onDelete: Cascade)
 
-  as_of       DateTime
-  as_of_bs    String
-  as_of_en    String
-  source_ne   String
-  source_en   String
-  fx_rate     Decimal  @db.Decimal(18, 4)
+  as_of     DateTime
+  as_of_bs  String
+  as_of_en  String
+  source_ne String
+  source_en String
+  fx_rate   Decimal  @db.Decimal(18, 4)
 
-  npr_before  Decimal @db.Decimal(18, 2)
-  npr_balance Decimal @db.Decimal(18, 2)
-  npr_gross   Decimal @db.Decimal(18, 2)
-  npr_usage   Decimal @db.Decimal(18, 2)
+  npr_before        Decimal @db.Decimal(18, 2)
+  npr_balance       Decimal @db.Decimal(18, 2)
+  npr_gross         Decimal @db.Decimal(18, 2)
+  npr_usage         Decimal @db.Decimal(18, 2)
   npr_usage_note_ne String?
   npr_usage_note_en String?
 
@@ -332,6 +333,48 @@ model RescueReport {
   @@map("rescue_reports")
 }
 
+/// A government action plan: a numbered list of actions, each with the body the
+/// plan makes responsible and the deadline it sets. `data` is validated against
+/// `lib/action-plan.ts` before it is saved.
+model ActionPlan {
+  id         String   @id @default(cuid())
+  disasterId String
+  disaster   Disaster @relation(fields: [disasterId], references: [id], onDelete: Cascade)
+
+  slug       String
+  kind       String   @default("action_plan")
+  date_ad    DateTime
+  date_bs    String
+  issuer_ne  String
+  issuer_en  String
+  title_ne   String
+  title_en   String
+  summary_ne String
+  summary_en String
+  data       Json
+
+  originalId String?
+  original   Attachment?  @relation("PlanOriginal", fields: [originalId], references: [id])
+  status     RecordStatus @default(draft)
+
+  createdById   String?
+  createdBy     User?     @relation("PlanCreatedBy", fields: [createdById], references: [id])
+  verifiedById  String?
+  verifiedBy    User?     @relation("PlanVerifiedBy", fields: [verifiedById], references: [id])
+  verifiedAt    DateTime?
+  publishedById String?
+  publishedBy   User?     @relation("PlanPublishedBy", fields: [publishedById], references: [id])
+  publishedAt   DateTime?
+  reviewNote    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([disasterId, slug])
+  @@index([disasterId, status, date_ad])
+  @@map("action_plans")
+}
+
 model Decision {
   id         String   @id @default(cuid())
   disasterId String
@@ -377,26 +420,26 @@ model Decision {
 }
 
 model Measure {
-  id            String       @id @default(cuid())
-  decisionId    String
-  decision      Decision     @relation(fields: [decisionId], references: [id], onDelete: Cascade)
-  no            Int
-  category_code String
-  category_ne   String
-  category_en   String
-  agency_ne     String
-  agency_en     String
-  title_ne      String
-  title_en      String
-  who_ne        String
-  who_en        String?
-  benefit_ne    String
-  benefit_en    String?
-  deadline_ne   String?
-  deadline_en   String?
+  id              String       @id @default(cuid())
+  decisionId      String
+  decision        Decision     @relation(fields: [decisionId], references: [id], onDelete: Cascade)
+  no              Int
+  category_code   String
+  category_ne     String
+  category_en     String
+  agency_ne       String
+  agency_en       String
+  title_ne        String
+  title_en        String
+  who_ne          String
+  who_en          String?
+  benefit_ne      String
+  benefit_en      String?
+  deadline_ne     String?
+  deadline_en     String?
   /// Verbatim annex wording. Seeded from the published benefit text and editable in admin.
   cabinet_text_ne String?
-  status        RecordStatus @default(draft)
+  status          RecordStatus @default(draft)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -406,7 +449,7 @@ model Measure {
 }
 
 model Contact {
-  id         String   @id @default(cuid())
+  id         String    @id @default(cuid())
   disasterId String?
   disaster   Disaster? @relation(fields: [disasterId], references: [id], onDelete: Cascade)
   group_ne   String
@@ -417,8 +460,8 @@ model Contact {
   name_en    String
   phone      String
   email      String?
-  order      Int      @default(0)
-  visible    Boolean  @default(true)
+  order      Int       @default(0)
+  visible    Boolean   @default(true)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -440,11 +483,12 @@ model Attachment {
   contributionId String?
   contribution   Contribution? @relation(fields: [contributionId], references: [id], onDelete: Cascade)
 
-  foreignPhotoOf     ForeignAssistance[]  @relation("ForeignPhoto")
-  rescueOriginalOf   RescueReport[]       @relation("RescueOriginal")
+  foreignPhotoOf       ForeignAssistance[]  @relation("ForeignPhoto")
+  rescueOriginalOf     RescueReport[]       @relation("RescueOriginal")
+  planOriginalOf       ActionPlan[]         @relation("PlanOriginal")
   fundStatusOriginalOf FundStatusSnapshot[] @relation("FundStatusOriginal")
-  decisionOriginalOf  Decision[]          @relation("DecisionOriginal")
-  decisionExplainerOf Decision[]          @relation("DecisionExplainer")
+  decisionOriginalOf   Decision[]           @relation("DecisionOriginal")
+  decisionExplainerOf  Decision[]           @relation("DecisionExplainer")
 
   @@index([sha256])
   @@map("attachments")
@@ -464,38 +508,41 @@ model User {
   auditLogs   AuditLog[]
   attachments Attachment[]
 
-  contributionsCreated   Contribution[] @relation("ContributionCreatedBy")
-  contributionsVerified  Contribution[] @relation("ContributionVerifiedBy")
-  contributionsPublished Contribution[] @relation("ContributionPublishedBy")
-  foreignCreated         ForeignAssistance[] @relation("ForeignCreatedBy")
-  foreignVerified        ForeignAssistance[] @relation("ForeignVerifiedBy")
-  foreignPublished       ForeignAssistance[] @relation("ForeignPublishedBy")
-  channelsCreated        ChannelSnapshot[] @relation("ChannelCreatedBy")
-  channelsVerified       ChannelSnapshot[] @relation("ChannelVerifiedBy")
-  channelsPublished      ChannelSnapshot[] @relation("ChannelPublishedBy")
+  contributionsCreated   Contribution[]       @relation("ContributionCreatedBy")
+  contributionsVerified  Contribution[]       @relation("ContributionVerifiedBy")
+  contributionsPublished Contribution[]       @relation("ContributionPublishedBy")
+  foreignCreated         ForeignAssistance[]  @relation("ForeignCreatedBy")
+  foreignVerified        ForeignAssistance[]  @relation("ForeignVerifiedBy")
+  foreignPublished       ForeignAssistance[]  @relation("ForeignPublishedBy")
+  channelsCreated        ChannelSnapshot[]    @relation("ChannelCreatedBy")
+  channelsVerified       ChannelSnapshot[]    @relation("ChannelVerifiedBy")
+  channelsPublished      ChannelSnapshot[]    @relation("ChannelPublishedBy")
   fundStatusCreated      FundStatusSnapshot[] @relation("FundStatusCreatedBy")
   fundStatusVerified     FundStatusSnapshot[] @relation("FundStatusVerifiedBy")
   fundStatusPublished    FundStatusSnapshot[] @relation("FundStatusPublishedBy")
-  rescueCreated          RescueReport[] @relation("RescueCreatedBy")
-  rescueVerified         RescueReport[] @relation("RescueVerifiedBy")
-  rescuePublished        RescueReport[] @relation("RescuePublishedBy")
-  decisionsCreated       Decision[] @relation("DecisionCreatedBy")
-  decisionsVerified      Decision[] @relation("DecisionVerifiedBy")
-  decisionsPublished     Decision[] @relation("DecisionPublishedBy")
+  rescueCreated          RescueReport[]       @relation("RescueCreatedBy")
+  rescueVerified         RescueReport[]       @relation("RescueVerifiedBy")
+  rescuePublished        RescueReport[]       @relation("RescuePublishedBy")
+  planCreated            ActionPlan[]         @relation("PlanCreatedBy")
+  planVerified           ActionPlan[]         @relation("PlanVerifiedBy")
+  planPublished          ActionPlan[]         @relation("PlanPublishedBy")
+  decisionsCreated       Decision[]           @relation("DecisionCreatedBy")
+  decisionsVerified      Decision[]           @relation("DecisionVerifiedBy")
+  decisionsPublished     Decision[]           @relation("DecisionPublishedBy")
 
   @@map("users")
 }
 
 model AuditLog {
-  id       String   @id @default(cuid())
-  userId   String?
-  user     User?    @relation(fields: [userId], references: [id])
-  action   String
-  entity   String
-  entityId String
-  before   Json?
-  after    Json?
-  ip       String?
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  action    String
+  entity    String
+  entityId  String
+  before    Json?
+  after     Json?
+  ip        String?
   createdAt DateTime @default(now())
 
   @@index([entity, entityId])

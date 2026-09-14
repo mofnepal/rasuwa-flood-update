@@ -313,6 +313,38 @@ for (const r of reports) {
   }
 }
 
+// ── action plans, each against its own document ────────────────────────────
+console.log('\nACTION PLANS — each plan against its own numbering and bodies');
+const plans = await p.actionPlan.findMany({
+  where: { disasterId: d.id, status: 'published' },
+  orderBy: { date_ad: 'desc' },
+});
+for (const plan of plans) {
+  const x = plan.data;
+  const label = plan.slug;
+  const numbers = x.actions.map((a) => a.no);
+  check(
+    `${label}: actions numbered 1..${numbers.length} without a break`,
+    numbers.every((no, i) => no === i + 1) ? numbers.length : -1,
+    numbers.length,
+  );
+  const themes = new Set(x.themes.map((t) => t.code));
+  const agencies = new Set(x.agencies.map((a) => a.code));
+  check(
+    `${label}: every action has a known theme and body`,
+    x.actions.filter((a) => themes.has(a.theme) && a.agencies.every((c) => agencies.has(c))).length,
+    x.actions.length,
+  );
+  check(
+    `${label}: every dated deadline names its month`,
+    x.actions.filter(
+      (a) => a.deadline.kind !== 'month_end' || (a.deadline.bs_year && a.deadline.bs_month),
+    ).length,
+    x.actions.length,
+  );
+}
+if (plans.length === 0) console.log('  (no action plan published)');
+
 // ── cross-agency ────────────────────────────────────────────────────────────
 console.log('\nCROSS-AGENCY');
 // The two agencies' figures are only comparable for the same day: a later report

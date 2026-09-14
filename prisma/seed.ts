@@ -22,6 +22,7 @@ import {
 import { attachmentKindOf, putLocalFile } from '../src/lib/storage';
 import { suggestSector } from '../src/lib/sectors';
 import { parseBsLabel, bsToAd } from '../src/lib/bs';
+import { actionPlanSchema } from '../src/lib/action-plan';
 import { DISASTER_SLUG, SETTING_KEYS } from '../src/lib/constants';
 
 const prisma = new PrismaClient();
@@ -554,6 +555,72 @@ async function main() {
   }
   const measureCount = await prisma.measure.count();
   console.log(`  decisions: ${decisionsSeed.decisions.length} · measures: ${measureCount}`);
+
+  /* ---------- government action plans ---------- */
+  // Each plan is transcribed from the ministry's published document, with the body
+  // and deadline the document names for every action. The list is validated before
+  // it is saved, so a malformed plan can never reach the public page.
+  const plansSeed = await readJson<{
+    plans: {
+      slug: string;
+      kind?: string;
+      issuer_ne: string;
+      issuer_en: string;
+      date_bs: string;
+      date_ad: string;
+      title_ne: string;
+      title_en: string;
+      summary_ne: string;
+      summary_en: string;
+      original_file: string | null;
+      [key: string]: unknown;
+    }[];
+  }>('action_plans.json');
+  await prisma.actionPlan.deleteMany({ where: { disasterId } });
+  for (const plan of plansSeed.plans) {
+    const parsed = actionPlanSchema.safeParse(plan);
+    if (!parsed.success) {
+      throw new Error(`action plan ${plan.slug} is malformed: ${parsed.error.message}`);
+    }
+    const numbers = parsed.data.actions.map((action) => action.no);
+    numbers.forEach((no, index) => {
+      if (no !== index + 1)
+        throw new Error(`action plan ${plan.slug}: actions are not numbered 1..n`);
+    });
+    for (const action of parsed.data.actions) {
+      if (!parsed.data.themes.some((theme) => theme.code === action.theme))
+        throw new Error(
+          `action plan ${plan.slug}: action ${action.no} has unknown theme ${action.theme}`,
+        );
+      for (const code of action.agencies)
+        if (!parsed.data.agencies.some((agency) => agency.code === code))
+          throw new Error(
+            `action plan ${plan.slug}: action ${action.no} has unknown agency ${code}`,
+          );
+    }
+    const originalId = plan.original_file ? await attach(plan.original_file, publisherId) : null;
+    await prisma.actionPlan.create({
+      data: {
+        disasterId,
+        slug: plan.slug,
+        kind: plan.kind ?? 'action_plan',
+        date_ad: npt(plan.date_ad),
+        date_bs: plan.date_bs,
+        issuer_ne: plan.issuer_ne,
+        issuer_en: plan.issuer_en,
+        title_ne: plan.title_ne,
+        title_en: plan.title_en,
+        summary_ne: plan.summary_ne,
+        summary_en: plan.summary_en,
+        data: parsed.data as unknown as Prisma.InputJsonValue,
+        originalId,
+        ...published,
+      },
+    });
+  }
+  console.log(
+    `  action plans: ${plansSeed.plans.length} · ${plansSeed.plans.map((p) => p.slug).join(', ')}`,
+  );
 
   /* ---------- single-window contacts ---------- */
   await prisma.contact.deleteMany({ where: { disasterId } });

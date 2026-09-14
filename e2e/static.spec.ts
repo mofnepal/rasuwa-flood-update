@@ -13,6 +13,7 @@ const PAGES = [
   { path: 'foreign/', ne: 'वैदेशिक सहयोग', en: 'Foreign Assistance' },
   { path: 'rescue/', ne: 'उद्धार', en: 'Rescue' },
   { path: 'initiatives/', ne: 'सरकारबाट भएका पहल', en: 'Government initiatives' },
+  { path: 'plans/', ne: 'सरकारका कार्ययोजना', en: 'Government Action Plans' },
   { path: 'contact/', ne: 'सम्पर्क विवरण', en: 'contact details' },
 ] as const;
 
@@ -86,6 +87,40 @@ test('the rescue page shows the latest report; earlier dates open from the archi
   await dates.nth(1).click();
   await expect(page).toHaveURL(/\/ne\/rescue\/\d{4}-\d{2}-\d{2}\/$/);
   await expect(page.locator('table.tbl td.nm a').nth(1)).toHaveAttribute('aria-current', 'page');
+});
+
+test('the action plan shows every action, and its roadmap filters the list', async ({ page }) => {
+  await open(page, 'en/plans/');
+  await expect(page.locator('h1')).toContainText('Government Action Plans');
+  // Every numbered action of the plan is listed, in the plan's own numbering.
+  const actions = page.locator('.plan-actions > li');
+  const total = await actions.count();
+  expect(total).toBeGreaterThanOrEqual(21);
+  await expect(actions.first().locator('.no')).toHaveText('1');
+  // The roadmap has one column per deadline; the numbers in it add up to the actions.
+  const columns = page.locator('.roadmap .col');
+  expect(await columns.count()).toBeGreaterThan(3);
+  const counted = await columns
+    .locator('.head em')
+    .allInnerTexts()
+    .then((texts) => texts.reduce((sum, text) => sum + Number(text.replace(/,/g, '')), 0));
+  expect(counted).toBe(total);
+  // Choosing a deadline column narrows the list to that column's actions.
+  const first = columns.first();
+  const inColumn = await first.locator('.num').count();
+  await first.locator('.head').click();
+  await expect(page.locator('.plan-actions > li')).toHaveCount(inColumn);
+  await page.locator('.planfilters .btn').click();
+  await expect(page.locator('.plan-actions > li')).toHaveCount(total);
+  // An action opens to its full wording and names the body responsible.
+  await actions.nth(6).locator('.ttl').click();
+  await expect(actions.nth(6).locator('.detail')).toContainText('Responsible');
+});
+
+test('an action of the plan can be deep-linked', async ({ page }) => {
+  await open(page, 'ne/plans/?a=21');
+  await expect(page.locator('#action-21.open .detail')).toBeVisible();
+  await expect(page.locator('#action-21 .detail')).toContainText('नेपाल राष्ट्र बैंक');
 });
 
 test('a relief measure can be deep-linked and opens its drawer', async ({ page }) => {

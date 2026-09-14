@@ -21,6 +21,7 @@ export const CARD_TITLES: Record<string, { ne: string; en: string }> = {
   foreign: { ne: 'वैदेशिक सहयोग', en: 'Foreign Assistance' },
   rescue: { ne: 'उद्धार', en: 'Rescue' },
   initiatives: { ne: 'सरकारबाट भएका पहल', en: 'Government Initiatives' },
+  plans: { ne: 'सरकारका कार्ययोजना', en: 'Government Action Plans' },
   contact: { ne: 'सम्पर्क', en: 'Contact' },
 };
 
@@ -66,6 +67,17 @@ export async function cardHeadline(
       return {
         label: t('लागू राहत व्यवस्था', 'Relief measures in force'),
         value: formatNumber(measures, locale),
+      };
+    }
+    case 'plans': {
+      const plan = await prisma.actionPlan.findFirst({
+        where: { disasterId: totals.disasterId, status: 'published' },
+        orderBy: { date_ad: 'desc' },
+      });
+      const actions = (plan?.data as { actions?: unknown[] } | null)?.actions?.length ?? 0;
+      return {
+        label: t('पछिल्लो कार्ययोजनाका बुँदा', 'Actions in the latest plan'),
+        value: formatNumber(actions, locale),
       };
     }
     case 'contact':

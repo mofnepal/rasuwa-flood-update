@@ -5,7 +5,7 @@
 import { chromium } from '@playwright/test';
 
 const BASE = (process.argv[2] ?? 'http://localhost:3111/rasuwa-flood').replace(/\/$/, '');
-const PAGES = ['', '/contributions', '/foreign', '/rescue', '/initiatives', '/contact'];
+const PAGES = ['', '/contributions', '/foreign', '/rescue', '/initiatives', '/plans', '/contact'];
 
 let failures = 0;
 const check = (ok, label, detail = '') => {

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   bsDate,
   formatAD,
+  formatAsOf,
   formatNPR,
   formatNumber,
   formatPercent,
@@ -115,5 +116,22 @@ describe('parseGroupedNumber', () => {
     expect(parseGroupedNumber('')).toBeNull();
     expect(parseGroupedNumber('n/a')).toBeNull();
     expect(parseGroupedNumber('—')).toBeNull();
+  });
+});
+
+describe('dates are read on Nepal’s calendar day', () => {
+  it('a midnight in Kathmandu is that day, not the previous UTC day', () => {
+    expect(formatAD(new Date('2026-09-14T00:00:00+05:45'))).toBe('14 Sep 2026');
+    expect(bsDate(new Date('2026-08-26T00:00:00+05:45'), null, 'en')).toBe(
+      'Bhadra 10, 2083 · 26 Aug 2026',
+    );
+  });
+  it('a plain calendar date at UTC midnight stays on its own day', () => {
+    expect(formatAD(new Date('2026-10-17T00:00:00Z'))).toBe('17 Oct 2026');
+  });
+  it('an evening report keeps its day in both calendars', () => {
+    expect(formatAsOf(new Date('2026-09-14T19:00:00+05:45'), 'en')).toBe(
+      'Bhadra 29, 2083 · 14 Sep 2026, 07:00 PM',
+    );
   });
 });

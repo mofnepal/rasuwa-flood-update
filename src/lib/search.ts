@@ -14,6 +14,7 @@ const SECTIONS: [string, string, string][] = [
   ['/foreign', 'वैदेशिक सहयोग', 'Foreign Assistance'],
   ['/rescue', 'उद्धार', 'Rescue'],
   ['/initiatives', 'सरकारका पहल', 'Government Initiatives'],
+  ['/plans', 'कार्ययोजना', 'Action Plans'],
   ['/contact', 'सम्पर्क', 'Contact'],
 ];
 

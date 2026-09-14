@@ -4,6 +4,34 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Added — Government action plans
+
+- **A new section, "सरकारका कार्ययोजना / Government Action Plans" (`/plans`)**, built to
+  hold any reform or revival plan the Government announces, action by action. Each plan is
+  transcribed from its published document with the body the document makes responsible
+  and the deadline it sets, validated before it is saved, and shown as a dashboard: the
+  headline counts (actions, responsible bodies, actions due at once, the next deadline), a
+  roadmap with one column per deadline and the action numbers due by it, the split by
+  theme and by responsible body, and every action as the plan words it — filterable by
+  theme, body, deadline and text, each opening to its full wording and sub-points. Earlier
+  plans keep their own pages (`/plans/<slug>`) and are listed beneath the latest.
+- **The first plan: the Ministry of Finance's Capital Market Strengthening and Revival
+  Action Plan, 2083 (पुँजी बजार सुदृढीकरण तथा पुनरूत्थान कार्ययोजना, २०८३), 2083/05/29** —
+  21 actions across nine themes and five bodies (SEBON 11, the Ministry 7, NEPSE 2, Nepal
+  Rastra Bank 2, CDSC 1; two actions are shared). Deadlines: 3 immediately, 1 promptly,
+  6 by the end of Asoj, 1 Kartik, 3 Mangsir, 3 Poush, 1 Magh, 1 Falgun, and 2 with no date.
+  Where the document names no body, the issuing ministry is shown, and the page says so.
+  The scanned original is attached.
+- The wording was first transcribed from the scanned PDF and then checked word by word
+  against the Ministry's Word original: the two agree throughout; the document's own
+  spellings are kept, and four evident typing slips in it (समूहरू, दोसो, विद्येयक,
+  नवप्रर्वतन) are spelled correctly, as the page notes. Both files are kept under
+  `reference/`.
+- The actions can be read as cards (each opening to its full wording) or as a table of
+  number, action, responsible body and deadline — the same filters apply to both.
+- The section has its own share card, search entry, navigation entry and tests, and
+  `pnpm verify` checks each plan's numbering, themes, bodies and deadlines.
+
 ### Data — NDRRMA update, 14 September 2026, 7:00 PM
 
 - **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 14 September 2026,
@@ -36,6 +64,12 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ### Fixed
 
+- **Dates.** A time recorded at midnight or in the early morning in Kathmandu showed the
+  previous day's date — the formatter read the UTC calendar day, and Nepal is 5¾ hours
+  ahead. The flood was shown as "Bhadra 10 · 25 Aug 2026" (it was 26 Aug), the single-
+  window notice of Bhadra 11 as 26 Aug, the NCHL 12:00 AM cut-off as the day before, and
+  the ticker clock was a day behind between midnight and 5:45 AM. Every date on the portal
+  is now read on Nepal's calendar day. Figures are unaffected.
 - **Share cards (link previews).** The Nepali card showed broken letters — the
   on-request renderer cannot shape Devanagari conjuncts, so "मन्त्रालय" and "प्राप्त"
   came apart — and the card said too little. The static build now photographs each

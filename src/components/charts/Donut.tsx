@@ -3,7 +3,7 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 import { useLocale } from 'next-intl';
 import { CHART_COLORS, prefersReducedMotion, toNumber, TOOLTIP_STYLE } from './chart-theme';
-import { formatNPR, formatPercent, type Locale } from '@/lib/format';
+import { formatNPR, formatNumber, formatPercent, type Locale } from '@/lib/format';
 
 export interface DonutSlice {
   name: string;
@@ -15,11 +15,14 @@ export function Donut({
   centreValue,
   centreLabel,
   ariaLabel,
+  unit = 'npr',
 }: {
   data: DonutSlice[];
   centreValue: string;
   centreLabel: string;
   ariaLabel: string;
+  /** Rupees by default; `count` for a split of items rather than money. */
+  unit?: 'npr' | 'count';
 }) {
   const locale = useLocale() as Locale;
   const total = data.reduce((sum, slice) => sum + slice.value, 0);
@@ -46,7 +49,7 @@ export function Donut({
           <Tooltip
             {...TOOLTIP_STYLE}
             formatter={(value: unknown, name: unknown) => [
-              `${formatNPR(toNumber(value), locale)} · ${formatPercent(toNumber(value), total, locale)}`,
+              `${unit === 'count' ? formatNumber(toNumber(value), locale) : formatNPR(toNumber(value), locale)} · ${formatPercent(toNumber(value), total, locale)}`,
               String(name ?? ''),
             ]}
           />

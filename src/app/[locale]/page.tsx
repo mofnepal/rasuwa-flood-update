@@ -22,6 +22,13 @@ import {
 } from '@/lib/format';
 import { pick } from '@/lib/i18n-helpers';
 import { breakdownLabel, districtName } from '@/lib/rescue';
+import {
+  actionPlanSchema,
+  actionsByAgency,
+  deadlineDate,
+  deadlineLabel,
+  nextDeadline,
+} from '@/lib/action-plan';
 import { Icon } from '@/components/Icon';
 import { KpiTile } from '@/components/KpiTile';
 import { CountUp } from '@/components/CountUp';
@@ -44,6 +51,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const locale = raw as Locale;
 
   const t = await getTranslations('home');
+  const tp = await getTranslations('plans');
   const ts = await getTranslations('site');
   const tt = await getTranslations('table');
   const tr = await getTranslations('rescue');
@@ -58,7 +66,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const fonepay = totals.networks.find((n) => n.network === 'FONEPAY');
   const fund = totals.fund_status;
 
-  const [latestHandovers, foreignRows, rescueReport, measureCounts, decisionCount] =
+  const [latestHandovers, foreignRows, rescueReport, measureCounts, decisionCount, latestPlan] =
     await Promise.all([
       prisma.contribution.findMany({
         where: { disasterId: totals.disasterId, status: 'published' },
@@ -85,7 +93,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       prisma.decision.count({
         where: { disasterId: totals.disasterId, status: 'published', kind: 'cabinet_decision' },
       }),
+      prisma.actionPlan.findFirst({
+        where: { disasterId: totals.disasterId, status: 'published' },
+        orderBy: { date_ad: 'desc' },
+      }),
     ]);
+  const planData = latestPlan ? actionPlanSchema.safeParse(latestPlan.data) : null;
+  const plan = planData?.success ? planData.data : null;
+  const planNext = plan ? nextDeadline(plan) : null;
+  const planNextDate = planNext ? deadlineDate(planNext.actions[0]!.deadline) : null;
 
   const ndrrma = (rescueReport?.data ?? null) as NdrrmaData | null;
 
@@ -654,6 +670,29 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             />
           </ChartFrame>
           <Note>{t('measuresNote')}</Note>
+          {latestPlan && plan ? (
+            <Link href="/plans" className="planstrip">
+              <Icon name="recovery" />
+              <span>
+                <small>{tp('latestPlan')}</small>
+                <b>{pick(locale, latestPlan.title_ne, latestPlan.title_en)}</b>
+                <em>
+                  {tp('homeCardSub', {
+                    count: formatNumber(plan.actions.length, locale),
+                    agencies: formatNumber(actionsByAgency(plan).length, locale),
+                  })}
+                  {planNext
+                    ? ` · ${tp('homeNext', {
+                        date: `${deadlineLabel(planNext.actions[0]!.deadline, locale)}${
+                          planNextDate ? ` (${bsDate(planNextDate, null, locale)})` : ''
+                        }`,
+                      })}`
+                    : ''}
+                </em>
+              </span>
+              <Icon name="external" />
+            </Link>
+          ) : null}
         </Card>
       </section>
 

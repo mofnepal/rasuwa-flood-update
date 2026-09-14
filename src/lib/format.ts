@@ -114,11 +114,31 @@ const AD_MONTHS = [
 ] as const;
 
 /** 2026-09-06 → "6 Sep 2026". Accepts a Date or an ISO string. */
+/**
+ * The calendar day in Nepal that an instant falls on, as a UTC-midnight Date.
+ * A record stamped midnight or 9:00 AM in Kathmandu is 18:15 or 03:15 UTC — the
+ * previous UTC day for the first — so reading UTC calendar parts showed the day
+ * before. A plain calendar date (UTC midnight) is left on its own day.
+ */
+export function kathmanduDay(date: Date): Date {
+  const [year, month, day] = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Kathmandu',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+    .format(date)
+    .split('-')
+    .map(Number);
+  return new Date(Date.UTC(year!, month! - 1, day!));
+}
+
 export function formatAD(value: Date | string | null | undefined): string {
   if (!value) return '';
   const date = typeof value === 'string' ? new Date(value) : value;
   if (Number.isNaN(date.getTime())) return '';
-  return `${date.getUTCDate()} ${AD_MONTHS[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+  const day = kathmanduDay(date);
+  return `${day.getUTCDate()} ${AD_MONTHS[day.getUTCMonth()]} ${day.getUTCFullYear()}`;
 }
 
 /** "२०८३ भदौ २१" / "Bhadra 21, 2083" from a structured BS date. */
@@ -148,12 +168,12 @@ export function bsDate(
   if (bsLabel) {
     const parsed = parseBsLabel(
       bsLabel,
-      ad ? adToBs(typeof ad === 'string' ? new Date(ad) : ad).year : undefined,
+      ad ? adToBs(kathmanduDay(typeof ad === 'string' ? new Date(ad) : ad)).year : undefined,
     );
     bsText = parsed ? formatBs(parsed, locale) : locale === 'ne' ? bsLabel : bsLabel;
   } else if (ad) {
     const date = typeof ad === 'string' ? new Date(ad) : ad;
-    if (!Number.isNaN(date.getTime())) bsText = formatBs(adToBs(date), locale);
+    if (!Number.isNaN(date.getTime())) bsText = formatBs(adToBs(kathmanduDay(date)), locale);
   }
 
   if (!bsText) return adText;

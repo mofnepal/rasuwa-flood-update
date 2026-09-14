@@ -3754,3 +3754,297 @@ main {
 .ticker .clock b {
   font-weight: 700;
 }
+
+/* ===== government action plans ===== */
+.lede {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+.prose {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+/* The roadmap: one column per deadline the plan sets, its actions as numbered tokens. */
+.roadmap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.roadmap .col {
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  background: var(--sur);
+  padding: 10px 10px 12px;
+  border-top: 4px solid var(--navy);
+}
+.roadmap .col.now {
+  border-top-color: var(--red);
+}
+.roadmap .col.undated {
+  border-top-color: var(--bd);
+}
+.roadmap .col.on {
+  background: var(--navy-4);
+  border-color: #c6d3f2;
+}
+.roadmap .head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.roadmap .head b {
+  font-size: 14px;
+  line-height: 1.25;
+}
+.roadmap .head span {
+  font-size: 11.5px;
+  color: var(--mute);
+  font-weight: 600;
+  margin-top: 2px;
+}
+.roadmap .head em {
+  font-style: normal;
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 800;
+  color: var(--navy);
+  margin-top: 6px;
+}
+.roadmap .col.now .head em {
+  color: var(--red);
+}
+.roadmap .nums {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+.roadmap .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 13px;
+  background: #fff;
+  border: 1px solid var(--bd);
+  color: var(--ink);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.roadmap .num:hover,
+.roadmap .num.on {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+.planfilters .srch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 200px;
+}
+.planfilters .srch svg {
+  width: 16px;
+  height: 16px;
+  color: var(--mute);
+  flex: none;
+}
+.planfilters .srch input {
+  flex: 1;
+}
+.planfilters .count {
+  font-size: 12.5px;
+  color: var(--mute);
+  font-weight: 600;
+  margin-left: auto;
+}
+/* The actions, as the plan numbers them. */
+.plan-actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.plan-actions > li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: #fff;
+}
+.plan-actions > li.open {
+  border-color: #c6d3f2;
+  box-shadow: 0 0 0 2px var(--navy-4);
+}
+.plan-actions .no {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plan-actions .body {
+  flex: 1;
+  min-width: 0;
+}
+.plan-actions .ttl {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+.plan-actions .ttl:hover {
+  color: var(--navy);
+}
+.plan-actions .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 7px;
+}
+.plan-actions .meta .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: normal;
+}
+.plan-actions .meta .chip svg {
+  width: 12px;
+  height: 12px;
+}
+.plan-actions .detail {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--bd);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.plan-actions .detail p {
+  margin: 0 0 8px;
+}
+.plan-actions .detail .sub {
+  margin: 0 0 8px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.plan-actions .detail .sub i {
+  font-style: normal;
+  color: var(--mute);
+}
+.plan-actions .detail .dl,
+.plan-actions .detail .who {
+  font-size: 13px;
+  color: var(--mute);
+}
+.plan-actions .detail .dl svg {
+  width: 13px;
+  height: 13px;
+  vertical-align: -2px;
+}
+@media (max-width: 720px) {
+  .roadmap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .roadmap .head em {
+    font-size: 24px;
+  }
+  .plan-actions > li {
+    padding: 10px 12px;
+  }
+  .plan-actions .no {
+    width: 28px;
+    height: 28px;
+    font-size: 12.5px;
+  }
+}
+/* The latest action plan, one line under the initiatives card on the home page. */
+.planstrip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  background: var(--sur);
+  color: var(--ink);
+  text-decoration: none;
+}
+.planstrip:hover {
+  border-color: #c6d3f2;
+  background: var(--navy-4);
+}
+.planstrip > svg {
+  width: 22px;
+  height: 22px;
+  color: var(--navy);
+  flex: none;
+}
+.planstrip > span {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.planstrip small {
+  font-size: 11.5px;
+  color: var(--mute);
+  font-weight: 600;
+}
+.planstrip b {
+  font-size: 14px;
+  line-height: 1.3;
+}
+.planstrip em {
+  font-style: normal;
+  font-size: 12.5px;
+  color: var(--mute);
+  margin-top: 2px;
+}
+.planfilters .tabs.view {
+  margin: 0;
+  flex: none;
+}
+.plan-table td small {
+  color: var(--mute);
+}
