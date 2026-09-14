@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { EMBLEM } from '@/lib/emblem';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Link, usePathname as useLocalePathname, useRouter } from '@/i18n/routing';
@@ -20,6 +20,11 @@ export function SiteHeader() {
   const rawPath = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+  // The header stays above the drawer so its close button remains reachable, which
+  // means the drawer must begin where the header ends — measured, since the header's
+  // height depends on the language and on how far the page has scrolled.
+  const topRef = useRef<HTMLDivElement>(null);
+  const [drawerTop, setDrawerTop] = useState(0);
 
   // The drawer covers the page on a phone, so it closes on Escape and locks the
   // body while it is open.
@@ -28,10 +33,15 @@ export function SiteHeader() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setMenuOpen(false);
     };
+    const place = () =>
+      setDrawerTop(Math.max(0, Math.round(topRef.current?.getBoundingClientRect().bottom ?? 0)));
+    place();
     document.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', place);
     document.body.classList.add('noscroll');
     return () => {
       document.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('resize', place);
       document.body.classList.remove('noscroll');
     };
   }, [menuOpen]);
@@ -87,7 +97,7 @@ export function SiteHeader() {
         {t('skipToContent')}
       </a>
 
-      <div className="top">
+      <div className="top" ref={topRef}>
         <div className="wrap">
           {/* The emblem and ministry name lead home, as on any government site. */}
           <Link href="/" className="brand">
@@ -137,7 +147,12 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <nav id="main-nav" className={`main${menuOpen ? ' open' : ''}`} aria-label={tn('home')}>
+      <nav
+        id="main-nav"
+        className={`main${menuOpen ? ' open' : ''}`}
+        aria-label={tn('home')}
+        style={{ '--drawer-top': `${drawerTop}px` } as React.CSSProperties}
+      >
         <div className="wrap">
           {NAV.map((item) => (
             <Link

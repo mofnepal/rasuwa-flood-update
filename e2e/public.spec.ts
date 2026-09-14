@@ -116,6 +116,18 @@ test('the mobile drawer opens, offers the donate button and closes on Escape', a
     await expect(drawer).toBeVisible({ timeout: 2000 });
   }).toPass({ timeout: 20_000 });
   await expect(drawer.locator('a[href="https://donate.gov.np/"]')).toBeVisible();
+  // Every section link is on top — none hidden behind the header, which is drawn
+  // above the drawer so its close button stays reachable.
+  const covered = await drawer.locator('a:not(.btn)').evaluateAll((links) =>
+    links
+      .filter((link) => {
+        const box = link.getBoundingClientRect();
+        const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
+        return !hit || !link.contains(hit);
+      })
+      .map((link) => link.textContent?.trim()),
+  );
+  expect(covered).toEqual([]);
   // Every drawer row is at least 56px tall, as the design requires.
   const height = await drawer
     .locator('a')

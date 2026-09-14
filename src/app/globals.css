@@ -2501,7 +2501,8 @@ body.noscroll {
     position: fixed;
     left: 0;
     right: 0;
-    top: 0;
+    /* Begins where the header ends; the header is drawn above the drawer. */
+    top: var(--drawer-top, 0px);
     bottom: 0;
     z-index: 70;
     padding-top: 12px;

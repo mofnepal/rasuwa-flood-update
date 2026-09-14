@@ -27,14 +27,14 @@ const text = async (path) => {
 console.log('\nFigures');
 const neHome = await text('/ne');
 const enHome = await text('/en');
-check(neHome.includes('रु. १४,२५,०८,८०,९०२'), 'grand total, Nepali', 'रु. १४,२५,०८,८०,९०२');
-check(enHome.includes('NPR 14,25,08,80,902'), 'grand total, English', 'NPR 14,25,08,80,902');
-check(enHome.includes('13,57,20,17,563'), 'available fund balance 13,572,017,563');
+check(neHome.includes('रु. १४,२५,०९,८२,९८४'), 'grand total, Nepali', 'रु. १४,२५,०९,८२,९८४');
+check(enHome.includes('NPR 14,25,09,82,984'), 'grand total, English', 'NPR 14,25,09,82,984');
+check(enHome.includes('13,58,15,24,783'), 'available fund balance 13,581,524,783');
 
 const enForeign = await text('/en/foreign');
-check(enForeign.includes('USD 22,855,806'), 'foreign total USD 22,855,806');
+check(enForeign.includes('USD 22,856,475'), 'foreign total USD 22,856,475');
 check(enForeign.includes('USD 11,215,654'), 'identified USD 11,215,654');
-check(enForeign.includes('USD 11,640,152'), 'awaiting attribution USD 11,640,152');
+check(enForeign.includes('USD 11,640,821'), 'awaiting attribution USD 11,640,821');
 
 const enContrib = await text('/en/contributions');
 check(enContrib.includes('NPR 2,73,46,30,634'), 'handovers NPR 2,734,630,633.82');
