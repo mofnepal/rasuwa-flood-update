@@ -408,9 +408,9 @@
     "kpiLast": "Last deadline",
     "why": "Why this plan",
     "roadmap": "Roadmap — what is due when",
-    "roadmapSub": "Each column is a deadline the plan sets; the numbers are the actions due by it. Select one to read it.",
-    "byTheme": "Actions by theme",
-    "byAgency": "Actions by responsible body",
+    "roadmapSub": "A time axis from the day the plan was issued to its last deadline. Each mark is a deadline the plan sets, with the number of actions due by it and their numbers beneath; select a mark to read only those actions.",
+    "byTheme": "By theme",
+    "byAgency": "By responsible body",
     "byAgencyNote": "An action shared by two bodies counts once for each.",
     "list": "The actions",
     "listSub": "Every action as the plan words it, with its responsible body and deadline.",
@@ -428,13 +428,16 @@
     "statusInProgress": "In progress",
     "statusDone": "Done",
     "unstatedAgency": "Where the plan names no body, the issuing ministry is shown.",
-    "originalNote": "Source: the plan as published by the Ministry of Finance, 2083/05/29. Progress will be shown as the responsible bodies report it.",
     "otherPlans": "Other plans",
     "viewPlan": "Open plan",
     "homeCardSub": "{count} actions · {agencies} responsible bodies",
     "homeNext": "Next deadline: {date}",
     "view": "View",
     "viewCards": "Cards",
-    "viewTable": "Table"
+    "viewTable": "Table",
+    "today": "Today",
+    "fromIssue": "From the day of issue",
+    "undatedSub": "To proceed; no date set",
+    "roadmapPick": "Show only these actions"
   }
 }

@@ -215,12 +215,10 @@ export async function PlanView({ locale, slug }: { locale: Locale; slug?: string
       {/* ── roadmap and the actions ──────────────────────────────────────── */}
       <Card id="actions">
         <SectionHeader icon="calendar" title={t('roadmap')} subtitle={t('roadmapSub')} />
-        <PlanDashboard plan={plan} />
+        <PlanDashboard plan={plan} issuedAt={selected.date_ad.toISOString()} />
         <Note>
-          {t('originalNote')} {t('unstatedAgency')}
-          {plan.note_ne || plan.note_en
-            ? ` ${pick(locale, plan.note_ne ?? '', plan.note_en ?? '')}`
-            : ''}
+          {ts('source')}: {pick(locale, selected.issuer_ne, selected.issuer_en)}, {issued}.{' '}
+          {t('unstatedAgency')}
         </Note>
       </Card>
 

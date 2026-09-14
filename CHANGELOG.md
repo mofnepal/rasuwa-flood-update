@@ -29,6 +29,14 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   `reference/`.
 - The actions can be read as cards (each opening to its full wording) or as a table of
   number, action, responsible body and deadline — the same filters apply to both.
+- **The roadmap is a time axis** from the day the plan was issued to its last deadline:
+  each deadline is a mark on the line with the number of actions due in it, its name and
+  date beside it and the action numbers beneath; "immediately" and "promptly" sit at the
+  start, a dashed line marks today, and undated actions stand in a box apart. On a phone
+  the axis stands vertical. Selecting a mark narrows the list to those actions.
+- The note beneath the roadmap is only the source line and the line about unnamed
+  bodies; the chart headings read "विषय" / "By theme" and "जिम्मेवार निकाय" /
+  "By responsible body".
 - The section's introduction names the Ministry of Finance and the Hon. Finance Minister,
   Dr. Swarnim Wagle, under whom the plans are announced.
 - The section has its own share card, search entry, navigation entry and tests, and
