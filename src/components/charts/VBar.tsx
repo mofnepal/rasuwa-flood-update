@@ -21,6 +21,12 @@ export function VBar({
   // With less than about 60px a bar — nine districts on a phone — labels side by
   // side collide and the last runs off the screen, so they are slanted and shortened.
   const crowded = width > 0 && width / Math.max(1, data.length) < 60;
+  // A name wider than its bar's share of the chart — "Cash, voucher or online (60)"
+  // beside a second bar on a phone — wraps onto lines beneath its bar rather than
+  // running past the chart's edge, and keeps every word.
+  const slot = width > 0 ? (width - 84) / Math.max(1, data.length) - 8 : 0;
+  const wrapped =
+    !crowded && slot > 0 && Math.max(0, ...data.map((d) => d.name.length)) * 7.2 > slot;
   const format = (value: number) =>
     unit === 'npr'
       ? formatNPR(value, locale)
@@ -34,11 +40,11 @@ export function VBar({
         <CartesianGrid stroke={GRID} vertical={false} />
         <XAxis
           dataKey="name"
-          tick={{ ...AXIS_TICK, fontSize: crowded ? 11 : 12 }}
+          tick={{ ...AXIS_TICK, fontSize: crowded ? 11 : 12, ...(wrapped ? { width: slot } : {}) }}
           tickFormatter={(name: string) => (crowded ? shortenLabel(name, 14, locale) : name)}
           angle={crowded ? -40 : 0}
           textAnchor={crowded ? 'end' : 'middle'}
-          height={crowded ? 74 : 30}
+          height={crowded ? 74 : wrapped ? 48 : 30}
           axisLine={false}
           tickLine={false}
           interval={0}

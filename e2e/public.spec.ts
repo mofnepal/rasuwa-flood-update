@@ -167,7 +167,8 @@ test('the contributor register searches, filters and paginates', async ({ page }
 
   const search = register.locator('input[type=search]');
   await search.fill('Kumari');
-  await expect(register.locator('tbody tr').first()).toContainText('Kumari');
+  // Matching is by substring, so "Bramakumari" is found too; the bank must be among the hits.
+  await expect(register.locator('tbody tr', { hasText: 'Kumari Bank' })).toHaveCount(1);
 
   await search.fill('');
   await register.getByRole('tab', { name: /Individual/ }).click();

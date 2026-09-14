@@ -57,3 +57,20 @@ Fonepay,2026-09-11T00:00:00+05:45,cumulative,alipay,Alipay,Alipay,3924,20656242,
 Fonepay,2026-09-10,daily,alipay,Alipay,Alipay,110,312774,Fonepay day 2026-09-10
 Fonepay,2026-09-11T00:00:00+05:45,cumulative,ibft,IBFT,IBFT,3419,18867329,Fonepay till 2026-09-10
 Fonepay,2026-09-10,daily,ibft,IBFT,IBFT,8,83151,Fonepay day 2026-09-10
+NCHL,2026-09-14T00:00:00+05:45,cumulative,ips_cheque,IPS / Cheque Transfer,IPS / चेक ट्रान्सफर,2530,2356647561.08,NCHL
+NCHL,2026-09-14T00:00:00+05:45,cumulative,card_intl,Card – International,कार्ड – अन्तर्राष्ट्रिय,101257,1647141856.92,NCHL
+NCHL,2026-09-14T00:00:00+05:45,cumulative,online_transfer,Online Transfer,अनलाइन ट्रान्सफर,15250,791034299.55,NCHL
+NCHL,2026-09-14T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,116046,417203923.39,NCHL
+NCHL,2026-09-14T00:00:00+05:45,cumulative,remittance,Remittance,रेमिट्यान्स,27018,300386522.70,NCHL
+NCHL,2026-09-14T00:00:00+05:45,cumulative,intl_qr,Int'l QR,अन्तर्राष्ट्रिय QR,711,5763372.81,NCHL
+NCHL,2026-09-14T00:00:00+05:45,cumulative,card_domestic,Card – Domestic,कार्ड – घरेलु,455,3255831.77,NCHL
+Fonepay,2026-09-14T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,834479,2222392313,Fonepay till 2026-09-13
+Fonepay,2026-09-13,daily,domestic_qr,Domestic QR,घरेलु QR,694,5290438,Fonepay day 2026-09-13
+Fonepay,2026-09-14T00:00:00+05:45,cumulative,fonepay_bills,Fonepay Bills,फोनपे बिल्स,59701,185902559,Fonepay till 2026-09-13
+Fonepay,2026-09-13,daily,fonepay_bills,Fonepay Bills,फोनपे बिल्स,678,2886020,Fonepay day 2026-09-13
+Fonepay,2026-09-14T00:00:00+05:45,cumulative,npci,NPCI (India),NPCI (भारत),23607,58447063,Fonepay till 2026-09-13
+Fonepay,2026-09-13,daily,npci,NPCI (India),NPCI (भारत),86,567333,Fonepay day 2026-09-13
+Fonepay,2026-09-14T00:00:00+05:45,cumulative,alipay,Alipay,Alipay,4183,21356916,Fonepay till 2026-09-13
+Fonepay,2026-09-13,daily,alipay,Alipay,Alipay,48,154579,Fonepay day 2026-09-13
+Fonepay,2026-09-14T00:00:00+05:45,cumulative,ibft,IBFT,IBFT,3437,19150611,Fonepay till 2026-09-13
+Fonepay,2026-09-13,daily,ibft,IBFT,IBFT,6,44611,Fonepay day 2026-09-13

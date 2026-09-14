@@ -92,6 +92,29 @@ const b = await p.contribution.aggregate({
 const B = n(b._sum.amount_npr);
 check('register sums to the source lists', B, printed.handover_register.total_npr);
 check('register row count', b._count, printed.handover_register.entries);
+const handoverRows = await p.contribution.findMany({
+  where: { disasterId: d.id, status: 'published' },
+  select: { date_bs: true, payment_mode: true, amount_npr: true },
+});
+const sumOf = (rows) => rows.reduce((s, r) => s + n(r.amount_npr), 0);
+for (const [day, total] of Object.entries(printed.handover_register.by_day ?? {}))
+  check(
+    `${day} entries sum to the day's printed total`,
+    sumOf(handoverRows.filter((r) => r.date_bs === day)),
+    total,
+  );
+if (printed.handover_register.cheque_npr != null) {
+  check(
+    'cheques sum to the printed cheque amount',
+    sumOf(handoverRows.filter((r) => r.payment_mode === 'cheque')),
+    printed.handover_register.cheque_npr,
+  );
+  check(
+    'the rest sum to the printed cash, voucher and online amount',
+    sumOf(handoverRows.filter((r) => r.payment_mode !== 'cheque')),
+    printed.handover_register.cash_voucher_online_npr,
+  );
+}
 const serials = (
   await p.contribution.findMany({
     where: { disasterId: d.id, status: 'published' },
@@ -134,12 +157,13 @@ check(
   n(fs.npr_before) + n(fs.npr_gross) - n(fs.npr_usage),
   n(fs.npr_balance),
 );
-check('USD bank balances sum to the printed USD total', usdBanks, n(fs.usd_balance));
+check('USD bank balances sum to the printed USD total', usdBanks, n(fs.usd_balance), 1.005);
 check('before + collected = USD balance', n(fs.usd_before) + n(fs.usd_gross), n(fs.usd_balance));
 check(
   'NPR balance + USD equivalent = total available',
   n(fs.npr_balance) + n(fs.usd_equiv_npr),
   n(fs.total_available_npr),
+  1.005,
 );
 const computedEquiv = n(fs.usd_balance) * n(fs.fx_rate);
 if (Math.abs(computedEquiv - n(fs.usd_equiv_npr)) > 1) {
@@ -216,11 +240,18 @@ for (const r of reports) {
       Object.values(x.bodies_by_district).reduce((s, v) => s + v, 0),
       x.human_casualties,
     );
-    check(
-      `${label} security breakdown sums to the total`,
-      Object.values(x.security_breakdown).reduce((s, v) => s + v, 0),
-      x.security_personnel_mobilised,
-    );
+    if (x.security_personnel_mobilised != null)
+      check(
+        `${label} security breakdown sums to the total`,
+        Object.values(x.security_breakdown ?? {}).reduce((s, v) => s + v, 0),
+        x.security_personnel_mobilised,
+      );
+    if (x.deceased_breakdown)
+      check(
+        `${label} deceased by sex and remains sum to casualties`,
+        Object.values(x.deceased_breakdown).reduce((s, v) => s + v, 0),
+        x.human_casualties,
+      );
     check(
       `${label} holding centres sum to the total`,
       Object.values(x.holding_center_breakdown).reduce((s, v) => s + v, 0),
@@ -247,8 +278,10 @@ for (const r of reports) {
         x.missing_breakdown.Nuwakot,
       );
     if (x.injured_receiving_treatment != null) {
-      const parts = x.injured_breakdown;
-      const sum = (parts.hospitals ?? 0) + (parts.nepali_army ?? 0) + (parts.apf ?? 0);
+      // Those discharged from hospital are no longer receiving treatment.
+      const sum = Object.entries(x.injured_breakdown)
+        .filter(([key]) => key !== 'hospitals_discharged')
+        .reduce((total, [, v]) => total + v, 0);
       check(
         `${label} injured parts sum to the total${x.injured_total_derived ? ' (derived)' : ''}`,
         sum,

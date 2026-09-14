@@ -16,7 +16,11 @@ export const ndrrmaSchema = z.object({
   bodies_note_en: z.string().optional(),
   injured_note_ne: z.string().optional(),
   injured_note_en: z.string().optional(),
+  /// The deceased by sex and remains, where a report prints them.
+  deceased_breakdown: z.record(z.string(), z.number()).optional(),
   dead_body_handover: z.number(),
+  /// DNA samples collected, where NDRRMA reports them itself.
+  dna_samples: z.object({ deceased: z.number(), relatives: z.number() }).optional(),
   dna_note_ne: z.string().optional(),
   dna_note_en: z.string().optional(),
   missing_total_approx: z.number(),
@@ -44,9 +48,17 @@ export const ndrrmaSchema = z.object({
   /// agency printed. The page says so wherever it shows it.
   injured_total_derived: z.boolean().optional(),
   injured_breakdown: z.record(z.string(), z.number()),
-  security_personnel_mobilised: z.number(),
-  security_breakdown: z.record(z.string(), z.number()),
-  cash_support_npr: z.record(z.string(), z.number()),
+  /// Not every report carries the security deployment; when absent the portal
+  /// shows nothing rather than an older figure.
+  security_personnel_mobilised: z.number().optional(),
+  security_breakdown: z.record(z.string(), z.number()).optional(),
+  cash_support_npr: z.record(z.string(), z.number()).optional(),
+  /// Cash support described in words — the allowance for families outside the
+  /// holding centres — rather than as figures by district.
+  cash_support_note_ne: z.string().optional(),
+  cash_support_note_en: z.string().optional(),
+  /// Additional budget for search and rescue equipment, by agency.
+  additional_budget_npr: z.record(z.string(), z.number()).optional(),
   holding_center_people: z.number(),
   holding_centers_count: z.number().optional(),
   holding_center_breakdown: z.record(z.string(), z.number()),
@@ -138,6 +150,11 @@ const BREAKDOWN_LABELS: Record<string, { ne: string; en: string }> = {
   hospitals_discharged: { ne: 'अस्पतालबाट डिस्चार्ज', en: 'Discharged from hospital' },
   nepali_army: { ne: 'नेपाली सेनाद्वारा उपचार', en: 'Treated by the Nepali Army' },
   apf: { ne: 'सशस्त्र प्रहरीद्वारा उपचार', en: 'Treated by the Armed Police Force' },
+  security_agencies: { ne: 'सुरक्षा निकायहरूद्वारा उपचार', en: 'Treated by the security agencies' },
+  // the deceased
+  female: { ne: 'महिला', en: 'Female' },
+  male: { ne: 'पुरुष', en: 'Male' },
+  human_remains: { ne: 'मानव अवशेष', en: 'Human remains' },
   // security
   'Nepal Police': { ne: 'नेपाल प्रहरी', en: 'Nepal Police' },
   'Nepali Army': { ne: 'नेपाली सेना', en: 'Nepali Army' },

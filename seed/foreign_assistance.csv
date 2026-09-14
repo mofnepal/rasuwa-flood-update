@@ -1,3 +1,5 @@
-date_ad,date_bs,contributor,country,contributor_type,assistance_kind,channel,amount_usd,amount_npr_equiv_at_150.88,purpose,status
-2026-09-01,२०८३ भदौ १६,NVIDIA Corporation,USA,corporation,cash,PM Disaster Relief Fund (bank deposit),10000000,1508800000,Rasuwa flood relief & reconstruction,verified
-2026-08-30,२०८३ भदौ १४,Embassy of the People's Republic of China,China,government_embassy,cash_cheque,Handover to Hon. Finance Minister (USD cheque),200000,30176000,Rasuwa flood relief,verified
+date_ad,date_bs,contributor,country,contributor_type,assistance_kind,channel,amount_usd,amount_npr_equiv_at_150.88,purpose,status,channel_ne
+2026-09-01,२०८३ भदौ १६,NVIDIA Corporation,USA,corporation,cash,PM Disaster Relief Fund (bank deposit),10000000,1508800000,Rasuwa flood relief & reconstruction,verified,
+2026-08-30,२०८३ भदौ १४,Embassy of the People's Republic of China,China,government_embassy,cash_cheque,Handover to Hon. Finance Minister (USD cheque),200000,30176000,Rasuwa flood relief,verified,
+2026-09-07,२०८३ भदौ २२,The Ghyualsumdo Sewa Sanshta Inc.,,institutional,cash,Handover to Hon. Finance Minister (USD),15654,2361875.52,Rasuwa flood relief,verified,माननीय अर्थमन्त्रीज्यूलाई हस्तान्तरण (अमेरिकी डलर)
+2026-09-11,२०८३ भदौ २६,"Embassy of Sri Lanka to Nepal, Kathmandu",Sri Lanka,government_embassy,cash,Handover to Hon. Finance Minister (USD),1000000,152410000,Rasuwa flood relief,verified,माननीय अर्थमन्त्रीज्यूलाई हस्तान्तरण (अमेरिकी डलर)

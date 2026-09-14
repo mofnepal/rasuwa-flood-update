@@ -19,6 +19,10 @@ export function DistrictTable({ rows }: { rows: DistrictRow[] }) {
   const t = useTranslations('rescue');
   const count = (value: number) => formatNumber(value, locale);
 
+  // A column the report does not carry — electricity, or cash support by district
+  // — is left out rather than shown as a row of dashes.
+  const hasElectricity = rows.some((row) => row.electricity != null);
+  const hasCash = rows.some((row) => row.cash_support > 0);
   const columns: Column<DistrictRow>[] = [
     {
       key: 'district',
@@ -70,7 +74,10 @@ export function DistrictTable({ rows }: { rows: DistrictRow[] }) {
   return (
     <DataTable
       rows={rows}
-      columns={columns}
+      columns={columns.filter(
+        (column) =>
+          (column.key !== 'electricity' || hasElectricity) && (column.key !== 'cash' || hasCash),
+      )}
       rowKey={(row) => row.district}
       pageSize={20}
       csvName="rasuwa-flood-districts.csv"

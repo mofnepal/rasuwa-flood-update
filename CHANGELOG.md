@@ -4,6 +4,113 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — 14 September 2026: fund status 2083/05/28 5:00 PM, NCHL, Fonepay and NDRRMA report 11
+
+- **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/05/28
+  (13 September 2026), 5:00 PM**, at **NPR 152.59** per US dollar (from 152.41). It also
+  publishes the 2083/05/27 column, so the daily series now runs Bhadra 11–28 unbroken.
+  - NPR: 05/27 balance 9,976,409,456 (its nine bank lines sum exactly); 05/28 balance
+    **9,995,024,994**, collected since the flood 8,912,602,589; before + collected − the
+    NPR 1 billion transferred = balance on both days. Every bank is at or above its
+    previous figure on both days.
+  - USD: 05/27 23,438,847; 05/28 **23,441,854**, collected 22,855,806; before + collected
+    = balance on both days. The daily USD figures (154,770 and 3,007) equal the movement
+    in the balances exactly.
+  - Total available fund balance **NPR 13,572,017,563** = NPR balance + printed USD
+    equivalent, exactly.
+- Stated, not corrected: the 05/28 NPR bank lines sum to NPR 9,995,024,993, one rupee
+  below the printed total; the USD bank lines sum one dollar above the printed total on
+  both days; each printed NPR daily figure is one rupee off the movement in the balance
+  (294,054,432 against 294,054,431; 18,615,537 against 18,615,538), though the two
+  together equal the rise since the 05/26 5:00 PM statement exactly; and the printed USD
+  equivalent, NPR 3,576,992,569, is NPR 67.14 above USD 23,441,854 × 152.59.
+- **NCHL collection through its channels, 14 September 2026, 12:00 AM** — seven
+  channels, **NPR 5,521,433,368.22** across 263,267 transactions; the lines sum to the
+  printed total to the paisa, and every channel is at or above its 11 September figure
+  (+3,808 transactions, +NPR 420,992,314.50).
+- **Fonepay, till 13 September 2026** — five channels, **NPR 2,507,249,462** across
+  925,407 transactions, lines summing exactly; every channel at or above its 10 September
+  figure (+6,243 transactions, +NPR 37,798,870). The 13 September day is loaded too:
+  1,512 transactions, NPR 8,942,981, lines summing exactly.
+- **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, Situation Report 11,
+  13 September 2026, 7:00 PM**. Every total reconciles: bodies by district to 1,388, the
+  deceased by sex and remains (334 + 542 + 512) to the same 1,388, the Rasuwa breakdown
+  to 2,860, Nuwakot to 1,787, holding centres to 2,532, and missing to 5,130 after the
+  104 bodies handed over are deducted.
+  - casualties 1,385 → 1,388 · rescued 13,676 → 13,728 · at holding centres 3,685 at 37
+    → 2,532 at 33 · Army helicopter flights 1,407 → 1,516 (34 today), APF 299 → 320 ·
+    fuel: diesel 45,000 → 33,000 l, petrol 23,000 → 18,000 l, aviation 13,000 → 15,000 l,
+    gas cylinders 457 → 502.
+  - **New in this report and now shown:** DNA samples collected (1,286 from the deceased,
+    1,846 from relatives), the deceased by sex, the additional budget for search and
+    rescue equipment (Nepali Army NPR 90 million, Nepal Police 60 million, Armed Police
+    Force 60 million), and the monthly allowance for families outside the holding centres
+    (NPR 15,000 per family plus NPR 2,000 per further member, up to six months).
+  - **Omitted by this report:** the security personnel deployed, and cash support by
+    district. The schema now takes both as optional and the portal shows nothing for
+    them rather than repeating an older figure; where the security tile stood, the
+    DNA-samples figure is shown. Treatment by the security agencies is printed as one
+    figure (9,314) without the Army / APF split, so the derived injured total is
+    339 + 9,314 = 9,653 — those discharged are not counted, as before — and the note
+    beneath it says so.
+  - The Rasuwa missing detail is unchanged from 11 September (2,860 in the same seven
+    lines); the report labels the 587 as foreign nationals.
+- The grand total is **NPR 14,250,880,901.58** (online channels NPR 8,028,682,830.22 +
+  handovers NPR 2,734,630,633.82 + USD 22,855,806 × 152.59).
+
+### Data — handover list as of Bhadra 26, and fund status, 2083/05/26 5:00 PM
+
+- **The Fund Section's cumulative handover list as of Bhadra 26, 2083 (11 September 2026)** replaces the Bhadra 19 list and the Bhadra 24 collection sheet as the source
+  of the register. It is numbered 1–490 without a break, and every figure was checked
+  against its own Total sheet:
+  - all twelve days, Bhadra 11 to 26, tie to the paisa — institutional, personal,
+    US dollar, and cheque against cash, voucher and online;
+  - 483 rupee entries, **NPR 2,734,630,633.82** (cheques NPR 2,147,899,659.55; cash,
+    voucher and online NPR 586,730,974.27); every grouped cheque sums to its group total.
+- **New in the register:** Bhadra 22 (54 entries, NPR 228,763,390.30 — the serials the
+  page had reported as not yet supplied), Bhadra 25 (19, NPR 38,216,147) and Bhadra 26
+  (21 new rupee entries), Heifer Project International Nepal (Bhadra 18, NPR 10,000,000)
+  and Krishi Samagri Company (Bhadra 24, NPR 3,300,111 in two cheques).
+- **Corrected by the Fund Section, and followed:** Raji Rana NPR 10,900,000 →
+  10,980,000; Hamro Kosheli Bachat Tatha Rin Sahakari NPR 422,067 → 422,027; Yak
+  Brewing's NPR 1,500,000 moved from Bhadra 15 to Bhadra 26. Two contributor types now
+  follow the list (the Bhadra 24 sheet had none).
+- **Four serials carry no amount** — 28, 125, 128 and 350; each contribution is
+  re-listed under a later serial (333, 337, 474, 471), where it is counted once. The
+  register does not report them as a gap.
+- **Payment mode.** The list prints the cheque date of every cheque and none for cash,
+  voucher or online payments; that rule reproduces the printed split on every day. It
+  shows eight Bhadra 24 entries (NPR 23,037,313) had been recorded as cheques; they are
+  corrected. The portal's label for these now uses the Fund Section's own words —
+  "Cash, voucher or online" — instead of "Bank transfer".
+- **Two US-dollar contributions join foreign assistance:** the Embassy of Sri Lanka,
+  USD 1,000,000 (Bhadra 26), and The Ghyualsumdo Sewa Sanshta Inc., USD 15,654 (Bhadra
+  22), each stated at the rate of that day's fund statement (152.41 and 150.88). The
+  list does not state the latter's country, so none is shown. Identified foreign
+  contributions are now USD 11,215,654.
+- `pnpm verify` now checks every day's printed total and the printed cheque and
+  non-cheque amounts as well.
+- On a phone, a bar's name too long for its share of the chart — "Cash, voucher or
+  online (60)" — now wraps beneath its bar instead of running past the chart's edge.
+- The register search test looks for Kumari Bank among the hits for "Kumari": the new
+  entry "Bramakumari Rajyoga Sewa Kendra" also matches, and now sorts first.
+- **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/05/26,
+  5:00 PM**, at NPR 152.41 per US dollar; the 9:00 AM statement is kept.
+  - NPR: the nine bank balances sum to NPR 9,682,355,025; the pre-disaster
+    NPR 2,082,422,405 plus NPR 8,599,932,620 collected, less the NPR 1 billion
+    transferred to NDRRMA, gives that balance. Every bank is at or above its 9:00 AM
+    figure, and the 2083/05/25 column is identical to the morning's.
+  - USD: USD 586,048 before the flood plus USD 22,698,029 collected = USD 23,284,077.
+  - Total available fund balance NPR 13,231,081,267.
+- Stated, not corrected — each a one-unit rounding in the statement: its USD bank lines
+  sum to 23,284,078, one above the printed total; its daily figures differ by one from
+  the movement in the balances (NPR 355,572,790 against 355,572,789 printed, USD 1,474,633
+  against 1,474,634); and the NPR balance plus the printed USD equivalent is
+  NPR 13,231,081,268 against 13,231,081,267. The printed USD equivalent,
+  NPR 3,548,726,243, is NPR 67.43 above USD 23,284,077 × 152.41.
+- Foreign assistance (category C) is USD 22,698,029, of which USD 11,482,375 awaits
+  attribution. The grand total is **NPR 13,763,928,879.43**.
+
 ### Favicon and link previews
 
 - **The emblem of Nepal as the favicon** — `favicon.ico` (16, 32 and 48px), PNG icons at

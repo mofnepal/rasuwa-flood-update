@@ -531,12 +531,24 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               value={formatNumber(ndrrma.holding_center_people, locale)}
               foot={t('holdingSub')}
             />
-            <KpiTile
-              icon="security"
-              label={tr('security')}
-              value={formatNumber(ndrrma.security_personnel_mobilised, locale)}
-              foot={t('securitySub')}
-            />
+            {ndrrma.security_personnel_mobilised != null ? (
+              <KpiTile
+                icon="security"
+                label={tr('security')}
+                value={formatNumber(ndrrma.security_personnel_mobilised, locale)}
+                foot={t('securitySub')}
+              />
+            ) : ndrrma.dna_samples ? (
+              <KpiTile
+                icon="verified"
+                label={tr('dnaSamples')}
+                value={formatNumber(
+                  ndrrma.dna_samples.deceased + ndrrma.dna_samples.relatives,
+                  locale,
+                )}
+                foot={`${tr('dnaDeceased')} ${formatNumber(ndrrma.dna_samples.deceased, locale)} · ${tr('dnaRelatives')} ${formatNumber(ndrrma.dna_samples.relatives, locale)}`}
+              />
+            ) : null}
           </div>
           <div className="grid g2" style={{ marginTop: 16 }}>
             <div>
@@ -767,7 +779,8 @@ interface NdrrmaData {
   missing_total_approx: number;
   injured_receiving_treatment?: number;
   holding_center_people: number;
-  security_personnel_mobilised: number;
+  security_personnel_mobilised?: number;
+  dna_samples?: { deceased: number; relatives: number };
   dead_body_handover: number;
   bodies_by_district: Record<string, number>;
   missing_breakdown: Record<string, number>;

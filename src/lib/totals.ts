@@ -275,7 +275,8 @@ async function computeTotals(): Promise<PortalTotals | null> {
     .map((c) => c.sn)
     .filter((sn): sn is number => sn != null)
     .sort((a, b) => a - b);
-  // A serial that moved to foreign assistance is accounted for, not missing.
+  // A serial that moved to foreign assistance, or whose contribution the Fund Section
+  // re-listed under a later serial, is accounted for, not missing.
   const movedSetting = await prisma.setting.findUnique({
     where: { key: SETTING_KEYS.registerSerialsInForeign },
   });

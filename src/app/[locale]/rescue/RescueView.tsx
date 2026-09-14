@@ -102,7 +102,7 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
           ndrrma.missing_breakdown[`DAO ${district}`] ?? ndrrma.missing_breakdown[district] ?? 0,
         holding: ndrrma.holding_center_breakdown[district] ?? 0,
         electricity: ndrrma.electricity_restored_pct?.[district] ?? null,
-        cash_support: ndrrma.cash_support_npr[district] ?? 0,
+        cash_support: ndrrma.cash_support_npr?.[district] ?? 0,
       }))
     : [];
 
@@ -243,17 +243,29 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
                   )
                   .join(' · ')}
               />
-              <KpiTile
-                icon="security"
-                label={t('security')}
-                value={formatNumber(ndrrma.security_personnel_mobilised, locale)}
-                foot={Object.entries(ndrrma.security_breakdown)
-                  .map(
-                    ([key, value]) =>
-                      `${breakdownLabel(key, locale)} ${formatNumber(value, locale)}`,
-                  )
-                  .join(' · ')}
-              />
+              {ndrrma.security_personnel_mobilised != null ? (
+                <KpiTile
+                  icon="security"
+                  label={t('security')}
+                  value={formatNumber(ndrrma.security_personnel_mobilised, locale)}
+                  foot={Object.entries(ndrrma.security_breakdown ?? {})
+                    .map(
+                      ([key, value]) =>
+                        `${breakdownLabel(key, locale)} ${formatNumber(value, locale)}`,
+                    )
+                    .join(' · ')}
+                />
+              ) : ndrrma.dna_samples ? (
+                <KpiTile
+                  icon="verified"
+                  label={t('dnaSamples')}
+                  value={formatNumber(
+                    ndrrma.dna_samples.deceased + ndrrma.dna_samples.relatives,
+                    locale,
+                  )}
+                  foot={`${t('dnaDeceased')} ${formatNumber(ndrrma.dna_samples.deceased, locale)} · ${t('dnaRelatives')} ${formatNumber(ndrrma.dna_samples.relatives, locale)}`}
+                />
+              ) : null}
             </div>
           </Card>
 
@@ -345,6 +357,23 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
                     .join(' · ')}
                 </div>
               ) : null}
+              {ndrrma.deceased_breakdown ? (
+                <div>
+                  <b>{t('deceasedDetail')}</b>
+                  {Object.entries(ndrrma.deceased_breakdown)
+                    .map(
+                      ([key, value]) =>
+                        `${breakdownLabel(key, locale)} ${formatNumber(value, locale)}`,
+                    )
+                    .join(' · ')}
+                </div>
+              ) : null}
+              {ndrrma.dna_samples && ndrrma.security_personnel_mobilised != null ? (
+                <div>
+                  <b>{t('dnaSamples')}</b>
+                  {`${t('dnaDeceased')} ${formatNumber(ndrrma.dna_samples.deceased, locale)} · ${t('dnaRelatives')} ${formatNumber(ndrrma.dna_samples.relatives, locale)}`}
+                </div>
+              ) : null}
               {pick(locale, ndrrma.dna_note_ne, ndrrma.dna_note_en) ? (
                 <div>
                   <b>{t('dnaNote')}</b>
@@ -362,14 +391,34 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
                     .join(' · ')}
                 </div>
               ) : null}
-              <div>
-                <b>{t('cashSupport')}</b>
-                {Object.entries(ndrrma.cash_support_npr)
-                  .map(
-                    ([key, value]) => `${breakdownLabel(key, locale)} ${formatNPR(value, locale)}`,
-                  )
-                  .join(' · ')}
-              </div>
+              {ndrrma.cash_support_npr ? (
+                <div>
+                  <b>{t('cashSupport')}</b>
+                  {Object.entries(ndrrma.cash_support_npr)
+                    .map(
+                      ([key, value]) =>
+                        `${breakdownLabel(key, locale)} ${formatNPR(value, locale)}`,
+                    )
+                    .join(' · ')}
+                </div>
+              ) : null}
+              {pick(locale, ndrrma.cash_support_note_ne, ndrrma.cash_support_note_en) ? (
+                <div>
+                  <b>{t('cashSupportFamilies')}</b>
+                  {pick(locale, ndrrma.cash_support_note_ne, ndrrma.cash_support_note_en)}
+                </div>
+              ) : null}
+              {ndrrma.additional_budget_npr ? (
+                <div>
+                  <b>{t('additionalBudget')}</b>
+                  {Object.entries(ndrrma.additional_budget_npr)
+                    .map(
+                      ([key, value]) =>
+                        `${breakdownLabel(key, locale)} ${formatNPR(value, locale)}`,
+                    )
+                    .join(' · ')}
+                </div>
+              ) : null}
               {ndrrma.psychosocial_health_personnel != null ? (
                 <div>
                   <b>{t('psychosocial')}</b>

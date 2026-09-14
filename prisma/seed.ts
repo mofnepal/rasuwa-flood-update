@@ -163,15 +163,20 @@ async function main() {
 
   /* ---------- category B — handovers to the Hon. Finance Minister ---------- */
   // B is NPR only. A row marked category D in the source list is a foreign-currency
-  // cheque — the Embassy of China's USD 200,000 — and belongs to foreign assistance
-  // alone. Counting it here as well would double-count it.
+  // contribution — such as the Embassy of China's USD 200,000 cheque — and belongs to
+  // foreign assistance alone. Counting it here as well would double-count it.
+  // A row marked N carries no amount: the Fund Section re-listed that contribution
+  // under a later serial, where it is counted.
   const contributionRows = await readCsv('inperson_contributions.csv');
-  const handoverRows = contributionRows.filter((row) => !row.category?.startsWith('D'));
-  const movedToForeign = contributionRows.length - handoverRows.length;
+  const handoverRows = contributionRows.filter(
+    (row) => !row.category?.startsWith('D') && !row.category?.startsWith('N'),
+  );
+  const movedToForeign = contributionRows.filter((row) => row.category?.startsWith('D')).length;
+  const relisted = contributionRows.filter((row) => row.category?.startsWith('N')).length;
   // Their serials are recorded so the register does not report them as a gap in
-  // its numbering — they are not missing, they are counted under category D.
+  // its numbering — they are not missing, they are counted elsewhere.
   const serialsInForeign = contributionRows
-    .filter((row) => row.category?.startsWith('D'))
+    .filter((row) => row.category?.startsWith('D') || row.category?.startsWith('N'))
     .map((row) => Number(row.sn))
     .filter((sn) => Number.isFinite(sn));
 
@@ -200,8 +205,9 @@ async function main() {
   console.log(
     `  contributions (category B): ${contributions.length}` +
       (movedToForeign
-        ? ` · ${movedToForeign} USD cheque(s) listed under foreign assistance instead`
-        : ''),
+        ? ` · ${movedToForeign} USD contribution(s) listed under foreign assistance instead`
+        : '') +
+      (relisted ? ` · ${relisted} serial(s) without an amount, re-listed later` : ''),
   );
 
   /* ---------- category A — NCHL / Fonepay channel snapshots ---------- */
@@ -336,8 +342,9 @@ async function main() {
   const countryNe: Record<string, string> = {
     USA: 'संयुक्त राज्य अमेरिका',
     China: 'चीन',
+    'Sri Lanka': 'श्रीलङ्का',
   };
-  const countryIso: Record<string, string> = { USA: 'US', China: 'CN' };
+  const countryIso: Record<string, string> = { USA: 'US', China: 'CN', 'Sri Lanka': 'LK' };
   const nvidiaPhoto = await attach('reference/nvidia-usd-10m-contribution.jpeg', publisherId);
   for (const row of foreignRows) {
     const featured = row.contributor!.startsWith('NVIDIA');
@@ -355,16 +362,18 @@ async function main() {
         date_ad: npt(row.date_ad!),
         date_bs: row.date_bs!,
         contributor: row.contributor!,
-        country_en: row.country!,
-        country_ne: countryNe[row.country!] ?? row.country!,
-        country_iso2: countryIso[row.country!] ?? null,
+        // A contributor whose country the source list does not state is left blank.
+        country_en: row.country || null,
+        country_ne: row.country ? (countryNe[row.country] ?? row.country) : null,
+        country_iso2: row.country ? (countryIso[row.country] ?? null) : null,
         contributor_type: row.contributor_type as ContributorType,
         kind: row.assistance_kind as AssistanceKind,
         channel: row.channel!,
         channel_ne:
-          row.assistance_kind === 'cash_cheque'
+          row.channel_ne ||
+          (row.assistance_kind === 'cash_cheque'
             ? 'माननीय अर्थमन्त्रीज्यूलाई हस्तान्तरण (अमेरिकी डलर चेक)'
-            : 'प्रधानमन्त्री दैवी प्रकोप उद्धार कोष (बैंक जम्मा)',
+            : 'प्रधानमन्त्री दैवी प्रकोप उद्धार कोष (बैंक जम्मा)'),
         amount_usd: row.amount_usd!,
         amount_npr_equiv: nprEquivalent,
         // A record is stated at the rate its own published rupee equivalent was
