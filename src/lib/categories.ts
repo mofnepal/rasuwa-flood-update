@@ -51,7 +51,7 @@ export const CONTRIBUTION_CATEGORIES: readonly ContributionCategory[] = [
     description_ne:
       'विदेशी सरकार, दूतावास, कम्पनी तथा दातृ निकायबाट प्राप्त, नाम र मितिसहित प्रमाणित सहयोग (हस्तान्तरण गरिएका USD चेक समेत) — वर्ग ग भित्रै समावेश, थप गरिँदैन।',
     description_en:
-      'Verified, named contributions from foreign governments, embassies, corporations and donors, including USD cheques handed over to the Hon. Finance Minister — already inside C, not added again.',
+      'Verified, named contributions from foreign governments, embassies, corporations and development partners, including USD cheques handed over to the Hon. Finance Minister — already inside C, not added again.',
   },
 ];
 

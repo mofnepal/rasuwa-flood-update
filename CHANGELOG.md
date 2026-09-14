@@ -21,6 +21,11 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ### Fixed
 
+- **Wording.** "Average online gift" is now "Average online contribution", and the
+  charity vocabulary is gone with it: "donors" and "donor agencies" read "contributors"
+  and "development partners", the search box asks for a contributor, and the
+  "Donation portal" label is "Payment portal", as the Nepali already said. In Nepali,
+  "दाता" is now "सहयोगदाता" throughout.
 - **The "(N hours ago)" note is gone** from the ticker, in both languages. The line
   already states the update's date and time, and the live Nepal-time clock beside it
   makes the age plain without a second, rounded figure.
