@@ -49,7 +49,7 @@ export const CONTRIBUTION_CATEGORIES: readonly ContributionCategory[] = [
     name_ne: 'वैदेशिक सहयोग — नामसहित पहिचान (USD)',
     name_en: 'Foreign assistance — identified contributors (USD)',
     description_ne:
-      'विदेशी सरकार, दूतावास, कम्पनी तथा दातृ निकायबाट प्राप्त, नाम र मितिसहित प्रमाणित सहयोग (हस्तान्तरण गरिएका USD चेक समेत) — वर्ग ग भित्रै समावेश, थप गरिँदैन।',
+      'विदेशी सरकार, दूतावास, कम्पनी तथा विकास साझेदारबाट प्राप्त, नाम र मितिसहित प्रमाणित सहयोग (हस्तान्तरण गरिएका USD चेक समेत) — वर्ग ग भित्रै समावेश, थप गरिँदैन।',
     description_en:
       'Verified, named contributions from foreign governments, embassies, corporations and development partners, including USD cheques handed over to the Hon. Finance Minister — already inside C, not added again.',
   },

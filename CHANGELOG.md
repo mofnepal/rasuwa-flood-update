@@ -26,6 +26,9 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   and "development partners", the search box asks for a contributor, and the
   "Donation portal" label is "Payment portal", as the Nepali already said. In Nepali,
   "दाता" is now "सहयोगदाता" throughout.
+  The contact group "International donors & agencies" and the summary of the cabinet
+  decision say "development partners". The ministry's single-window notice on the
+  contact page is its own published text and is left word for word.
 - **The "(N hours ago)" note is gone** from the ticker, in both languages. The line
   already states the update's date and time, and the live Nepal-time clock beside it
   makes the age plain without a second, rounded figure.

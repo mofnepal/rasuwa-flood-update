@@ -9,8 +9,8 @@
    "kind": "notice",
    "title_ne": "रसुवा बाढी राहत संकलन एकद्वार प्रणाली सञ्चालनमा",
    "title_en": "Single-window system for Rasuwa flood relief collection",
-   "summary_ne": "प्रधानमन्त्री दैवीप्रकोप उद्धार कोषमा नगद राहत तथा जिन्सी सहयोग गर्न चाहने परोपकारी व्यक्ति, निजी क्षेत्र, दातृ निकाय र अन्तर्राष्ट्रिय संघ संस्थालाई राहत संकलनको लागि एकद्वार प्रणाली अर्थ मन्त्रालय मार्फत सञ्चालन।",
-   "summary_en": "Individuals, private sector, donor agencies and international organisations wishing to contribute cash or in-kind relief to the PM Disaster Relief Fund coordinate through a single window at the Ministry of Finance.",
+   "summary_ne": "प्रधानमन्त्री दैवीप्रकोप उद्धार कोषमा नगद राहत तथा जिन्सी सहयोग गर्न चाहने व्यक्ति, निजी क्षेत्र, विकास साझेदार र अन्तर्राष्ट्रिय संघ संस्थालाई राहत संकलनको लागि एकद्वार प्रणाली अर्थ मन्त्रालय मार्फत सञ्चालन।",
+   "summary_en": "Individuals, the private sector, development partners and international organisations wishing to contribute cash or in-kind relief to the PM Disaster Relief Fund coordinate through a single window at the Ministry of Finance.",
    "original_file": "reference/mof-single-window-notice.jpeg"
   },
   {
@@ -252,8 +252,8 @@
  ],
  "contacts": [
   {
-   "group_ne": "अन्तर्राष्ट्रिय दातृ निकाय तथा संघ संस्था",
-   "group_en": "International donors & agencies",
+   "group_ne": "अन्तर्राष्ट्रिय विकास साझेदार तथा संघ संस्था",
+   "group_en": "International development partners & agencies",
    "title_ne": "सहसचिव",
    "title_en": "Joint Secretary",
    "name_ne": "अमृत लम्साल",
