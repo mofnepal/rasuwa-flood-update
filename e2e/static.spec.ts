@@ -17,13 +17,13 @@ const PAGES = [
 ] as const;
 
 /**
- * Opens a page and waits until React has taken it over — the "(3 h ago)" note is
+ * Opens a page and waits until React has taken it over — the Nepal-time clock is
  * only rendered in the browser. Waiting for `load` instead would wait on the live
  * NDRRMA embed, a third-party page that can take most of a minute.
  */
 async function open(page: Page, path: string) {
   const response = await page.goto(path, { waitUntil: 'domcontentloaded' });
-  await page.locator('.ticker .ago').waitFor();
+  await page.locator('.ticker .clock').waitFor();
   return response;
 }
 

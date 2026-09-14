@@ -6,6 +6,9 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ### Fixed
 
+- **The "(N hours ago)" note is gone** from the ticker, in both languages. The line
+  already states the update's date and time, and the live Nepal-time clock beside it
+  makes the age plain without a second, rounded figure.
 - **Phone menu.** The drawer opened underneath the header, so its first two entries —
   Home and Contributions (प्राप्त सहयोग) — were hidden behind the white header bar. The
   drawer now begins where the header ends, measured when it opens and again on resize.

@@ -276,11 +276,6 @@ nav.main a.on:hover {
   padding-bottom: 6px;
   flex-wrap: wrap;
 }
-.ticker .ago {
-  font-style: normal;
-  color: var(--ok);
-  font-weight: 600;
-}
 .srcs .tbl td {
   font-size: 12px;
 }
@@ -3450,13 +3445,6 @@ main {
 .total b {
   white-space: normal;
   overflow: visible;
-}
-
-/* The "N hours ago" note sat at 4.04:1 against the ticker's surface — below AA
-   for text this size. Ink is already in the palette and reads clearly. */
-.ticker .ago {
-  color: var(--ink);
-  font-weight: 700;
 }
 
 /* Charts load after the page has painted; the placeholder holds their space so
