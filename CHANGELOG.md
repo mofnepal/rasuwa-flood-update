@@ -4,6 +4,21 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — handover list as of Bhadra 28, 2083
+
+- **The Fund Section's cumulative handover list as of Bhadra 28 (13 September 2026)**
+  replaces the Bhadra 26 list. Every one of its thirteen days ties to its Total sheet to
+  the paisa; institutional, personal, cheque and cash/voucher/online totals all tie.
+  Register: **485 rupee entries, NPR 2,737,630,633.82** (cheques NPR 2,150,899,659.55).
+- **Two entries for Bhadra 28**, both cheques: Vikash Man Shrestha NPR 1,000,000 and
+  Vikasananda Foundation Vishwo Pariwar NPR 2,000,000. The Total sheet records them as
+  one personal and one institutional contribution, and the register follows it.
+- **Corrected by the Fund Section, and followed:** serial 404 (Bhadra 24, NPR 422,027) is
+  now named Nandalal Smriti Pratisthan, not Hamro Kosheli Bachat Tatha Rin Sahakari.
+- Serials 493–600 in the list are pre-numbered empty rows, not entries; the register ends
+  at 492 and reports no gap. Rows 1–490 are otherwise identical to the Bhadra 26 list.
+- The grand total is **NPR 14,253,982,984.29**.
+
 ### Fixed
 
 - **The "(N hours ago)" note is gone** from the ticker, in both languages. The line

@@ -27,8 +27,8 @@ const text = async (path) => {
 console.log('\nFigures');
 const neHome = await text('/ne');
 const enHome = await text('/en');
-check(neHome.includes('रु. १४,२५,०९,८२,९८४'), 'grand total, Nepali', 'रु. १४,२५,०९,८२,९८४');
-check(enHome.includes('NPR 14,25,09,82,984'), 'grand total, English', 'NPR 14,25,09,82,984');
+check(neHome.includes('रु. १४,२५,३९,८२,९८४'), 'grand total, Nepali', 'रु. १४,२५,३९,८२,९८४');
+check(enHome.includes('NPR 14,25,39,82,984'), 'grand total, English', 'NPR 14,25,39,82,984');
 check(enHome.includes('13,58,15,24,783'), 'available fund balance 13,581,524,783');
 
 const enForeign = await text('/en/foreign');
@@ -37,8 +37,8 @@ check(enForeign.includes('USD 11,215,654'), 'identified USD 11,215,654');
 check(enForeign.includes('USD 11,640,821'), 'awaiting attribution USD 11,640,821');
 
 const enContrib = await text('/en/contributions');
-check(enContrib.includes('NPR 2,73,46,30,634'), 'handovers NPR 2,734,630,633.82');
-check(/483 entries/.test(enContrib), 'handover register is 483 entries');
+check(enContrib.includes('NPR 2,73,76,30,634'), 'handovers NPR 2,737,630,633.82');
+check(/485 entries/.test(enContrib), 'handover register is 485 entries');
 
 // ── 2. forbidden strings ───────────────────────────────────────────────────
 console.log('\nForbidden text');
