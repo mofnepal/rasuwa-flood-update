@@ -21,6 +21,13 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ### Fixed
 
+- **Share cards (link previews).** The Nepali card showed broken letters — the
+  on-request renderer cannot shape Devanagari conjuncts, so "मन्त्रालय" and "प्राप्त"
+  came apart — and the card said too little. The static build now photographs each
+  card in Chromium from an HTML rendering that uses the portal's own font, so every
+  conjunct is correct; the card carries the emblem, the ministry, the page title, the
+  headline figure with its label, the time of the latest update and the site address.
+  The ministry's server still draws cards on request with the old renderer.
 - **Sources line.** "Sources: Ministry of Finance · Nepal Rastra Bank · NCHL · Fonepay ·
   NDRRMA · Nepal Police" now sits at the foot of every page, in the copyright row, rather
   than in the LIVE ticker; Nepal Rastra Bank, through which the fund statements arrive,

@@ -9,7 +9,7 @@
  * middleware, the message form), so the build runs on a temporary copy with
  * those removed. The repository itself is never modified.
  */
-import { spawnSync } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { cp, mkdtemp, readFile, readdir, rm, symlink, writeFile } from 'node:fs/promises';
 import os from 'node:os';
@@ -88,6 +88,7 @@ try {
   if (build.status !== 0) fail('next build failed');
 
   const out = path.join(work, 'out');
+  await renderShareCards(work, out);
   await finish(out);
   await check(out);
 
@@ -116,6 +117,65 @@ async function renderAtBuildTime(appDirectory) {
   }
   if (changed === 0) fail('found no per-request routes to render at build time');
   console.log(`rendering ${changed} per-request routes once, at build time`);
+}
+
+/**
+ * Photographs each share card in Chromium and writes it over the one the export
+ * drew: the on-request renderer cannot shape Devanagari conjuncts, so "मन्त्रालय"
+ * and "प्राप्त" came out broken in the Nepali cards. The HTML cards under
+ * `share/` exist only to be photographed and are removed afterwards.
+ */
+async function renderShareCards(work, out) {
+  const shareDirectory = path.join(out, 'share');
+  const names = (await readdir(shareDirectory, { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
+  if (names.length === 0) fail('the export has no share cards to photograph');
+
+  let chromium;
+  try {
+    ({ chromium } = await import('@playwright/test'));
+  } catch {
+    fail('Playwright is needed to draw the share cards: pnpm exec playwright install chromium');
+  }
+
+  const port = 3400 + Math.floor(Math.random() * 400);
+  const origin = `http://localhost:${port}`;
+  const server = spawn(
+    process.execPath,
+    [path.join(root, 'scripts', 'serve-static.mjs'), '--port', String(port)],
+    { cwd: work, env: { ...process.env, NEXT_PUBLIC_BASE_PATH: basePath }, stdio: 'ignore' },
+  );
+  try {
+    for (let attempt = 0; ; attempt++) {
+      if (
+        await fetch(`${origin}${basePath}/ne/`).then(
+          (r) => r.ok,
+          () => false,
+        )
+      )
+        break;
+      if (attempt > 100) fail('the static server did not start for the share cards');
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+    const browser = await chromium.launch();
+    const page = await browser.newPage({
+      viewport: { width: 1200, height: 630 },
+      deviceScaleFactor: 1,
+    });
+    for (const name of names) {
+      await page.goto(`${origin}${basePath}/share/${name}/`, { waitUntil: 'networkidle' });
+      await page.evaluate(() => document.fonts.ready);
+      const card = page.locator('#card');
+      if ((await card.count()) !== 1) fail(`share card ${name} did not render`);
+      await card.screenshot({ path: path.join(out, 'og', `${name}.png`), type: 'png' });
+    }
+    await browser.close();
+  } finally {
+    server.kill();
+  }
+  await rm(shareDirectory, { recursive: true, force: true });
+  console.log(`✓ ${names.length} share cards photographed in Chromium`);
 }
 
 /** The files GitHub Pages needs around the exported pages. */

@@ -2,47 +2,37 @@ import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { getTotals } from '@/lib/totals';
-import { prisma } from '@/lib/db';
-import { formatNPR, formatNumber, formatUSD, type Locale } from '@/lib/format';
+import type { Locale } from '@/lib/format';
 import { PALETTE, SITE_URL, STATIC_EXPORT } from '@/lib/constants';
+import { CARD_SIZE, CARD_TITLES, cardHeadline, parseCardName } from '@/lib/share-card';
 
 export const runtime = 'nodejs';
 // Built per request on the ministry's server. The static edition writes each file
 // once at build time instead: scripts/build-static.mjs removes this line from its copy.
 export const dynamic = 'force-dynamic';
 
-const SIZE = { width: 1200, height: 630 };
-
-const TITLES: Record<string, { ne: string; en: string }> = {
-  home: { ne: 'रसुवा–भोटेकोशी बाढी अपडेट', en: 'Rasuwa–Bhotekoshi Flood Update' },
-  contributions: { ne: 'प्राप्त सहयोग', en: 'Contributions Received' },
-  foreign: { ne: 'वैदेशिक सहयोग', en: 'Foreign Assistance' },
-  rescue: { ne: 'उद्धार', en: 'Rescue' },
-  initiatives: { ne: 'सरकारबाट भएका पहल', en: 'Government Initiatives' },
-  contact: { ne: 'सम्पर्क', en: 'Contact' },
-};
-
 /** The static edition draws every card at build time: `home-ne.png`, `home-en.png`, … */
 export function generateStaticParams() {
   if (!STATIC_EXPORT) return [];
-  return Object.keys(TITLES).flatMap((key) =>
+  return Object.keys(CARD_TITLES).flatMap((key) =>
     ['ne', 'en'].map((locale) => ({ page: `${key}-${locale}.png` })),
   );
 }
 
 /**
- * One share card per page, carrying the emblem, the page title and the headline
- * figure — so a link shared on X, Facebook or WhatsApp shows the number itself.
- * Addressed as `/og/<page>-<ne|en>.png`; the server also accepts the older
- * `/og/<page>?lang=en`. Drawn on request there, and cached for 5 minutes.
+ * The share card drawn on request, for the ministry's server. Addressed as
+ * `/og/<page>-<ne|en>.png`; the server also accepts the older `/og/<page>?lang=en`.
+ * Cached for 5 minutes. The static edition overwrites these files with the same
+ * card photographed in Chromium (scripts/build-static.mjs), because this renderer
+ * does not shape Devanagari conjuncts.
  */
 export async function GET(request: Request, { params }: { params: Promise<{ page: string }> }) {
   const { page } = await params;
-  const [, key = 'home', named] = /^([a-z]+?)(?:-(ne|en))?(?:\.png)?$/.exec(page) ?? [];
-  const queried =
+  const { key, locale: named } = parseCardName(page);
+  const queried: Locale =
     !STATIC_EXPORT && new URL(request.url).searchParams.get('lang') === 'en' ? 'en' : 'ne';
-  const locale = (named ?? queried) as Locale;
-  const title = TITLES[key] ?? TITLES.home!;
+  const locale = named ?? queried;
+  const title = CARD_TITLES[key] ?? CARD_TITLES.home!;
 
   const [totals, mukta, emblem] = await Promise.all([
     getTotals(),
@@ -52,7 +42,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ page
     readFile(path.join(process.cwd(), 'public', 'img', 'emblem.png')),
   ]);
 
-  const headline = await headlineFor(key, totals, locale);
+  const headline = await cardHeadline(key, totals, locale);
 
   return new ImageResponse(
     (
@@ -119,66 +109,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ page
       </div>
     ),
     {
-      ...SIZE,
+      ...CARD_SIZE,
       fonts: [{ name: 'Mukta', data: mukta, weight: 800, style: 'normal' }],
       headers: { 'Cache-Control': 'public, max-age=300, s-maxage=300' },
     },
   );
-}
-
-/** The one figure that matters on each page. */
-async function headlineFor(
-  key: string,
-  totals: Awaited<ReturnType<typeof getTotals>>,
-  locale: Locale,
-): Promise<{ label: string; value: string }> {
-  const t = (ne: string, en: string) => (locale === 'ne' ? ne : en);
-  if (!totals) return { label: t('अद्यावधिक', 'Update'), value: '—' };
-
-  switch (key) {
-    case 'foreign':
-      return {
-        label: t('कुल वैदेशिक सहयोग', 'Total foreign assistance'),
-        value: formatUSD(totals.foreign.total_usd, locale),
-      };
-    case 'contributions':
-      return {
-        label: t('कुल प्राप्त सहयोग', 'Total contributions received'),
-        value: formatNPR(totals.grand_total_npr, locale),
-      };
-    case 'rescue': {
-      const report = await prisma.rescueReport.findFirst({
-        where: { disasterId: totals.disasterId, status: 'published', agency: 'NDRRMA' },
-        orderBy: { report_at: 'desc' },
-      });
-      const rescued =
-        (report?.data as { rescued_till_date?: number } | null)?.rescued_till_date ?? 0;
-      return {
-        label: t('उद्धार गरिएका', 'Rescued'),
-        value: formatNumber(rescued, locale),
-      };
-    }
-    case 'initiatives': {
-      const measures = await prisma.measure.count({
-        where: {
-          status: 'published',
-          decision: { disasterId: totals.disasterId, status: 'published' },
-        },
-      });
-      return {
-        label: t('लागू राहत व्यवस्था', 'Relief measures in force'),
-        value: formatNumber(measures, locale),
-      };
-    }
-    case 'contact':
-      return {
-        label: t('एकद्वार प्रणाली', 'Single-window system'),
-        value: t('सम्पर्क विवरण', 'Contact details'),
-      };
-    default:
-      return {
-        label: t('कुल प्राप्त सहयोग', 'Total contributions received'),
-        value: formatNPR(totals.grand_total_npr, locale),
-      };
-  }
 }

@@ -69,9 +69,10 @@ jobs:
       - name: Every figure ties to its source document
         run: pnpm verify
 
+      # Chromium draws the share cards during the build, and runs the checks after it.
+      - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm build:static
 
-      - run: pnpm exec playwright install --with-deps chromium
       - name: End-to-end checks against the built site
         run: pnpm e2e:static
       - uses: actions/upload-artifact@v4
