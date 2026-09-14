@@ -347,6 +347,9 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
                         `${breakdownLabel(key, locale)} ${formatNumber(value, locale)}`,
                     )
                     .join(' · ')}
+                  {pick(locale, ndrrma.deceased_note_ne, ndrrma.deceased_note_en) ? (
+                    <> — {pick(locale, ndrrma.deceased_note_ne, ndrrma.deceased_note_en)}</>
+                  ) : null}
                 </div>
               ) : null}
               {ndrrma.dna_samples && ndrrma.security_personnel_mobilised != null ? (

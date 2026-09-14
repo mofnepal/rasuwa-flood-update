@@ -18,6 +18,10 @@ export const ndrrmaSchema = z.object({
   injured_note_en: z.string().optional(),
   /// The deceased by sex and remains, where a report prints them.
   deceased_breakdown: z.record(z.string(), z.number()).optional(),
+  /// Where the detail does not sum to the report's own total, the report is shown
+  /// as printed and this note says so.
+  deceased_note_ne: z.string().optional(),
+  deceased_note_en: z.string().optional(),
   dead_body_handover: z.number(),
   /// DNA samples collected, where NDRRMA reports them itself.
   dna_samples: z.object({ deceased: z.number(), relatives: z.number() }).optional(),

@@ -246,12 +246,17 @@ for (const r of reports) {
         Object.values(x.security_breakdown ?? {}).reduce((s, v) => s + v, 0),
         x.security_personnel_mobilised,
       );
-    if (x.deceased_breakdown)
-      check(
-        `${label} deceased by sex and remains sum to casualties`,
-        Object.values(x.deceased_breakdown).reduce((s, v) => s + v, 0),
-        x.human_casualties,
-      );
+    if (x.deceased_breakdown) {
+      const detail = Object.values(x.deceased_breakdown).reduce((s, v) => s + v, 0);
+      // A report whose own detail does not reach its total is loaded as printed,
+      // with a note on the page; that note is required here in place of the tie.
+      if (detail !== x.human_casualties && x.deceased_note_en)
+        note(
+          `${label}: the deceased detail sums to ${detail}, ${x.human_casualties - detail} fewer than the report's own total of ${x.human_casualties}; shown as printed, with a note`,
+        );
+      else
+        check(`${label} deceased by sex and remains sum to casualties`, detail, x.human_casualties);
+    }
     check(
       `${label} holding centres sum to the total`,
       Object.values(x.holding_center_breakdown).reduce((s, v) => s + v, 0),

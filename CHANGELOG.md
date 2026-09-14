@@ -4,6 +4,21 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — NDRRMA update, 14 September 2026, 7:00 PM
+
+- **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 14 September 2026,
+  7:00 PM** (Bhadra 29). Bodies by district sum to **1,395**; missing 5,130 (unchanged,
+  every breakdown as before); holding centres 1,499 + 825 + 94 = **2,418** at 33 centres;
+  rescued **13,737**; Army helicopter flights 1,531 (15 today), APF 320; DNA samples 1,286
+  from the deceased and 1,853 from relatives; fuel diesel 47,000 l, petrol 16,000 l,
+  aviation 11,000 l, 502 gas cylinders.
+  - Treatment: 341 in hospital, 278 discharged, 9,358 by the security agencies; the
+    derived injured total is 341 + 9,358 = 9,699, with the note saying so.
+- **Stated, not corrected:** the report's "Details of the deceased" (334 female, 542 male,
+  512 human remains) sums to 1,388 — the same three figures as the 13 September report —
+  seven fewer than its own total of 1,395 deaths. Both are shown as printed, with a note
+  beside the detail, and `pnpm verify` records the difference instead of a tie.
+
 ### Data — handover list as of Bhadra 28, 2083
 
 - **The Fund Section's cumulative handover list as of Bhadra 28 (13 September 2026)**
