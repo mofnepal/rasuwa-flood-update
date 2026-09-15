@@ -52,21 +52,58 @@ export function PlanDashboard({ plan, issuedAt }: { plan: ActionPlanData; issued
       : startMs + 86_400_000;
     const at = (ms: number) =>
       Math.min(100, Math.max(0, ((ms - startMs) / (endMs - startMs)) * 100));
-    const timeline = columns
-      .filter((entry) => entry.bucket.kind !== 'none')
-      .map((entry) => ({
-        ...entry,
-        left:
-          entry.bucket.kind === 'month_end'
-            ? at(deadlineDate(entry.actions[0]!.deadline)!.getTime())
-            : 0,
-      }));
+    const timeline = dated.map((entry) => ({
+      ...entry,
+      left: at(deadlineDate(entry.actions[0]!.deadline)!.getTime()),
+    }));
     return {
       timeline,
       undated: columns.find((entry) => entry.bucket.kind === 'none') ?? null,
       span: { startMs, endMs, at },
     };
   }, [columns, issuedAt]);
+
+  const atOnce = columns.filter(
+    (entry) => entry.bucket.kind === 'immediate' || entry.bucket.kind === 'prompt',
+  );
+
+  const renderNums = (actions: PlanAction[]) => (
+    <div className="nums">
+      {actions.map((action) => (
+        <a
+          key={action.no}
+          href={`#action-${action.no}`}
+          className={`num${open === action.no ? ' on' : ''}`}
+          title={locale === 'ne' ? action.title_ne : action.title_en}
+          onClick={() => setOpen(action.no)}
+        >
+          {formatNumber(action.no, locale)}
+        </a>
+      ))}
+    </div>
+  );
+
+  // The boxes either side of the axis: what is due at once, and what carries no date.
+  const renderBox = (entry: { bucket: { key: string }; actions: PlanAction[] }, tone: string) => {
+    const on = deadline === entry.bucket.key;
+    const sample = entry.actions[0]!.deadline;
+    return (
+      <div key={entry.bucket.key} className={`col boxed ${tone}${on ? ' on' : ''}`}>
+        <button
+          type="button"
+          className="head"
+          aria-pressed={on}
+          onClick={() => setDeadline(on ? '' : entry.bucket.key)}
+          title={t('roadmapPick')}
+        >
+          <em>{formatNumber(entry.actions.length, locale)}</em>
+          <b>{deadlineLabel(sample, locale)}</b>
+          <span>{tone === 'undated' ? t('undatedSub') : t('fromIssue')}</span>
+        </button>
+        {renderNums(entry.actions)}
+      </div>
+    );
+  };
 
   // Today's mark is placed in the browser, on Nepal's calendar day.
   const [today, setToday] = useState<number | null>(null);
@@ -114,15 +151,18 @@ export function PlanDashboard({ plan, issuedAt }: { plan: ActionPlanData; issued
 
   return (
     <>
-      {/* ── roadmap: a time axis from the day the plan was issued to its last deadline ── */}
-      <div className={`roadmap${undated ? ' has-undated' : ''}`}>
+      {/* ── roadmap: "at once" boxes, a time axis of dated deadlines, an undated box ── */}
+      <div className={`roadmap${atOnce.length ? ' has-lead' : ''}${undated ? ' has-undated' : ''}`}>
+        {atOnce.length ? (
+          <div className="side lead">{atOnce.map((entry) => renderBox(entry, 'now'))}</div>
+        ) : null}
         <div className="axis" role="list">
           <div className="line" aria-hidden="true" />
-          <div className="issued" style={{ left: 0 }}>
+          <div className="issued" aria-hidden="true">
             <i />
-            <span>
-              {t('issued')} · {bsDate(issuedAt, null, locale)}
-            </span>
+          </div>
+          <div className="issuedlabel">
+            {t('issued')} · {bsDate(issuedAt, null, locale)}
           </div>
           {today != null ? (
             <div className="today" style={{ left: `${today}%` }} aria-hidden="true">
@@ -131,13 +171,13 @@ export function PlanDashboard({ plan, issuedAt }: { plan: ActionPlanData; issued
           ) : null}
           {timeline.map(({ bucket, actions, left }, index) => {
             const sample = actions[0]!.deadline;
-            const date = bucket.kind === 'month_end' ? deadlineDate(sample) : null;
+            const date = deadlineDate(sample);
             const on = deadline === bucket.key;
             return (
               <div
                 key={bucket.key}
                 role="listitem"
-                className={`col${on ? ' on' : ''}${bucket.kind !== 'month_end' ? ' now' : ''}${index % 2 ? ' below' : ''}`}
+                className={`col${on ? ' on' : ''}${index % 2 ? ' below' : ''}`}
                 style={{ left: `${left}%` }}
               >
                 <button
@@ -149,55 +189,14 @@ export function PlanDashboard({ plan, issuedAt }: { plan: ActionPlanData; issued
                 >
                   <em>{formatNumber(actions.length, locale)}</em>
                   <b>{deadlineLabel(sample, locale)}</b>
-                  <span>
-                    {date ? bsDate(date, null, locale, { separator: '\n' }) : t('fromIssue')}
-                  </span>
+                  <span>{date ? bsDate(date, null, locale, { separator: '\n' }) : ''}</span>
                 </button>
-                <div className="nums">
-                  {actions.map((action) => (
-                    <a
-                      key={action.no}
-                      href={`#action-${action.no}`}
-                      className={`num${open === action.no ? ' on' : ''}`}
-                      title={locale === 'ne' ? action.title_ne : action.title_en}
-                      onClick={() => setOpen(action.no)}
-                    >
-                      {formatNumber(action.no, locale)}
-                    </a>
-                  ))}
-                </div>
+                {renderNums(actions)}
               </div>
             );
           })}
         </div>
-        {undated ? (
-          <div className={`col undated${deadline === undated.bucket.key ? ' on' : ''}`}>
-            <button
-              type="button"
-              className="head"
-              aria-pressed={deadline === undated.bucket.key}
-              onClick={() => setDeadline(deadline === undated.bucket.key ? '' : undated.bucket.key)}
-              title={t('roadmapPick')}
-            >
-              <em>{formatNumber(undated.actions.length, locale)}</em>
-              <b>{deadlineLabel(undated.actions[0]!.deadline, locale)}</b>
-              <span>{t('undatedSub')}</span>
-            </button>
-            <div className="nums">
-              {undated.actions.map((action) => (
-                <a
-                  key={action.no}
-                  href={`#action-${action.no}`}
-                  className={`num${open === action.no ? ' on' : ''}`}
-                  title={locale === 'ne' ? action.title_ne : action.title_en}
-                  onClick={() => setOpen(action.no)}
-                >
-                  {formatNumber(action.no, locale)}
-                </a>
-              ))}
-            </div>
-          </div>
-        ) : null}
+        {undated ? <div className="side">{renderBox(undated, 'undated')}</div> : null}
       </div>
 
       {/* ── filters ─────────────────────────────────────────────────────── */}

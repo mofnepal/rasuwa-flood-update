@@ -3768,23 +3768,35 @@ main {
   color: var(--ink);
   margin: 0;
 }
-/* The roadmap: a time axis from the day the plan was issued to its last deadline. Each
-   deadline is a mark on the line — the count in the circle, the deadline's name and date
-   beside it, the action numbers beneath. Marks alternate above and below the line. */
+/* The roadmap: what is due at once in boxes on the left, a time axis of the dated
+   deadlines in the middle — each a mark on the line with its count, name and date, the
+   action numbers beneath, marks alternating above and below — and the undated actions
+   in a box on the right. */
 .roadmap {
   margin-bottom: 18px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 14px;
+  align-items: center;
+}
+.roadmap.has-lead {
+  grid-template-columns: 150px 1fr;
 }
 .roadmap.has-undated {
   grid-template-columns: 1fr 150px;
-  align-items: start;
+}
+.roadmap.has-lead.has-undated {
+  grid-template-columns: 150px 1fr 150px;
+}
+.roadmap .side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .roadmap .axis {
   position: relative;
-  height: 330px;
-  margin: 0 64px 0 24px;
+  height: 340px;
+  margin: 0 76px 0 76px;
 }
 .roadmap .line {
   position: absolute;
@@ -3794,42 +3806,45 @@ main {
   height: 4px;
   margin-top: -2px;
   border-radius: 2px;
-  background: linear-gradient(90deg, var(--red) 0, var(--navy) 18%, var(--navy) 100%);
+  background: var(--navy);
 }
 .roadmap .issued {
   position: absolute;
+  left: 0;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 .roadmap .issued i {
   display: block;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: #fff;
   border: 3px solid var(--red);
 }
-.roadmap .issued span {
+/* The issue date sits at the very bottom of the axis, under nothing else. */
+.roadmap .issuedlabel {
   position: absolute;
-  top: 100%;
-  left: 50%;
+  left: 0;
+  bottom: 0;
   transform: translateX(-50%);
-  margin-top: 96px;
   white-space: nowrap;
   font-size: 11px;
-  color: var(--mute);
-  font-weight: 600;
+  color: var(--red);
+  font-weight: 700;
 }
+/* Today stands at the very top, so it never meets a mark or the issue date. */
 .roadmap .today {
   position: absolute;
-  top: 26%;
-  bottom: 26%;
+  top: 16px;
+  bottom: 16px;
   border-left: 2px dashed var(--red);
   transform: translateX(-1px);
+  pointer-events: none;
 }
 .roadmap .today span {
   position: absolute;
-  top: -18px;
+  top: -16px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 11px;
@@ -3837,7 +3852,7 @@ main {
   color: var(--red);
   white-space: nowrap;
 }
-.roadmap .col {
+.roadmap .axis .col {
   position: absolute;
   top: 50%;
   width: 150px;
@@ -3846,12 +3861,12 @@ main {
   flex-direction: column;
   align-items: center;
 }
-.roadmap .col:not(.below) {
+.roadmap .axis .col:not(.below) {
   transform: translateY(-100%);
   flex-direction: column-reverse;
   padding-bottom: 6px;
 }
-.roadmap .col.below {
+.roadmap .axis .col.below {
   padding-top: 6px;
 }
 .roadmap .head {
@@ -3866,7 +3881,7 @@ main {
   cursor: pointer;
   text-align: center;
 }
-.roadmap .col:not(.below) .head {
+.roadmap .axis .col:not(.below) .head {
   flex-direction: column-reverse;
 }
 .roadmap .head em {
@@ -3883,17 +3898,11 @@ main {
   font-weight: 800;
   border: 3px solid #fff;
   box-shadow: 0 0 0 2px var(--navy);
-}
-.roadmap .col.now .head em {
-  background: var(--red);
-  box-shadow: 0 0 0 2px var(--red);
+  flex: none;
 }
 .roadmap .col.on .head em {
   background: #fff;
   color: var(--navy);
-}
-.roadmap .col.now.on .head em {
-  color: var(--red);
 }
 .roadmap .head b {
   font-size: 13px;
@@ -3901,7 +3910,7 @@ main {
   margin-top: 6px;
   white-space: nowrap;
 }
-.roadmap .col:not(.below) .head b {
+.roadmap .axis .col:not(.below) .head b {
   margin-top: 0;
   margin-bottom: 6px;
 }
@@ -3913,7 +3922,7 @@ main {
   /* The Nepali date on one line, the Gregorian on the next. */
   white-space: pre-line;
 }
-.roadmap .col:not(.below) .head span {
+.roadmap .axis .col:not(.below) .head span {
   order: 3;
 }
 .roadmap .nums {
@@ -3924,7 +3933,7 @@ main {
   margin-top: 6px;
   max-width: 150px;
 }
-.roadmap .col:not(.below) .nums {
+.roadmap .axis .col:not(.below) .nums {
   margin-top: 0;
   margin-bottom: 6px;
 }
@@ -3949,29 +3958,59 @@ main {
   border-color: var(--navy);
   color: #fff;
 }
-.roadmap .col.undated {
-  position: static;
-  width: auto;
-  margin: 0;
-  transform: none;
-  border: 1px dashed var(--bd);
+/* The boxes beside the axis. */
+.roadmap .col.boxed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--bd);
   border-radius: 10px;
   padding: 12px 10px;
   background: var(--sur);
 }
-.roadmap .col.undated .head em {
+.roadmap .col.boxed.now {
+  border-color: #f3c3ca;
+  background: #fff5f6;
+}
+.roadmap .col.boxed.now .head em {
+  background: var(--red);
+  box-shadow: 0 0 0 2px var(--red);
+}
+.roadmap .col.boxed.now.on .head em {
+  background: #fff;
+  color: var(--red);
+}
+.roadmap .col.boxed.undated {
+  border-style: dashed;
+}
+.roadmap .col.boxed.undated .head em {
   background: var(--mute);
   box-shadow: 0 0 0 2px var(--mute);
 }
-.roadmap .col.undated.on .head em {
+.roadmap .col.boxed.undated.on .head em {
   background: #fff;
   color: var(--mute);
 }
-/* On a phone the axis stands vertical: the line down the left, the marks in order. */
-@media (max-width: 720px) {
-  .roadmap.has-undated {
+.roadmap .col.boxed .head b {
+  white-space: normal;
+}
+/* Narrower screens: the boxes above and below the axis, the axis full width. */
+@media (max-width: 1080px) {
+  .roadmap.has-lead,
+  .roadmap.has-undated,
+  .roadmap.has-lead.has-undated {
     grid-template-columns: 1fr;
   }
+  .roadmap .side {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .roadmap .side .col.boxed {
+    flex: 1 1 200px;
+  }
+}
+/* On a phone the axis stands vertical: the line down the left, the marks in order. */
+@media (max-width: 720px) {
   .roadmap .axis {
     height: auto;
     margin: 0 0 0 8px;
@@ -3988,27 +4027,22 @@ main {
     width: 4px;
     height: auto;
     margin: 0;
-    background: linear-gradient(180deg, var(--red) 0, var(--navy) 18%, var(--navy) 100%);
   }
   .roadmap .issued {
-    position: static;
-    transform: none;
-    order: -2;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: -24px;
+    display: none;
   }
-  .roadmap .issued span {
+  .roadmap .issuedlabel {
     position: static;
     transform: none;
-    margin: 0;
+    white-space: normal;
+    order: -1;
+    margin-left: -22px;
   }
   .roadmap .today {
     display: none;
   }
-  .roadmap .col,
-  .roadmap .col:not(.below) {
+  .roadmap .axis .col,
+  .roadmap .axis .col:not(.below) {
     position: static;
     width: auto;
     margin: 0;
@@ -4020,8 +4054,8 @@ main {
     gap: 6px 10px;
   }
   /* The mark and its label share a row and may shrink; the numbers take the next row. */
-  .roadmap .head,
-  .roadmap .col:not(.below) .head {
+  .roadmap .axis .head,
+  .roadmap .axis .col:not(.below) .head {
     flex-direction: row;
     align-items: center;
     gap: 10px;
@@ -4030,7 +4064,7 @@ main {
     flex: 1 1 100%;
     min-width: 0;
   }
-  .roadmap .head b {
+  .roadmap .axis .head b {
     white-space: normal;
     overflow-wrap: anywhere;
   }
@@ -4039,25 +4073,16 @@ main {
     height: 34px;
     font-size: 15px;
   }
-  .roadmap .head b,
-  .roadmap .col:not(.below) .head b {
+  .roadmap .axis .head b,
+  .roadmap .axis .col:not(.below) .head b {
     margin: 0;
   }
-  .roadmap .head span {
-    display: block;
-  }
-  .roadmap .nums,
-  .roadmap .col:not(.below) .nums {
+  .roadmap .axis .nums,
+  .roadmap .axis .col:not(.below) .nums {
     flex: 1 1 100%;
     margin: 0 0 0 22px;
     justify-content: flex-start;
     max-width: none;
-  }
-  .roadmap .issued span {
-    white-space: normal;
-  }
-  .roadmap .col.undated {
-    margin-top: 6px;
   }
 }
 .planfilters .srch {
