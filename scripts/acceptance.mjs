@@ -33,8 +33,8 @@ check(enHome.includes('13,58,15,24,783'), 'available fund balance 13,581,524,783
 
 const enForeign = await text('/en/foreign');
 check(enForeign.includes('USD 22,856,475'), 'foreign total USD 22,856,475');
-check(enForeign.includes('USD 11,215,654'), 'identified USD 11,215,654');
-check(enForeign.includes('USD 11,640,821'), 'awaiting attribution USD 11,640,821');
+check(enForeign.includes('USD 11,215,654'), 'identified USD 11,215,654 (register tile)');
+check(enForeign.includes('USD 50,473,800'), 'OPMCM-stated international support USD 50,473,800');
 
 const enContrib = await text('/en/contributions');
 check(enContrib.includes('NPR 2,73,76,30,634'), 'handovers NPR 2,737,630,633.82');

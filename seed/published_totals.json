@@ -36,5 +36,10 @@
   "disbursements": {
     "transferred_npr": 1000000000,
     "onward_npr": 160000000
+  },
+  "international_support": {
+    "entries": 39,
+    "stated_usd": 50473800,
+    "fetched": "2026-09-16"
   }
 }

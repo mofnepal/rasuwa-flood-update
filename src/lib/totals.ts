@@ -121,6 +121,10 @@ export interface PortalTotals {
     identified_usd: number;
     unattributed_usd: number;
     identified_count: number;
+    /** Support reported by OPMCM — listed in the register, never added to a total. */
+    reported_usd: number;
+    reported_count: number;
+    reported_with_usd: number;
     cash_usd: number;
     in_kind_npr: number;
     pledged_usd: number;
@@ -366,7 +370,7 @@ async function computeTotals(): Promise<PortalTotals | null> {
     : null;
 
   /* ---- D ---- */
-  const foreignRows = await prisma.foreignAssistance.findMany({
+  const allForeignRows = await prisma.foreignAssistance.findMany({
     where: { disasterId, status: 'published' },
     select: {
       amount_usd: true,
@@ -374,8 +378,14 @@ async function computeTotals(): Promise<PortalTotals | null> {
       kind: true,
       in_kind_valuation_npr: true,
       as_of: true,
+      in_fund: true,
     },
   });
+  // Category D is what the ministry has verified in the Fund's own records. Support
+  // the Office of the Prime Minister reports on its portal is listed with it in the
+  // register, but never counted.
+  const reportedRows = allForeignRows.filter((f) => !f.in_fund);
+  const foreignRows = allForeignRows.filter((f) => f.in_fund);
 
   const identified_usd = foreignRows.reduce((sum, f) => sum + num(f.amount_usd), 0);
   const total_usd = fund_status ? fund_status.usd.gross : identified_usd;
@@ -464,6 +474,9 @@ async function computeTotals(): Promise<PortalTotals | null> {
       pledged_usd: foreignRows
         .filter((f) => f.kind === 'pledge')
         .reduce((sum, f) => sum + num(f.amount_usd), 0),
+      reported_usd: reportedRows.reduce((sum, f) => sum + num(f.amount_usd), 0),
+      reported_count: reportedRows.length,
+      reported_with_usd: reportedRows.filter((f) => num(f.amount_usd) > 0).length,
       as_of: foreignAsOf,
     },
     fund_status,

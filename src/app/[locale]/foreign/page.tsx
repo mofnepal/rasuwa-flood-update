@@ -4,14 +4,7 @@ import { pageMetadata } from '@/lib/metadata';
 import { getTotals } from '@/lib/totals';
 import { prisma } from '@/lib/db';
 import { PALETTE, FUND_STATUS_SOURCE_EN, FUND_STATUS_SOURCE_NE } from '@/lib/constants';
-import {
-  formatAsOf,
-  formatNPR,
-  formatNumber,
-  formatPercent,
-  formatUSD,
-  type Locale,
-} from '@/lib/format';
+import { formatAsOf, formatNPR, formatNumber, formatUSD, type Locale } from '@/lib/format';
 import { pick } from '@/lib/i18n-helpers';
 import { KpiTile } from '@/components/KpiTile';
 import { Card, Chip, EmptyState, Note, SectionHeader, SourceChip } from '@/components/ui';
@@ -83,6 +76,15 @@ export default async function ForeignPage({ params }: { params: Promise<{ locale
     in_kind_valuation_npr: Number(row.in_kind_valuation_npr ?? 0),
     pledge_received_at: row.pledge_received_at?.toISOString() ?? null,
     published_at: row.publishedAt?.toISOString() ?? null,
+    in_fund: row.in_fund,
+    amount_text: row.amount_text,
+    report_status: row.report_status,
+    stated_to_fund: row.stated_to_fund ?? false,
+    fund_register_ref: row.fund_register_ref,
+    detail_en: row.detail_en,
+    detail_ne: row.detail_ne,
+    aid_list_note: (row.aid_list_note as { en?: string; ne?: string } | null) ?? null,
+    source_url: row.source_url,
   }));
 
   const byType = new Map<string, number>();
@@ -116,18 +118,22 @@ export default async function ForeignPage({ params }: { params: Promise<{ locale
         />
         <KpiTile
           icon="verified"
-          label={t('kpiIdentified')}
-          sub={t('kpiIdentifiedSub', {
-            percent: formatPercent(totals.foreign.identified_usd, totals.foreign.total_usd, locale),
-          })}
+          label={t('kpiRegister')}
+          sub={t('kpiRegisterSub')}
           value={formatUSD(totals.foreign.identified_usd, locale)}
-          foot={`${formatNumber(totals.foreign.identified_count, locale)} · ${t('register')}`}
+          foot={t('kpiRegisterFoot', {
+            count: formatNumber(totals.foreign.identified_count, locale),
+          })}
         />
         <KpiTile
-          icon="missing"
-          label={t('kpiAwaiting')}
-          value={formatUSD(totals.foreign.unattributed_usd, locale)}
-          foot={t('subsetNote')}
+          icon="flag"
+          label={t('kpiReported')}
+          sub={t('kpiReportedSub')}
+          value={formatUSD(totals.foreign.reported_usd, locale)}
+          foot={t('kpiReportedFoot', {
+            count: formatNumber(totals.foreign.reported_count, locale),
+            withUsd: formatNumber(totals.foreign.reported_with_usd, locale),
+          })}
         />
         <KpiTile
           icon="bank"
@@ -140,47 +146,6 @@ export default async function ForeignPage({ params }: { params: Promise<{ locale
           foot={fund ? `≈ ${formatNPR(fund.usd.equiv_npr, locale)}` : undefined}
         />
       </section>
-
-      {/* ── identified vs awaiting attribution ───────────────────────────── */}
-      <Card>
-        <SectionHeader
-          icon="chart"
-          title={`${t('identified')} · ${t('unattributed')}`}
-          right={
-            <SourceChip>
-              {locale === 'ne' ? FUND_STATUS_SOURCE_NE : FUND_STATUS_SOURCE_EN}
-            </SourceChip>
-          }
-        />
-        <div className="mini">
-          <div>
-            <b>{t('identified')}</b>
-            <span>
-              {formatPercent(totals.foreign.identified_usd, totals.foreign.total_usd, locale)}
-            </span>
-            <i
-              style={{
-                width: `${(100 * totals.foreign.identified_usd) / (totals.foreign.total_usd || 1)}%`,
-              }}
-            />
-            <em>{formatUSD(totals.foreign.identified_usd, locale)}</em>
-          </div>
-          <div>
-            <b>{t('unattributed')}</b>
-            <span>
-              {formatPercent(totals.foreign.unattributed_usd, totals.foreign.total_usd, locale)}
-            </span>
-            <i
-              style={{
-                width: `${(100 * totals.foreign.unattributed_usd) / (totals.foreign.total_usd || 1)}%`,
-                background: PALETTE.navy3,
-              }}
-            />
-            <em>{formatUSD(totals.foreign.unattributed_usd, locale)}</em>
-          </div>
-        </div>
-        <Note>{t('subsetNote')}</Note>
-      </Card>
 
       {/* ── by contributor type, beside the donate panel ─────────────────── */}
       <section className="grid g64">
@@ -204,6 +169,7 @@ export default async function ForeignPage({ params }: { params: Promise<{ locale
               </Chip>
             ))}
           </div>
+          <Note>{t('byTypeNote')}</Note>
         </Card>
         <DonateCard />
       </section>
@@ -244,7 +210,10 @@ export default async function ForeignPage({ params }: { params: Promise<{ locale
           right={<SourceChip>{rows[0]?.source ?? ''}</SourceChip>}
         />
         {registerRows.length ? (
-          <ForeignRegister rows={registerRows} />
+          <>
+            <Note>{t('registerNoteMerged')}</Note>
+            <ForeignRegister rows={registerRows} />
+          </>
         ) : (
           <EmptyState label={ts('awaitingEntry')} />
         )}

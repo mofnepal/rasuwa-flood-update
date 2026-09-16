@@ -683,6 +683,87 @@ async function main() {
     `  disbursements: ${disbursementsSeed.disbursements.length} · transferred NPR ${transferred} · onward NPR ${onward}`,
   );
 
+  /* ---------- international and government support, as OPMCM reports it ---------- */
+  // Listed in the same register as the verified contributors, flagged in_fund=false so
+  // they are shown with their own label and never counted in category D.
+  const supportSeed = await readJson<{
+    fetched_at: string;
+    entries: {
+      slug: string;
+      donor_en: string;
+      donor_ne: string;
+      country_en: string | null;
+      donor_kind: string;
+      aid_kind: string;
+      amount_text: string | null;
+      amount_usd: number | null;
+      amount_npr: number | null;
+      status: string;
+      stated_to_fund: boolean;
+      fund_register_ref?: string;
+      detail_en: string;
+      detail_ne: string;
+      aid_list_note: unknown;
+      source_en: string;
+      source_ne: string;
+      source_url: string;
+      reported_at: string | null;
+    }[];
+  }>('international_support.json');
+  const supportType: Record<string, ContributorType> = {
+    government: 'government_embassy',
+    multilateral: 'multilateral',
+    company: 'corporation',
+  };
+  const supportKind: Record<string, AssistanceKind> = {
+    cash: 'cash',
+    pledge: 'pledge',
+    in_kind: 'in_kind',
+  };
+  for (const row of supportSeed.entries) {
+    const channelEn = /via|through|channelled/i.test(row.detail_en)
+      ? "Through partners, as the Prime Minister's Office reports"
+      : "As reported by the Prime Minister's Office";
+    await prisma.foreignAssistance.create({
+      data: {
+        disasterId,
+        date_ad: row.reported_at ? new Date(row.reported_at) : new Date(supportSeed.fetched_at),
+        date_bs: '',
+        contributor: row.donor_en,
+        contributor_ne: row.donor_ne,
+        country_en: row.country_en,
+        country_ne: row.donor_kind === 'government' ? row.donor_ne : null,
+        contributor_type: supportType[row.donor_kind] ?? 'ingo_foundation',
+        kind: supportKind[row.aid_kind] ?? 'pledge',
+        channel: channelEn,
+        channel_ne: channelEn.startsWith('Through')
+          ? 'साझेदारमार्फत, प्रधानमन्त्री कार्यालयले जनाए अनुसार'
+          : 'प्रधानमन्त्री कार्यालयले जनाए अनुसार',
+        amount_usd: row.amount_usd == null ? null : String(row.amount_usd),
+        amount_npr_equiv: row.amount_npr == null ? null : String(row.amount_npr),
+        fx_rate: null,
+        in_kind_description: row.aid_kind === 'in_kind' ? row.amount_text : null,
+        in_fund: false,
+        amount_text: row.amount_text,
+        report_status: row.status,
+        stated_to_fund: row.stated_to_fund,
+        fund_register_ref: row.fund_register_ref ?? null,
+        detail_en: row.detail_en,
+        detail_ne: row.detail_ne || null,
+        aid_list_note: (row.aid_list_note ?? null) as Prisma.InputJsonValue,
+        source_url: row.source_url,
+        purpose_en: 'Rasuwa flood relief',
+        purpose_ne: 'रसुवा बाढी राहत',
+        source: row.source_en,
+        as_of: new Date(supportSeed.fetched_at),
+        ...published,
+      },
+    });
+  }
+  console.log(
+    `  international support (OPMCM, listed, not counted): ${supportSeed.entries.length}`,
+  );
+
   /* ---------- single-window contacts ---------- */
   await prisma.contact.deleteMany({ where: { disasterId } });
   await prisma.contact.createMany({

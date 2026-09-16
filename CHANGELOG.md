@@ -4,6 +4,31 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — Foreign assistance: OPMCM's international and government support, in the register
+
+- **The foreign assistance register now carries the support the Office of the Prime
+  Minister and Council of Ministers reports on its rescue portal**
+  (rescue.opmcm.gov.np/donations): 39 entries — 30 governments, 4 multilateral agencies
+  and 5 foreign companies — kept word for word with the sources OPMCM cites and its own
+  currency conversions, each labelled "Reported by the Prime Minister's Office" with its status (pledged, in
+  transit, delivered) and whether OPMCM states it as going to the PM Fund. Where OPMCM's
+  separate "donor aid" list differs from its donor list (UAE, UK, China, Switzerland,
+  Australia, South Korea, Ireland, Qatar, Pakistan, Bangladesh, the United States and
+  India), both wordings are shown. Sri Lanka and China cross-reference their verified
+  register entries; NVIDIA, which OPMCM also lists, stays only as the verified deposit.
+- **Nothing reported is counted.** Contributions verified in the Fund's own records keep
+  the "Deposited in the Fund" label and remain category D; the reported entries are
+  flagged `in_fund = false`, are excluded from every total, and `pnpm verify` checks both
+  that exclusion and that their count (39) and stated dollar sum (USD 50,473,800) match
+  what was fetched. The raw API responses are kept under `reference/`; the open-data
+  register carries the flag.
+- **The page's headline row and charts follow the merged register:** total USD deposited
+  · verified in the Fund (count and USD) · reported by OPMCM (stated USD, with counts) ·
+  the USD account balance. The "Identified by contributor" and "Awaiting attribution"
+  tiles and the identified-versus-awaiting bar are gone; the contributor-type chart shows
+  verified and reported amounts together, with a note that only the verified part is
+  counted. The register's chips filter to "In the Fund" or "Reported by the PM Office". Where OPMCM writes "Rs", the portal writes "NPR"; figures are untouched.
+
 ### Added — Fund usage and disbursement
 
 - **A "कोष परिचालन तथा वितरण / Fund usage and disbursement" card on the contributions

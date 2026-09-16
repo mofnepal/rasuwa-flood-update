@@ -179,6 +179,19 @@ model ForeignAssistance {
   fx_rate               Decimal?        @db.Decimal(18, 4)
   in_kind_description   String?
   in_kind_valuation_npr Decimal?        @db.Decimal(18, 2)
+  /// True for a contribution verified in the Fund's own records (category D). False
+  /// for support the Office of the Prime Minister reports on its rescue portal —
+  /// pledges, cash through partners, goods and teams — which is listed as reported
+  /// and never added to a total.
+  in_fund               Boolean         @default(true)
+  amount_text           String?
+  report_status         String?
+  stated_to_fund        Boolean?
+  fund_register_ref     String?
+  detail_en             String?
+  detail_ne             String?
+  aid_list_note         Json?
+  source_url            String?
   purpose_ne            String
   purpose_en            String
   featured              Boolean         @default(false)

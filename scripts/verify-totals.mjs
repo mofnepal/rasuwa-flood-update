@@ -177,7 +177,13 @@ const C = n(fs.usd_gross);
 
 // ── D: identified contributors are a subset of C ────────────────────────────
 console.log('\nD · IDENTIFIED FOREIGN CONTRIBUTORS — a subset of C, never added');
-const fa = await p.foreignAssistance.findMany({ where: { disasterId: d.id, status: 'published' } });
+const faAll = await p.foreignAssistance.findMany({
+  where: { disasterId: d.id, status: 'published' },
+});
+// Only what the ministry has verified in the Fund is category D; support reported by
+// OPMCM sits in the same register with in_fund=false and is never counted.
+const fa = faAll.filter((f) => f.in_fund);
+const reportedRows = faAll.filter((f) => !f.in_fund);
 const D = fa.reduce((s, f) => s + n(f.amount_usd), 0);
 check('identified USD', D, printed.foreign_identified_usd);
 checks++;
@@ -363,6 +369,20 @@ if (cashReport) {
     fromReport,
   );
 }
+
+// ── international support, as OPMCM reports it — listed, never added ───────
+console.log('\nINTERNATIONAL SUPPORT (OPMCM) — in the register, kept out of every total');
+const statedUsd = reportedRows.reduce((s, r) => s + n(r.amount_usd), 0);
+check('entries as fetched from OPMCM', reportedRows.length, printed.international_support.entries);
+check(
+  'stated US-dollar figures sum as fetched',
+  statedUsd,
+  printed.international_support.stated_usd,
+);
+checks++;
+console.log(
+  `  ties      category D (${money(D)}) excludes these ${money(statedUsd)}; the grand total carries none of them`,
+);
 
 // ── action plans, each against its own document ────────────────────────────
 console.log('\nACTION PLANS — each plan against its own numbering and bodies');

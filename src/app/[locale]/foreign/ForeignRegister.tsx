@@ -22,6 +22,16 @@ export interface ForeignRow {
   in_kind_valuation_npr: number;
   pledge_received_at: string | null;
   published_at: string | null;
+  /** False for support reported by OPMCM, listed but never counted. */
+  in_fund: boolean;
+  amount_text: string | null;
+  report_status: string | null;
+  stated_to_fund: boolean;
+  fund_register_ref: string | null;
+  detail_en: string | null;
+  detail_ne: string | null;
+  aid_list_note: { en?: string; ne?: string } | null;
+  source_url: string | null;
 }
 
 export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
@@ -49,6 +59,53 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
       label: tt('contributor'),
       className: 'nm',
       value: (row) => (locale === 'ne' ? (row.contributor_ne ?? row.contributor) : row.contributor),
+      render: (row) => {
+        const detail = locale === 'ne' ? (row.detail_ne ?? row.detail_en) : row.detail_en;
+        const aidNote = row.aid_list_note
+          ? locale === 'ne'
+            ? (row.aid_list_note.ne ?? row.aid_list_note.en)
+            : row.aid_list_note.en
+          : null;
+        return (
+          <>
+            <b>{locale === 'ne' ? (row.contributor_ne ?? row.contributor) : row.contributor}</b>
+            {row.in_fund ? null : (
+              <>
+                <br />
+                <small>
+                  {detail}
+                  {aidNote ? ` — ${t('aidListNote')}: ${aidNote}` : ''}
+                  {row.fund_register_ref ? ` — ${t('registerRef')}: ${row.fund_register_ref}` : ''}
+                </small>
+              </>
+            )}
+          </>
+        );
+      },
+    },
+    {
+      key: 'status',
+      label: t('statusCol'),
+      value: (row) => (row.in_fund ? t('inFund') : t('reported')),
+      render: (row) =>
+        row.in_fund ? (
+          <span className="tag gov">{t('inFund')}</span>
+        ) : (
+          <>
+            <span className="tag ins">{t('reportedShort')}</span>
+            <br />
+            <small>
+              {row.report_status === 'pledged'
+                ? t('reportedPledged')
+                : row.report_status === 'in_transit'
+                  ? t('reportedInTransit')
+                  : row.report_status === 'delivered'
+                    ? t('reportedDelivered')
+                    : t('reported')}
+              {row.stated_to_fund ? ` · ${t('statedToFund')}` : ''}
+            </small>
+          </>
+        ),
     },
     {
       key: 'country',
@@ -88,7 +145,24 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
       label: t('usd'),
       className: 'amt',
       value: (row) => row.amount_usd,
-      render: (row) => formatUSD(row.amount_usd, locale),
+      render: (row) =>
+        row.in_fund || !row.amount_text ? (
+          row.amount_usd ? (
+            formatUSD(row.amount_usd, locale)
+          ) : (
+            '—'
+          )
+        ) : (
+          <>
+            {row.amount_text}
+            {row.amount_usd ? (
+              <>
+                <br />
+                <small>{formatUSD(row.amount_usd, locale)}</small>
+              </>
+            ) : null}
+          </>
+        ),
     },
     {
       key: 'npr',
@@ -96,25 +170,30 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
       className: 'amt',
       value: (row) => row.amount_npr_equiv,
       total: (row) => row.amount_npr_equiv,
-      render: (row) => formatNPR(row.amount_npr_equiv, locale),
+      render: (row) => (row.amount_npr_equiv ? formatNPR(row.amount_npr_equiv, locale) : '—'),
     },
     {
       key: 'verified',
       label: tt('verified'),
       sortable: false,
       value: () => '✓',
-      render: (row) => (
-        <span
-          className="ok"
-          title={`${ts('verified')}${
-            row.published_at
-              ? ` · ${ts('publishedOn')} ${bsDate(row.published_at, null, locale)}`
-              : ''
-          }`}
-        >
-          <Icon name="verified" />
-        </span>
-      ),
+      render: (row) =>
+        row.in_fund ? (
+          <span
+            className="ok"
+            title={`${ts('verified')}${
+              row.published_at
+                ? ` · ${ts('publishedOn')} ${bsDate(row.published_at, null, locale)}`
+                : ''
+            }`}
+          >
+            <Icon name="verified" />
+          </span>
+        ) : (
+          <span className="mute" title={t('reported')}>
+            —
+          </span>
+        ),
     },
   ];
 
@@ -127,11 +206,15 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
       urlParams={{ query: 'q' }}
       formatCount={count}
       formatTotal={(value) => formatNPR(value, locale)}
-      chips={kinds.map((kind) => ({
-        key: kind,
-        label: tk(kind),
-        test: (row: ForeignRow) => row.kind === kind,
-      }))}
+      chips={[
+        { key: 'infund', label: t('chipInFund'), test: (row: ForeignRow) => row.in_fund },
+        { key: 'reported', label: t('chipReported'), test: (row: ForeignRow) => !row.in_fund },
+        ...kinds.map((kind) => ({
+          key: kind,
+          label: tk(kind),
+          test: (row: ForeignRow) => row.kind === kind,
+        })),
+      ]}
       filters={[
         {
           key: 'type',

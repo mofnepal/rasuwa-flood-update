@@ -89,6 +89,22 @@ test('the rescue page shows the latest report; earlier dates open from the archi
   await expect(page.locator('table.tbl td.nm a').nth(1)).toHaveAttribute('aria-current', 'page');
 });
 
+test('the foreign register lists OPMCM-reported support beside verified deposits, labelled', async ({
+  page,
+}) => {
+  await open(page, 'en/foreign/');
+  await expect(page.locator('.kpi')).toHaveCount(4);
+  await expect(page.locator('body')).not.toContainText('Awaiting attribution');
+  const register = page.locator('#register');
+  await register.scrollIntoViewIfNeeded();
+  // Verified deposits and reported support share one table, each row labelled.
+  await register.getByRole('tab', { name: 'In the Fund' }).click();
+  await expect(register.locator('tbody tr')).toHaveCount(4);
+  await register.getByRole('tab', { name: 'Reported by the PM Office' }).click();
+  await expect(register.locator('tbody .tag.ins').first()).toContainText('PM Office');
+  await expect(register).toContainText('United Arab Emirates');
+});
+
 test('the fund usage card shows the transfer out of the Fund and every onward disbursement', async ({
   page,
 }) => {
