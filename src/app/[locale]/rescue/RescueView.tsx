@@ -449,6 +449,11 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
           {pick(locale, ndrrma.injured_note_ne, ndrrma.injured_note_en) ? (
             <Note>{pick(locale, ndrrma.injured_note_ne, ndrrma.injured_note_en)}</Note>
           ) : null}
+          {pick(locale, ndrrma.missing_breakdown_note_ne, ndrrma.missing_breakdown_note_en) ? (
+            <Note>
+              {pick(locale, ndrrma.missing_breakdown_note_ne, ndrrma.missing_breakdown_note_en)}
+            </Note>
+          ) : null}
           {pick(locale, ndrrma.missing_note_ne, ndrrma.missing_note_en) ? (
             <Note>{pick(locale, ndrrma.missing_note_ne, ndrrma.missing_note_en)}</Note>
           ) : null}

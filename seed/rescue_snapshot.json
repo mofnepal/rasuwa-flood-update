@@ -754,6 +754,96 @@
     "deceased_note_ne": "प्रतिवेदनमा दिइएको मृतकको विवरण (महिला ३३४, पुरुष ५४२, मानव अवशेष ५१२) को जोड १,३८८ हुन्छ, जुन प्रतिवेदनकै कुल मृत्यु १,३९५ भन्दा ७ कम छ। दुवै अङ्क प्रतिवेदनमा छापिएकै रूपमा देखाइएका छन्।",
     "deceased_note_en": "The report's detail of the deceased (334 female, 542 male, 512 human remains) sums to 1,388, seven fewer than its own total of 1,395 deaths. Both figures are shown as printed."
    }
+  },
+  {
+   "agency": "NDRRMA",
+   "original_file": null,
+   "data": {
+    "as_of": "2026-09-16T19:00:00+05:45",
+    "as_of_bs": "२०८३ भदौ ३१, बेलुका ७:०० बजे",
+    "source": "NDRRMA – Rasuwa Flood: Search, Rescue and Relief Update",
+    "human_casualties": 1403,
+    "bodies_by_district": {
+     "Rasuwa": 193,
+     "Nuwakot": 202,
+     "Dhading": 72,
+     "Gorkha": 78,
+     "Tanahun": 38,
+     "Chitwan": 364,
+     "Nawalparasi East": 232,
+     "Nawalparasi West": 222,
+     "While undergoing treatment at Kathmandu": 2
+    },
+    "bodies_note_ne": "विभिन्न अपरिचित मानव अवशेष समेत",
+    "bodies_note_en": "including various unidentified human remains",
+    "deceased_breakdown": {
+     "female": 336,
+     "male": 544,
+     "human_remains": 523
+    },
+    "dead_body_handover": 105,
+    "dna_note_ne": "डिएनए परीक्षणका लागि सम्बन्धित जिल्ला प्रहरी कार्यालयमा दुई प्रति फोटो र नाता प्रमाणितसहित नमुना बुझाउन सकिन्छ।",
+    "dna_note_en": "For DNA testing, samples can be submitted at the concerned District Police Office with two photographs and proof of kinship.",
+    "dna_samples": {
+     "deceased": 1286,
+     "relatives": 1889
+    },
+    "missing_total_approx": 6150,
+    "missing_breakdown": {
+     "Rasuwa": 2679,
+     "Nuwakot": 1787,
+     "Foreign nationals": 587
+    },
+    "missing_rasuwa_breakdown": {
+     "Citizens from Rasuwa": 1393,
+     "Citizens of other districts": 1286
+    },
+    "missing_nuwakot_breakdown": {
+     "Citizens from Nuwakot": 651,
+     "Citizens of other districts (excluding Rasuwa)": 1136
+    },
+    "missing_note_ne": "पहिचान भएका १०५ शव घटाएर सम्पर्कविहीनको कुल सङ्ख्या संशोधन गरिएको छ।",
+    "missing_note_en": "The total missing has been revised after deducting the 105 identified bodies.",
+    "rescued_till_date": 13742,
+    "helicopter_flights": {
+     "nepali_army_total": 1603,
+     "nepali_army_today": 42,
+     "apf": 320
+    },
+    "injured_receiving_treatment": 9840,
+    "injured_total_derived": true,
+    "injured_breakdown": {
+     "hospitals": 344,
+     "hospitals_discharged": 289,
+     "security_agencies": 9496
+    },
+    "injured_note_ne": "यस प्रतिवेदनमा उपचाररत घाइतेको कुल सङ्ख्या उल्लेख नभएकाले माथिको अङ्क प्रतिवेदनमा प्रकाशित उपचारसम्बन्धी विवरणहरूको जोड हो (अस्पतालबाट डिस्चार्ज भएका २८९ जना बाहेक)। अस्पतालमा उपचार भएका ३४४ जना १९ वटा अस्पतालमा उपचार गरिएका हुन्। विभिन्न सुरक्षा निकायद्वारा उपचार गरिएका ९,४९६ जनाको निकायगत विवरण यस प्रतिवेदनमा छुट्याइएको छैन।",
+    "injured_note_en": "This report does not print a headline total for the injured; the figure above is the sum of the treatment figures it publishes, excluding the 289 discharged from hospital. The 344 treated in hospital were treated at 19 hospitals. The 9,496 treated by the security agencies are not broken down by agency in this report.",
+    "cash_support_note_ne": "होल्डिङ सेन्टरमा बस्न नचाहने परिवारलाई वैकल्पिक आवासको व्यवस्था नभएसम्म, बढीमा छ महिना, आवास तथा जीविकोपार्जनका लागि प्रति परिवार (चार सदस्यसम्म) मासिक रु. १५,००० र सोभन्दा बढी प्रत्येक सदस्यका लागि थप रु. २,००० उपलब्ध गराइने।",
+    "cash_support_note_en": "For families unwilling to stay in holding centres, a monthly allowance for accommodation and livelihood of NPR 15,000 per family (up to four members), plus NPR 2,000 for each further member, until alternative housing is arranged, for a maximum of six months.",
+    "holding_center_people": 2096,
+    "holding_centers_count": 29,
+    "holding_center_breakdown": {
+     "Nuwakot": 1185,
+     "Rasuwa": 817,
+     "Dhading": 94
+    },
+    "relief_supplies_ne": "खाद्य तथा गैरखाद्य राहत सामग्री सडक र हवाई मार्गबाट प्रभावित जिल्लाहरूमा निरन्तर पठाइँदै; विवरण प्राधिकरणको सेतु एपमा अभिलेख गरिएको। सरकारी तथा गैरसरकारी निकाय, निजी क्षेत्र, विकास साझेदार र नागरिक समाजबाट सहयोग निरन्तर।",
+    "relief_supplies_en": "Food and non-food relief materials are being dispatched continuously to the affected districts by road and air, with details recorded in the Authority's Setu app. Support continues from government and non-government agencies, the private sector, development partners and civil society.",
+    "bridge_note_ne": "नुवाकोटको देवीघाटमा अस्थायी पुल (एक्रो ब्रिज) जडान गरी सञ्चालनमा ल्याइएको छ।",
+    "bridge_note_en": "A temporary Acrow bridge has been installed and brought into operation at Devighat, Nuwakot.",
+    "fuel_stock": {
+     "diesel_l": 59000,
+     "petrol_l": 15000,
+     "aviation_l": 6000,
+     "lpg_cylinders": 502
+    },
+    "footer_note_ne": "सम्पर्कविहीनको सङ्ख्यामा अपरिचित शव तथा उद्धार गरिएका व्यक्ति पनि समावेश हुन सक्ने भई विवरण प्रमाणीकरणको क्रममा छ।",
+    "footer_note_en": "The number of missing persons may also include unidentified bodies and rescued persons. The data is currently being verified.",
+    "missing_excludes_handover": true,
+    "missing_breakdown_note_ne": "प्रतिवेदनको सम्पर्कविहीन चार्ट (विदेशी नागरिक ५८७, रसुवा २,६७९, नुवाकोट १,७८७) को जोड ५,०५३ हुन्छ र १०५ शव घटाएपछि ४,९४८ — प्रतिवेदनकै कुल ६,१५० भन्दा १,२०२ कम। कुल र विवरण दुवै प्रतिवेदनमा छापिएकै रूपमा देखाइएका छन्।",
+    "missing_breakdown_note_en": "The report's missing chart (587 foreign nationals, 2,679 Rasuwa, 1,787 Nuwakot) sums to 5,053, or 4,948 after the 105 bodies handed over — 1,202 fewer than the report's own total of 6,150. Both are shown as printed."
+   }
   }
  ]
 }

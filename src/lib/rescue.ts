@@ -36,6 +36,10 @@ export const ndrrmaSchema = z.object({
   /// deducted from the missing total. Earlier reports did not deduct them, so
   /// this must be read from the report rather than assumed.
   missing_excludes_handover: z.boolean().optional(),
+  /// Where the report's missing chart does not reach its own total, both are shown
+  /// as printed and this note says so.
+  missing_breakdown_note_ne: z.string().optional(),
+  missing_breakdown_note_en: z.string().optional(),
   missing_note_ne: z.string().optional(),
   missing_note_en: z.string().optional(),
   rescued_till_date: z.number(),

@@ -265,11 +265,20 @@ for (const r of reports) {
     // Only the reports that say they deduct the bodies handed over are checked
     // that way; the earlier ones sum straight to their printed total.
     const missingParts = Object.values(x.missing_breakdown).reduce((s, v) => s + v, 0);
-    check(
-      `${label} missing breakdown${x.missing_excludes_handover ? ', less bodies handed over' : ''}`,
-      missingParts - (x.missing_excludes_handover ? x.dead_body_handover : 0),
-      x.missing_total_approx,
-    );
+    const missingFromParts =
+      missingParts - (x.missing_excludes_handover ? x.dead_body_handover : 0);
+    // A report whose own chart does not reach its total is loaded as printed, with a
+    // note on the page; that note is required here in place of the tie.
+    if (missingFromParts !== x.missing_total_approx && x.missing_breakdown_note_en)
+      note(
+        `${label}: the missing chart sums to ${missingFromParts} after the bodies handed over, ${x.missing_total_approx - missingFromParts} fewer than the report's own total of ${x.missing_total_approx}; shown as printed, with a note`,
+      );
+    else
+      check(
+        `${label} missing breakdown${x.missing_excludes_handover ? ', less bodies handed over' : ''}`,
+        missingFromParts,
+        x.missing_total_approx,
+      );
     if (x.missing_rasuwa_breakdown)
       check(
         `${label} Rasuwa breakdown sums to its line`,
