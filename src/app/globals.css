@@ -4274,3 +4274,26 @@ main {
 .plan-table td small {
   color: var(--mute);
 }
+/* Fund usage: the flow's amounts lead, the step name and share follow. */
+.usageflow b {
+  font-size: 15px;
+  color: var(--navy);
+}
+.usageflow > div:last-child b {
+  color: #fff;
+}
+.usageflow i {
+  display: block;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--mute);
+  margin-top: 2px;
+}
+@media (max-width: 720px) {
+  .usageflow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .usageflow > div:nth-child(2)::after {
+    display: none;
+  }
+}

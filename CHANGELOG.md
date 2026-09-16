@@ -4,6 +4,24 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Added — Fund usage and disbursement
+
+- **A "कोष परिचालन तथा वितरण / Fund usage and disbursement" card on the contributions
+  page**, beneath the Fund's account status, with its own database of money going out:
+  transfers out of the Prime Minister Disaster Relief Fund, as the fund statement records
+  them, and the receiving agency's onward disbursement, as it reports. It shows the
+  amount collected, transferred, disbursed onward and still held, a four-step flow with
+  each step's share of what was collected, a chart of onward disbursement by recipient,
+  and every entry as a table with its source. Nothing is netted against contributions.
+- **Loaded:** the NPR 1,000,000,000 transfer to NDRRMA of 2083/05/16 (the statement's
+  fund-usage line) and NDRRMA's onward cash support of 2083/05/21 — Rasuwa NPR 10,000,000,
+  Nuwakot NPR 10,000,000, Dhading NPR 5,000,000 and NPR 135,000,000 to 15 affected local
+  governments, NPR 160,000,000 in all, leaving NPR 840,000,000 transferred but not yet
+  reported as disbursed. Later entries go into `seed/disbursements.json`.
+- `pnpm verify` ties the transfers to the statement's fund usage and the onward total
+  to the NDRRMA report's cash-support table; the figures are published as
+  `open-data/disbursements.json`.
+
 ### Data — NDRRMA update, 16 September 2026, 7:00 PM
 
 - **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 16 September 2026,

@@ -622,6 +622,67 @@ async function main() {
     `  action plans: ${plansSeed.plans.length} · ${plansSeed.plans.map((p) => p.slug).join(', ')}`,
   );
 
+  /* ---------- disbursements: money out of the Fund, and onward ---------- */
+  const disbursementsSeed = await readJson<{
+    disbursements: {
+      id: string;
+      stage: 'fund_transfer' | 'onward';
+      date_bs: string;
+      date_ad: string;
+      payer_ne: string;
+      payer_en: string;
+      recipient_ne: string;
+      recipient_en: string;
+      recipient_kind: string;
+      recipient_count?: number;
+      amount_npr: number;
+      purpose_ne: string;
+      purpose_en: string;
+      source_ne: string;
+      source_en: string;
+      as_of: string;
+    }[];
+  }>('disbursements.json');
+  await prisma.disbursement.deleteMany({ where: { disasterId } });
+  await prisma.disbursement.createMany({
+    data: disbursementsSeed.disbursements.map((row) => ({
+      disasterId,
+      slug: row.id,
+      stage: row.stage,
+      date_ad: npt(row.date_ad),
+      date_bs: row.date_bs,
+      payer_ne: row.payer_ne,
+      payer_en: row.payer_en,
+      recipient_ne: row.recipient_ne,
+      recipient_en: row.recipient_en,
+      recipient_kind: row.recipient_kind,
+      recipient_count: row.recipient_count ?? null,
+      amount_npr: String(row.amount_npr),
+      purpose_ne: row.purpose_ne,
+      purpose_en: row.purpose_en,
+      source_ne: row.source_ne,
+      source_en: row.source_en,
+      as_of: new Date(row.as_of),
+      ...published,
+    })),
+  });
+  // The transfers out of the Fund must be what the latest statement's fund-usage
+  // line says; the onward disbursements cannot exceed what was transferred.
+  const transferred = disbursementsSeed.disbursements
+    .filter((row) => row.stage === 'fund_transfer')
+    .reduce((sum, row) => sum + row.amount_npr, 0);
+  const onward = disbursementsSeed.disbursements
+    .filter((row) => row.stage === 'onward')
+    .reduce((sum, row) => sum + row.amount_npr, 0);
+  if (transferred !== fundStatus.npr.usage)
+    throw new Error(
+      `disbursements: transfers ${transferred} differ from fund usage ${fundStatus.npr.usage}`,
+    );
+  if (onward > transferred) throw new Error('disbursements: onward exceeds what was transferred');
+  console.log(
+    `  disbursements: ${disbursementsSeed.disbursements.length} · transferred NPR ${transferred} · onward NPR ${onward}`,
+  );
+
   /* ---------- single-window contacts ---------- */
   await prisma.contact.deleteMany({ where: { disasterId } });
   await prisma.contact.createMany({

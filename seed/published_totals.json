@@ -32,5 +32,9 @@
       "भदौ २८": 3000000
     }
   },
-  "foreign_identified_usd": 11215654
+  "foreign_identified_usd": 11215654,
+  "disbursements": {
+    "transferred_npr": 1000000000,
+    "onward_npr": 160000000
+  }
 }

@@ -2,6 +2,7 @@ import 'server-only';
 import type { Agency, Network, Prisma, SnapshotPeriod } from '@prisma/client';
 import { prisma } from './db';
 import { getDisaster, getTotals, settlementGap } from './totals';
+import { getDisbursements, summariseDisbursements } from './disbursements';
 import { getMinistryReference } from './ministry';
 import { FUND_STATUS_SOURCE_EN, OFFICIAL_LINKS } from './constants';
 import { publicFileUrl } from './urls';
@@ -244,6 +245,37 @@ export async function fundStatus(): Promise<OpenData> {
       total_available_npr: fund.total_available_npr,
       original_document: fund.original_url,
     },
+  };
+}
+
+/** Transfers out of the Fund and their onward disbursement, each with its source. */
+export async function disbursements(): Promise<OpenData> {
+  const totals = await getTotals();
+  if (!totals) return missing(NO_DISASTER);
+  const rows = await getDisbursements(totals.disasterId);
+  const summary = summariseDisbursements(rows);
+  return {
+    ok: true,
+    body: {
+      as_of: summary.as_of,
+      note: 'Transfers out of the Prime Minister Disaster Relief Fund, as its statement records them, and the receiving agency’s onward disbursement, as it reports. Not netted against contributions.',
+      transferred_npr: summary.transferred_npr,
+      onward_npr: summary.onward_npr,
+      held_npr: summary.held_npr,
+      count: rows.length,
+      rows: rows.map((row) => ({ ...row, date_ad: row.date_ad.slice(0, 10) })),
+    },
+    rows: rows.map((row) => ({
+      date_bs: row.date_bs,
+      date_ad: row.date_ad.slice(0, 10),
+      stage: row.stage,
+      payer_en: row.payer_en,
+      recipient_en: row.recipient_en,
+      recipient_kind: row.recipient_kind,
+      amount_npr: row.amount_npr,
+      purpose_en: row.purpose_en,
+      source_en: row.source_en,
+    })),
   };
 }
 

@@ -322,6 +322,48 @@ for (const r of reports) {
   }
 }
 
+// ── disbursements: out of the Fund, and onward ─────────────────────────────
+console.log('\nDISBURSEMENTS — out of the Fund, and onward, against their sources');
+const disbursed = await p.disbursement.findMany({
+  where: { disasterId: d.id, status: 'published' },
+});
+const transferredOut = disbursed
+  .filter((r) => r.stage === 'fund_transfer')
+  .reduce((s, r) => s + n(r.amount_npr), 0);
+const onwardOut = disbursed
+  .filter((r) => r.stage === 'onward')
+  .reduce((s, r) => s + n(r.amount_npr), 0);
+check(
+  'transfers out of the Fund equal the statement’s fund usage',
+  transferredOut,
+  n(fs.npr_usage),
+);
+check(
+  'transfers out of the Fund as printed',
+  transferredOut,
+  printed.disbursements.transferred_npr,
+);
+check('onward disbursement as printed', onwardOut, printed.disbursements.onward_npr);
+checks++;
+if (onwardOut <= transferredOut)
+  console.log(
+    `  ties      onward (${money(onwardOut)}) is within what was transferred (${money(transferredOut)})`,
+  );
+else {
+  failures++;
+  console.log('  DIFFERS   onward disbursement exceeds what was transferred');
+}
+// The onward figures must agree with the NDRRMA report that carries the cash-support table.
+const cashReport = reports.find((r) => r.agency === 'NDRRMA' && r.data.cash_support_npr);
+if (cashReport) {
+  const fromReport = Object.values(cashReport.data.cash_support_npr).reduce((s, v) => s + v, 0);
+  check(
+    `onward disbursement equals the cash support in the NDRRMA report of ${cashReport.report_at.toISOString().slice(0, 10)}`,
+    onwardOut,
+    fromReport,
+  );
+}
+
 // ── action plans, each against its own document ────────────────────────────
 console.log('\nACTION PLANS — each plan against its own numbering and bodies');
 const plans = await p.actionPlan.findMany({

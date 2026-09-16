@@ -31,6 +31,7 @@ import { DualTrend, HBar, TrendLine, VBar } from '@/components/charts/lazy';
 import { ContributionRegister, type RegisterRow } from './ContributionRegister';
 import { BankTable, type BankRow } from './BankTable';
 import { SectorPanel } from './SectorPanel';
+import { FundUsage } from './FundUsage';
 
 /**
  * Rendered at request time on the ministry's server: the portal must never ship a
@@ -548,6 +549,9 @@ export default async function ContributionsPage({
           ) : null}
         </Card>
       ) : null}
+
+      {/* ── fund usage and disbursement ──────────────────────────────────── */}
+      <FundUsage locale={locale} totals={totals} />
     </div>
   );
 }

@@ -6,6 +6,7 @@ export const OPEN_DATA_FILES = {
   'contributions.csv': 'The same register as CSV',
   'channels.json': 'Latest NCHL and Fonepay figures, channel by channel',
   'fund-status.json': 'Prime Minister Disaster Relief Fund — daily deposit and fund status',
+  'disbursements.json': 'Transfers out of the Fund and their onward disbursement',
   'foreign.json': 'Identified foreign contributors',
   'foreign.csv': 'The same list as CSV',
   'rescue-latest.json': 'Latest NDRRMA and Nepal Police figures',

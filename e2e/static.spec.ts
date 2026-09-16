@@ -89,6 +89,21 @@ test('the rescue page shows the latest report; earlier dates open from the archi
   await expect(page.locator('table.tbl td.nm a').nth(1)).toHaveAttribute('aria-current', 'page');
 });
 
+test('the fund usage card shows the transfer out of the Fund and every onward disbursement', async ({
+  page,
+}) => {
+  await open(page, 'en/contributions/');
+  const card = page.locator('#usage');
+  await card.scrollIntoViewIfNeeded();
+  await expect(card.locator('.kpi')).toHaveCount(4);
+  await expect(card.locator('.flow > div')).toHaveCount(4);
+  // The transfer out of the Fund is the statement's fund-usage figure.
+  await expect(card.locator('.kpi').nth(1)).toContainText('NPR 1,00,00,00,000');
+  // One transfer plus the four onward disbursements of the Bhadra 21 report.
+  await expect(card.locator('table.tbl tbody tr')).toHaveCount(5);
+  await expect(card).toContainText('15 affected local governments');
+});
+
 test('the action plan shows every action, and its roadmap filters the list', async ({ page }) => {
   await open(page, 'en/plans/');
   await expect(page.locator('h1')).toContainText('Government Action Plans');
