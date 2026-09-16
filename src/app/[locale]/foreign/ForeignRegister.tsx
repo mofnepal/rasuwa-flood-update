@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { DataTable, type Column } from '@/components/DataTable';
 import { Icon } from '@/components/Icon';
-import { bsDate, formatNPR, formatNumber, formatUSD, type Locale } from '@/lib/format';
+import { bsDate, formatAD, formatNPR, formatNumber, formatUSD, type Locale } from '@/lib/format';
 
 export interface ForeignRow {
   id: string;
@@ -45,43 +45,29 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
   const count = (value: number) => formatNumber(value, locale);
   const contributorTypes = [...new Set(rows.map((row) => row.contributor_type))];
   const kinds = [...new Set(rows.map((row) => row.kind))];
-  const countries = [...new Set(rows.map((row) => row.country_en ?? ''))].filter(Boolean);
+  const countries = [...new Set(rows.map((row) => row.country_en ?? ''))].filter(Boolean).sort();
+  const countryName = (en: string) =>
+    (locale === 'ne' && rows.find((row) => row.country_en === en)?.country_ne) || en;
 
   const columns: Column<ForeignRow>[] = [
     {
       key: 'date',
       label: tt('date'),
       value: (row) => row.date_ad,
-      render: (row) => bsDate(row.date_ad, row.date_bs, locale),
+      // One calendar on one line: the Nepali date in Nepali, the Gregorian in English.
+      render: (row) => (
+        <span style={{ whiteSpace: 'nowrap' }}>
+          {locale === 'ne'
+            ? bsDate(row.date_ad, row.date_bs, locale).split(' · ')[0]
+            : formatAD(row.date_ad)}
+        </span>
+      ),
     },
     {
       key: 'contributor',
       label: tt('contributor'),
       className: 'nm',
       value: (row) => (locale === 'ne' ? (row.contributor_ne ?? row.contributor) : row.contributor),
-      render: (row) => {
-        const detail = locale === 'ne' ? (row.detail_ne ?? row.detail_en) : row.detail_en;
-        const aidNote = row.aid_list_note
-          ? locale === 'ne'
-            ? (row.aid_list_note.ne ?? row.aid_list_note.en)
-            : row.aid_list_note.en
-          : null;
-        return (
-          <>
-            <b>{locale === 'ne' ? (row.contributor_ne ?? row.contributor) : row.contributor}</b>
-            {row.in_fund ? null : (
-              <>
-                <br />
-                <small>
-                  {detail}
-                  {aidNote ? ` — ${t('aidListNote')}: ${aidNote}` : ''}
-                  {row.fund_register_ref ? ` — ${t('registerRef')}: ${row.fund_register_ref}` : ''}
-                </small>
-              </>
-            )}
-          </>
-        );
-      },
     },
     {
       key: 'status',
@@ -91,20 +77,15 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
         row.in_fund ? (
           <span className="tag gov">{t('inFund')}</span>
         ) : (
-          <>
-            <span className="tag ins">{t('reportedShort')}</span>
-            <br />
-            <small>
-              {row.report_status === 'pledged'
-                ? t('reportedPledged')
-                : row.report_status === 'in_transit'
-                  ? t('reportedInTransit')
-                  : row.report_status === 'delivered'
-                    ? t('reportedDelivered')
-                    : t('reported')}
-              {row.stated_to_fund ? ` · ${t('statedToFund')}` : ''}
-            </small>
-          </>
+          <span className="tag ins">
+            {row.report_status === 'pledged'
+              ? t('reportedPledged')
+              : row.report_status === 'in_transit'
+                ? t('reportedInTransit')
+                : row.report_status === 'delivered'
+                  ? t('reportedDelivered')
+                  : t('reportedShort')}
+          </span>
         ),
     },
     {
@@ -145,24 +126,7 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
       label: t('usd'),
       className: 'amt',
       value: (row) => row.amount_usd,
-      render: (row) =>
-        row.in_fund || !row.amount_text ? (
-          row.amount_usd ? (
-            formatUSD(row.amount_usd, locale)
-          ) : (
-            '—'
-          )
-        ) : (
-          <>
-            {row.amount_text}
-            {row.amount_usd ? (
-              <>
-                <br />
-                <small>{formatUSD(row.amount_usd, locale)}</small>
-              </>
-            ) : null}
-          </>
-        ),
+      render: (row) => (row.amount_usd ? formatUSD(row.amount_usd, locale) : '—'),
     },
     {
       key: 'npr',
@@ -231,7 +195,7 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
         {
           key: 'country',
           label: t('country'),
-          options: countries.map((value) => [value, value]),
+          options: countries.map((value) => [value, countryName(value)]),
           test: (row, value) => row.country_en === value,
         },
       ]}

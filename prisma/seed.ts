@@ -721,9 +721,16 @@ async function main() {
     in_kind: 'in_kind',
   };
   for (const row of supportSeed.entries) {
-    const channelEn = /via|through|channelled/i.test(row.detail_en)
-      ? "Through partners, as the Prime Minister's Office reports"
-      : "As reported by the Prime Minister's Office";
+    // A short channel, not a sentence: through partners, relief goods and teams, or none.
+    const viaPartners = /via|through|channelled/i.test(row.detail_en);
+    const channelEn =
+      row.aid_kind === 'in_kind'
+        ? 'Relief goods and teams'
+        : viaPartners
+          ? 'Through partners'
+          : '—';
+    const channelNe =
+      row.aid_kind === 'in_kind' ? 'राहत सामग्री तथा टोली' : viaPartners ? 'साझेदारमार्फत' : '—';
     await prisma.foreignAssistance.create({
       data: {
         disasterId,
@@ -736,9 +743,7 @@ async function main() {
         contributor_type: supportType[row.donor_kind] ?? 'ingo_foundation',
         kind: supportKind[row.aid_kind] ?? 'pledge',
         channel: channelEn,
-        channel_ne: channelEn.startsWith('Through')
-          ? 'साझेदारमार्फत, प्रधानमन्त्री कार्यालयले जनाए अनुसार'
-          : 'प्रधानमन्त्री कार्यालयले जनाए अनुसार',
+        channel_ne: channelNe,
         amount_usd: row.amount_usd == null ? null : String(row.amount_usd),
         amount_npr_equiv: row.amount_npr == null ? null : String(row.amount_npr),
         fx_rate: null,

@@ -101,7 +101,10 @@ test('the foreign register lists OPMCM-reported support beside verified deposits
   await register.getByRole('tab', { name: 'In the Fund' }).click();
   await expect(register.locator('tbody tr')).toHaveCount(4);
   await register.getByRole('tab', { name: 'Reported by the PM Office' }).click();
-  await expect(register.locator('tbody .tag.ins').first()).toContainText('PM Office');
+  // Reported rows carry a short status tag: pledged, in transit, delivered or reported.
+  await expect(register.locator('tbody .tag.ins').first()).toHaveText(
+    /Pledged|In transit|Delivered|PM Office/,
+  );
   await expect(register).toContainText('United Arab Emirates');
 });
 

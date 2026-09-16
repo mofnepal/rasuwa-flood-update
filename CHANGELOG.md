@@ -28,6 +28,11 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   tiles and the identified-versus-awaiting bar are gone; the contributor-type chart shows
   verified and reported amounts together, with a note that only the verified part is
   counted. The register's chips filter to "In the Fund" or "Reported by the PM Office". Where OPMCM writes "Rs", the portal writes "NPR"; figures are untouched.
+- **A cleaner register.** Each row carries only the name, one date on one line (the Nepali
+  date in Nepali, the Gregorian in English), a short status tag, the amount, and the
+  channel in a word or two — "Through partners", "Relief goods and teams" or none. The
+  wording of each reported entry stays in the open data. The country filter lists
+  countries in the reader's language.
 
 ### Added — Fund usage and disbursement
 
