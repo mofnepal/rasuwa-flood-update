@@ -107,6 +107,7 @@ model Disaster {
   rescueReports       RescueReport[]
   actionPlans         ActionPlan[]
   disbursements       Disbursement[]
+  announcedSupport    AnnouncedSupport[]
   decisions           Decision[]
   contacts            Contact[]
 
@@ -434,6 +435,57 @@ model Disbursement {
   @@map("disbursements")
 }
 
+/// Domestic support announced for the flood — salary contributions, party and
+/// provincial pledges, government cash to districts — as the Office of the Prime
+/// Minister lists it on its rescue portal. Listed beside the register and never
+/// added to a total: a pledge counts only once it appears in the Fund's own records,
+/// and an entry already there or already shown as a disbursement says so.
+model AnnouncedSupport {
+  id               String       @id @default(cuid())
+  disasterId       String
+  disaster         Disaster     @relation(fields: [disasterId], references: [id], onDelete: Cascade)
+  slug             String
+  contributor_ne   String
+  contributor_en   String
+  /// security_force · civil_servants · ministry_staff · cabinet · political_party ·
+  /// province_government · government_cash
+  contributor_kind String
+  amount_npr       Decimal?     @db.Decimal(18, 2)
+  amount_text_ne   String
+  amount_text_en   String
+  approximate      Boolean      @default(false)
+  announced_on     DateTime?
+  announced_bs     String?
+  /// pledged · in_register (already in the handover register) · disbursed (money out
+  /// of the Fund, shown under fund usage)
+  state            String
+  register_ref     String?
+  note_ne          String?
+  note_en          String?
+  source_ne        String
+  source_en        String
+  source_url       String?
+  as_of            DateTime
+  status           RecordStatus @default(draft)
+
+  createdById   String?
+  createdBy     User?     @relation("AnnouncedCreatedBy", fields: [createdById], references: [id])
+  verifiedById  String?
+  verifiedBy    User?     @relation("AnnouncedVerifiedBy", fields: [verifiedById], references: [id])
+  verifiedAt    DateTime?
+  publishedById String?
+  publishedBy   User?     @relation("AnnouncedPublishedBy", fields: [publishedById], references: [id])
+  publishedAt   DateTime?
+  reviewNote    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([disasterId, slug])
+  @@index([disasterId, status])
+  @@map("announced_support")
+}
+
 enum DisbursementStage {
   fund_transfer
   onward
@@ -593,6 +645,9 @@ model User {
   disbursementCreated    Disbursement[]       @relation("DisbursementCreatedBy")
   disbursementVerified   Disbursement[]       @relation("DisbursementVerifiedBy")
   disbursementPublished  Disbursement[]       @relation("DisbursementPublishedBy")
+  announcedCreated       AnnouncedSupport[]   @relation("AnnouncedCreatedBy")
+  announcedVerified      AnnouncedSupport[]   @relation("AnnouncedVerifiedBy")
+  announcedPublished     AnnouncedSupport[]   @relation("AnnouncedPublishedBy")
   decisionsCreated       Decision[]           @relation("DecisionCreatedBy")
   decisionsVerified      Decision[]           @relation("DecisionVerifiedBy")
   decisionsPublished     Decision[]           @relation("DecisionPublishedBy")

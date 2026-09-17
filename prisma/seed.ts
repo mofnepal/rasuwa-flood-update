@@ -769,6 +769,71 @@ async function main() {
     `  international support (OPMCM, listed, not counted): ${supportSeed.entries.length}`,
   );
 
+  /* ---------- announced domestic support, as OPMCM lists it ---------- */
+  // Listed on the contributions page beside the handover register and never counted:
+  // a pledge counts only once the Fund's own records carry it. An entry already in
+  // the register cites its serial number there and must carry the same amount.
+  const announcedSeed = await readJson<{
+    fetched_at: string;
+    source_url: string;
+    source_ne: string;
+    source_en: string;
+    entries: {
+      slug: string;
+      contributor_ne: string;
+      contributor_en: string;
+      contributor_kind: string;
+      amount_npr: number | null;
+      amount_text_ne: string;
+      amount_text_en: string;
+      approximate: boolean;
+      announced_on: string | null;
+      announced_bs: string | null;
+      state: 'pledged' | 'in_register' | 'disbursed';
+      register_ref?: string;
+      note_ne: string | null;
+      note_en: string | null;
+    }[];
+  }>('announced_support.json');
+  await prisma.announcedSupport.deleteMany({ where: { disasterId } });
+  await prisma.announcedSupport.createMany({
+    data: announcedSeed.entries.map((row) => ({
+      disasterId,
+      slug: row.slug,
+      contributor_ne: row.contributor_ne,
+      contributor_en: row.contributor_en,
+      contributor_kind: row.contributor_kind,
+      amount_npr: row.amount_npr == null ? null : String(row.amount_npr),
+      amount_text_ne: row.amount_text_ne,
+      amount_text_en: row.amount_text_en,
+      approximate: row.approximate,
+      announced_on: row.announced_on ? npt(row.announced_on) : null,
+      announced_bs: row.announced_bs,
+      state: row.state,
+      register_ref: row.register_ref ?? null,
+      note_ne: row.note_ne,
+      note_en: row.note_en,
+      source_ne: announcedSeed.source_ne,
+      source_en: announcedSeed.source_en,
+      source_url: announcedSeed.source_url,
+      as_of: new Date(announcedSeed.fetched_at),
+      ...published,
+    })),
+  });
+  for (const row of announcedSeed.entries) {
+    if (row.state !== 'in_register') continue;
+    const hit = await prisma.contribution.findFirst({
+      where: { disasterId, status: 'published', sn: Number(row.register_ref) },
+    });
+    if (!hit || Number(hit.amount_npr) !== row.amount_npr)
+      throw new Error(
+        `announced support: ${row.slug} cites register no. ${row.register_ref}, which does not carry NPR ${row.amount_npr}`,
+      );
+  }
+  console.log(
+    `  announced domestic support (OPMCM, listed, not counted): ${announcedSeed.entries.length}`,
+  );
+
   /* ---------- single-window contacts ---------- */
   await prisma.contact.deleteMany({ where: { disasterId } });
   await prisma.contact.createMany({

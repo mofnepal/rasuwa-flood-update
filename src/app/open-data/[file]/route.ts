@@ -53,6 +53,8 @@ export async function GET(_request: Request, { params }: { params: Promise<{ fil
       return respond(await openData.fundStatus());
     case 'disbursements.json':
       return respond(await openData.disbursements());
+    case 'announced-support.json':
+      return respond(await openData.announcedSupport());
     case 'foreign.json':
       return respond(await openData.foreign());
     case 'foreign.csv':

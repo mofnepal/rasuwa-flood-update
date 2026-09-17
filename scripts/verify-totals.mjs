@@ -384,6 +384,44 @@ console.log(
   `  ties      category D (${money(D)}) excludes these ${money(statedUsd)}; the grand total carries none of them`,
 );
 
+// ── announced domestic support, as OPMCM lists it — listed, never added ────
+console.log(
+  '\nANNOUNCED DOMESTIC SUPPORT (OPMCM) — on the contributions page, kept out of every total',
+);
+const announced = await p.announcedSupport.findMany({
+  where: { disasterId: d.id, status: 'published' },
+});
+check('entries as fetched from OPMCM', announced.length, printed.announced_support.entries);
+const pledgedNpr = announced
+  .filter((r) => r.state === 'pledged')
+  .reduce((s, r) => s + n(r.amount_npr), 0);
+check('pledged rupee figures sum as fetched', pledgedNpr, printed.announced_support.pledged_npr);
+// An entry already in the handover register must point at a row with the same amount.
+for (const r of announced.filter((r) => r.state === 'in_register')) {
+  const hit = await p.contribution.findFirst({
+    where: { disasterId: d.id, status: 'published', sn: Number(r.register_ref) },
+  });
+  check(
+    `${r.contributor_en}: register no. ${r.register_ref} carries the same amount`,
+    hit ? n(hit.amount_npr) : -1,
+    n(r.amount_npr),
+  );
+}
+// Cash to districts is the onward disbursement to districts, not a contribution.
+const districtCash = disbursed
+  .filter((r) => r.stage === 'onward' && r.recipient_kind === 'district')
+  .reduce((s, r) => s + n(r.amount_npr), 0);
+for (const r of announced.filter((r) => r.state === 'disbursed'))
+  check(
+    `${r.contributor_en} equals the onward disbursement to districts`,
+    n(r.amount_npr),
+    districtCash,
+  );
+checks++;
+console.log(
+  `  ties      the grand total carries none of these ${money(pledgedNpr)} in pledges; the Fund records count`,
+);
+
 // ── action plans, each against its own document ────────────────────────────
 console.log('\nACTION PLANS — each plan against its own numbering and bodies');
 const plans = await p.actionPlan.findMany({

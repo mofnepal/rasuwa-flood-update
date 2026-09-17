@@ -3,6 +3,7 @@ import type { Agency, Network, Prisma, SnapshotPeriod } from '@prisma/client';
 import { prisma } from './db';
 import { getDisaster, getTotals, settlementGap } from './totals';
 import { getDisbursements, summariseDisbursements } from './disbursements';
+import { getAnnouncedSupport, summariseAnnounced } from './announced';
 import { getMinistryReference } from './ministry';
 import { FUND_STATUS_SOURCE_EN, OFFICIAL_LINKS } from './constants';
 import { publicFileUrl } from './urls';
@@ -276,6 +277,26 @@ export async function disbursements(): Promise<OpenData> {
       purpose_en: row.purpose_en,
       source_en: row.source_en,
     })),
+  };
+}
+
+/** Domestic support announced, as the Prime Minister’s Office lists it — never counted. */
+export async function announcedSupport(): Promise<OpenData> {
+  const totals = await getTotals();
+  if (!totals) return missing(NO_DISASTER);
+  const rows = await getAnnouncedSupport(totals.disasterId);
+  const summary = summariseAnnounced(rows);
+  return {
+    ok: true,
+    body: {
+      as_of: summary.as_of,
+      note: 'Domestic support announced for the flood, as the Office of the Prime Minister and Council of Ministers lists it (rescue.opmcm.gov.np/donations). Nothing here is added to any total: a pledge counts only once the Fund’s own records carry it. state = pledged | in_register (already counted in the handover register, see register_ref) | disbursed (money out of the Fund, see disbursements.json).',
+      entries: summary.entries,
+      pledged_npr: summary.pledged_npr,
+      in_register_npr: summary.in_register_npr,
+      disbursed_npr: summary.disbursed_npr,
+      rows: rows.map((row) => ({ ...row, announced_on: row.announced_on?.slice(0, 10) ?? null })),
+    },
   };
 }
 

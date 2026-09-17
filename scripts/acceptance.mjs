@@ -39,6 +39,10 @@ check(enForeign.includes('USD 50,473,800'), 'OPMCM-stated international support 
 const enContrib = await text('/en/contributions');
 check(enContrib.includes('NPR 2,73,76,30,634'), 'handovers NPR 2,737,630,633.82');
 check(/485 entries/.test(enContrib), 'handover register is 485 entries');
+check(
+  enContrib.includes('NPR 55,18,30,000'),
+  'announced domestic pledges NPR 551,830,000, listed not counted',
+);
 
 // ── 2. forbidden strings ───────────────────────────────────────────────────
 console.log('\nForbidden text');

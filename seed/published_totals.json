@@ -41,5 +41,10 @@
     "entries": 39,
     "stated_usd": 50473800,
     "fetched": "2026-09-16"
+  },
+  "announced_support": {
+    "entries": 9,
+    "pledged_npr": 551830000,
+    "fetched": "2026-09-17"
   }
 }

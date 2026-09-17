@@ -4,6 +4,45 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — Announced domestic support, and one source column in the foreign register
+
+- **A "घोषित स्वदेशी सहयोग / Announced domestic support" card on the contributions page**,
+  beneath the handover register, with its own database (`AnnouncedSupport`, seeded from
+  `seed/announced_support.json`): the nine entries of the domestic support list on the
+  Office of the Prime Minister and Council of Ministers' rescue portal, copied word for
+  word (raw copy under `reference/`) — the Armed Police Force's salary deductions (NPR
+  155 million, announced 4 September), federal employees' salary contribution (about
+  NPR 360 million), Ministry of Finance staff and agencies (NPR 1.83 million), one
+  month's salary of the Prime Minister and ministers, Nepali Congress (NPR 10 million,
+  7 September), immediate cash to Rasuwa, Nuwakot and Dhading (NPR 25 million), half a
+  month's salary of Lumbini's Chief Minister and ministers, Karnali Province (NPR 5
+  million) and Lumbini Province (NPR 30 million). Each row carries the contributor, a
+  category, the figure or the Office's own words where there is none, where it stands
+  and the source, "Prime Minister's Office".
+- **Nothing announced is counted.** The grand total is unchanged at NPR 14,253,982,984.29.
+  The card's three tiles show pledges with a figure summed (NPR 551,830,000, seven
+  pledges, two without a figure), what is already in the Fund's register, and what is
+  government cash out of the Fund. Nepali Congress's NPR 10 million is the handover
+  register's entry no. 336 (Bhadra 22, NPR 10,000,000) and stays counted only there; the
+  district cash is NDRRMA's onward disbursement of Bhadra 21 and stays under fund usage.
+  The seed refuses an entry that cites a register number with a different amount, and
+  `pnpm verify` checks the count, the pledged sum, the register cross-reference and that
+  the district cash equals the onward disbursement to districts. Open data gains
+  `announced-support.json`.
+- **Verified against the source.** The list is hard-coded in the Office's front-end
+  bundle; every figure matches it. The Office's list has one row more than was passed
+  to us — half a month's salary from Lumbini's Chief Minister and ministers — which is
+  included. The Office's first row, the Fund's own nine-bank balance, is account
+  status, not a contribution, and is omitted.
+- **The foreign register has one source column instead of status tags.** Every row
+  reads the same — date, name, country, type, kind, channel, amounts — and a source
+  chip says "Ministry of Finance" (verified in the Fund, counted) or "Prime
+  Minister's Office" (listed, not counted). The quick chips now categorise the
+  register as countries, organisations and companies, and the table heading gains a
+  source filter beside type, kind and country. The "Reported by…" tags, chips and
+  wording are gone; the tile reads "Source: Prime Minister's Office". The Office's
+  per-entry status (pledged, in transit, delivered) stays in the open data.
+
 ### Data — Foreign assistance: OPMCM's international and government support, in the register
 
 - **The foreign assistance register now carries the support the Office of the Prime

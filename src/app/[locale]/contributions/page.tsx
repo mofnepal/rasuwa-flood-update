@@ -32,6 +32,7 @@ import { ContributionRegister, type RegisterRow } from './ContributionRegister';
 import { BankTable, type BankRow } from './BankTable';
 import { SectorPanel } from './SectorPanel';
 import { FundUsage } from './FundUsage';
+import { AnnouncedSupport } from './AnnouncedSupport';
 
 /**
  * Rendered at request time on the ministry's server: the portal must never ship a
@@ -147,6 +148,7 @@ export default async function ContributionsPage({
           {fonepay ? <a href="#fonepay">Fonepay</a> : null}
           {fund ? <a href="#nrb">{t('tabBankWise')}</a> : null}
           <a href="#register">{t('tabHandover')}</a>
+          <a href="#announced">{t('tabAnnounced')}</a>
         </div>
       </div>
 
@@ -443,6 +445,9 @@ export default async function ContributionsPage({
           <EmptyState label={ts('awaitingEntry')} />
         )}
       </Card>
+
+      {/* ── announced domestic support — listed, never counted ───────────── */}
+      <AnnouncedSupport locale={locale} disasterId={totals.disasterId} />
 
       {/* ── the fund's own accounts, bank by bank ────────────────────────── */}
       {fund ? (

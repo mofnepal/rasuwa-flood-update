@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { DataTable, type Column } from '@/components/DataTable';
 import { Icon } from '@/components/Icon';
+import { Chip } from '@/components/ui';
 import { bsDate, formatAD, formatNPR, formatNumber, formatUSD, type Locale } from '@/lib/format';
 
 export interface ForeignRow {
@@ -22,7 +23,7 @@ export interface ForeignRow {
   in_kind_valuation_npr: number;
   pledge_received_at: string | null;
   published_at: string | null;
-  /** False for support reported by OPMCM, listed but never counted. */
+  /** True for a deposit verified in the Fund's records; false for a row whose source is the Prime Minister's Office. */
   in_fund: boolean;
   amount_text: string | null;
   report_status: string | null;
@@ -33,6 +34,14 @@ export interface ForeignRow {
   aid_list_note: { en?: string; ne?: string } | null;
   source_url: string | null;
 }
+
+/** Countries, organisations or companies — the register's quick chips. */
+const category = (row: ForeignRow) =>
+  row.contributor_type === 'government_embassy'
+    ? 'country'
+    : row.contributor_type === 'corporation'
+      ? 'company'
+      : 'organisation';
 
 export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
   const locale = useLocale() as Locale;
@@ -48,6 +57,7 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
   const countries = [...new Set(rows.map((row) => row.country_en ?? ''))].filter(Boolean).sort();
   const countryName = (en: string) =>
     (locale === 'ne' && rows.find((row) => row.country_en === en)?.country_ne) || en;
+  const sourceName = (row: ForeignRow) => (row.in_fund ? t('sourceFund') : t('sourcePmo'));
 
   const columns: Column<ForeignRow>[] = [
     {
@@ -68,25 +78,6 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
       label: tt('contributor'),
       className: 'nm',
       value: (row) => (locale === 'ne' ? (row.contributor_ne ?? row.contributor) : row.contributor),
-    },
-    {
-      key: 'status',
-      label: t('statusCol'),
-      value: (row) => (row.in_fund ? t('inFund') : t('reported')),
-      render: (row) =>
-        row.in_fund ? (
-          <span className="tag gov">{t('inFund')}</span>
-        ) : (
-          <span className="tag ins">
-            {row.report_status === 'pledged'
-              ? t('reportedPledged')
-              : row.report_status === 'in_transit'
-                ? t('reportedInTransit')
-                : row.report_status === 'delivered'
-                  ? t('reportedDelivered')
-                  : t('reportedShort')}
-          </span>
-        ),
     },
     {
       key: 'country',
@@ -137,10 +128,16 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
       render: (row) => (row.amount_npr_equiv ? formatNPR(row.amount_npr_equiv, locale) : '—'),
     },
     {
+      key: 'source',
+      label: ts('source'),
+      value: sourceName,
+      render: (row) => <Chip tone={row.in_fund ? undefined : 'navy'}>{sourceName(row)}</Chip>,
+    },
+    {
       key: 'verified',
       label: tt('verified'),
       sortable: false,
-      value: () => '✓',
+      value: (row) => (row.in_fund ? '✓' : ''),
       render: (row) =>
         row.in_fund ? (
           <span
@@ -154,9 +151,7 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
             <Icon name="verified" />
           </span>
         ) : (
-          <span className="mute" title={t('reported')}>
-            —
-          </span>
+          <span className="mute">—</span>
         ),
     },
   ];
@@ -171,15 +166,24 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
       formatCount={count}
       formatTotal={(value) => formatNPR(value, locale)}
       chips={[
-        { key: 'infund', label: t('chipInFund'), test: (row: ForeignRow) => row.in_fund },
-        { key: 'reported', label: t('chipReported'), test: (row: ForeignRow) => !row.in_fund },
-        ...kinds.map((kind) => ({
-          key: kind,
-          label: tk(kind),
-          test: (row: ForeignRow) => row.kind === kind,
-        })),
+        { key: 'country', label: t('chipCountries'), test: (row) => category(row) === 'country' },
+        {
+          key: 'organisation',
+          label: t('chipOrganisations'),
+          test: (row) => category(row) === 'organisation',
+        },
+        { key: 'company', label: t('chipCompanies'), test: (row) => category(row) === 'company' },
       ]}
       filters={[
+        {
+          key: 'source',
+          label: ts('source'),
+          options: [
+            ['mof', t('sourceFund')],
+            ['pmo', t('sourcePmo')],
+          ],
+          test: (row, value) => (value === 'mof' ? row.in_fund : !row.in_fund),
+        },
         {
           key: 'type',
           label: tt('type'),

@@ -89,23 +89,39 @@ test('the rescue page shows the latest report; earlier dates open from the archi
   await expect(page.locator('table.tbl td.nm a').nth(1)).toHaveAttribute('aria-current', 'page');
 });
 
-test('the foreign register lists OPMCM-reported support beside verified deposits, labelled', async ({
+test('the foreign register lists the Prime Minister’s Office support beside verified deposits, by source', async ({
   page,
 }) => {
   await open(page, 'en/foreign/');
   await expect(page.locator('.kpi')).toHaveCount(4);
   await expect(page.locator('body')).not.toContainText('Awaiting attribution');
+  await expect(page.locator('body')).not.toContainText('Reported by');
   const register = page.locator('#register');
   await register.scrollIntoViewIfNeeded();
-  // Verified deposits and reported support share one table, each row labelled.
-  await register.getByRole('tab', { name: 'In the Fund' }).click();
-  await expect(register.locator('tbody tr')).toHaveCount(4);
-  await register.getByRole('tab', { name: 'Reported by the PM Office' }).click();
-  // Reported rows carry a short status tag: pledged, in transit, delivered or reported.
-  await expect(register.locator('tbody .tag.ins').first()).toHaveText(
-    /Pledged|In transit|Delivered|PM Office/,
-  );
+  // One register, categorised: countries, organisations, companies.
+  await register.getByRole('tab', { name: 'Companies' }).click();
+  await expect(register.locator('tbody tr')).toHaveCount(6);
+  await register.getByRole('tab', { name: 'Countries' }).click();
   await expect(register).toContainText('United Arab Emirates');
+  // The only mark of origin is the source column.
+  await expect(register.locator('tbody .chip.n').first()).toHaveText("Prime Minister's Office");
+  await register.locator('select').first().selectOption('mof');
+  await expect(register.locator('tbody tr')).toHaveCount(2);
+});
+
+test('announced domestic support is listed on the contributions page and never counted', async ({
+  page,
+}) => {
+  await open(page, 'en/contributions/');
+  await expect(page.locator('.kpi').first()).toContainText('NPR 14,25,39,82,984');
+  const card = page.locator('#announced');
+  await card.scrollIntoViewIfNeeded();
+  await expect(card.locator('.kpi')).toHaveCount(3);
+  await expect(card.locator('.kpi').first()).toContainText('NPR 55,18,30,000');
+  await expect(card.locator('table.tbl tbody tr')).toHaveCount(9);
+  await expect(card).toContainText('Armed Police Force');
+  await card.getByRole('tab', { name: 'Pledged' }).click();
+  await expect(card.locator('table.tbl tbody tr')).toHaveCount(7);
 });
 
 test('the fund usage card shows the transfer out of the Fund and every onward disbursement', async ({

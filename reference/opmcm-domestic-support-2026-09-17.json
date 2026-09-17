@@ -1,0 +1,52 @@
+{
+  "note": "Domestic support as the Office of the Prime Minister and Council of Ministers lists it on its rescue portal (rescue.opmcm.gov.np/donations, 'Domestic support' block). The list is hard-coded in the site's front-end bundle (assets/index-BdxcraJm.js), so it is copied here verbatim; the first row of the Office's list, the Fund's own nine-bank balance, is a live figure and is not a contribution, so it is omitted.",
+  "fetched_at": "2026-09-17T10:45:00+05:45",
+  "source_url": "https://rescue.opmcm.gov.np/donations",
+  "rows": [
+    {
+      "label": "सशस्त्र प्रहरी बल — तलब कट्टीबाट (४ सेप्टेम्बर घोषणा) / Armed Police Force — via salary deductions (announced 4 Sep)",
+      "amount_ne": "रु. १५.५ करोड (प्रतिबद्ध)",
+      "amount_en": "Rs 155 million (pledged)"
+    },
+    {
+      "label": "सरकारी कर्मचारीको तलब योगदान, संघीय / Federal employees’ salary contribution",
+      "amount_ne": "करिब रु. ३६ करोड",
+      "amount_en": "~ Rs 360 million"
+    },
+    {
+      "label": "अर्थ मन्त्रालयका कर्मचारी तथा निकायहरू / Ministry of Finance staff & agencies",
+      "amount_ne": "रु. १८.३ लाख",
+      "amount_en": "Rs 1.83 million"
+    },
+    {
+      "label": "प्रधानमन्त्री तथा मन्त्रीहरूको एक महिनाको तलब / One month’s salary — PM & Cabinet ministers",
+      "amount_ne": "एक महिनाको तलब",
+      "amount_en": "One month’s salary"
+    },
+    {
+      "label": "नेपाली कांग्रेस (७ सेप्टेम्बर) / Nepali Congress (7 Sep)",
+      "amount_ne": "रु. १ करोड",
+      "amount_en": "Rs 10 million"
+    },
+    {
+      "label": "जिल्लाहरूलाई तत्काल नगद / Immediate district cash",
+      "amount_ne": "रसुवा रु. १ करोड, नुवाकोट रु. १ करोड, धादिङ रु. ५० लाख",
+      "amount_en": "Rs 10m Rasuwa, Rs 10m Nuwakot, Rs 5m Dhading"
+    },
+    {
+      "label": "लुम्बिनी प्रदेश मुख्यमन्त्री तथा मन्त्रीहरू (नयाँ) / Lumbini CM & ministers (new pledge)",
+      "amount_ne": "आधा महिनाको तलब",
+      "amount_en": "Half a month’s salary"
+    },
+    {
+      "label": "कर्णाली प्रदेश सरकार (नयाँ) / Karnali government (new)",
+      "amount_ne": "रु. ५० लाख",
+      "amount_en": "Rs 5 million"
+    },
+    {
+      "label": "लुम्बिनी प्रदेश (यसअघि) / Lumbini province (earlier)",
+      "amount_ne": "रु. ३ करोड",
+      "amount_en": "Rs 30 million"
+    }
+  ]
+}
