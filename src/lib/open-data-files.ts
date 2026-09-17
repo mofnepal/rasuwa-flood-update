@@ -7,7 +7,8 @@ export const OPEN_DATA_FILES = {
   'channels.json': 'Latest NCHL and Fonepay figures, channel by channel',
   'fund-status.json': 'Prime Minister Disaster Relief Fund — daily deposit and fund status',
   'disbursements.json': 'Transfers out of the Fund and their onward disbursement',
-  'announced-support.json': 'Domestic support announced, as the Prime Minister’s Office lists it — not counted',
+  'announced-support.json':
+    'Domestic support announced, as the Prime Minister’s Office lists it — not counted',
   'foreign.json': 'Identified foreign contributors',
   'foreign.csv': 'The same list as CSV',
   'rescue-latest.json': 'Latest NDRRMA and Nepal Police figures',
