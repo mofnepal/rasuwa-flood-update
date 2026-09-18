@@ -113,7 +113,7 @@ test('announced domestic support is listed on the contributions page and never c
   page,
 }) => {
   await open(page, 'en/contributions/');
-  await expect(page.locator('.kpi').first()).toContainText('NPR 15,05,76,47,104');
+  await expect(page.locator('.kpi').first()).toContainText('NPR 15,07,66,07,409');
   const card = page.locator('#announced');
   await card.scrollIntoViewIfNeeded();
   await expect(card.locator('.kpi')).toHaveCount(3);
