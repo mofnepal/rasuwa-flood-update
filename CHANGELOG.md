@@ -4,6 +4,52 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — 17–18 September 2026: fund status 2083/06/01 5:00 PM, NCHL and NDRRMA report
+
+- **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/06/01
+  (17 September 2026), 5:00 PM**, at **NPR 153.24** per US dollar (from 152.59). It
+  publishes the 2083/05/31 column as its comparison; no statement for Bhadra 30 was
+  received.
+  - NPR balance **10,896,662,277**; collected since the flood 9,814,239,871; the day's
+    collection 219,996,977 equals the rise in the collected figure exactly. Every bank
+    is at or above its 05/31 figure.
+  - USD: Himalayan Bank 13,949,458 + Laxmi Sunrise 9,981,274 = 23,930,732, one dollar
+    above the printed **23,930,731**; collected 23,344,683; the day's USD 49,212 equals
+    the rise in the balance exactly.
+  - Total available fund balance **NPR 14,563,807,556**.
+- **Stated, not corrected:** the statement prints its fund-usage line blank, while its
+  collected figure still carries the NPR 1 billion transferred to NDRRMA on 2083/05/16
+  (balance − before + 1 billion = collected, within a rupee); the portal keeps the
+  transfer with a note saying so. The nine NPR bank lines sum to 10,896,662,275, two
+  rupees below the printed total; before + collected − transferred is one rupee below
+  the printed balance; the NPR balance plus the printed USD equivalent is one rupee
+  above the printed total available; and the printed USD equivalent, NPR 3,667,145,280,
+  is NPR 61.56 above USD 23,930,731 × 153.24. `pnpm verify` now records rupee rounding
+  of this size as a note, as printed, and fails on anything larger; it also checks that
+  each daily series ends at, and sums to, the printed collection.
+- **The Bhadra 30 point of the daily series is derived:** from the Bhadra 31 daily
+  collection printed in this statement (NPR 146,337,283; USD 18,314), so it also carries
+  what came in after 9:00 AM on Bhadra 29 (NPR 525,897,852; USD 420,682). The series
+  carries a note saying so.
+- **NCHL collection through its channels, 18 September 2026, 12:00 AM** — seven
+  channels, **NPR 6,235,427,785.59** across 269,780 transactions; the lines sum to the
+  printed total to the paisa, and every channel is at or above its 14 September figure
+  (+6,513 transactions, +NPR 713,994,417.37).
+- **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 17 September 2026,
+  7:00 PM** (Asoj 1). Bodies by district sum to **1,410** (Rasuwa 199, Nuwakot 203), and
+  the deceased detail (336 female, 549 male, 525 human remains) sums to the same 1,410;
+  **6,145 missing** with 110 bodies handed over; holding centres 832 + 817 + 94 =
+  **1,743** at 27 centres; rescued **13,756**; Army helicopter flights 1,634 (31 today),
+  APF 320; DNA samples 1,286 and 1,944; fuel diesel 60,000 l, petrol 12,000 l, aviation
+  4,000 l, 502 gas cylinders. Treatment 344 in hospital, 290 discharged, 9,820 by the
+  security agencies; derived injured total 344 + 9,820 = 10,164.
+- **Stated, not corrected:** the report's missing chart is unchanged (587 foreign
+  nationals, Rasuwa 2,679, Nuwakot 1,787 — 5,053, or 4,943 after the 110 bodies handed
+  over) while its own total is 6,145; both are shown as printed with a note, and
+  `pnpm verify` records the difference in place of a tie.
+- The grand total is **15,05,76,47,104** (15,057,647,104.33): A NPR
+  8,742,677,247.59 + B NPR 2,737,630,633.82 + C USD 23,344,683 × 153.24.
+
 ### Data — Announced domestic support, and one source column in the foreign register
 
 - **A "घोषित स्वदेशी सहयोग / Announced domestic support" card on the contributions page**,

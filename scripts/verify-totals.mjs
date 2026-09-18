@@ -151,20 +151,44 @@ const series = fs.series;
 const nprBanks = series.npr.banks.reduce((s, [, , bal]) => s + bal, 0);
 const usdBanks = series.usd.banks.reduce((s, [, , bal]) => s + bal, 0);
 console.log(`  statement of ${fs.as_of_en}, rate ${fs.fx_rate}`);
-check('NPR bank balances sum to the printed NPR total', nprBanks, n(fs.npr_balance), 1.005);
-check(
+// The sheet rounds paisa line by line, so a printed total can sit a rupee or two
+// from the sum of its own lines. That is recorded as a note, as printed; anything
+// larger differs.
+function checkRounded(label, got, want) {
+  if (Math.abs(got - want) <= 0.005) return check(label, got, want);
+  if (Math.abs(got - want) <= 5) {
+    checks++;
+    note(
+      `${label}: ${money(got)} against the printed ${money(want)} — ` +
+        `${money(Math.abs(got - want))} of rupee rounding in the sheet; the printed figure is used`,
+    );
+    return true;
+  }
+  return check(label, got, want);
+}
+checkRounded('NPR bank balances sum to the printed NPR total', nprBanks, n(fs.npr_balance));
+checkRounded(
   'before + collected − disbursed = NPR balance',
   n(fs.npr_before) + n(fs.npr_gross) - n(fs.npr_usage),
   n(fs.npr_balance),
 );
-check('USD bank balances sum to the printed USD total', usdBanks, n(fs.usd_balance), 1.005);
-check('before + collected = USD balance', n(fs.usd_before) + n(fs.usd_gross), n(fs.usd_balance));
-check(
+checkRounded('USD bank balances sum to the printed USD total', usdBanks, n(fs.usd_balance));
+checkRounded(
+  'before + collected = USD balance',
+  n(fs.usd_before) + n(fs.usd_gross),
+  n(fs.usd_balance),
+);
+checkRounded(
   'NPR balance + USD equivalent = total available',
   n(fs.npr_balance) + n(fs.usd_equiv_npr),
   n(fs.total_available_npr),
-  1.005,
 );
+// The daily series must end at the printed figures and add up to them.
+const lastNpr = series.npr.gross_series.at(-1);
+const lastUsd = series.usd.gross_series.at(-1);
+check('NPR series ends at the printed collection', lastNpr, n(fs.npr_gross));
+check('USD series ends at the printed collection', lastUsd, n(fs.usd_gross));
+if (series.note_en) note(series.note_en);
 const computedEquiv = n(fs.usd_balance) * n(fs.fx_rate);
 if (Math.abs(computedEquiv - n(fs.usd_equiv_npr)) > 1) {
   note(

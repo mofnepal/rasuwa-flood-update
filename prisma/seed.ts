@@ -245,6 +245,9 @@ async function main() {
     /** The column the statement compares against, e.g. the previous day. */
     compare_bs: string;
     compare_en: string;
+    /** Why a point in the daily series is derived rather than printed, if any. */
+    series_note_ne?: string;
+    series_note_en?: string;
     original_file: string | null;
     fx: number;
     dates_bs: string[];
@@ -315,6 +318,8 @@ async function main() {
           dates_ad: statement.dates_ad,
           compare_bs: statement.compare_bs,
           compare_en: statement.compare_en,
+          note_ne: statement.series_note_ne ?? null,
+          note_en: statement.series_note_en ?? null,
           npr: {
             balance_series: statement.npr.balance_series,
             gross_series: statement.npr.gross_series,
