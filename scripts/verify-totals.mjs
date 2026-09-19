@@ -270,10 +270,12 @@ for (const r of reports) {
       Object.values(x.bodies_by_district).reduce((s, v) => s + v, 0),
       x.human_casualties,
     );
-    if (x.security_personnel_mobilised != null)
+    // A report that prints the mobilised total without a breakdown by force has
+    // nothing to sum; only a printed breakdown is checked against the total.
+    if (x.security_personnel_mobilised != null && x.security_breakdown)
       check(
         `${label} security breakdown sums to the total`,
-        Object.values(x.security_breakdown ?? {}).reduce((s, v) => s + v, 0),
+        Object.values(x.security_breakdown).reduce((s, v) => s + v, 0),
         x.security_personnel_mobilised,
       );
     if (x.deceased_breakdown) {

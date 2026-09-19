@@ -155,6 +155,7 @@ export function districtName(key: string, locale: 'ne' | 'en'): string {
 const BREAKDOWN_LABELS: Record<string, { ne: string; en: string }> = {
   // injured
   hospitals: { ne: 'अस्पतालमा उपचार', en: 'In hospital' },
+  hospitals_current: { ne: 'हाल अस्पतालमा उपचाररत', en: 'Currently in hospital' },
   hospitals_discharged: { ne: 'अस्पतालबाट डिस्चार्ज', en: 'Discharged from hospital' },
   nepali_army: { ne: 'नेपाली सेनाद्वारा उपचार', en: 'Treated by the Nepali Army' },
   apf: { ne: 'सशस्त्र प्रहरीद्वारा उपचार', en: 'Treated by the Armed Police Force' },

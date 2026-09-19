@@ -4,6 +4,24 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — NDRRMA update, 19 September 2026, 7:00 PM
+
+- **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 19 September 2026,
+  7:00 PM** (Asoj 3). Bodies by district sum to **1,411** (Gorkha 79), and the deceased
+  detail (336 female, 549 male, 526 human remains) sums to the same 1,411; **5,875
+  missing** with 110 bodies handed over — and this time the missing chart ties: 636
+  foreign nationals, Rasuwa 3,513 (1,677 + 1,836) and Nuwakot 1,836 (657 + 1,179) are
+  5,985, less the 110 bodies handed over = 5,875, the report's own total, so the note
+  that accompanied the last three reports is not needed. Holding centres 427 + 794 +
+  121 = **1,342** at 24 centres; rescued **13,784**; Army helicopter flights 1,692 (41
+  today), APF 320; DNA samples 1,286 and 1,991; security personnel mobilised 20,935.
+- **The treatment figures change shape.** The report gives 18 people currently under
+  treatment at 6 hospitals and 10,041 treated by the security forces, and no cumulative
+  count of those treated in and discharged from hospital; the derived injured total is
+  18 + 10,041 = 10,059, with a note saying so, and the new line is labelled "currently in
+  hospital". The report carries no fuel-stock, bridge or relief-supplies lines, so those
+  are not shown; its footnote now says the missing figure may include duplicate entries.
+
 ### Data — fund status, 2083/06/02 9:00 AM
 
 - **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/06/02
