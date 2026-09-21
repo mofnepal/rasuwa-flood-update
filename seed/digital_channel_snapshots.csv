@@ -81,3 +81,10 @@ NCHL,2026-09-18T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेल�
 NCHL,2026-09-18T00:00:00+05:45,cumulative,remittance,Remittance,रेमिट्यान्स,27167,309620026.31,NCHL
 NCHL,2026-09-18T00:00:00+05:45,cumulative,intl_qr,Int'l QR,अन्तर्राष्ट्रिय QR,723,5924142.74,NCHL
 NCHL,2026-09-18T00:00:00+05:45,cumulative,card_domestic,Card – Domestic,कार्ड – घरेलु,461,3262145.77,NCHL
+NCHL,2026-09-21T00:00:00+05:45,cumulative,ips_cheque,IPS / Cheque Transfer,IPS / चेक ट्रान्सफर,5413,2818437545.73,NCHL
+NCHL,2026-09-21T00:00:00+05:45,cumulative,card_intl,Card – International,कार्ड – अन्तर्राष्ट्रिय,103399,1739727713.53,NCHL
+NCHL,2026-09-21T00:00:00+05:45,cumulative,online_transfer,Online Transfer,अनलाइन ट्रान्सफर,17467,1030656787.41,NCHL
+NCHL,2026-09-21T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,116713,424326007.55,NCHL
+NCHL,2026-09-21T00:00:00+05:45,cumulative,remittance,Remittance,रेमिट्यान्स,27227,312896928.96,NCHL
+NCHL,2026-09-21T00:00:00+05:45,cumulative,intl_qr,Int'l QR,अन्तर्राष्ट्रिय QR,727,6284642.74,NCHL
+NCHL,2026-09-21T00:00:00+05:45,cumulative,card_domestic,Card – Domestic,कार्ड – घरेलु,464,3314246.77,NCHL

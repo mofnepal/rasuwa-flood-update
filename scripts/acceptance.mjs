@@ -27,8 +27,8 @@ const text = async (path) => {
 console.log('\nFigures');
 const neHome = await text('/ne');
 const enHome = await text('/en');
-check(neHome.includes('रु. १५,०७,६६,०७,४०९'), 'grand total, Nepali', 'रु. १५,०७,६६,०७,४०९');
-check(enHome.includes('NPR 15,07,66,07,409'), 'grand total, English', 'NPR 15,07,66,07,409');
+check(neHome.includes('रु. १५,१७,६८,२३,४९७'), 'grand total, Nepali', 'रु. १५,१७,६८,२३,४९७');
+check(enHome.includes('NPR 15,17,68,23,497'), 'grand total, English', 'NPR 15,17,68,23,497');
 check(enHome.includes('14,64,83,36,312'), 'available fund balance 14,648,336,312');
 
 const enForeign = await text('/en/foreign');

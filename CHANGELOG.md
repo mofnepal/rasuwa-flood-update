@@ -4,6 +4,15 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — NCHL, 21 September 2026, 12:00 AM
+
+- **NCHL collection through its channels, 21 September 2026, 12:00 AM** — seven
+  channels, **NPR 6,335,643,872.69** across 271,410 transactions; the lines sum to the
+  printed total to the paisa, and every channel is at or above its 18 September figure
+  (+1,630 transactions, +NPR 100,216,087.10).
+- The grand total is **15,17,68,23,497** (15,176,823,496.51): A NPR 8,842,893,334.69 +
+  B NPR 2,737,630,633.82 + C USD 23,474,540 × 153.20.
+
 ### Data — NDRRMA update, 20 September 2026, 7:00 PM
 
 - **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 20 September 2026,
