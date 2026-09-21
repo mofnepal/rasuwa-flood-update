@@ -164,12 +164,20 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
                 tone="red"
                 label={t('rescued')}
                 value={formatNumber(ndrrma.rescued_till_date, locale)}
-                foot={`${t('helicopterFlights')}: ${formatNumber(
-                  ndrrma.helicopter_flights.nepali_army_total +
-                    (ndrrma.helicopter_flights.apf ?? 0) +
-                    (ndrrma.helicopter_flights.private_from_kathmandu ?? 0),
-                  locale,
-                )}`}
+                foot={
+                  ndrrma.helicopter_flights.nepali_army_total != null
+                    ? `${t('helicopterFlights')}: ${formatNumber(
+                        ndrrma.helicopter_flights.nepali_army_total +
+                          (ndrrma.helicopter_flights.apf ?? 0) +
+                          (ndrrma.helicopter_flights.private_from_kathmandu ?? 0),
+                        locale,
+                      )}`
+                    : ndrrma.helicopter_flights.nepali_army_today != null
+                      ? `${t('helicopterFlights')}: ${t('flightsToday', {
+                          count: formatNumber(ndrrma.helicopter_flights.nepali_army_today, locale),
+                        })}`
+                      : undefined
+                }
               />
               <KpiTile
                 icon="casualties"
@@ -295,17 +303,24 @@ export async function RescueView({ locale, date }: { locale: Locale; date?: stri
               <div>
                 <b>{t('helicopterFlights')}</b>
                 {[
-                  `${formatNumber(ndrrma.helicopter_flights.nepali_army_total, locale)}${
-                    ndrrma.helicopter_flights.nepali_army_total_as_of
-                      ? ` (${t('flightsAsOf', {
-                          date: bsDate(
-                            ndrrma.helicopter_flights.nepali_army_total_as_of,
-                            null,
-                            locale,
-                          ),
-                        })})`
-                      : ''
-                  }`,
+                  ndrrma.helicopter_flights.nepali_army_total != null
+                    ? `${formatNumber(ndrrma.helicopter_flights.nepali_army_total, locale)}${
+                        ndrrma.helicopter_flights.nepali_army_total_as_of
+                          ? ` (${t('flightsAsOf', {
+                              date: bsDate(
+                                ndrrma.helicopter_flights.nepali_army_total_as_of,
+                                null,
+                                locale,
+                              ),
+                            })})`
+                          : ''
+                      }`
+                    : null,
+                  ndrrma.helicopter_flights.nepali_army_today != null
+                    ? t('flightsToday', {
+                        count: formatNumber(ndrrma.helicopter_flights.nepali_army_today, locale),
+                      })
+                    : null,
                   ndrrma.helicopter_flights.apf != null
                     ? `${t('apfFlights')}: ${formatNumber(ndrrma.helicopter_flights.apf, locale)}`
                     : null,

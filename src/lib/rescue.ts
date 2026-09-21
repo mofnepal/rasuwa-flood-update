@@ -44,7 +44,8 @@ export const ndrrmaSchema = z.object({
   missing_note_en: z.string().optional(),
   rescued_till_date: z.number(),
   helicopter_flights: z.object({
-    nepali_army_total: z.number(),
+    /// Absent when a report prints only the day's flights, with no running total.
+    nepali_army_total: z.number().optional(),
     nepali_army_total_as_of: z.string().optional(),
     nepali_army_today: z.number().optional(),
     apf: z.number().optional(),

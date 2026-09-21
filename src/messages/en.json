@@ -171,7 +171,8 @@
     "holdingSub": "Rasuwa · Nuwakot · Dhading",
     "securitySub": "Police · Army · Armed Police Force",
     "measuresByCategory": "Relief measures by category",
-    "accountStatusNoteHome": "This is the fund's account position; it is not added to the total contributions received. Only the amount deposited in the fund's USD accounts is counted as foreign assistance."
+    "accountStatusNoteHome": "This is the fund's account position; it is not added to the total contributions received. Only the amount deposited in the fund's USD accounts is counted as foreign assistance.",
+    "flightsToday": "{count} helicopter flights today"
   },
   "contributions": {
     "title": "Contributions Received",
@@ -328,7 +329,8 @@
     "additionalBudget": "Additional budget for search and rescue equipment",
     "cashSupportFamilies": "Cash support from the Government of Nepal",
     "dnaDeceased": "Deceased",
-    "dnaRelatives": "Relatives"
+    "dnaRelatives": "Relatives",
+    "flightsToday": "{count} flights today"
   },
   "initiatives": {
     "title": "Government initiatives",

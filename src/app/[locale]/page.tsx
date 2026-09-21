@@ -501,14 +501,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               tone="red"
               label={tr('rescued')}
               value={formatNumber(ndrrma.rescued_till_date, locale)}
-              foot={t('helicopterFlights', {
-                count: formatNumber(
-                  ndrrma.helicopter_flights.nepali_army_total +
-                    (ndrrma.helicopter_flights.apf ?? 0) +
-                    (ndrrma.helicopter_flights.private_from_kathmandu ?? 0),
-                  locale,
-                ),
-              })}
+              foot={
+                ndrrma.helicopter_flights.nepali_army_total != null
+                  ? t('helicopterFlights', {
+                      count: formatNumber(
+                        ndrrma.helicopter_flights.nepali_army_total +
+                          (ndrrma.helicopter_flights.apf ?? 0) +
+                          (ndrrma.helicopter_flights.private_from_kathmandu ?? 0),
+                        locale,
+                      ),
+                    })
+                  : ndrrma.helicopter_flights.nepali_army_today != null
+                    ? t('flightsToday', {
+                        count: formatNumber(ndrrma.helicopter_flights.nepali_army_today, locale),
+                      })
+                    : undefined
+              }
             />
             <KpiTile
               icon="casualties"
@@ -823,7 +831,12 @@ interface NdrrmaData {
   dead_body_handover: number;
   bodies_by_district: Record<string, number>;
   missing_breakdown: Record<string, number>;
-  helicopter_flights: { nepali_army_total: number; apf?: number; private_from_kathmandu?: number };
+  helicopter_flights: {
+    nepali_army_total?: number;
+    nepali_army_today?: number;
+    apf?: number;
+    private_from_kathmandu?: number;
+  };
 }
 
 /**

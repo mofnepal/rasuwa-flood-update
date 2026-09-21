@@ -4,6 +4,25 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — NDRRMA update, 20 September 2026, 7:00 PM
+
+- **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 20 September 2026,
+  7:00 PM** (Asoj 4). Bodies by district sum to **1,451** (Chitwan 367, Nuwakot 236,
+  Rasuwa 203), and the deceased detail (336 female, 585 male, 530 human remains) sums to
+  the same 1,451; **5,786 missing** with 110 bodies handed over, and the chart ties again:
+  636 foreign nationals, Rasuwa 3,513 (1,677 + 1,836) and Nuwakot 1,747 (657 + 1,090)
+  are 5,896, less 110 = 5,786. Holding centres 324 + 786 + 121 = **1,231** at 20 centres;
+  rescued **13,784** (unchanged); DNA samples 1,286 and 1,997; security personnel
+  mobilised 20,929. Treatment: 15 currently in 5 hospitals and 10,163 treated by the
+  security forces, derived total 10,178. The housing and livelihood grant note gains the
+  report's second sentence: the process for receiving it has been sent to the local
+  governments.
+- **The report prints only the day's helicopter flights (33), with no running total and
+  no Armed Police Force figure.** The running total is therefore optional in the report
+  schema, and where a report has none the rescue tile and the detail block show the
+  day's flights instead ("आज ३३ उडान / 33 flights today") rather than a figure the
+  report does not print.
+
 ### Data — NDRRMA update, 19 September 2026, 7:00 PM
 
 - **NDRRMA — Rasuwa Flood: Search, Rescue and Relief Update, 19 September 2026,

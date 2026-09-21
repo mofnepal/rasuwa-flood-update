@@ -1012,6 +1012,82 @@
         "missing_excludes_handover": true,
         "security_personnel_mobilised": 20935
       }
+    },
+    {
+      "agency": "NDRRMA",
+      "original_file": null,
+      "data": {
+        "as_of": "2026-09-20T19:00:00+05:45",
+        "as_of_bs": "२०८३ असोज ४, बेलुका ७:०० बजे",
+        "source": "NDRRMA – Rasuwa Flood: Search, Rescue and Relief Update",
+        "human_casualties": 1451,
+        "bodies_by_district": {
+          "Rasuwa": 203,
+          "Nuwakot": 236,
+          "Dhading": 72,
+          "Gorkha": 79,
+          "Tanahun": 38,
+          "Chitwan": 367,
+          "Nawalparasi East": 232,
+          "Nawalparasi West": 222,
+          "While undergoing treatment at Kathmandu": 2
+        },
+        "bodies_note_ne": "विभिन्न अपरिचित मानव अवशेष समेत",
+        "bodies_note_en": "including various unidentified human remains",
+        "deceased_breakdown": {
+          "female": 336,
+          "male": 585,
+          "human_remains": 530
+        },
+        "dead_body_handover": 110,
+        "dna_note_ne": "डिएनए परीक्षणका लागि सम्बन्धित जिल्ला प्रहरी कार्यालयमा दुई प्रति फोटो र नाता प्रमाणितसहित नमुना बुझाउन सकिन्छ।",
+        "dna_note_en": "For DNA testing, samples can be submitted at the concerned District Police Office with two photographs and proof of kinship.",
+        "dna_samples": {
+          "deceased": 1286,
+          "relatives": 1997
+        },
+        "missing_total_approx": 5786,
+        "missing_breakdown": {
+          "Rasuwa": 3513,
+          "Nuwakot": 1747,
+          "Foreign nationals": 636
+        },
+        "missing_rasuwa_breakdown": {
+          "Citizens from Rasuwa": 1677,
+          "Citizens of other districts": 1836
+        },
+        "missing_nuwakot_breakdown": {
+          "Citizens from Nuwakot": 657,
+          "Citizens of other districts (excluding Rasuwa)": 1090
+        },
+        "missing_note_ne": "हस्तान्तरण गरिएका ११० शव सम्पर्कविहीनको कुल सङ्ख्याबाट घटाइएको छ।",
+        "missing_note_en": "The 110 bodies handed over have been deducted from the total count of missing persons.",
+        "rescued_till_date": 13784,
+        "helicopter_flights": {
+          "nepali_army_today": 33
+        },
+        "injured_receiving_treatment": 10178,
+        "injured_total_derived": true,
+        "injured_breakdown": {
+          "hospitals_current": 15,
+          "security_agencies": 10163
+        },
+        "injured_note_ne": "यस प्रतिवेदनमा हाल ५ अस्पतालमा उपचाररत १५ जना र विभिन्न सुरक्षा निकायद्वारा उपचार गरिएका १०,१६३ जना उल्लेख छन्; माथिको अङ्क ती दुईको जोड हो। अस्पतालमा उपचार भएका र डिस्चार्ज भएकाको सञ्चित सङ्ख्या यस प्रतिवेदनमा छैन।",
+        "injured_note_en": "This report gives 15 people currently under treatment at 5 hospitals and 10,163 treated by the various security forces; the figure above is the sum of the two. It carries no cumulative count of those treated in and discharged from hospital.",
+        "cash_support_note_ne": "होल्डिङ सेन्टरमा बस्न नचाहने परिवारलाई वैकल्पिक आवासको व्यवस्था नभएसम्म, बढीमा छ महिना, आवास तथा जीविकोपार्जनका लागि प्रति परिवार (चार सदस्यसम्म) मासिक रु. १५,००० र सोभन्दा बढी प्रत्येक सदस्यका लागि थप रु. २,००० उपलब्ध गराइने। अनुदान प्राप्त गर्ने प्रक्रिया तय गरी कार्यान्वयनका लागि सम्बन्धित स्थानीय तहमा पठाइएको छ।",
+        "cash_support_note_en": "For families unwilling to stay in holding centres, a monthly allowance for accommodation and livelihood of NPR 15,000 per family (up to four members), plus NPR 2,000 for each further member, until alternative housing is arranged, for a maximum of six months. The process for receiving the grant has been established and sent to the concerned local governments for implementation.",
+        "holding_center_people": 1231,
+        "holding_centers_count": 20,
+        "holding_center_breakdown": {
+          "Nuwakot": 324,
+          "Rasuwa": 786,
+          "Dhading": 121
+        },
+        "footer_note_ne": "सम्पर्कविहीनको उक्त सङ्ख्यामा अपरिचित शव, उद्धार गरिएका केही व्यक्ति र दोहोरिएका प्रविष्टि पनि समावेश हुन सक्छन्। तथ्याङ्क प्रमाणीकरण भइरहेकाले सम्पर्कविहीनको सङ्ख्या परिवर्तन हुन सक्छ।",
+        "footer_note_en": "The figure for missing persons may include unidentified bodies, some rescued individuals and duplicate entries. As verification of the data is under way, the stated number of missing persons is subject to change.",
+        "missing_excludes_handover": true,
+        "security_personnel_mobilised": 20929
+      }
     }
   ]
 }
