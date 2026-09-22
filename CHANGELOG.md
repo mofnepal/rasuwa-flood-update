@@ -4,6 +4,32 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — fund status, 2083/06/06 5:00 PM
+
+- **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/06/06
+  (22 September 2026), 5:00 PM**, at **NPR 153.01** per US dollar (from 153.20). It
+  publishes the 2083/06/05 column as its comparison; no statements for Asoj 3, 4 or 5
+  were received, so the 06/05 column is loaded from this statement.
+  - NPR balance **11,371,998,776**; the nine bank lines sum to it exactly, and balance −
+    before + the NPR 1 billion transferred = the collected figure of 10,289,576,371
+    exactly, on both days. Every bank is at or above its 06/05 figure.
+  - USD: Himalayan Bank 14,231,427 + Laxmi Sunrise 10,573,276 = 24,804,703, one dollar
+    above the printed **24,804,702**; collected 24,218,654; the day's USD 88,037 equals
+    the rise in the balance exactly.
+  - Total available fund balance **NPR 15,167,366,258** = NPR balance + printed USD
+    equivalent, exactly.
+- Stated, not corrected: the fund-usage line is printed blank again while the collected
+  figure carries the NPR 1 billion transfer (the note stays); the printed daily NPR
+  collection (187,643,242) is one rupee above the rise in the collected figure; the
+  06/05 USD lines also sum one dollar above their printed total; and the printed USD
+  equivalent, NPR 3,795,367,482, is NPR 28.98 above USD 24,804,702 × 153.01.
+- **The Asoj 4 point of the daily series is derived** from the Asoj 5 daily collection
+  printed here, so it carries everything from 9:00 AM on Asoj 2 to the end of Asoj 4
+  (NPR 175,393,257; USD 413,533); there is no separate Asoj 3 point, and the series
+  carries a note saying so.
+- The grand total is **15,44,29,53,798** (15,442,953,797.97): A NPR 8,999,626,915.61 +
+  B NPR 2,737,630,633.82 + C USD 24,218,654 × 153.01.
+
 ### Data — 22 September 2026: NCHL and Fonepay
 
 - **NCHL collection through its channels, 22 September 2026, 12:00 AM** — seven

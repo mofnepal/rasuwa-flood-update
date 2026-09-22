@@ -27,12 +27,12 @@ const text = async (path) => {
 console.log('\nFigures');
 const neHome = await text('/ne');
 const enHome = await text('/en');
-check(neHome.includes('रु. १५,३३,३५,५७,०७७'), 'grand total, Nepali', 'रु. १५,३३,३५,५७,०७७');
-check(enHome.includes('NPR 15,33,35,57,077'), 'grand total, English', 'NPR 15,33,35,57,077');
-check(enHome.includes('14,64,83,36,312'), 'available fund balance 14,648,336,312');
+check(neHome.includes('रु. १५,४४,२९,५३,७९८'), 'grand total, Nepali', 'रु. १५,४४,२९,५३,७९८');
+check(enHome.includes('NPR 15,44,29,53,798'), 'grand total, English', 'NPR 15,44,29,53,798');
+check(enHome.includes('15,16,73,66,258'), 'available fund balance 15,167,366,258');
 
 const enForeign = await text('/en/foreign');
-check(enForeign.includes('USD 23,474,540'), 'foreign total USD 23,474,540');
+check(enForeign.includes('USD 24,218,654'), 'foreign total USD 24,218,654');
 check(enForeign.includes('USD 11,215,654'), 'identified USD 11,215,654 (register tile)');
 check(enForeign.includes('USD 50,473,800'), 'OPMCM-stated international support USD 50,473,800');
 
