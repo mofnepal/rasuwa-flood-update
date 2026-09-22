@@ -4,28 +4,21 @@
     {
       "name": "portal",
       "runtimeExecutable": "node",
-      "runtimeArgs": [
-        "scripts/start-standalone.mjs"
-      ],
+      "runtimeArgs": ["scripts/start-standalone.mjs"],
       "port": 3111,
       "autoPort": true
     },
     {
       "name": "portal-dev",
       "runtimeExecutable": "npx",
-      "runtimeArgs": [
-        "next",
-        "dev"
-      ],
+      "runtimeArgs": ["next", "dev"],
       "port": 3112,
       "autoPort": true
     },
     {
       "name": "portal-static",
       "runtimeExecutable": "node",
-      "runtimeArgs": [
-        "scripts/serve-static.mjs"
-      ],
+      "runtimeArgs": ["scripts/serve-static.mjs"],
       "env": {
         "NEXT_PUBLIC_BASE_PATH": "/rasuwa-flood-update"
       },
@@ -35,9 +28,7 @@
     {
       "name": "db",
       "runtimeExecutable": "node",
-      "runtimeArgs": [
-        "scripts/dev-db.mjs"
-      ],
+      "runtimeArgs": ["scripts/dev-db.mjs"],
       "port": 55432
     }
   ]
