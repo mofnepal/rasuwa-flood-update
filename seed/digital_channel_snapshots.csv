@@ -88,3 +88,29 @@ NCHL,2026-09-21T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेल�
 NCHL,2026-09-21T00:00:00+05:45,cumulative,remittance,Remittance,रेमिट्यान्स,27227,312896928.96,NCHL
 NCHL,2026-09-21T00:00:00+05:45,cumulative,intl_qr,Int'l QR,अन्तर्राष्ट्रिय QR,727,6284642.74,NCHL
 NCHL,2026-09-21T00:00:00+05:45,cumulative,card_domestic,Card – Domestic,कार्ड – घरेलु,464,3314246.77,NCHL
+NCHL,2026-09-22T00:00:00+05:45,cumulative,ips_cheque,IPS / Cheque Transfer,IPS / चेक ट्रान्सफर,5668,2879233119.80,NCHL
+NCHL,2026-09-22T00:00:00+05:45,cumulative,card_intl,Card – International,कार्ड – अन्तर्राष्ट्रिय,103608,1755487707.88,NCHL
+NCHL,2026-09-22T00:00:00+05:45,cumulative,online_transfer,Online Transfer,अनलाइन ट्रान्सफर,17761,1051569724.32,NCHL
+NCHL,2026-09-22T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,116779,425036433.55,NCHL
+NCHL,2026-09-22T00:00:00+05:45,cumulative,remittance,Remittance,रेमिट्यान्स,27237,313527437.55,NCHL
+NCHL,2026-09-22T00:00:00+05:45,cumulative,intl_qr,Int'l QR,अन्तर्राष्ट्रिय QR,730,6380842.74,NCHL
+NCHL,2026-09-22T00:00:00+05:45,cumulative,card_domestic,Card – Domestic,कार्ड – घरेलु,465,3314247.77,NCHL
+Fonepay,2026-09-21T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,837881,2252726616,Fonepay till 2026-09-20
+Fonepay,2026-09-20,daily,domestic_qr,Domestic QR,घरेलु QR,252,3078897,Fonepay day 2026-09-20
+Fonepay,2026-09-21T00:00:00+05:45,cumulative,fonepay_bills,Fonepay Bills,फोनपे बिल्स,63653,202629160,Fonepay till 2026-09-20
+Fonepay,2026-09-20,daily,fonepay_bills,Fonepay Bills,फोनपे बिल्स,360,1329239,Fonepay day 2026-09-20
+Fonepay,2026-09-21T00:00:00+05:45,cumulative,npci,NPCI (India),NPCI (भारत),23975,61471356,Fonepay till 2026-09-20
+Fonepay,2026-09-20,daily,npci,NPCI (India),NPCI (भारत),40,367055,Fonepay day 2026-09-20
+Fonepay,2026-09-21T00:00:00+05:45,cumulative,alipay,Alipay,Alipay,4331,22616723,Fonepay till 2026-09-20
+Fonepay,2026-09-20,daily,alipay,Alipay,Alipay,46,379013,Fonepay day 2026-09-20
+Fonepay,2026-09-21T00:00:00+05:45,cumulative,ibft,IBFT,IBFT,3453,19407969,Fonepay till 2026-09-20
+Fonepay,2026-09-20,daily,ibft,IBFT,IBFT,1,11111,Fonepay day 2026-09-20
+Fonepay,2026-09-22T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,838162,2255745331,Fonepay till 2026-09-21
+Fonepay,2026-09-21,daily,domestic_qr,Domestic QR,घरेलु QR,278,3027981,Fonepay day 2026-09-21
+Fonepay,2026-09-22T00:00:00+05:45,cumulative,fonepay_bills,Fonepay Bills,फोनपे बिल्स,64065,205134047,Fonepay till 2026-09-21
+Fonepay,2026-09-21,daily,fonepay_bills,Fonepay Bills,फोनपे बिल्स,403,2783450,Fonepay day 2026-09-21
+Fonepay,2026-09-22T00:00:00+05:45,cumulative,npci,NPCI (India),NPCI (भारत),24012,62000386,Fonepay till 2026-09-21
+Fonepay,2026-09-21,daily,npci,NPCI (India),NPCI (भारत),36,529029,Fonepay day 2026-09-21
+Fonepay,2026-09-22T00:00:00+05:45,cumulative,alipay,Alipay,Alipay,4371,22789669,Fonepay till 2026-09-21
+Fonepay,2026-09-21,daily,alipay,Alipay,Alipay,43,182923,Fonepay day 2026-09-21
+Fonepay,2026-09-22T00:00:00+05:45,cumulative,ibft,IBFT,IBFT,3453,19407969,Fonepay till 2026-09-21

@@ -4,6 +4,30 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — 22 September 2026: NCHL and Fonepay
+
+- **NCHL collection through its channels, 22 September 2026, 12:00 AM** — seven
+  channels, **NPR 6,434,549,513.61** across 272,248 transactions; the lines sum to the
+  printed total to the paisa, and every channel is at or above its 21 September figure
+  (+838 transactions, +NPR 98,905,640.92).
+- **Fonepay, till 20 and till 21 September 2026** — two summaries, five channels each.
+  Till 20 September: **NPR 2,558,851,823** across 933,293 transactions, with the 20
+  September day (699 transactions, NPR 5,165,315, lines summing exactly). Till 21
+  September: **NPR 2,565,077,401** across 934,063 transactions, with the 21 September day
+  (760 transactions, NPR 6,523,383, lines summing exactly; IBFT had none). Every channel
+  is at or above its previous figure on both days (+8,656 transactions and
+  +NPR 57,827,939 since 13 September).
+- Stated, not corrected: on both Fonepay summaries the five cumulative lines sum one
+  rupee above the printed total (2,558,851,824 and 2,565,077,402). The portal, which
+  adds the channel lines, therefore carries the line sum in category A; `pnpm verify`
+  ties the lines to the printed total within a rupee, as it does for the ministry's own
+  sheets. Fonepay's "yesterday" figures are also not the change in its cumulative
+  lines (for 21 September, Domestic QR moved NPR 3,018,715 against a printed day of
+  NPR 3,027,981; Fonepay Bills NPR 2,504,887 against NPR 2,783,450), which is how the
+  network settles; both are shown as printed.
+- The grand total is **15,33,35,57,077** (15,333,557,077.43): A NPR 8,999,626,915.61 +
+  B NPR 2,737,630,633.82 + C USD 23,474,540 × 153.20.
+
 ### Data — NCHL, 21 September 2026, 12:00 AM
 
 - **NCHL collection through its channels, 21 September 2026, 12:00 AM** — seven
