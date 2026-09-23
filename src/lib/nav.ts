@@ -2,7 +2,15 @@ import type { IconName } from '@/components/Icon';
 
 export interface NavItem {
   href: string;
-  key: 'home' | 'contributions' | 'foreign' | 'rescue' | 'initiatives' | 'plans' | 'contact';
+  key:
+    | 'home'
+    | 'contributions'
+    | 'foreign'
+    | 'rescue'
+    | 'initiatives'
+    | 'plans'
+    | 'customs'
+    | 'contact';
   icon: IconName;
 }
 
@@ -13,5 +21,6 @@ export const NAV: readonly NavItem[] = [
   { href: '/rescue', key: 'rescue', icon: 'rescue' },
   { href: '/initiatives', key: 'initiatives', icon: 'decisions' },
   { href: '/plans', key: 'plans', icon: 'recovery' },
+  { href: '/customs', key: 'customs', icon: 'customs' },
   { href: '/contact', key: 'contact', icon: 'contact' },
 ];

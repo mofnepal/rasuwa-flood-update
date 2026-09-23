@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import donateQr from '../../../public/img/donate-qr.svg';
 import { Link } from '@/i18n/routing';
 import { getTotals, settlementGap, type PortalTotals } from '@/lib/totals';
+import { getLatestRevenue } from '@/lib/revenue';
 import { prisma } from '@/lib/db';
 import {
   PALETTE,
@@ -13,6 +14,7 @@ import {
 import {
   bsDate,
   formatAsOf,
+  formatKharba,
   formatNPR,
   formatNumber,
   formatPercent,
@@ -58,6 +60,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const ty = await getTranslations('types');
   const tc = await getTranslations('contributions');
   const tf = await getTranslations('foreign');
+  const tx = await getTranslations('customs');
 
   const totals = await getTotals();
   if (!totals) return <EmptyState label={ts('awaitingEntry')} />;
@@ -98,6 +101,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         orderBy: { date_ad: 'desc' },
       }),
     ]);
+  const revenue = await getLatestRevenue(totals.disasterId);
   const planData = latestPlan ? actionPlanSchema.safeParse(latestPlan.data) : null;
   const plan = planData?.success ? planData.data : null;
   const planNext = plan ? nextDeadline(plan) : null;
@@ -784,6 +788,80 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </ul>
         </Card>
       </section>
+
+      {/* ── customs revenue: target and collection, as the Department prints it ── */}
+      {revenue ? (
+        <Card id="customs">
+          <SectionHeader
+            icon="customs"
+            title={tx('homeTitle')}
+            subtitle={tx('homeSub', {
+              year: pick(locale, revenue.fiscal_year_bs, revenue.fiscal_year_en),
+              date: pick(locale, revenue.as_of_bs, revenue.as_of_en),
+            })}
+            right={
+              <Link className="btn ghost sm" href="/customs">
+                {tx('fullSection')}
+              </Link>
+            }
+          />
+          <div className="grid g3">
+            <KpiTile
+              icon="tax"
+              tone="navy"
+              label={tx('kpiTarget')}
+              value={formatKharba(revenue.target_npr, locale)}
+              foot={formatNPR(revenue.target_npr, locale)}
+            />
+            <KpiTile
+              icon="customs"
+              tone="red"
+              label={tx('kpiCollected')}
+              value={formatKharba(revenue.collected_npr, locale)}
+              foot={tx('ofTarget', {
+                pct: formatPercent(revenue.collected_npr, revenue.target_npr, locale),
+              })}
+            />
+            <KpiTile
+              icon="measure"
+              label={tx('kpiRemaining')}
+              sub={tx('kpiRemainingSub')}
+              value={formatKharba(revenue.remaining_npr, locale)}
+              foot={formatNPR(revenue.remaining_npr, locale)}
+            />
+          </div>
+          <div className="mini" style={{ marginTop: 14 }}>
+            <div>
+              <b>{tx('barCollected')}</b>
+              <span>
+                {tx('ofTarget', {
+                  pct: formatPercent(revenue.collected_npr, revenue.target_npr, locale),
+                })}
+              </span>
+              <i style={{ width: `${Math.min(100, 100 * revenue.share_of_target)}%` }} />
+              <em>{formatKharba(revenue.collected_npr, locale)}</em>
+            </div>
+            <div>
+              <b>{tx('barElapsed')}</b>
+              <span>
+                {tx('ofYear', {
+                  elapsed: formatNumber(revenue.fiscal_year.elapsed_days, locale),
+                  days: formatNumber(revenue.fiscal_year.days, locale),
+                })}
+              </span>
+              <i
+                style={{
+                  width: `${Math.min(100, 100 * revenue.fiscal_year.elapsed_share)}%`,
+                  background: 'var(--red)',
+                }}
+              />
+              <em>
+                {formatPercent(revenue.fiscal_year.elapsed_days, revenue.fiscal_year.days, locale)}
+              </em>
+            </div>
+          </div>
+        </Card>
+      ) : null}
 
       {/* ── calls to action ──────────────────────────────────────────────── */}
       <section className="cta">

@@ -4,6 +4,40 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Changed — the Rescue section is "Rescue & Relief"
+
+- The rescue section is now titled **उद्धार तथा राहत / Rescue & Relief** in the navigation,
+  the footer, the page heading, the search index and its share card; its address is
+  unchanged.
+
+### Added — Customs revenue: target and collection
+
+- **A new section, "भन्सार राजस्व / Customs Revenue" (`/customs`)**, with its own database
+  (`RevenueSnapshot`, seeded from `seed/revenue.json`, one row per department and
+  statement; the portal shows the latest): the Department of Customs's statement of the
+  revenue target and collection of fiscal year 2083/84 up to Bhadra 6 — annual target
+  **NPR 628 billion** (रु. ६ खर्ब २८ अर्ब), collected **NPR 102 billion**, remaining
+  **NPR 527 billion** as printed. The page shows the three printed figures in the
+  Department's own words with the full rupee figure beneath, the share of the target
+  collected against the share of the fiscal year elapsed (two bars, each labelled as
+  the portal's own computation, counting the year from Shrawan 1), a target–collected–
+  remaining chart, the two customs offices the statement names as out of operation
+  (Tatopani, not operating for some time; Rasuwa, damaged by the Bhotekoshi flood), and
+  the Department's statement in full with its source.
+- **The home dashboard gains a customs revenue card** beneath the latest handovers and
+  updates: the three figures, the two progress bars and a link to the full section.
+  The section joins the navigation, the footer, the search index, the share cards
+  (`customs-ne`, `customs-en`) and open data (`revenue.json`); `pnpm verify` checks the
+  three figures against the printed totals and that collected is within the target.
+- **Stated, not corrected:** the Department prints the remaining revenue as NPR 527
+  billion, where the target less the collection is NPR 526 billion — the rounding to
+  whole billions; the printed figure is kept and a note beneath the statement says so.
+  The statement is dated "up to Bhadra 6", four days before the Bhotekoshi flood of
+  Bhadra 10, yet cites the Rasuwa office damaged by that flood; the date is kept as
+  printed, with a note, and the elapsed-time bar counts from it (day 37 of 365).
+- A new `formatKharba` writes large sums the way the ministry's statements do — रु. ६
+  खर्ब २८ अर्ब, NPR 628 billion — with unit tests.
+
 ### Data — fund status, 2083/06/06 5:00 PM
 
 - **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/06/06

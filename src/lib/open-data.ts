@@ -4,6 +4,7 @@ import { prisma } from './db';
 import { getDisaster, getTotals, settlementGap } from './totals';
 import { getDisbursements, summariseDisbursements } from './disbursements';
 import { getAnnouncedSupport, summariseAnnounced } from './announced';
+import { getLatestRevenue } from './revenue';
 import { getMinistryReference } from './ministry';
 import { FUND_STATUS_SOURCE_EN, OFFICIAL_LINKS } from './constants';
 import { publicFileUrl } from './urls';
@@ -277,6 +278,21 @@ export async function disbursements(): Promise<OpenData> {
       purpose_en: row.purpose_en,
       source_en: row.source_en,
     })),
+  };
+}
+
+/** Revenue target and collection, as the Department of Customs publishes it. */
+export async function revenue(): Promise<OpenData> {
+  const totals = await getTotals();
+  if (!totals) return missing(NO_DISASTER);
+  const latest = await getLatestRevenue(totals.disasterId);
+  if (!latest) return missing('No revenue statement has been published yet.');
+  return {
+    ok: true,
+    body: {
+      note: 'Every figure is as the department printed it; share_of_target and fiscal_year are computed by the portal, counting the fiscal year from Shrawan 1. Where the printed remaining figure is not target − collected, remaining_note says so.',
+      ...latest,
+    },
   };
 }
 

@@ -448,6 +448,48 @@ console.log(
   `  ties      the grand total carries none of these ${money(pledgedNpr)} in pledges; the Fund records count`,
 );
 
+// ── revenue target and collection, as the department prints it ────────────
+console.log('\nREVENUE — the department’s statement against itself');
+const revenueRows = await p.revenueSnapshot.findMany({
+  where: { disasterId: d.id, status: 'published' },
+  orderBy: { as_of: 'desc' },
+});
+for (const r of revenueRows) {
+  const label = `${r.department} ${r.as_of_bs}`;
+  const want = printed.revenue?.[r.department];
+  if (want) {
+    check(`${label}: target as printed`, n(r.target_npr), want.target_npr);
+    check(`${label}: collected as printed`, n(r.collected_npr), want.collected_npr);
+    check(`${label}: remaining as printed`, n(r.remaining_npr), want.remaining_npr_printed);
+  }
+  checks++;
+  if (n(r.collected_npr) <= n(r.target_npr))
+    console.log(`  ties      ${label}: collected is within the target`);
+  else {
+    failures++;
+    console.log(`  DIFFERS   ${label}: collected exceeds the target`);
+  }
+  const gap = n(r.target_npr) - n(r.collected_npr) - n(r.remaining_npr);
+  if (gap === 0)
+    check(
+      `${label}: target − collected = remaining`,
+      n(r.target_npr) - n(r.collected_npr),
+      n(r.remaining_npr),
+    );
+  else if (r.remaining_note_en) {
+    checks++;
+    note(
+      `${label}: target − collected is ${money(n(r.target_npr) - n(r.collected_npr))}, ${money(Math.abs(gap))} ${gap > 0 ? 'above' : 'below'} the printed remaining ${money(n(r.remaining_npr))}; shown as printed, with a note`,
+    );
+  } else
+    check(
+      `${label}: target − collected = remaining`,
+      n(r.target_npr) - n(r.collected_npr),
+      n(r.remaining_npr),
+    );
+  if (r.date_note_en) note(`${label}: ${r.date_note_en}`);
+}
+
 // ── action plans, each against its own document ────────────────────────────
 console.log('\nACTION PLANS — each plan against its own numbering and bodies');
 const plans = await p.actionPlan.findMany({

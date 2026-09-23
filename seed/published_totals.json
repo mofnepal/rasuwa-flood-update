@@ -51,5 +51,13 @@
     "entries": 9,
     "pledged_npr": 551830000,
     "fetched": "2026-09-17"
+  },
+  "revenue": {
+    "customs": {
+      "as_of_bs": "२०८३ भाद्र ६",
+      "target_npr": 628000000000,
+      "collected_npr": 102000000000,
+      "remaining_npr_printed": 527000000000
+    }
   }
 }

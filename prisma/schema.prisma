@@ -108,6 +108,7 @@ model Disaster {
   actionPlans         ActionPlan[]
   disbursements       Disbursement[]
   announcedSupport    AnnouncedSupport[]
+  revenueSnapshots    RevenueSnapshot[]
   decisions           Decision[]
   contacts            Contact[]
 
@@ -486,6 +487,56 @@ model AnnouncedSupport {
   @@map("announced_support")
 }
 
+/// Revenue target and collection as a revenue department reports it — the Department
+/// of Customs to begin with. Every figure is as printed; where the department's own
+/// remaining figure is not target − collected, `remaining_note` says so, and where the
+/// printed date sits oddly against the disaster, `date_note` says so.
+model RevenueSnapshot {
+  id                String       @id @default(cuid())
+  disasterId        String
+  disaster          Disaster     @relation(fields: [disasterId], references: [id], onDelete: Cascade)
+  /// customs · inland_revenue · …
+  department        String
+  fiscal_year_bs    String
+  fiscal_year_en    String
+  as_of             DateTime
+  as_of_bs          String
+  as_of_en          String
+  target_npr        Decimal      @db.Decimal(18, 2)
+  collected_npr     Decimal      @db.Decimal(18, 2)
+  remaining_npr     Decimal      @db.Decimal(18, 2)
+  remaining_note_ne String?
+  remaining_note_en String?
+  date_note_ne      String?
+  date_note_en      String?
+  /// [{ name_ne, name_en, state, note_ne, note_en }] — offices the report names as affected
+  offices           Json?
+  narrative_ne      String?
+  narrative_en      String?
+  source_ne         String
+  source_en         String
+  originalId        String?
+  original          Attachment?  @relation("RevenueOriginal", fields: [originalId], references: [id])
+  status            RecordStatus @default(draft)
+
+  createdById   String?
+  createdBy     User?     @relation("RevenueCreatedBy", fields: [createdById], references: [id])
+  verifiedById  String?
+  verifiedBy    User?     @relation("RevenueVerifiedBy", fields: [verifiedById], references: [id])
+  verifiedAt    DateTime?
+  publishedById String?
+  publishedBy   User?     @relation("RevenuePublishedBy", fields: [publishedById], references: [id])
+  publishedAt   DateTime?
+  reviewNote    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([disasterId, department, as_of])
+  @@index([disasterId, department, status])
+  @@map("revenue_snapshots")
+}
+
 enum DisbursementStage {
   fund_transfer
   onward
@@ -602,6 +653,7 @@ model Attachment {
   foreignPhotoOf       ForeignAssistance[]  @relation("ForeignPhoto")
   rescueOriginalOf     RescueReport[]       @relation("RescueOriginal")
   planOriginalOf       ActionPlan[]         @relation("PlanOriginal")
+  revenueOriginalOf    RevenueSnapshot[]    @relation("RevenueOriginal")
   fundStatusOriginalOf FundStatusSnapshot[] @relation("FundStatusOriginal")
   decisionOriginalOf   Decision[]           @relation("DecisionOriginal")
   decisionExplainerOf  Decision[]           @relation("DecisionExplainer")
@@ -648,6 +700,9 @@ model User {
   announcedCreated       AnnouncedSupport[]   @relation("AnnouncedCreatedBy")
   announcedVerified      AnnouncedSupport[]   @relation("AnnouncedVerifiedBy")
   announcedPublished     AnnouncedSupport[]   @relation("AnnouncedPublishedBy")
+  revenueCreated         RevenueSnapshot[]    @relation("RevenueCreatedBy")
+  revenueVerified        RevenueSnapshot[]    @relation("RevenueVerifiedBy")
+  revenuePublished       RevenueSnapshot[]    @relation("RevenuePublishedBy")
   decisionsCreated       Decision[]           @relation("DecisionCreatedBy")
   decisionsVerified      Decision[]           @relation("DecisionVerifiedBy")
   decisionsPublished     Decision[]           @relation("DecisionPublishedBy")

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  formatKharba,
   bsDate,
   formatAD,
   formatAsOf,
@@ -133,5 +134,18 @@ describe('dates are read on Nepal’s calendar day', () => {
     expect(formatAsOf(new Date('2026-09-14T19:00:00+05:45'), 'en')).toBe(
       'Bhadra 29, 2083 · 14 Sep 2026, 07:00 PM',
     );
+  });
+});
+
+describe('formatKharba', () => {
+  it("writes large sums the way the ministry's statements do", () => {
+    expect(formatKharba(628_000_000_000, 'ne')).toBe('रु. ६ खर्ब २८ अर्ब');
+    expect(formatKharba(628_000_000_000, 'en')).toBe('NPR 628 billion');
+    expect(formatKharba(102_000_000_000, 'ne')).toBe('रु. १ खर्ब २ अर्ब');
+    expect(formatKharba(1_000_000_000, 'ne')).toBe('रु. १ अर्ब');
+    expect(formatKharba(160_000_000, 'ne')).toBe('रु. १६ करोड');
+    expect(formatKharba(160_000_000, 'en')).toBe('NPR 160 million');
+    expect(formatKharba(1_830_000, 'ne')).toBe('रु. १८ लाख');
+    expect(formatKharba(1_830_000, 'en')).toBe('NPR 1.8 million');
   });
 });

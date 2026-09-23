@@ -1,6 +1,6 @@
 import { prisma } from './db';
 import type { getTotals } from './totals';
-import { formatNPR, formatNumber, formatUSD, type Locale } from './format';
+import { formatKharba, formatNPR, formatNumber, formatUSD, type Locale } from './format';
 
 /**
  * The share card — the picture a link to the portal shows on X, Facebook,
@@ -19,9 +19,10 @@ export const CARD_TITLES: Record<string, { ne: string; en: string }> = {
   home: { ne: 'रसुवा–भोटेकोशी बाढी अपडेट', en: 'Rasuwa–Bhotekoshi Flood Update' },
   contributions: { ne: 'प्राप्त सहयोग', en: 'Contributions Received' },
   foreign: { ne: 'वैदेशिक सहयोग', en: 'Foreign Assistance' },
-  rescue: { ne: 'उद्धार', en: 'Rescue' },
+  rescue: { ne: 'उद्धार तथा राहत', en: 'Rescue & Relief' },
   initiatives: { ne: 'सरकारबाट भएका पहल', en: 'Government Initiatives' },
   plans: { ne: 'सरकारका कार्ययोजना', en: 'Government Action Plans' },
+  customs: { ne: 'भन्सार राजस्व', en: 'Customs Revenue' },
   contact: { ne: 'सम्पर्क', en: 'Contact' },
 };
 
@@ -78,6 +79,16 @@ export async function cardHeadline(
       return {
         label: t('पछिल्लो कार्ययोजनाका बुँदा', 'Actions in the latest plan'),
         value: formatNumber(actions, locale),
+      };
+    }
+    case 'customs': {
+      const snapshot = await prisma.revenueSnapshot.findFirst({
+        where: { disasterId: totals.disasterId, status: 'published', department: 'customs' },
+        orderBy: { as_of: 'desc' },
+      });
+      return {
+        label: t('भन्सार राजस्व असुली', 'Customs revenue collected'),
+        value: snapshot ? formatKharba(Number(snapshot.collected_npr), locale) : '—',
       };
     }
     case 'contact':

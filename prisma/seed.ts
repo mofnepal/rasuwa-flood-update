@@ -839,6 +839,73 @@ async function main() {
     `  announced domestic support (OPMCM, listed, not counted): ${announcedSeed.entries.length}`,
   );
 
+  /* ---------- revenue target and collection, as the department publishes it ---------- */
+  const revenueSeed = await readJson<{
+    snapshots: {
+      department: string;
+      fiscal_year_bs: string;
+      fiscal_year_en: string;
+      as_of_bs: string;
+      as_of_ad: string;
+      as_of_en: string;
+      target_npr: number;
+      collected_npr: number;
+      remaining_npr: number;
+      remaining_note_ne?: string;
+      remaining_note_en?: string;
+      date_note_ne?: string;
+      date_note_en?: string;
+      offices?: unknown[];
+      narrative_ne?: string;
+      narrative_en?: string;
+      source_ne: string;
+      source_en: string;
+      original_file: string | null;
+    }[];
+  }>('revenue.json');
+  await prisma.revenueSnapshot.deleteMany({ where: { disasterId } });
+  for (const snap of revenueSeed.snapshots) {
+    if (snap.collected_npr > snap.target_npr)
+      throw new Error(
+        `revenue: ${snap.department} ${snap.as_of_bs} collected more than the target`,
+      );
+    // The printed remaining figure is kept as printed; where it is not target − collected
+    // the entry must say so.
+    if (snap.target_npr - snap.collected_npr !== snap.remaining_npr && !snap.remaining_note_en)
+      throw new Error(
+        `revenue: ${snap.department} ${snap.as_of_bs} remaining ${snap.remaining_npr} is not target − collected and carries no note`,
+      );
+    const originalId = snap.original_file ? await attach(snap.original_file, publisherId) : null;
+    await prisma.revenueSnapshot.create({
+      data: {
+        disasterId,
+        department: snap.department,
+        fiscal_year_bs: snap.fiscal_year_bs,
+        fiscal_year_en: snap.fiscal_year_en,
+        as_of: npt(snap.as_of_ad),
+        as_of_bs: snap.as_of_bs,
+        as_of_en: snap.as_of_en,
+        target_npr: String(snap.target_npr),
+        collected_npr: String(snap.collected_npr),
+        remaining_npr: String(snap.remaining_npr),
+        remaining_note_ne: snap.remaining_note_ne ?? null,
+        remaining_note_en: snap.remaining_note_en ?? null,
+        date_note_ne: snap.date_note_ne ?? null,
+        date_note_en: snap.date_note_en ?? null,
+        offices: (snap.offices ?? []) as Prisma.InputJsonValue,
+        narrative_ne: snap.narrative_ne ?? null,
+        narrative_en: snap.narrative_en ?? null,
+        source_ne: snap.source_ne,
+        source_en: snap.source_en,
+        originalId,
+        ...published,
+      },
+    });
+  }
+  console.log(
+    `  revenue snapshots: ${revenueSeed.snapshots.length} · ${revenueSeed.snapshots.map((s) => `${s.department} ${s.as_of_bs}`).join(', ')}`,
+  );
+
   /* ---------- single-window contacts ---------- */
   await prisma.contact.deleteMany({ where: { disasterId } });
   await prisma.contact.createMany({

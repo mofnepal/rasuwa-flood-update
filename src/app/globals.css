@@ -2115,10 +2115,14 @@ nav.main {
 }
 nav.main .wrap {
   display: flex;
+  /* eight items must fit: they shrink to their labels first and only then wrap */
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 0 20px;
 }
 nav.main a {
-  flex: 1 1 0;
+  flex: 1 1 auto;
+  min-width: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -2149,6 +2153,22 @@ nav.main a small {
 }
 nav.main .mextra {
   display: none;
+}
+@media (max-width: 1400px) {
+  nav.main a {
+    padding: 9px 7px 7px;
+  }
+  nav.main a .row {
+    font-size: 15px;
+    gap: 6px;
+  }
+  html[lang='en'] nav.main a .row {
+    font-size: 14px;
+  }
+  nav.main a .row svg {
+    width: 17px;
+    height: 17px;
+  }
 }
 .hero .asof {
   font-size: 13.5px;

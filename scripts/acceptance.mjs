@@ -5,7 +5,16 @@
 import { chromium } from '@playwright/test';
 
 const BASE = (process.argv[2] ?? 'http://localhost:3111/rasuwa-flood').replace(/\/$/, '');
-const PAGES = ['', '/contributions', '/foreign', '/rescue', '/initiatives', '/plans', '/contact'];
+const PAGES = [
+  '',
+  '/contributions',
+  '/foreign',
+  '/rescue',
+  '/initiatives',
+  '/plans',
+  '/customs',
+  '/contact',
+];
 
 let failures = 0;
 const check = (ok, label, detail = '') => {
@@ -42,6 +51,14 @@ check(/485 entries/.test(enContrib), 'handover register is 485 entries');
 check(
   enContrib.includes('NPR 55,18,30,000'),
   'announced domestic pledges NPR 551,830,000, listed not counted',
+);
+
+const enCustoms = await text('/en/customs');
+check(enCustoms.includes('NPR 628 billion'), 'customs revenue target NPR 628 billion');
+check(enCustoms.includes('NPR 102 billion'), 'customs revenue collected NPR 102 billion');
+check(
+  enCustoms.includes('NPR 527 billion'),
+  'customs revenue remaining NPR 527 billion, as printed',
 );
 
 // ── 2. forbidden strings ───────────────────────────────────────────────────

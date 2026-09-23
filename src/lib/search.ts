@@ -12,9 +12,10 @@ const SECTIONS: [string, string, string][] = [
   ['/', 'गृहपृष्ठ', 'Home'],
   ['/contributions', 'प्राप्त सहयोग', 'Contributions'],
   ['/foreign', 'वैदेशिक सहयोग', 'Foreign Assistance'],
-  ['/rescue', 'उद्धार', 'Rescue'],
+  ['/rescue', 'उद्धार तथा राहत', 'Rescue & Relief'],
   ['/initiatives', 'सरकारका पहल', 'Government Initiatives'],
   ['/plans', 'कार्ययोजना', 'Action Plans'],
+  ['/customs', 'भन्सार राजस्व', 'Customs Revenue'],
   ['/contact', 'सम्पर्क', 'Contact'],
 ];
 

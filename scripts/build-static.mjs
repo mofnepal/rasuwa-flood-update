@@ -279,10 +279,9 @@ async function check(out) {
   const required = [
     'ne/index.html',
     'en/index.html',
-    ...['contributions', 'foreign', 'rescue', 'initiatives', 'plans', 'contact'].flatMap((page) => [
-      `ne/${page}/index.html`,
-      `en/${page}/index.html`,
-    ]),
+    ...['contributions', 'foreign', 'rescue', 'initiatives', 'plans', 'customs', 'contact'].flatMap(
+      (page) => [`ne/${page}/index.html`, `en/${page}/index.html`],
+    ),
     'open-data/index.json',
     'open-data/summary.json',
     'open-data/contributions.csv',

@@ -46,17 +46,19 @@
     "home": "Home",
     "contributions": "Contributions",
     "foreign": "Foreign Assistance",
-    "rescue": "Rescue",
+    "rescue": "Rescue & Relief",
     "initiatives": "Government Initiatives",
     "contact": "Contact",
     "homeOther": "गृहपृष्ठ",
     "contributionsOther": "प्राप्त सहयोग",
     "foreignOther": "वैदेशिक सहयोग",
-    "rescueOther": "उद्धार",
+    "rescueOther": "उद्धार तथा राहत",
     "initiativesOther": "सरकारका पहल",
     "contactOther": "सम्पर्क",
     "plans": "Action Plans",
-    "plansOther": "कार्ययोजना"
+    "plansOther": "कार्ययोजना",
+    "customs": "Customs Revenue",
+    "customsOther": "भन्सार राजस्व"
   },
   "table": {
     "search": "Search — name, organisation, date…",
@@ -275,7 +277,7 @@
     "chipCompanies": "Companies"
   },
   "rescue": {
-    "title": "Rescue",
+    "title": "Rescue & Relief",
     "intro": "Figures published by the National Disaster Risk Reduction and Management Authority and Nepal Police.",
     "portalsTitle": "Official rescue portals",
     "portalsSub": "Rescue requests, the rescued persons list and the command centre",
@@ -513,5 +515,36 @@
     "kindGovCash": "Government cash support",
     "kindOther": "Other",
     "note": "These entries are taken word for word from the domestic support list on the Office of the Prime Minister and Council of Ministers' rescue portal. A contribution is counted only once the Fund's own records carry it, so nothing here is added to the total above. Nepali Congress's NPR 10 million is already counted in the handover register (no. 336), and the cash to districts is money out of the Fund, shown under fund usage."
+  },
+  "customs": {
+    "title": "Customs revenue — target and collection",
+    "intro": "The Department of Customs's annual revenue target and its collection to date, as the Department publishes it, with the customs offices out of operation after the flood.",
+    "fiscalYear": "Fiscal year {year}",
+    "kpiTarget": "Annual revenue target",
+    "kpiTargetSub": "fiscal year {year}",
+    "kpiCollected": "Collected to date",
+    "kpiCollectedSub": "up to {date}",
+    "kpiRemaining": "Remaining to collect",
+    "kpiRemainingSub": "as the Department prints it",
+    "kpiShare": "Share of target collected",
+    "kpiShareSub": "collected ÷ target",
+    "kpiShareFoot": "{pct} of the fiscal year elapsed ({days} days)",
+    "progressTitle": "Progress towards the target",
+    "progressSub": "collection and time elapsed, each as a share",
+    "barCollected": "Collected",
+    "barElapsed": "Fiscal year elapsed",
+    "ofTarget": "{pct} of target",
+    "ofYear": "day {elapsed} of {days}",
+    "chartTitle": "Target, collected and remaining",
+    "officesTitle": "Customs offices affected",
+    "officesSub": "as the Department names them",
+    "stateClosed": "Not operating",
+    "stateDamaged": "Damaged by the flood",
+    "narrativeTitle": "The Department's statement",
+    "derivedNote": "The share of target and the time elapsed are computed by the portal, counting the fiscal year from Shrawan 1; every other figure is as the Department printed it.",
+    "source": "Department of Customs",
+    "homeTitle": "Customs revenue — target and collection",
+    "homeSub": "Department of Customs · fiscal year {year} · up to {date}",
+    "fullSection": "Full section"
   }
 }

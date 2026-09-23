@@ -1,0 +1,41 @@
+{
+  "note": "Revenue target and collection as a revenue department publishes it — the Department of Customs to begin with. Every figure is as printed, in rupees (६ खर्ब २८ अर्ब = 628,000,000,000). Where the department's own remaining figure is not target − collected, `remaining_note` says so and the printed figure is kept; where the printed date sits oddly against the disaster, `date_note` says so. Add later statements here, in the same shape; the portal shows the latest per department.",
+  "snapshots": [
+    {
+      "department": "customs",
+      "fiscal_year_bs": "२०८३/८४",
+      "fiscal_year_en": "2083/84",
+      "as_of_bs": "२०८३ भाद्र ६",
+      "as_of_ad": "2026-08-22",
+      "as_of_en": "Bhadra 6, 2083 (22 August 2026)",
+      "target_npr": 628000000000,
+      "collected_npr": 102000000000,
+      "remaining_npr": 527000000000,
+      "remaining_note_ne": "विभागले छापेको बाँकी रकम रु. ५ खर्ब २७ अर्ब हो; लक्ष्य रु. ६ खर्ब २८ अर्बबाट असुली रु. १ खर्ब २ अर्ब घटाउँदा रु. ५ खर्ब २६ अर्ब हुन्छ — अर्बमा गोलाइएका अङ्कको फरक। छापिएकै रकम राखिएको छ।",
+      "remaining_note_en": "The Department prints the remaining revenue as NPR 527 billion; the target of NPR 628 billion less the NPR 102 billion collected is NPR 526 billion — a difference of the rounding to whole billions. The printed figure is kept.",
+      "date_note_ne": "विवरण \"भाद्र ६ गतेसम्म\" को हो भनी छापिएको छ, जुन २०८३ भदौ १० को भोटेकोशी बाढीभन्दा चार दिनअघि पर्छ, तर विवरणले बाढीले क्षतिग्रस्त रसुवा भन्सार कार्यालयको उल्लेख गर्छ। मिति छापिएकै रूपमा राखिएको छ।",
+      "date_note_en": "The statement is printed as \"up to Bhadra 6\", four days before the Bhotekoshi flood of Bhadra 10, 2083, yet it refers to the Rasuwa customs office damaged by the flood. The date is kept as printed.",
+      "offices": [
+        {
+          "name_ne": "तातोपानी भन्सार कार्यालय",
+          "name_en": "Tatopani Customs Office",
+          "state": "closed",
+          "note_ne": "केही समयदेखि सञ्चालनमा नरहेको",
+          "note_en": "not in operation for some time"
+        },
+        {
+          "name_ne": "रसुवा भन्सार कार्यालय",
+          "name_en": "Rasuwa Customs Office",
+          "state": "damaged",
+          "note_ne": "भोटेकोशीमा आएको बाढीका कारण पूर्ण रूपमा क्षतिग्रस्त भई सञ्चालनमा नरहेको",
+          "note_en": "fully damaged by the Bhotekoshi flood and not in operation"
+        }
+      ],
+      "narrative_ne": "तातोपानी भन्सार कार्यालय केही समयदेखि सञ्चालनमा नरहेको तथा भोटेकोशीमा आएको बाढीका कारण रसुवा भन्सार कार्यालय पूर्ण रूपमा क्षतिग्रस्त भई सञ्चालनमा नरहेको विषम परिस्थितिका बाबजुद सम्पूर्ण भन्सार प्रशासनको अथक प्रयासबाट भाद्र ६ गतेसम्म रु. १ खर्बभन्दा बढी राजस्व संकलन गर्न भन्सार विभाग सफल भएको छ। आगामी दिनमा भन्सार विभागको अर्जुनदृष्टि बाँकी ५ खर्ब २७ अर्ब राजस्व असुलीमा केन्द्रित रहनेछ।",
+      "narrative_en": "Despite the difficult circumstances — the Tatopani Customs Office not in operation for some time, and the Rasuwa Customs Office fully damaged by the Bhotekoshi flood and out of operation — the tireless effort of the whole customs administration enabled the Department of Customs to collect more than NPR 100 billion in revenue by Bhadra 6. In the days ahead the Department's undivided attention will be on collecting the remaining NPR 527 billion.",
+      "source_ne": "भन्सार विभाग — आर्थिक वर्ष २०८३/८४ को भाद्र ६ गतेसम्म भन्सार विभागको राजस्व लक्ष्य तथा असुलीको अवस्था",
+      "source_en": "Department of Customs — Revenue target and collection of the Department of Customs up to Bhadra 6 of fiscal year 2083/84",
+      "original_file": null
+    }
+  ]
+}

@@ -11,9 +11,10 @@ const PAGES = [
   { path: '', ne: 'रसुवा–भोटेकोशी', en: 'Rasuwa–Bhotekoshi' },
   { path: 'contributions/', ne: 'प्राप्त सहयोग', en: 'Contributions Received' },
   { path: 'foreign/', ne: 'वैदेशिक सहयोग', en: 'Foreign Assistance' },
-  { path: 'rescue/', ne: 'उद्धार', en: 'Rescue' },
+  { path: 'rescue/', ne: 'उद्धार तथा राहत', en: 'Rescue & Relief' },
   { path: 'initiatives/', ne: 'सरकारबाट भएका पहल', en: 'Government initiatives' },
   { path: 'plans/', ne: 'सरकारका कार्ययोजना', en: 'Government Action Plans' },
+  { path: 'customs/', ne: 'भन्सार राजस्व', en: 'Customs revenue' },
   { path: 'contact/', ne: 'सम्पर्क विवरण', en: 'contact details' },
 ] as const;
 
@@ -122,6 +123,24 @@ test('announced domestic support is listed on the contributions page and never c
   await expect(card).toContainText('Armed Police Force');
   await card.getByRole('tab', { name: 'Pledged' }).click();
   await expect(card.locator('table.tbl tbody tr')).toHaveCount(7);
+});
+
+test('the customs revenue page shows the target, the collection and the remainder as printed', async ({
+  page,
+}) => {
+  await open(page, 'en/customs/');
+  const tiles = page.locator('.kpi');
+  await expect(tiles).toHaveCount(4);
+  await expect(tiles.nth(0)).toContainText('NPR 628 billion');
+  await expect(tiles.nth(1)).toContainText('NPR 102 billion');
+  // The Department prints 527 billion where the arithmetic gives 526; the print wins.
+  await expect(tiles.nth(2)).toContainText('NPR 527 billion');
+  await expect(page.locator('#progress .mini > div')).toHaveCount(2);
+  await expect(page.locator('body')).toContainText('Tatopani Customs Office');
+  // The home dashboard carries the same figures in the source's own words.
+  await open(page, 'ne/');
+  await expect(page.locator('#customs')).toContainText('रु. ६ खर्ब २८ अर्ब');
+  await expect(page.locator('#customs')).toContainText('रु. १ खर्ब २ अर्ब');
 });
 
 test('the fund usage card shows the transfer out of the Fund and every onward disbursement', async ({
