@@ -22,8 +22,8 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   collected against the share of the fiscal year elapsed (two bars, each labelled as
   the portal's own computation, counting the year from Shrawan 1), a target–collected–
   remaining chart, the two customs offices the statement names as out of operation
-  (Tatopani, not operating for some time; Rasuwa, damaged by the Bhotekoshi flood), and
-  the Department's statement in full with its source.
+  (Tatopani, not operating for some time; Rasuwa, damaged by the Bhotekoshi flood). The
+  Department's narrative is kept in the seed and the open data, not shown on the page.
 - **The home dashboard gains a customs revenue card** beneath the latest handovers and
   updates: the three figures, the two progress bars and a link to the full section.
   The section joins the navigation, the footer, the search index, the share cards
@@ -31,7 +31,8 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   three figures against the printed totals and that collected is within the target.
 - **Stated, not corrected:** the Department prints the remaining revenue as NPR 527
   billion, where the target less the collection is NPR 526 billion — the rounding to
-  whole billions; the printed figure is kept and a note beneath the statement says so.
+  whole billions; the printed figure is kept and a note
+  beneath the progress bars says so.
   The statement is dated "up to Bhadra 6", four days before the Bhotekoshi flood of
   Bhadra 10, yet cites the Rasuwa office damaged by that flood; the date is kept as
   printed, with a note, and the elapsed-time bar counts from it (day 37 of 365).

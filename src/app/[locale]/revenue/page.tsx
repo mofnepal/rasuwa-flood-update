@@ -144,6 +144,14 @@ export default async function CustomsPage({ params }: { params: Promise<{ locale
             />
           </ChartFrame>
           <Note>{t('derivedNote')}</Note>
+          {revenue.remaining_note_ne || revenue.remaining_note_en ? (
+            <Note>
+              {pick(locale, revenue.remaining_note_ne ?? '', revenue.remaining_note_en ?? '')}
+            </Note>
+          ) : null}
+          {revenue.date_note_ne || revenue.date_note_en ? (
+            <Note>{pick(locale, revenue.date_note_ne ?? '', revenue.date_note_en ?? '')}</Note>
+          ) : null}
         </Card>
 
         {/* ── the offices the report names ───────────────────────────────── */}
@@ -168,32 +176,6 @@ export default async function CustomsPage({ params }: { params: Promise<{ locale
           </ul>
         </Card>
       </section>
-
-      {/* ── the department's own words, and what is stated not corrected ─── */}
-      <Card>
-        <SectionHeader
-          icon="decisions"
-          title={t('narrativeTitle')}
-          subtitle={t('fiscalYear', { year })}
-          right={<SourceChip>{t('source')}</SourceChip>}
-        />
-        {revenue.narrative_ne || revenue.narrative_en ? (
-          <p style={{ margin: '0 0 12px', lineHeight: 1.7 }}>
-            {pick(locale, revenue.narrative_ne ?? '', revenue.narrative_en ?? '')}
-          </p>
-        ) : null}
-        <p style={{ margin: '0 0 12px', fontSize: 12, color: 'var(--mute)' }}>
-          {ts('source')}: {pick(locale, revenue.source_ne, revenue.source_en)}
-        </p>
-        {revenue.remaining_note_ne || revenue.remaining_note_en ? (
-          <Note>
-            {pick(locale, revenue.remaining_note_ne ?? '', revenue.remaining_note_en ?? '')}
-          </Note>
-        ) : null}
-        {revenue.date_note_ne || revenue.date_note_en ? (
-          <Note>{pick(locale, revenue.date_note_ne ?? '', revenue.date_note_en ?? '')}</Note>
-        ) : null}
-      </Card>
     </div>
   );
 }
