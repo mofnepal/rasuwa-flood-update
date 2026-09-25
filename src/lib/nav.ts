@@ -9,7 +9,7 @@ export interface NavItem {
     | 'rescue'
     | 'initiatives'
     | 'plans'
-    | 'customs'
+    | 'revenue'
     | 'contact';
   icon: IconName;
 }
@@ -21,6 +21,6 @@ export const NAV: readonly NavItem[] = [
   { href: '/rescue', key: 'rescue', icon: 'rescue' },
   { href: '/initiatives', key: 'initiatives', icon: 'decisions' },
   { href: '/plans', key: 'plans', icon: 'recovery' },
-  { href: '/customs', key: 'customs', icon: 'customs' },
+  { href: '/revenue', key: 'revenue', icon: 'tax' },
   { href: '/contact', key: 'contact', icon: 'contact' },
 ];

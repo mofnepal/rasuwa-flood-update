@@ -2,10 +2,11 @@ import { prisma } from './db';
 import { bsToAd } from './bs';
 
 /**
- * Revenue target and collection as a revenue department publishes it — the
- * Department of Customs to begin with. Every figure is as printed. The two
- * derived figures, the share of the target collected and the share of the fiscal
- * year elapsed, are computed here and labelled as the portal's own on the page.
+ * Revenue target and collection as each revenue department publishes it — the
+ * Department of Customs and the Inland Revenue Department (through RMIS). Every
+ * figure is as printed. The derived figures — the share of a target collected,
+ * the share of the fiscal year elapsed, the change on last year — are computed
+ * here and labelled as the portal's own on the page.
  */
 export interface RevenueOffice {
   name_ne: string;
@@ -13,6 +14,34 @@ export interface RevenueOffice {
   state: string;
   note_ne?: string;
   note_en?: string;
+}
+
+/** The period, month, day and previous-year figures a statement prints. */
+export interface RevenueDetail {
+  period?: {
+    label_ne: string;
+    label_en: string;
+    target_npr: number;
+    achievement_pct_printed?: number;
+  };
+  month?: {
+    label_ne: string;
+    label_en: string;
+    target_npr: number;
+    collected_npr: number;
+    achievement_pct_printed?: number;
+  };
+  day?: { date_bs: string; date_en: string; collected_npr: number };
+  previous_year?: {
+    fiscal_year_bs: string;
+    fiscal_year_en: string;
+    annual_target_npr: number;
+    period_target_npr?: number;
+    collected_to_date_npr: number;
+    collected_to_date_label_ne?: string;
+    collected_to_date_label_en?: string;
+    month_collected_npr?: number;
+  };
 }
 
 export interface RevenueView {
@@ -24,18 +53,19 @@ export interface RevenueView {
   as_of_en: string;
   target_npr: number;
   collected_npr: number;
-  /** As the department prints it, even where it is not target − collected. */
-  remaining_npr: number;
+  /** As the department prints it, even where it is not target − collected; null where it prints none. */
+  remaining_npr: number | null;
   remaining_note_ne: string | null;
   remaining_note_en: string | null;
   date_note_ne: string | null;
   date_note_en: string | null;
   offices: RevenueOffice[];
+  detail: RevenueDetail | null;
   narrative_ne: string | null;
   narrative_en: string | null;
   source_ne: string;
   source_en: string;
-  /** collected ÷ target, 0–1. */
+  /** collected ÷ annual target, 0–1. */
   share_of_target: number;
   fiscal_year: {
     /** Days in the fiscal year, Shrawan 1 to the next Shrawan 1. */
@@ -62,15 +92,14 @@ export function fiscalYearProgress(fiscalYearEn: string, asOf: Date) {
   return { days, elapsed_days: elapsed, elapsed_share: days ? elapsed / days : 0 };
 }
 
-export async function getLatestRevenue(
-  disasterId: string,
-  department = 'customs',
-): Promise<RevenueView | null> {
-  const row = await prisma.revenueSnapshot.findFirst({
-    where: { disasterId, department, status: 'published' },
-    orderBy: { as_of: 'desc' },
-  });
-  if (!row) return null;
+/** The change from `before` to `after` as a share of `before`, or null when there is no base. */
+export function changeShare(before: number | undefined, after: number): number | null {
+  return before ? after / before - 1 : null;
+}
+
+type Row = NonNullable<Awaited<ReturnType<typeof prisma.revenueSnapshot.findFirst>>>;
+
+function toView(row: Row): RevenueView {
   const target = Number(row.target_npr);
   const collected = Number(row.collected_npr);
   return {
@@ -82,12 +111,13 @@ export async function getLatestRevenue(
     as_of_en: row.as_of_en,
     target_npr: target,
     collected_npr: collected,
-    remaining_npr: Number(row.remaining_npr),
+    remaining_npr: row.remaining_npr == null ? null : Number(row.remaining_npr),
     remaining_note_ne: row.remaining_note_ne,
     remaining_note_en: row.remaining_note_en,
     date_note_ne: row.date_note_ne,
     date_note_en: row.date_note_en,
     offices: (row.offices as RevenueOffice[] | null) ?? [],
+    detail: (row.detail as RevenueDetail | null) ?? null,
     narrative_ne: row.narrative_ne,
     narrative_en: row.narrative_en,
     source_ne: row.source_ne,
@@ -95,4 +125,28 @@ export async function getLatestRevenue(
     share_of_target: target ? collected / target : 0,
     fiscal_year: fiscalYearProgress(row.fiscal_year_en, row.as_of),
   };
+}
+
+export async function getLatestRevenue(
+  disasterId: string,
+  department = 'customs',
+): Promise<RevenueView | null> {
+  const row = await prisma.revenueSnapshot.findFirst({
+    where: { disasterId, department, status: 'published' },
+    orderBy: { as_of: 'desc' },
+  });
+  return row ? toView(row) : null;
+}
+
+/** The latest published statement of every department, keyed by department. */
+export async function getAllLatestRevenue(
+  disasterId: string,
+): Promise<Record<string, RevenueView>> {
+  const rows = await prisma.revenueSnapshot.findMany({
+    where: { disasterId, status: 'published' },
+    orderBy: { as_of: 'desc' },
+  });
+  const latest: Record<string, RevenueView> = {};
+  for (const row of rows) if (!latest[row.department]) latest[row.department] = toView(row);
+  return latest;
 }

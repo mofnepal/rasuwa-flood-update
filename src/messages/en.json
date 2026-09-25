@@ -57,8 +57,8 @@
     "contactOther": "सम्पर्क",
     "plans": "Action Plans",
     "plansOther": "कार्ययोजना",
-    "customs": "Customs Revenue",
-    "customsOther": "भन्सार राजस्व"
+    "revenue": "Revenue",
+    "revenueOther": "राजस्व"
   },
   "table": {
     "search": "Search — name, organisation, date…",
@@ -516,9 +516,9 @@
     "kindOther": "Other",
     "note": "These entries are taken word for word from the domestic support list on the Office of the Prime Minister and Council of Ministers' rescue portal. A contribution is counted only once the Fund's own records carry it, so nothing here is added to the total above. Nepali Congress's NPR 10 million is already counted in the handover register (no. 336), and the cash to districts is money out of the Fund, shown under fund usage."
   },
-  "customs": {
-    "title": "Customs revenue — target and collection",
-    "intro": "The Department of Customs's annual revenue target and its collection to date, as the Department publishes it, with the customs offices out of operation after the flood.",
+  "revenue": {
+    "title": "Revenue — target and collection",
+    "intro": "The revenue target and collection to date of the Department of Customs and the Inland Revenue Department, as each publishes it, each in its own section.",
     "fiscalYear": "Fiscal year {year}",
     "kpiTarget": "Annual revenue target",
     "kpiTargetSub": "fiscal year {year}",
@@ -542,8 +542,33 @@
     "stateDamaged": "Damaged by the flood",
     "derivedNote": "The share of target and the time elapsed are computed by the portal, counting the fiscal year from Shrawan 1; every other figure is as the Department printed it.",
     "source": "Department of Customs",
-    "homeTitle": "Customs revenue — target and collection",
-    "homeSub": "Department of Customs · fiscal year {year} · up to {date}",
-    "fullSection": "Full section"
+    "homeTitle": "Revenue — target and collection",
+    "fullSection": "Full section",
+    "upTo": "up to {date}",
+    "customsSection": "Department of Customs",
+    "customsSource": "Department of Customs",
+    "irdSection": "Inland Revenue Department",
+    "irdSource": "RMIS",
+    "irdIntro": "as the Revenue Management Information System (RMIS) reports",
+    "kpiPeriodFoot": "{pct} of the target through {period} (achievement as printed)",
+    "kpiMonth": "Collected in {month}",
+    "kpiMonthSub": "target {target}",
+    "kpiMonthFoot": "{pct} of the month's target (as printed)",
+    "kpiDay": "Collected on {date}",
+    "kpiDaySub": "single day",
+    "barPeriod": "Towards the target through {period}",
+    "barMonth": "Towards {month}'s target",
+    "barAnnual": "Towards the annual target",
+    "ofTargetOf": "{pct} of {target}",
+    "compareTitle": "Against last fiscal year",
+    "compareChart": "Collected to the same date, two years",
+    "change": "Change",
+    "rowAnnualTarget": "Annual target",
+    "rowPeriodTarget": "Target through {period}",
+    "rowCumulative": "Collected up to {date}",
+    "rowMonth": "Collected in {month}",
+    "irdDerivedNote": "The share of the annual target, the time elapsed and the change on last year are computed by the portal; the achievement percentages and every amount are as printed in the RMIS statement.",
+    "homeCustoms": "Department of Customs · up to {date}",
+    "homeIrd": "Inland Revenue Department (RMIS) · up to {date}"
   }
 }

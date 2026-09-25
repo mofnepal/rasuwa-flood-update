@@ -460,7 +460,8 @@ for (const r of revenueRows) {
   if (want) {
     check(`${label}: target as printed`, n(r.target_npr), want.target_npr);
     check(`${label}: collected as printed`, n(r.collected_npr), want.collected_npr);
-    check(`${label}: remaining as printed`, n(r.remaining_npr), want.remaining_npr_printed);
+    if (want.remaining_npr_printed != null)
+      check(`${label}: remaining as printed`, n(r.remaining_npr), want.remaining_npr_printed);
   }
   checks++;
   if (n(r.collected_npr) <= n(r.target_npr))
@@ -470,7 +471,9 @@ for (const r of revenueRows) {
     console.log(`  DIFFERS   ${label}: collected exceeds the target`);
   }
   const gap = n(r.target_npr) - n(r.collected_npr) - n(r.remaining_npr);
-  if (gap === 0)
+  if (r.remaining_npr == null) {
+    /* the department prints no remaining figure */
+  } else if (gap === 0)
     check(
       `${label}: target − collected = remaining`,
       n(r.target_npr) - n(r.collected_npr),
@@ -488,6 +491,30 @@ for (const r of revenueRows) {
       n(r.remaining_npr),
     );
   if (r.date_note_en) note(`${label}: ${r.date_note_en}`);
+  // The achievement percentages a statement prints must be its own figures' ratio.
+  const detail = r.detail ?? {};
+  if (detail.period?.achievement_pct_printed != null)
+    check(
+      `${label}: printed achievement against the period target`,
+      Math.round((10000 * n(r.collected_npr)) / detail.period.target_npr) / 100,
+      detail.period.achievement_pct_printed,
+    );
+  if (detail.month?.achievement_pct_printed != null)
+    check(
+      `${label}: printed achievement against the month target`,
+      Math.round((10000 * detail.month.collected_npr) / detail.month.target_npr) / 100,
+      detail.month.achievement_pct_printed,
+    );
+  if (detail.month && detail.month.collected_npr > n(r.collected_npr)) {
+    failures++;
+    checks++;
+    console.log(`  DIFFERS   ${label}: the month's collection exceeds the collection to date`);
+  }
+  if (detail.day && detail.month && detail.day.collected_npr > detail.month.collected_npr) {
+    failures++;
+    checks++;
+    console.log(`  DIFFERS   ${label}: the day's collection exceeds the month's`);
+  }
 }
 
 // ── action plans, each against its own document ────────────────────────────

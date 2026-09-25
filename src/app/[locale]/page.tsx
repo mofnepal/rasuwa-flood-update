@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import donateQr from '../../../public/img/donate-qr.svg';
 import { Link } from '@/i18n/routing';
 import { getTotals, settlementGap, type PortalTotals } from '@/lib/totals';
-import { getLatestRevenue } from '@/lib/revenue';
+import { getAllLatestRevenue } from '@/lib/revenue';
 import { prisma } from '@/lib/db';
 import {
   PALETTE,
@@ -60,7 +60,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const ty = await getTranslations('types');
   const tc = await getTranslations('contributions');
   const tf = await getTranslations('foreign');
-  const tx = await getTranslations('customs');
+  const tx = await getTranslations('revenue');
 
   const totals = await getTotals();
   if (!totals) return <EmptyState label={ts('awaitingEntry')} />;
@@ -101,7 +101,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         orderBy: { date_ad: 'desc' },
       }),
     ]);
-  const revenue = await getLatestRevenue(totals.disasterId);
+  const revenue = await getAllLatestRevenue(totals.disasterId);
   const planData = latestPlan ? actionPlanSchema.safeParse(latestPlan.data) : null;
   const plan = planData?.success ? planData.data : null;
   const planNext = plan ? nextDeadline(plan) : null;
@@ -789,77 +789,103 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </Card>
       </section>
 
-      {/* ── customs revenue: target and collection, as the Department prints it ── */}
-      {revenue ? (
-        <Card id="customs">
+      {/* ── revenue: target and collection, department by department ─────── */}
+      {revenue.customs || revenue.ird ? (
+        <Card id="revenue">
           <SectionHeader
-            icon="customs"
+            icon="tax"
             title={tx('homeTitle')}
-            subtitle={tx('homeSub', {
-              year: pick(locale, revenue.fiscal_year_bs, revenue.fiscal_year_en),
-              date: pick(locale, revenue.as_of_bs, revenue.as_of_en),
-            })}
             right={
-              <Link className="btn ghost sm" href="/customs">
+              <Link className="btn ghost sm" href="/revenue">
                 {tx('fullSection')}
               </Link>
             }
           />
-          <div className="grid g3">
-            <KpiTile
-              icon="tax"
-              tone="navy"
-              label={tx('kpiTarget')}
-              value={formatKharba(revenue.target_npr, locale)}
-              foot={formatNPR(revenue.target_npr, locale)}
-            />
-            <KpiTile
-              icon="customs"
-              tone="red"
-              label={tx('kpiCollected')}
-              value={formatKharba(revenue.collected_npr, locale)}
-              foot={tx('ofTarget', {
-                pct: formatPercent(revenue.collected_npr, revenue.target_npr, locale),
-              })}
-            />
-            <KpiTile
-              icon="measure"
-              label={tx('kpiRemaining')}
-              sub={tx('kpiRemainingSub')}
-              value={formatKharba(revenue.remaining_npr, locale)}
-              foot={formatNPR(revenue.remaining_npr, locale)}
-            />
-          </div>
-          <div className="mini" style={{ marginTop: 14 }}>
-            <div>
-              <b>{tx('barCollected')}</b>
-              <span>
-                {tx('ofTarget', {
-                  pct: formatPercent(revenue.collected_npr, revenue.target_npr, locale),
-                })}
-              </span>
-              <i style={{ width: `${Math.min(100, 100 * revenue.share_of_target)}%` }} />
-              <em>{formatKharba(revenue.collected_npr, locale)}</em>
-            </div>
-            <div>
-              <b>{tx('barElapsed')}</b>
-              <span>
-                {tx('ofYear', {
-                  elapsed: formatNumber(revenue.fiscal_year.elapsed_days, locale),
-                  days: formatNumber(revenue.fiscal_year.days, locale),
-                })}
-              </span>
-              <i
-                style={{
-                  width: `${Math.min(100, 100 * revenue.fiscal_year.elapsed_share)}%`,
-                  background: 'var(--red)',
-                }}
-              />
-              <em>
-                {formatPercent(revenue.fiscal_year.elapsed_days, revenue.fiscal_year.days, locale)}
-              </em>
-            </div>
-          </div>
+          {(['customs', 'ird'] as const)
+            .filter((key) => revenue[key])
+            .map((key) => {
+              const r = revenue[key]!;
+              const period = r.detail?.period;
+              return (
+                <div key={key} style={{ marginTop: key === 'ird' ? 18 : 0 }}>
+                  <p className="ct">
+                    {tx(key === 'customs' ? 'homeCustoms' : 'homeIrd', {
+                      date: pick(locale, r.as_of_bs, r.as_of_en),
+                    })}
+                  </p>
+                  <div className="grid g3">
+                    <KpiTile
+                      icon="tax"
+                      tone="navy"
+                      label={tx('kpiTarget')}
+                      value={formatKharba(r.target_npr, locale)}
+                      foot={formatNPR(r.target_npr, locale)}
+                    />
+                    <KpiTile
+                      icon={key === 'customs' ? 'customs' : 'fund'}
+                      tone="red"
+                      label={tx('kpiCollected')}
+                      value={formatKharba(r.collected_npr, locale)}
+                      foot={tx('ofTarget', {
+                        pct: formatPercent(r.collected_npr, r.target_npr, locale),
+                      })}
+                    />
+                    {r.remaining_npr != null ? (
+                      <KpiTile
+                        icon="measure"
+                        label={tx('kpiRemaining')}
+                        sub={tx('kpiRemainingSub')}
+                        value={formatKharba(r.remaining_npr, locale)}
+                        foot={formatNPR(r.remaining_npr, locale)}
+                      />
+                    ) : period ? (
+                      <KpiTile
+                        icon="chart"
+                        label={tx('barPeriod', {
+                          period: pick(locale, period.label_ne, period.label_en),
+                        })}
+                        value={
+                          period.achievement_pct_printed != null
+                            ? `${formatNumber(period.achievement_pct_printed, locale, 2)}%`
+                            : formatPercent(r.collected_npr, period.target_npr, locale)
+                        }
+                        foot={formatKharba(period.target_npr, locale)}
+                      />
+                    ) : null}
+                  </div>
+                  <div className="mini" style={{ marginTop: 12 }}>
+                    <div>
+                      <b>{tx('barCollected')}</b>
+                      <span>
+                        {tx('ofTarget', {
+                          pct: formatPercent(r.collected_npr, r.target_npr, locale),
+                        })}
+                      </span>
+                      <i style={{ width: `${Math.min(100, 100 * r.share_of_target)}%` }} />
+                      <em>{formatKharba(r.collected_npr, locale)}</em>
+                    </div>
+                    <div>
+                      <b>{tx('barElapsed')}</b>
+                      <span>
+                        {tx('ofYear', {
+                          elapsed: formatNumber(r.fiscal_year.elapsed_days, locale),
+                          days: formatNumber(r.fiscal_year.days, locale),
+                        })}
+                      </span>
+                      <i
+                        style={{
+                          width: `${Math.min(100, 100 * r.fiscal_year.elapsed_share)}%`,
+                          background: 'var(--red)',
+                        }}
+                      />
+                      <em>
+                        {formatPercent(r.fiscal_year.elapsed_days, r.fiscal_year.days, locale)}
+                      </em>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
         </Card>
       ) : null}
 

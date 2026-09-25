@@ -1,5 +1,5 @@
 {
-  "note": "Revenue target and collection as a revenue department publishes it — the Department of Customs to begin with. Every figure is as printed, in rupees (६ खर्ब २८ अर्ब = 628,000,000,000). Where the department's own remaining figure is not target − collected, `remaining_note` says so and the printed figure is kept; where the printed date sits oddly against the disaster, `date_note` says so. Add later statements here, in the same shape; the portal shows the latest per department.",
+  "note": "Revenue target and collection as each revenue department publishes it — the Department of Customs and the Inland Revenue Department (via RMIS). Every figure is as printed, in rupees (६ खर्ब २८ अर्ब = 628,000,000,000). `remaining_npr` is given only where the department prints it; where it is not target − collected, `remaining_note` says so and the printed figure is kept. `detail` carries the period, month, day and previous-year figures a statement prints, with the achievement percentages as printed. Add later statements here, in the same shape; the portal shows the latest per department.",
   "snapshots": [
     {
       "department": "customs",
@@ -31,10 +31,62 @@
           "note_en": "fully damaged by the Bhotekoshi flood and not in operation"
         }
       ],
+      "detail": null,
       "narrative_ne": "तातोपानी भन्सार कार्यालय केही समयदेखि सञ्चालनमा नरहेको तथा भोटेकोशीमा आएको बाढीका कारण रसुवा भन्सार कार्यालय पूर्ण रूपमा क्षतिग्रस्त भई सञ्चालनमा नरहेको विषम परिस्थितिका बाबजुद सम्पूर्ण भन्सार प्रशासनको अथक प्रयासबाट भाद्र ६ गतेसम्म रु. १ खर्बभन्दा बढी राजस्व संकलन गर्न भन्सार विभाग सफल भएको छ। आगामी दिनमा भन्सार विभागको अर्जुनदृष्टि बाँकी ५ खर्ब २७ अर्ब राजस्व असुलीमा केन्द्रित रहनेछ।",
       "narrative_en": "Despite the difficult circumstances — the Tatopani Customs Office not in operation for some time, and the Rasuwa Customs Office fully damaged by the Bhotekoshi flood and out of operation — the tireless effort of the whole customs administration enabled the Department of Customs to collect more than NPR 100 billion in revenue by Bhadra 6. In the days ahead the Department's undivided attention will be on collecting the remaining NPR 527 billion.",
       "source_ne": "भन्सार विभाग — आर्थिक वर्ष २०८३/८४ को भाद्र ६ गतेसम्म भन्सार विभागको राजस्व लक्ष्य तथा असुलीको अवस्था",
       "source_en": "Department of Customs — Revenue target and collection of the Department of Customs up to Bhadra 6 of fiscal year 2083/84",
+      "original_file": null
+    },
+    {
+      "department": "ird",
+      "fiscal_year_bs": "२०८३/८४",
+      "fiscal_year_en": "2083/84",
+      "as_of_bs": "२०८३ असोज ७",
+      "as_of_ad": "2026-09-23",
+      "as_of_en": "Asoj 7, 2083 (23 September 2026)",
+      "target_npr": 1580320000000,
+      "collected_npr": 202720000000,
+      "remaining_npr": null,
+      "remaining_note_ne": null,
+      "remaining_note_en": null,
+      "date_note_ne": null,
+      "date_note_en": null,
+      "offices": [],
+      "detail": {
+        "period": {
+          "label_ne": "असोज",
+          "label_en": "Asoj",
+          "target_npr": 330220000000,
+          "achievement_pct_printed": 61.39
+        },
+        "month": {
+          "label_ne": "असोज",
+          "label_en": "Asoj",
+          "target_npr": 115410000000,
+          "collected_npr": 18140000000,
+          "achievement_pct_printed": 15.72
+        },
+        "day": {
+          "date_bs": "२०८३ असोज ७",
+          "date_en": "Asoj 7, 2083",
+          "collected_npr": 4340000000
+        },
+        "previous_year": {
+          "fiscal_year_bs": "२०८२/८३",
+          "fiscal_year_en": "2082/83",
+          "annual_target_npr": 1480000000000,
+          "period_target_npr": 321560000000,
+          "collected_to_date_npr": 175630000000,
+          "collected_to_date_label_ne": "२०८२ असोज ७ गतेसम्म",
+          "collected_to_date_label_en": "up to Asoj 7, 2082",
+          "month_collected_npr": 16920000000
+        }
+      },
+      "narrative_ne": null,
+      "narrative_en": null,
+      "source_ne": "राजस्व व्यवस्थापन सूचना प्रणाली (RMIS) — आर्थिक वर्ष २०८३/८४ असोज ७ गतेको राजस्व सङ्कलन विवरण",
+      "source_en": "Revenue Management Information System (RMIS) — Revenue collection statement of fiscal year 2083/84 for Asoj 7",
       "original_file": null
     }
   ]

@@ -58,6 +58,12 @@
       "target_npr": 628000000000,
       "collected_npr": 102000000000,
       "remaining_npr_printed": 527000000000
+    },
+    "ird": {
+      "as_of_bs": "२०८३ असोज ७",
+      "target_npr": 1580320000000,
+      "collected_npr": 202720000000,
+      "remaining_npr_printed": null
     }
   }
 }

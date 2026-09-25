@@ -12,7 +12,7 @@ const PAGES = [
   '/rescue',
   '/initiatives',
   '/plans',
-  '/customs',
+  '/revenue',
   '/contact',
 ];
 
@@ -36,12 +36,12 @@ const text = async (path) => {
 console.log('\nFigures');
 const neHome = await text('/ne');
 const enHome = await text('/en');
-check(neHome.includes('रु. १५,४४,२९,५३,७९८'), 'grand total, Nepali', 'रु. १५,४४,२९,५३,७९८');
-check(enHome.includes('NPR 15,44,29,53,798'), 'grand total, English', 'NPR 15,44,29,53,798');
-check(enHome.includes('15,16,73,66,258'), 'available fund balance 15,167,366,258');
+check(neHome.includes('रु. १५,५४,२०,०१,३३९'), 'grand total, Nepali', 'रु. १५,५४,२०,०१,३३९');
+check(enHome.includes('NPR 15,54,20,01,339'), 'grand total, English', 'NPR 15,54,20,01,339');
+check(enHome.includes('15,60,37,29,530'), 'available fund balance 15,603,729,530');
 
 const enForeign = await text('/en/foreign');
-check(enForeign.includes('USD 24,218,654'), 'foreign total USD 24,218,654');
+check(enForeign.includes('USD 24,885,498'), 'foreign total USD 24,885,498');
 check(enForeign.includes('USD 11,215,654'), 'identified USD 11,215,654 (register tile)');
 check(enForeign.includes('USD 50,473,800'), 'OPMCM-stated international support USD 50,473,800');
 
@@ -53,13 +53,19 @@ check(
   'announced domestic pledges NPR 551,830,000, listed not counted',
 );
 
-const enCustoms = await text('/en/customs');
-check(enCustoms.includes('NPR 628 billion'), 'customs revenue target NPR 628 billion');
-check(enCustoms.includes('NPR 102 billion'), 'customs revenue collected NPR 102 billion');
+const enRevenue = await text('/en/revenue');
+check(enRevenue.includes('NPR 628 billion'), 'customs revenue target NPR 628 billion');
+check(enRevenue.includes('NPR 102 billion'), 'customs revenue collected NPR 102 billion');
 check(
-  enCustoms.includes('NPR 527 billion'),
+  enRevenue.includes('NPR 527 billion'),
   'customs revenue remaining NPR 527 billion, as printed',
 );
+check(
+  enRevenue.includes('NPR 1,580.32 billion'),
+  'inland revenue annual target NPR 1,580.32 billion',
+);
+check(enRevenue.includes('NPR 202.72 billion'), 'inland revenue collected NPR 202.72 billion');
+check(enRevenue.includes('61.39%'), 'inland revenue achievement 61.39%, as printed');
 
 // ── 2. forbidden strings ───────────────────────────────────────────────────
 console.log('\nForbidden text');

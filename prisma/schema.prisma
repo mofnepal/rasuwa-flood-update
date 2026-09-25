@@ -504,13 +504,16 @@ model RevenueSnapshot {
   as_of_en          String
   target_npr        Decimal      @db.Decimal(18, 2)
   collected_npr     Decimal      @db.Decimal(18, 2)
-  remaining_npr     Decimal      @db.Decimal(18, 2)
+  /// Null where the department prints no remaining figure; the page derives none.
+  remaining_npr     Decimal?     @db.Decimal(18, 2)
   remaining_note_ne String?
   remaining_note_en String?
   date_note_ne      String?
   date_note_en      String?
   /// [{ name_ne, name_en, state, note_ne, note_en }] — offices the report names as affected
   offices           Json?
+  /// Period, month, day and previous-year figures the statement prints, as printed
+  detail            Json?
   narrative_ne      String?
   narrative_en      String?
   source_ne         String

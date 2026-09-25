@@ -14,7 +14,7 @@ const PAGES = [
   { path: 'rescue/', ne: 'उद्धार तथा राहत', en: 'Rescue & Relief' },
   { path: 'initiatives/', ne: 'सरकारबाट भएका पहल', en: 'Government initiatives' },
   { path: 'plans/', ne: 'सरकारका कार्ययोजना', en: 'Government Action Plans' },
-  { path: 'customs/', ne: 'भन्सार राजस्व', en: 'Customs revenue' },
+  { path: 'revenue/', ne: 'राजस्व', en: 'Revenue' },
   { path: 'contact/', ne: 'सम्पर्क विवरण', en: 'contact details' },
 ] as const;
 
@@ -114,7 +114,7 @@ test('announced domestic support is listed on the contributions page and never c
   page,
 }) => {
   await open(page, 'en/contributions/');
-  await expect(page.locator('.kpi').first()).toContainText('NPR 15,44,29,53,798');
+  await expect(page.locator('.kpi').first()).toContainText('NPR 15,54,20,01,339');
   const card = page.locator('#announced');
   await card.scrollIntoViewIfNeeded();
   await expect(card.locator('.kpi')).toHaveCount(3);
@@ -125,22 +125,30 @@ test('announced domestic support is listed on the contributions page and never c
   await expect(card.locator('table.tbl tbody tr')).toHaveCount(7);
 });
 
-test('the customs revenue page shows the target, the collection and the remainder as printed', async ({
+test('the revenue page shows customs and inland revenue as printed, each in its own section', async ({
   page,
 }) => {
-  await open(page, 'en/customs/');
-  const tiles = page.locator('.kpi');
-  await expect(tiles).toHaveCount(4);
-  await expect(tiles.nth(0)).toContainText('NPR 628 billion');
-  await expect(tiles.nth(1)).toContainText('NPR 102 billion');
+  await open(page, 'en/revenue/');
+  const customs = page.locator('#customs');
+  await expect(customs.locator('.kpi')).toHaveCount(4);
+  await expect(customs.locator('.kpi').nth(0)).toContainText('NPR 628 billion');
+  await expect(customs.locator('.kpi').nth(1)).toContainText('NPR 102 billion');
   // The Department prints 527 billion where the arithmetic gives 526; the print wins.
-  await expect(tiles.nth(2)).toContainText('NPR 527 billion');
-  await expect(page.locator('#progress .mini > div')).toHaveCount(2);
-  await expect(page.locator('body')).toContainText('Tatopani Customs Office');
-  // The home dashboard carries the same figures in the source's own words.
+  await expect(customs.locator('.kpi').nth(2)).toContainText('NPR 527 billion');
+  await expect(customs.locator('#progress .mini > div')).toHaveCount(2);
+  await expect(customs).toContainText('Tatopani Customs Office');
+  const ird = page.locator('#ird');
+  await expect(ird.locator('.kpi')).toHaveCount(4);
+  await expect(ird.locator('.kpi').nth(0)).toContainText('NPR 1,580.32 billion');
+  await expect(ird.locator('.kpi').nth(1)).toContainText('NPR 202.72 billion');
+  await expect(ird.locator('.kpi').nth(1)).toContainText('61.39%');
+  await expect(ird.locator('#ird-progress .mini > div')).toHaveCount(4);
+  await expect(ird.locator('table.tbl tbody tr')).toHaveCount(4);
+  await expect(ird).toContainText('2082/83');
+  // The home dashboard carries both departments in the source's own words.
   await open(page, 'ne/');
-  await expect(page.locator('#customs')).toContainText('रु. ६ खर्ब २८ अर्ब');
-  await expect(page.locator('#customs')).toContainText('रु. १ खर्ब २ अर्ब');
+  await expect(page.locator('#revenue')).toContainText('रु. ६ खर्ब २८ अर्ब');
+  await expect(page.locator('#revenue')).toContainText('रु. १५ खर्ब ८० अर्ब ३२ करोड');
 });
 
 test('the fund usage card shows the transfer out of the Fund and every onward disbursement', async ({

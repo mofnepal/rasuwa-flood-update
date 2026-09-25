@@ -850,14 +850,15 @@ async function main() {
       as_of_en: string;
       target_npr: number;
       collected_npr: number;
-      remaining_npr: number;
-      remaining_note_ne?: string;
-      remaining_note_en?: string;
-      date_note_ne?: string;
-      date_note_en?: string;
+      remaining_npr: number | null;
+      remaining_note_ne?: string | null;
+      remaining_note_en?: string | null;
+      date_note_ne?: string | null;
+      date_note_en?: string | null;
       offices?: unknown[];
-      narrative_ne?: string;
-      narrative_en?: string;
+      detail?: unknown;
+      narrative_ne?: string | null;
+      narrative_en?: string | null;
       source_ne: string;
       source_en: string;
       original_file: string | null;
@@ -871,7 +872,11 @@ async function main() {
       );
     // The printed remaining figure is kept as printed; where it is not target − collected
     // the entry must say so.
-    if (snap.target_npr - snap.collected_npr !== snap.remaining_npr && !snap.remaining_note_en)
+    if (
+      snap.remaining_npr != null &&
+      snap.target_npr - snap.collected_npr !== snap.remaining_npr &&
+      !snap.remaining_note_en
+    )
       throw new Error(
         `revenue: ${snap.department} ${snap.as_of_bs} remaining ${snap.remaining_npr} is not target − collected and carries no note`,
       );
@@ -887,12 +892,13 @@ async function main() {
         as_of_en: snap.as_of_en,
         target_npr: String(snap.target_npr),
         collected_npr: String(snap.collected_npr),
-        remaining_npr: String(snap.remaining_npr),
+        remaining_npr: snap.remaining_npr == null ? null : String(snap.remaining_npr),
         remaining_note_ne: snap.remaining_note_ne ?? null,
         remaining_note_en: snap.remaining_note_en ?? null,
         date_note_ne: snap.date_note_ne ?? null,
         date_note_en: snap.date_note_en ?? null,
         offices: (snap.offices ?? []) as Prisma.InputJsonValue,
+        detail: (snap.detail ?? null) as Prisma.InputJsonValue,
         narrative_ne: snap.narrative_ne ?? null,
         narrative_en: snap.narrative_en ?? null,
         source_ne: snap.source_ne,

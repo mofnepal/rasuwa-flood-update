@@ -88,14 +88,15 @@ export function formatShort(value: number | string, locale: Locale): string {
 }
 
 /**
- * The form the ministry's own statements use for large sums: "रु. ६ खर्ब २८ अर्ब" in
- * Nepali, "NPR 628 billion" in English. Whole units only, the two largest parts; a
- * sum below one lakh falls back to the full figure.
+ * The form the ministry's own statements use for large sums: "रु. १५ खर्ब ८० अर्ब ३२ करोड"
+ * in Nepali, "NPR 1,580.32 billion" in English. Whole units, every non-zero part down to
+ * a lakh; a sum below one lakh falls back to the full figure.
  */
 export function formatKharba(value: number | string, locale: Locale): string {
   const n = Math.round(Number(value) || 0);
   const abs = Math.abs(n);
   if (abs < 1e5) return formatNPR(n, locale);
+  const sign = n < 0 ? '−' : '';
   if (locale === 'ne') {
     const units: [number, string][] = [
       [1e11, 'खर्ब'],
@@ -111,15 +112,14 @@ export function formatKharba(value: number | string, locale: Locale): string {
         parts.push(`${toNepaliDigits(String(count))} ${name}`);
         rest -= count * size;
       }
-      if (parts.length === 2) break;
     }
-    return `${n < 0 ? '−' : ''}रु. ${parts.join(' ')}`;
+    return `${sign}रु. ${parts.join(' ')}`;
   }
   const [size, name] =
     abs >= 1e9 ? [1e9, 'billion'] : abs >= 1e6 ? [1e6, 'million'] : [1e5, 'lakh'];
-  const scaled = abs / size;
-  const text = Number.isInteger(scaled) ? String(scaled) : scaled.toFixed(1);
-  return `${n < 0 ? '−' : ''}NPR ${text} ${name}`;
+  const scaled = Math.round((abs / size) * 100) / 100;
+  const text = scaled.toLocaleString('en-US', { maximumFractionDigits: 2 });
+  return `${sign}NPR ${text} ${name}`;
 }
 
 /** "NPR 4,26,35,65,174 · 4.26 billion" — English pages show both forms. */

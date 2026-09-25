@@ -22,7 +22,7 @@ export const CARD_TITLES: Record<string, { ne: string; en: string }> = {
   rescue: { ne: 'उद्धार तथा राहत', en: 'Rescue & Relief' },
   initiatives: { ne: 'सरकारबाट भएका पहल', en: 'Government Initiatives' },
   plans: { ne: 'सरकारका कार्ययोजना', en: 'Government Action Plans' },
-  customs: { ne: 'भन्सार राजस्व', en: 'Customs Revenue' },
+  revenue: { ne: 'राजस्व — लक्ष्य र असुली', en: 'Revenue — target and collection' },
   contact: { ne: 'सम्पर्क', en: 'Contact' },
 };
 
@@ -81,7 +81,7 @@ export async function cardHeadline(
         value: formatNumber(actions, locale),
       };
     }
-    case 'customs': {
+    case 'revenue': {
       const snapshot = await prisma.revenueSnapshot.findFirst({
         where: { disasterId: totals.disasterId, status: 'published', department: 'customs' },
         orderBy: { as_of: 'desc' },

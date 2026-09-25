@@ -4,15 +4,66 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Added — Inland Revenue on the revenue page, beside Customs
+
+- **The revenue page now has two sections, one per department.** Beside the Department
+  of Customs, an **Inland Revenue Department** section carries the RMIS revenue
+  collection statement of fiscal year 2083/84 for Asoj 7: annual target **NPR 1,580.32
+  billion** (रु. १५ खर्ब ८० अर्ब ३२ करोड); target through Asoj NPR 330.22 billion and
+  collection up to Asoj 7 **NPR 202.72 billion**, achievement 61.39% as printed; Asoj
+  target NPR 115.41 billion and Asoj collection NPR 18.14 billion, 15.72% as printed;
+  Asoj 7 collection NPR 4.34 billion; and last year's figures at the same date — annual
+  target NPR 1,480 billion, target through Asoj NPR 321.56 billion, collected up to Asoj
+  7, 2082 NPR 175.63 billion, Asoj collection NPR 16.92 billion. The section shows four
+  tiles, four progress bars (through Asoj, the month, the annual target, and the fiscal
+  year elapsed), a two-year table with the change on last year, and a chart of the
+  collection to date in both years. The RMIS statement prints no remaining figure, so
+  none is shown or derived; the printed achievement percentages tie with the printed
+  amounts (61.39% and 15.72%) and `pnpm verify` checks them.
+- The page and its route are renamed from "भन्सार राजस्व / Customs Revenue" (`/customs`)
+  to **"राजस्व / Revenue" (`/revenue`)** in the navigation, footer, search index, share
+  card and open data (`revenue.json` now lists every department). The home dashboard
+  card shows both departments: the target, the collection and, for Customs, the printed
+  remainder or, for Inland Revenue, the printed achievement against the period target,
+  with the two progress bars each. The Department of Customs's statement card is gone
+  from the page; its narrative stays in the seed and the open data, and its two notes
+  sit beneath the progress bars.
+- `formatKharba` now writes every non-zero unit — रु. १५ खर्ब ८० अर्ब ३२ करोड, NPR
+  1,580.32 billion — so a printed sum is reproduced whole.
+
+### Data — fund status, 2083/06/08 5:00 PM
+
+- **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/06/08
+  (24 September 2026), 5:00 PM**, at **NPR 152.89** per US dollar (from 153.01). It
+  publishes the 2083/06/07 column as its comparison, so both Asoj 7 and Asoj 8 are
+  loaded and the daily series is unbroken again.
+  - NPR balance **11,709,384,895**; the nine bank lines sum to it exactly; collected
+    since the flood 10,626,962,490, and balance − before + the NPR 1 billion transferred
+    = collected exactly on both days. The daily figures (93,463,412 and 243,922,707)
+    equal the rises in the collected figure exactly. Every bank is at or above its
+    previous figure on both days.
+  - USD: Himalayan Bank 14,735,007 + Laxmi Sunrise 10,736,539 = **25,471,546** exactly;
+    collected 24,885,498; the daily USD figures (480,092 and 186,752) equal the rises in
+    the balance exactly.
+  - Total available fund balance **NPR 15,603,729,530**.
+- Stated, not corrected: the fund-usage line is printed blank again while the collected
+  figure carries the NPR 1 billion transfer (the note stays); the 06/07 NPR bank lines
+  sum two rupees above their printed total and the 06/07 USD lines one dollar above
+  theirs; the NPR balance plus the printed USD equivalent is one rupee below the printed
+  total available; and the printed USD equivalent, NPR 3,894,344,634, is NPR 33.94 below
+  USD 25,471,546 × 152.89.
+- The grand total is **15,54,20,01,339** (15,542,001,338.65): A NPR 8,999,626,915.61 +
+  B NPR 2,737,630,633.82 + C USD 24,885,498 × 152.89.
+
 ### Changed — the Rescue section is "Rescue & Relief"
 
 - The rescue section is now titled **उद्धार तथा राहत / Rescue & Relief** in the navigation,
   the footer, the page heading, the search index and its share card; its address is
   unchanged.
 
-### Added — Customs revenue: target and collection
+### Added — Revenue: target and collection, department by department
 
-- **A new section, "भन्सार राजस्व / Customs Revenue" (`/customs`)**, with its own database
+- **A new section, "राजस्व / Revenue" (`/revenue`)**, with its own database
   (`RevenueSnapshot`, seeded from `seed/revenue.json`, one row per department and
   statement; the portal shows the latest): the Department of Customs's statement of the
   revenue target and collection of fiscal year 2083/84 up to Bhadra 6 — annual target

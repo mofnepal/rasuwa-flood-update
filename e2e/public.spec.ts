@@ -9,7 +9,7 @@ const PAGES = [
   { path: '/rescue', ne: 'उद्धार तथा राहत', en: 'Rescue & Relief' },
   { path: '/initiatives', ne: 'सरकारबाट भएका पहल', en: 'Government initiatives' },
   { path: '/plans', ne: 'सरकारका कार्ययोजना', en: 'Government Action Plans' },
-  { path: '/customs', ne: 'भन्सार राजस्व', en: 'Customs revenue' },
+  { path: '/revenue', ne: 'राजस्व', en: 'Revenue' },
   { path: '/contact', ne: 'सम्पर्क विवरण', en: 'contact details' },
 ] as const;
 

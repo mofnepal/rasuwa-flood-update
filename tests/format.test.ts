@@ -146,6 +146,9 @@ describe('formatKharba', () => {
     expect(formatKharba(160_000_000, 'ne')).toBe('रु. १६ करोड');
     expect(formatKharba(160_000_000, 'en')).toBe('NPR 160 million');
     expect(formatKharba(1_830_000, 'ne')).toBe('रु. १८ लाख');
-    expect(formatKharba(1_830_000, 'en')).toBe('NPR 1.8 million');
+    expect(formatKharba(1_830_000, 'en')).toBe('NPR 1.83 million');
+    expect(formatKharba(1_580_320_000_000, 'ne')).toBe('रु. १५ खर्ब ८० अर्ब ३२ करोड');
+    expect(formatKharba(1_580_320_000_000, 'en')).toBe('NPR 1,580.32 billion');
+    expect(formatKharba(18_140_000_000, 'en')).toBe('NPR 18.14 billion');
   });
 });

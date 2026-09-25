@@ -15,7 +15,7 @@ const SECTIONS: [string, string, string][] = [
   ['/rescue', 'उद्धार तथा राहत', 'Rescue & Relief'],
   ['/initiatives', 'सरकारका पहल', 'Government Initiatives'],
   ['/plans', 'कार्ययोजना', 'Action Plans'],
-  ['/customs', 'भन्सार राजस्व', 'Customs Revenue'],
+  ['/revenue', 'राजस्व', 'Revenue'],
   ['/contact', 'सम्पर्क', 'Contact'],
 ];
 
