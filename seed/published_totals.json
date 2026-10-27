@@ -14,7 +14,9 @@
     "NCHL|2026-09-20": 6335643872.69,
     "NCHL|2026-09-21": 6434549513.61,
     "FONEPAY|2026-09-20": 2558851823,
-    "FONEPAY|2026-09-21": 2565077401
+    "FONEPAY|2026-09-21": 2565077401,
+    "NCHL|2026-10-26": 7740775912.49,
+    "FONEPAY|2026-10-26": 2619368417
   },
   "handover_register": {
     "total_npr": 2737630633.82,
@@ -43,9 +45,9 @@
     "onward_npr": 160000000
   },
   "international_support": {
-    "entries": 39,
-    "stated_usd": 50473800,
-    "fetched": "2026-09-16"
+    "entries": 40,
+    "stated_usd": 70473800,
+    "fetched": "2026-09-16; FRLD grant added 2026-10-27"
   },
   "announced_support": {
     "entries": 9,

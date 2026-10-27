@@ -711,7 +711,9 @@ async function main() {
       aid_list_note: unknown;
       source_en: string;
       source_ne: string;
-      source_url: string;
+      source_url: string | null;
+      source_short_en?: string;
+      source_short_ne?: string;
       reported_at: string | null;
     }[];
   }>('international_support.json');
@@ -762,6 +764,8 @@ async function main() {
         detail_ne: row.detail_ne || null,
         aid_list_note: (row.aid_list_note ?? null) as Prisma.InputJsonValue,
         source_url: row.source_url,
+        source_short_en: row.source_short_en ?? null,
+        source_short_ne: row.source_short_ne ?? null,
         purpose_en: 'Rasuwa flood relief',
         purpose_ne: 'रसुवा बाढी राहत',
         source: row.source_en,

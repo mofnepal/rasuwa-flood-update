@@ -114,3 +114,20 @@ Fonepay,2026-09-21,daily,npci,NPCI (India),NPCI (भारत),36,529029,Fonepay
 Fonepay,2026-09-22T00:00:00+05:45,cumulative,alipay,Alipay,Alipay,4371,22789669,Fonepay till 2026-09-21
 Fonepay,2026-09-21,daily,alipay,Alipay,Alipay,43,182923,Fonepay day 2026-09-21
 Fonepay,2026-09-22T00:00:00+05:45,cumulative,ibft,IBFT,IBFT,3453,19407969,Fonepay till 2026-09-21
+NCHL,2026-10-27T00:00:00+05:45,cumulative,ips_cheque,IPS / Cheque Transfer,IPS / चेक ट्रान्सफर,9909,3575327405.77,NCHL
+NCHL,2026-10-27T00:00:00+05:45,cumulative,card_intl,Card – International,कार्ड – अन्तर्राष्ट्रिय,106163,1900420575.95,NCHL
+NCHL,2026-10-27T00:00:00+05:45,cumulative,online_transfer,Online Transfer,अनलाइन ट्रान्सफर,22336,1475204196.46,NCHL
+NCHL,2026-10-27T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,117469,435252414.70,NCHL
+NCHL,2026-10-27T00:00:00+05:45,cumulative,remittance,Remittance,रेमिट्यान्स,27470,344483913.24,NCHL
+NCHL,2026-10-27T00:00:00+05:45,cumulative,intl_qr,Int'l QR,अन्तर्राष्ट्रिय QR,753,6766736.96,NCHL
+NCHL,2026-10-27T00:00:00+05:45,cumulative,card_domestic,Card – Domestic,कार्ड – घरेलु,479,3320669.41,NCHL
+Fonepay,2026-10-27T00:00:00+05:45,cumulative,domestic_qr,Domestic QR,घरेलु QR,840736,2281672679,Fonepay till 2026-10-26
+Fonepay,2026-10-26,daily,domestic_qr,Domestic QR,घरेलु QR,30,270783,Fonepay day 2026-10-26
+Fonepay,2026-10-27T00:00:00+05:45,cumulative,fonepay_bills,Fonepay Bills,फोनपे बिल्स,68637,226419211,Fonepay till 2026-10-26
+Fonepay,2026-10-26,daily,fonepay_bills,Fonepay Bills,फोनपे बिल्स,63,301822,Fonepay day 2026-10-26
+Fonepay,2026-10-27T00:00:00+05:45,cumulative,npci,NPCI (India),NPCI (भारत),24404,66864506,Fonepay till 2026-10-26
+Fonepay,2026-10-26,daily,npci,NPCI (India),NPCI (भारत),3,4101,Fonepay day 2026-10-26
+Fonepay,2026-10-27T00:00:00+05:45,cumulative,alipay,Alipay,Alipay,4595,24386221,Fonepay till 2026-10-26
+Fonepay,2026-10-26,daily,alipay,Alipay,Alipay,1,2000,Fonepay day 2026-10-26
+Fonepay,2026-10-27T00:00:00+05:45,cumulative,domestic_qr_2,Domestic QR (second line as printed),घरेलु QR (छापिए अनुसार दोस्रो पङ्क्ति),2,8022,Fonepay till 2026-10-26
+Fonepay,2026-10-27T00:00:00+05:45,cumulative,ibft,IBFT,IBFT,3477,20017778,Fonepay till 2026-10-26

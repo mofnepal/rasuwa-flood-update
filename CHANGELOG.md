@@ -4,6 +4,68 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Data — fund status, 2083/07/09 9:00 AM
+
+- **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/07/09
+  (26 October 2026), 9:00 AM**, at **NPR 151.61** per US dollar (from 152.89). It
+  publishes the 2083/06/30 (16 October) column as its comparison; no statements for Asoj
+  9 to Kartik 8 were received, so the 06/30 column is loaded from this statement.
+  - NPR balance **13,470,429,065**; the nine bank lines sum to it exactly; collected since
+    the flood 12,388,006,660, and balance − before + the NPR 1 billion transferred =
+    collected exactly, on both days. Every bank is at or above its 06/30 figure.
+  - USD: Himalayan Bank 19,017,183 + Laxmi Sunrise 11,474,261 = **30,491,444** exactly;
+    collected 29,905,396; the printed USD figures equal the rises in the balance exactly.
+  - Total available fund balance **NPR 18,093,236,852** = NPR balance + printed USD
+    equivalent, exactly.
+- Stated, not corrected: the fund-usage line is printed blank again while the collected
+  figure carries the NPR 1 billion transfer (the note stays); the 06/30 NPR bank lines
+  sum one rupee below their printed total; and the printed USD equivalent, NPR
+  4,622,807,787, is NPR 37.84 below USD 30,491,444 × 151.61. The statement's "daily"
+  collection for 07/09 (NPR 76,494,837; USD 523,277) equals the whole change since its
+  06/30 column, that is nine days; it is shown as printed.
+- **Two bridging points in the daily series:** Asoj 29 is derived from the printed Asoj 30
+  daily figure and carries everything from 5:00 PM on Asoj 8 to the end of Asoj 29 (NPR
+  1,602,109,750; USD 4,487,811); Kartik 9 carries the printed daily figure, which spans
+  Asoj 31 to Kartik 9. The series carries a note saying so.
+- The grand total is **NPR 17,63,17,32,051** (17,631,732,050.87): A NPR 10,360,144,329.49
+  - B NPR 2,737,630,633.82 + C USD 29,905,396 × 151.61.
+
+### Data — Foreign assistance: the Loss and Damage Fund's USD 20 million grant
+
+- **The foreign assistance register gains the Fund for Responding to Loss and Damage
+  (FRLD) grant of USD 20 million**, from the Ministry of Agriculture, Forest and
+  Environment's press release of 2083 Kartik 5 (22 October 2026): the Fund's Board, at an
+  extraordinary meeting on 22 October, decided to grant Nepal USD 20 million (about NPR 3
+  billion, as the release states) for the Bhotekoshi–Trishuli flood, on the request made
+  on 31 August by the Hon. Finance Minister and the Hon. Minister for Agriculture, Forest
+  and Environment. It is a pledge to Nepal under the Fund's own modality, not a deposit
+  in the Prime Minister Disaster Relief Fund, so it is listed as a multilateral pledge
+  and never counted; the reported-support tile now reads USD 70,473,800 across 40 rows.
+- **A third source in the register.** Each row can now name its publishing body, shown in
+  the source column and its filter beside "Ministry of Finance" and "Prime Minister's
+  Office"; this row reads "Ministry of Agriculture, Forest and Environment". The notes
+  and the tile label say that rows from other bodies are likewise not counted. The
+  release's other figures — about USD 2.7 billion of preliminary economic loss, about
+  USD 4.7 billion of reconstruction need, and the Board's 11th meeting in Kathmandu on
+  17–19 March 2027 — are kept in the row's detail and the open data.
+- **The same decision appears under Government Initiatives** as a notice of the Ministry
+  of Agriculture, Forest and Environment dated 2083 Kartik 5, in the timeline and among
+  the decision summaries; it is not counted among the Ministry of Finance's notices.
+
+### Data — 27 October 2026: NCHL and Fonepay
+
+- **NCHL collection through its channels, 27 October 2026, 12:00 AM** — seven channels,
+  **NPR 7,740,775,912.49** across 284,579 transactions; the lines sum to the printed
+  total to the paisa, and every channel is at or above its 22 September figure (+12,331
+  transactions, +NPR 1,306,226,398.88 over the five weeks).
+- **Fonepay, till 26 October 2026** — **NPR 2,619,368,417** across 941,851 transactions,
+  the lines summing to the printed total exactly, with the 26 October day (97
+  transactions, NPR 578,706, lines summing exactly). Every channel is at or above its 21
+  September figure (+7,788 transactions, +NPR 54,291,016 against the printed totals). The
+  summary prints "Domestic QR" twice; the second line (2 transactions, NPR 8,022) is kept
+  as a second line, as printed.
+- With the NCHL and Fonepay figures of the day, category A is NPR 10,360,144,329.49.
+
 ### Added — Inland Revenue on the revenue page, beside Customs
 
 - **The revenue page now has two sections, one per department.** Beside the Department
@@ -52,7 +114,7 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   theirs; the NPR balance plus the printed USD equivalent is one rupee below the printed
   total available; and the printed USD equivalent, NPR 3,894,344,634, is NPR 33.94 below
   USD 25,471,546 × 152.89.
-- The grand total is **15,54,20,01,339** (15,542,001,338.65): A NPR 8,999,626,915.61 +
+- The grand total is **NPR 15,54,20,01,339** (15,542,001,338.65): A NPR 8,999,626,915.61 +
   B NPR 2,737,630,633.82 + C USD 24,885,498 × 152.89.
 
 ### Changed — the Rescue section is "Rescue & Relief"
@@ -113,7 +175,7 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   printed here, so it carries everything from 9:00 AM on Asoj 2 to the end of Asoj 4
   (NPR 175,393,257; USD 413,533); there is no separate Asoj 3 point, and the series
   carries a note saying so.
-- The grand total is **15,44,29,53,798** (15,442,953,797.97): A NPR 8,999,626,915.61 +
+- The grand total is **NPR 15,44,29,53,798** (15,442,953,797.97): A NPR 8,999,626,915.61 +
   B NPR 2,737,630,633.82 + C USD 24,218,654 × 153.01.
 
 ### Data — 22 September 2026: NCHL and Fonepay
@@ -137,7 +199,7 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   lines (for 21 September, Domestic QR moved NPR 3,018,715 against a printed day of
   NPR 3,027,981; Fonepay Bills NPR 2,504,887 against NPR 2,783,450), which is how the
   network settles; both are shown as printed.
-- The grand total is **15,33,35,57,077** (15,333,557,077.43): A NPR 8,999,626,915.61 +
+- The grand total is **NPR 15,33,35,57,077** (15,333,557,077.43): A NPR 8,999,626,915.61 +
   B NPR 2,737,630,633.82 + C USD 23,474,540 × 153.20.
 
 ### Data — NCHL, 21 September 2026, 12:00 AM
@@ -146,7 +208,7 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   channels, **NPR 6,335,643,872.69** across 271,410 transactions; the lines sum to the
   printed total to the paisa, and every channel is at or above its 18 September figure
   (+1,630 transactions, +NPR 100,216,087.10).
-- The grand total is **15,17,68,23,497** (15,176,823,496.51): A NPR 8,842,893,334.69 +
+- The grand total is **NPR 15,17,68,23,497** (15,176,823,496.51): A NPR 8,842,893,334.69 +
   B NPR 2,737,630,633.82 + C USD 23,474,540 × 153.20.
 
 ### Data — NDRRMA update, 20 September 2026, 7:00 PM
@@ -203,7 +265,7 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   collection (65,591,966) is one rupee below the rise in the collected figure
   (65,591,967); and the printed USD equivalent, NPR 3,686,082,069, is NPR 12.60 below
   USD 24,060,588 × 153.20.
-- The grand total is **15,07,66,07,409** (15,076,607,409.41): A NPR 8,742,677,247.59 +
+- The grand total is **NPR 15,07,66,07,409** (15,076,607,409.41): A NPR 8,742,677,247.59 +
   B NPR 2,737,630,633.82 + C USD 23,474,540 × 153.20.
 
 ### Data — 17–18 September 2026: fund status 2083/06/01 5:00 PM, NCHL and NDRRMA report
@@ -249,7 +311,7 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
   nationals, Rasuwa 2,679, Nuwakot 1,787 — 5,053, or 4,943 after the 110 bodies handed
   over) while its own total is 6,145; both are shown as printed with a note, and
   `pnpm verify` records the difference in place of a tie.
-- The grand total is **15,05,76,47,104** (15,057,647,104.33): A NPR
+- The grand total is **NPR 15,05,76,47,104** (15,057,647,104.33): A NPR
   8,742,677,247.59 + B NPR 2,737,630,633.82 + C USD 23,344,683 × 153.24.
 
 ### Data — Announced domestic support, and one source column in the foreign register
