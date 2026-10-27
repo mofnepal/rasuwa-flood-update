@@ -4,6 +4,21 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Fixed — the English navigation fits on one row; the home page shows the largest pledges
+
+- **The navigation bar wrapped "Contact" onto a second row** in English at wide
+  windows: the compact sizes applied only below 1,400px, while the bar itself is capped
+  at the page width, so the full sizes never fit. The compact sizes now apply at every
+  desktop width, and a test holds the eight items on one row from 1,120px to 1,920px in
+  both languages.
+- **The home page's foreign card gets back what the zero fix took away**, without the
+  zeros: beneath the four verified deposits it lists the four largest pledges and
+  support from other bodies that carry a dollar figure — the Loss and Damage Fund's USD
+  20 million, the United Arab Emirates' USD 10 million, and the next two — each with its
+  source and kind, under a heading saying they are not counted, then the count of the
+  rest. The latest-handovers card ends with a line linking to the announced domestic
+  pledges not yet in the Fund, with their sum and count, likewise not counted.
+
 ### Fixed — no "USD 0" on the home page
 
 - **The home page's foreign assistance card listed every register row**, so the pledges

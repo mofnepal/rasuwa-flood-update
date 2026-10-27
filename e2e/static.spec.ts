@@ -155,6 +155,20 @@ test('the revenue page shows customs and inland revenue as printed, each in its 
   await expect(page.locator('#revenue')).toContainText('रु. १५ खर्ब ८० अर्ब ३२ करोड');
 });
 
+test('the navigation keeps its eight items on one row at every desktop width', async ({ page }) => {
+  for (const width of [1920, 1440, 1280, 1120]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const locale of ['en', 'ne']) {
+      await open(page, `${locale}/`);
+      const tops = await page
+        .locator('nav.main .wrap > a')
+        .evaluateAll((links) => links.map((link) => (link as HTMLElement).offsetTop));
+      expect(tops.length, `${locale} ${width}`).toBe(8);
+      expect(new Set(tops).size, `${locale} ${width}: ${tops.join(',')}`).toBe(1);
+    }
+  }
+});
+
 test('the home foreign card lists only deposits verified in the Fund, never a zero', async ({
   page,
 }) => {
@@ -165,6 +179,8 @@ test('the home foreign card lists only deposits verified in the Fund, never a ze
   await expect(card).toContainText('Foreign assistance');
   await expect(card).not.toContainText('USD 0');
   await expect(card).toContainText('more pledges and support');
+  await expect(card).toContainText('Fund for Responding to Loss and Damage');
+  await expect(card).toContainText('USD 20,000,000');
   await expect(page.locator('body')).not.toContainText('USD 0 ');
 });
 

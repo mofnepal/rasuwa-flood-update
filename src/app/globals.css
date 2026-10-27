@@ -2127,24 +2127,24 @@ nav.main a {
   align-items: center;
   justify-content: center;
   gap: 1px;
-  padding: 9px 10px 7px;
+  padding: 9px 7px 7px;
   text-align: center;
   line-height: 1.1;
 }
 nav.main a .row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 16.5px;
+  gap: 6px;
+  font-size: 15px;
   font-weight: 700;
   white-space: nowrap;
 }
 html[lang='en'] nav.main a .row {
-  font-size: 15.5px;
+  font-size: 14px;
 }
 nav.main a .row svg {
-  width: 19px;
-  height: 19px;
+  width: 17px;
+  height: 17px;
 }
 nav.main a small {
   display: block;
@@ -2153,22 +2153,6 @@ nav.main a small {
 }
 nav.main .mextra {
   display: none;
-}
-@media (max-width: 1400px) {
-  nav.main a {
-    padding: 9px 7px 7px;
-  }
-  nav.main a .row {
-    font-size: 15px;
-    gap: 6px;
-  }
-  html[lang='en'] nav.main a .row {
-    font-size: 14px;
-  }
-  nav.main a .row svg {
-    width: 17px;
-    height: 17px;
-  }
 }
 .hero .asof {
   font-size: 13.5px;
@@ -2471,18 +2455,26 @@ footer li {
 body.noscroll {
   overflow: hidden;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
+  /* eight items share the row equally; a long label breaks inside its own item */
   nav.main a {
-    padding: 9px 6px 7px;
+    flex: 1 1 0;
+    padding: 9px 5px 7px;
     min-width: 0;
   }
   nav.main a .row {
-    font-size: 14.5px;
+    font-size: 13.5px;
     gap: 5px;
+    white-space: normal;
+    text-align: center;
+  }
+  html[lang='en'] nav.main a .row {
+    font-size: 13px;
   }
   nav.main a .row svg {
     width: 16px;
     height: 16px;
+    flex: none;
   }
   nav.main a small {
     font-size: 10.5px;

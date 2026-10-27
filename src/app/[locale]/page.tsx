@@ -4,6 +4,7 @@ import donateQr from '../../../public/img/donate-qr.svg';
 import { Link } from '@/i18n/routing';
 import { getTotals, settlementGap, type PortalTotals } from '@/lib/totals';
 import { getAllLatestRevenue } from '@/lib/revenue';
+import { getAnnouncedSupport, summariseAnnounced } from '@/lib/announced';
 import { prisma } from '@/lib/db';
 import {
   PALETTE,
@@ -60,6 +61,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const ty = await getTranslations('types');
   const tc = await getTranslations('contributions');
   const tf = await getTranslations('foreign');
+  const tk = await getTranslations('kinds');
   const tx = await getTranslations('revenue');
 
   const totals = await getTotals();
@@ -106,6 +108,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   // pledges and support other bodies report sit in the full register, never counted.
   const foreignVerified = foreignRows.filter((row) => row.in_fund);
   const foreignReportedCount = foreignRows.length - foreignVerified.length;
+  // The largest pledges and support other bodies report, by dollar figure — shown as
+  // pledges, never counted; rows without a figure stay in the full register.
+  const foreignPledges = foreignRows
+    .filter((row) => !row.in_fund && Number(row.amount_usd ?? 0) > 0)
+    .sort((a, b) => Number(b.amount_usd) - Number(a.amount_usd))
+    .slice(0, 4);
+  const announced = summariseAnnounced(await getAnnouncedSupport(totals.disasterId));
   const planData = latestPlan ? actionPlanSchema.safeParse(latestPlan.data) : null;
   const plan = planData?.success ? planData.data : null;
   const planNext = plan ? nextDeadline(plan) : null;
@@ -661,8 +670,42 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           ) : (
             <EmptyState label={ts('awaitingEntry')} />
           )}
+          {foreignPledges.length ? (
+            <div style={{ marginTop: 14 }}>
+              <p className="ct" style={{ marginBottom: 6 }}>
+                {t('foreignPledgesTitle')}
+              </p>
+              {foreignPledges.map((row) => (
+                <div
+                  key={row.id}
+                  style={{
+                    display: 'flex',
+                    gap: 10,
+                    alignItems: 'baseline',
+                    justifyContent: 'space-between',
+                    borderBottom: '1px dashed var(--bd)',
+                    padding: '5px 0',
+                    fontSize: 13,
+                  }}
+                >
+                  <span>
+                    <b>{pick(locale, row.contributor_ne, row.contributor)}</b>
+                    <span style={{ color: 'var(--mute)' }}>
+                      {' · '}
+                      {pick(locale, row.source_short_ne, row.source_short_en) || tf('sourcePmo')}
+                      {' · '}
+                      {tk(row.kind)}
+                    </span>
+                  </span>
+                  <b style={{ whiteSpace: 'nowrap', color: 'var(--navy)' }}>
+                    {formatUSD(Number(row.amount_usd), locale)}
+                  </b>
+                </div>
+              ))}
+            </div>
+          ) : null}
           {foreignReportedCount ? (
-            <p style={{ fontSize: 12.5, color: 'var(--mute)', margin: '4px 0 8px' }}>
+            <p style={{ fontSize: 12.5, color: 'var(--mute)', margin: '8px 0 8px' }}>
               {t('foreignReportedLine', { count: formatNumber(foreignReportedCount, locale) })}
             </p>
           ) : null}
@@ -764,6 +807,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </tbody>
             </table>
           </div>
+          {announced.entries ? (
+            <p style={{ fontSize: 12.5, color: 'var(--mute)', margin: '10px 0 0' }}>
+              <Link href="/contributions#announced">
+                {t('announcedLine', {
+                  npr: formatNPR(announced.pledged_npr, locale),
+                  count: formatNumber(announced.pledged_count, locale),
+                })}
+              </Link>
+            </p>
+          ) : null}
         </Card>
 
         <Card>

@@ -175,7 +175,9 @@
     "measuresByCategory": "Relief measures by category",
     "accountStatusNoteHome": "This is the fund's account position; it is not added to the total contributions received. Only the amount deposited in the fund's USD accounts is counted as foreign assistance.",
     "flightsToday": "{count} helicopter flights today",
-    "foreignReportedLine": "{count} more pledges and support from the Prime Minister's Office and other bodies are in the full register; they are not counted."
+    "foreignReportedLine": "{count} more pledges and support from the Prime Minister's Office and other bodies are in the full register; they are not counted.",
+    "foreignPledgesTitle": "Largest pledges and support outside the Fund — not counted",
+    "announcedLine": "Announced pledges not yet in the Fund: {npr} ({count}), not counted"
   },
   "contributions": {
     "title": "Contributions Received",
