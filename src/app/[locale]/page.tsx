@@ -102,6 +102,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       }),
     ]);
   const revenue = await getAllLatestRevenue(totals.disasterId);
+  // The home card shows only the deposits verified in the Fund's own records; the
+  // pledges and support other bodies report sit in the full register, never counted.
+  const foreignVerified = foreignRows.filter((row) => row.in_fund);
+  const foreignReportedCount = foreignRows.length - foreignVerified.length;
   const planData = latestPlan ? actionPlanSchema.safeParse(latestPlan.data) : null;
   const plan = planData?.success ? planData.data : null;
   const planNext = plan ? nextDeadline(plan) : null;
@@ -620,8 +624,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </Link>
             }
           />
-          {foreignRows.length ? (
-            foreignRows.map((row) => (
+          {foreignVerified.length ? (
+            foreignVerified.map((row) => (
               <div
                 key={row.id}
                 style={{
@@ -657,6 +661,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           ) : (
             <EmptyState label={ts('awaitingEntry')} />
           )}
+          {foreignReportedCount ? (
+            <p style={{ fontSize: 12.5, color: 'var(--mute)', margin: '4px 0 8px' }}>
+              {t('foreignReportedLine', { count: formatNumber(foreignReportedCount, locale) })}
+            </p>
+          ) : null}
           <Note>{tf('subsetNote')}</Note>
         </Card>
 

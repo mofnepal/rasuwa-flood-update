@@ -4,6 +4,15 @@ All notable changes to रसुवा–भोटेकोशी बाढी �
 
 ## [Unreleased]
 
+### Fixed — no "USD 0" on the home page
+
+- **The home page's foreign assistance card listed every register row**, so the pledges
+  and in-kind support from the Prime Minister's Office and other bodies, which carry no
+  dollar figure, printed as "USD 0". The card now lists only the deposits verified in the
+  Fund's own records and ends with one line saying how many more pledges and support are
+  in the full register, not counted. The search index likewise no longer shows "USD 0"
+  for such a row; it shows the row's own wording instead.
+
 ### Data — fund status, 2083/07/09 9:00 AM
 
 - **Prime Minister Disaster Relief Fund — Daily Deposit and Fund Status, 2083/07/09

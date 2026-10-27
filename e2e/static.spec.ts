@@ -155,6 +155,19 @@ test('the revenue page shows customs and inland revenue as printed, each in its 
   await expect(page.locator('#revenue')).toContainText('रु. १५ खर्ब ८० अर्ब ३२ करोड');
 });
 
+test('the home foreign card lists only deposits verified in the Fund, never a zero', async ({
+  page,
+}) => {
+  await open(page, 'en/');
+  // The card that lists the deposits by name, not the account-status card that mentions them.
+  const card = page.locator('.card', { hasText: 'NVIDIA Corporation' }).first();
+  await card.scrollIntoViewIfNeeded();
+  await expect(card).toContainText('Foreign assistance');
+  await expect(card).not.toContainText('USD 0');
+  await expect(card).toContainText('more pledges and support');
+  await expect(page.locator('body')).not.toContainText('USD 0 ');
+});
+
 test('the fund usage card shows the transfer out of the Fund and every onward disbursement', async ({
   page,
 }) => {

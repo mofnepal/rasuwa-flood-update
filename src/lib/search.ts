@@ -63,8 +63,14 @@ async function buildSearchIndex(locale: Locale): Promise<SearchEntry[]> {
   for (const row of foreign) {
     index.push({
       group: 'foreign',
-      title: row.contributor,
-      subtitle: formatUSD(Number(row.amount_usd ?? 0), locale),
+      title: locale === 'ne' ? (row.contributor_ne ?? row.contributor) : row.contributor,
+      // A pledge or in-kind row has no dollar figure; its own words stand in for one.
+      subtitle:
+        Number(row.amount_usd ?? 0) > 0
+          ? formatUSD(Number(row.amount_usd), locale)
+          : (row.amount_text ??
+            (locale === 'ne' ? row.source_short_ne : row.source_short_en) ??
+            '—'),
       href: `/foreign?q=${encodeURIComponent(row.contributor)}`,
       terms: terms(row.contributor, row.country_en, row.country_ne),
     });
