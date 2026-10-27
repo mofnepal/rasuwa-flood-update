@@ -102,11 +102,15 @@ test('the foreign register lists the Prime Minister’s Office support beside ve
   // One register, categorised: countries, organisations, companies.
   await register.getByRole('tab', { name: 'Companies' }).click();
   await expect(register.locator('tbody tr')).toHaveCount(6);
+  await register.getByRole('tab', { name: 'Organisations' }).click();
+  await expect(register).toContainText('Fund for Responding to Loss and Damage');
+  await expect(register).toContainText('Ministry of Agriculture, Forest and Environment');
   await register.getByRole('tab', { name: 'Countries' }).click();
   await expect(register).toContainText('United Arab Emirates');
   // The only mark of origin is the source column.
   await expect(register.locator('tbody .chip.n').first()).toHaveText("Prime Minister's Office");
-  await register.locator('select').first().selectOption('mof');
+  // With the country chip still active, the Fund's own rows are the two embassies.
+  await register.locator('select').first().selectOption({ label: 'Ministry of Finance' });
   await expect(register.locator('tbody tr')).toHaveCount(2);
 });
 
@@ -114,7 +118,7 @@ test('announced domestic support is listed on the contributions page and never c
   page,
 }) => {
   await open(page, 'en/contributions/');
-  await expect(page.locator('.kpi').first()).toContainText('NPR 15,54,20,01,339');
+  await expect(page.locator('.kpi').first()).toContainText('NPR 17,63,17,32,051');
   const card = page.locator('#announced');
   await card.scrollIntoViewIfNeeded();
   await expect(card.locator('.kpi')).toHaveCount(3);

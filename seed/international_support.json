@@ -893,6 +893,29 @@
       "source_en": "OPMCM Rasuwa Flood Rescue Portal — Donations (rescue.opmcm.gov.np/donations), as fetched 16 Sep 2026",
       "source_ne": "प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालय — रसुवा बाढी उद्धार पोर्टल, दान पृष्ठ (rescue.opmcm.gov.np/donations), १६ सेप्टेम्बर २०२६ मा लिइएको",
       "source_url": "https://rescue.opmcm.gov.np/donations"
+    },
+    {
+      "slug": "frld-loss-and-damage-grant",
+      "opmcm_id": null,
+      "donor_en": "Fund for Responding to Loss and Damage (FRLD)",
+      "donor_ne": "हानिनोक्सानी कोष (FRLD)",
+      "country_en": null,
+      "donor_kind": "multilateral",
+      "aid_kind": "pledge",
+      "amount_text": "USD 20 million (grant; board decision of 22 October 2026)",
+      "amount_usd": 20000000,
+      "amount_npr": null,
+      "status": "pledged",
+      "stated_to_fund": false,
+      "detail_en": "At an extraordinary meeting on 22 October 2026 (2083 Kartik 5) the Board of the Fund for Responding to Loss and Damage decided to provide Nepal a grant of USD 20 million (about NPR 3 billion, as the release states) for the communities affected by the Bhotekoshi–Trishuli flood of Bhadra 10, 2083. The request was made on 31 August 2026 by the Hon. Finance Minister Dr. Swarnim Wagle and the Hon. Minister for Agriculture, Forest and Environment Ms. Gita Chaudhary; eight board members and six alternates signed the call for the meeting on 2 September. The grant is allocated separately out of the USD 21.6 million available under the Barbados Implementation Modality, and Nepal is to submit a project proposal through its national focal point under the Secretariat's procedures. The release puts the flood's preliminary economic loss at about USD 2.7 billion and reconstruction needs at about USD 4.7 billion, and notes that the Board's 11th meeting will be held in Kathmandu on 17–19 March 2027.",
+      "detail_ne": "हानिनोक्सानी कोष (Fund for Responding to Loss and Damage) को बोर्डले सन् २०२६ अक्टोबर २२ (२०८३ कात्तिक ५) को विशेष बैठकबाट २०८३ भदौ १० को भोटेकोशी–त्रिशूली बाढीबाट प्रभावित समुदायका लागि नेपाललाई २० मिलियन अमेरिकी डलर (विज्ञप्ति अनुसार करिब तीन अर्ब रुपैयाँ) अनुदान सहयोग उपलब्ध गराउने निर्णय गरेको छ। माननीय अर्थमन्त्री डा. स्वर्णिम वाग्ले र माननीय कृषि, वन तथा पर्यावरणमन्त्री श्री गीता चौधरीले अगस्त ३१ मा बोर्डसमक्ष अनुरोध गर्नुभएको थियो; आठ बोर्ड सदस्य र छ वैकल्पिक सदस्यले सेप्टेम्बर २ मा विशेष बैठकका लागि हस्ताक्षर गरेका थिए। Barbados Implementation Modality अन्तर्गत उपलब्ध २१.६ मिलियन डलरमध्येबाट छुट्टै विनियोजन गरिने यो अनुदानका लागि नेपालले राष्ट्रिय सम्पर्क अधिकृतमार्फत सचिवालयको कार्यविधि अनुसार आयोजना प्रस्ताव पेस गर्नुपर्नेछ। विज्ञप्तिमा बाढीको प्रारम्भिक आर्थिक क्षति करिब २.७ अर्ब डलर र पुनर्निर्माण आवश्यकता करिब ४.७ अर्ब डलर उल्लेख छ, र बोर्डको ११औँ बैठक सन् २०२७ मार्च १७–१९ मा काठमाडौँमा हुने जनाइएको छ।",
+      "reported_at": "2026-10-22T18:15:00.000Z",
+      "aid_list_note": null,
+      "source_en": "Ministry of Agriculture, Forest and Environment — press release of 2083 Kartik 5 (22 October 2026) on the FRLD Board’s decision to grant Nepal USD 20 million",
+      "source_ne": "कृषि, वन तथा पर्यावरण मन्त्रालय — हानिनोक्सानी कोषबाट नेपाललाई २० मिलियन अमेरिकी डलर सहयोग गर्ने निर्णयसम्बन्धी प्रेस विज्ञप्ति, मिति २०८३ कात्तिक ५",
+      "source_url": null,
+      "source_short_en": "Ministry of Agriculture, Forest and Environment",
+      "source_short_ne": "कृषि, वन तथा पर्यावरण मन्त्रालय"
     }
   ]
 }

@@ -33,6 +33,9 @@ export interface ForeignRow {
   detail_ne: string | null;
   aid_list_note: { en?: string; ne?: string } | null;
   source_url: string | null;
+  /** The publishing body, for rows that are neither the Fund's nor the PM Office's. */
+  source_short_ne: string | null;
+  source_short_en: string | null;
 }
 
 /** Countries, organisations or companies — the register's quick chips. */
@@ -57,7 +60,11 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
   const countries = [...new Set(rows.map((row) => row.country_en ?? ''))].filter(Boolean).sort();
   const countryName = (en: string) =>
     (locale === 'ne' && rows.find((row) => row.country_en === en)?.country_ne) || en;
-  const sourceName = (row: ForeignRow) => (row.in_fund ? t('sourceFund') : t('sourcePmo'));
+  const sourceName = (row: ForeignRow) =>
+    row.in_fund
+      ? t('sourceFund')
+      : ((locale === 'ne' ? row.source_short_ne : row.source_short_en) ?? t('sourcePmo'));
+  const sources = [...new Set(rows.map(sourceName))];
 
   const columns: Column<ForeignRow>[] = [
     {
@@ -178,11 +185,8 @@ export function ForeignRegister({ rows }: { rows: ForeignRow[] }) {
         {
           key: 'source',
           label: ts('source'),
-          options: [
-            ['mof', t('sourceFund')],
-            ['pmo', t('sourcePmo')],
-          ],
-          test: (row, value) => (value === 'mof' ? row.in_fund : !row.in_fund),
+          options: sources.map((value) => [value, value]),
+          test: (row, value) => sourceName(row) === value,
         },
         {
           key: 'type',

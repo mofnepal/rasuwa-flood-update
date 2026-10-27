@@ -329,6 +329,7 @@ export async function foreign(): Promise<OpenData> {
 
   const data = rows.map((row) => ({
     in_fund: row.in_fund,
+    source_short: row.source_short_en,
     report_status: row.report_status,
     amount_text: row.amount_text,
     date_bs: row.date_bs,

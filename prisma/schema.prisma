@@ -194,6 +194,10 @@ model ForeignAssistance {
   detail_ne             String?
   aid_list_note         Json?
   source_url            String?
+  /// Short name of the publishing body, shown in the register's source column when the
+  /// row is neither verified in the Fund nor from the Prime Minister's Office.
+  source_short_ne       String?
+  source_short_en       String?
   purpose_ne            String
   purpose_en            String
   featured              Boolean         @default(false)

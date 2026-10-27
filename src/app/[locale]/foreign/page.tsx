@@ -85,6 +85,8 @@ export default async function ForeignPage({ params }: { params: Promise<{ locale
     detail_ne: row.detail_ne,
     aid_list_note: (row.aid_list_note as { en?: string; ne?: string } | null) ?? null,
     source_url: row.source_url,
+    source_short_ne: row.source_short_ne,
+    source_short_en: row.source_short_en,
   }));
 
   const byType = new Map<string, number>();
